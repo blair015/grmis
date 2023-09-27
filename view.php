@@ -20,11 +20,13 @@ include ("admin/includes/sidebar.php");
         <div class="container-fluid px-4">
         				<div class="card mb-4">
                         <div class="card-header">
-                                Your school not in the list?
-                                <span class="float-right">
-                                    <i class="fas fa-cog" id="openModalIcon" data-toggle="modal" data-target="#myModal"></i>
-                                </span>
-                            </div>
+                            Your school not in the list?
+                            <span class="float-right">
+                                <i class="fas fa-cog" id="openModalIcon" data-toggle="modal" data-target="#myModal" style="color: blue; font-size: 24px;"></i>
+                                <span style="margin-left: 5px;">Click gear icon to Add School</span>
+                            </span>
+                        </div>
+
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
@@ -66,8 +68,7 @@ include ("admin/includes/sidebar.php");
                                             echo "<td>" . $row['category'] . "</td>";
                                             echo "<td>
                                                 <a href='schoolprofile.php?school_id=" . $row['school_id'] . "'><i class=\"fas fa-eye fa-2x\"></i></a>
-                                                <a href='edit_school.php?school_id=" . $row['school_id'] . "'><i class=\"fas fa-edit fa-2x\" style=\"color: green;\"></i></a>
-                                                <a href='delete_school.php?school_id=" . $row['school_id'] . "'><i class=\"fas fa-trash fa-2x\" style=\"color: red;\"></i></a>
+                                               
                                                  </td>";
 
                                             echo "</tr>";

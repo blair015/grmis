@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <?php
 include("admin/includes/header.php");
 include("admin/includes/navbar.php");
@@ -180,56 +184,20 @@ if (isset($_GET['school_id'])) {
               <div class="tab-content">
 
 
-                <!-- ---------------------------------- -->
+                <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
                 <div class="active tab-pane" id="About">
-                  <form class="form-horizontal">
-                    <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Name1</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputSkills" class="col-sm-2 col-form-label">Skills1</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                      </div>
-                    </div>
-                  </form>
+                <div style="position: relative;">
+                              <div style="position: relative;">
+                  <!-- Your content here -->
+
+                  <!-- Edit icon on the right side -->
+                  <i class="fas fa-edit" id="editIcon" style="position: absolute; top: 0; right: 0; font-size: 24px; color: green;"></i>
+              </div>
+        </div>
+
+                 <div> <p> asdasdasd </p></div>
                 </div>
-                <!-- ---------------------------------- -->
+                <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
                 <div class="tab-pane" id="Statistics">
                 <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
@@ -258,7 +226,7 @@ if (isset($_GET['school_id'])) {
         </div>
 
 
-                <!-- ---------------------------------- -->
+                <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="Activities">
                 <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
@@ -416,6 +384,42 @@ if (isset($_GET['school_id'])) {
                     <button type="submit" class="btn btn-primary" name="save_changes">Save changes</button>
                 </div>
             </form>
+
+<!-- Modal for About Us-->
+<div class="modal fade" id="schoolModal" tabindex="-1" role="dialog" aria-labelledby="schoolModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="schoolModalLabel">Edit School Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea class="form-control" id="schoolInfo" rows="4"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveSchoolInfo()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// Function to open the modal when the edit icon is clicked
+$("#editIcon").click(function() {
+    $("#schoolModal").modal("show");
+});
+
+// Function to save school information (you can customize this)
+function saveSchoolInfo() {
+    var schoolInfo = $("#schoolInfo").val();
+    // You can process and save the schoolInfo here as needed
+    console.log("School Information:", schoolInfo);
+    // Close the modal
+    $("#schoolModal").modal("hide");
+}
+</script>
 
 
 
