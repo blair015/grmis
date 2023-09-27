@@ -231,103 +231,84 @@ if (isset($_GET['school_id'])) {
                 </div>
                 <!-- ---------------------------------- -->
                 <div class="tab-pane" id="Statistics">
-                  <form class="form-horizontal">
-                    <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputName" placeholder="Name">
+                <div class="row g-2 mb-2">
+                      <div class="col-md-6 fv-row">
+                      <div class="card card-success">
+                          <div class="card-header">
+                              <h3 class="card-title">Teacher Profile by Sex</h3>
+                              <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                      <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                      <i class="fas fa-times"></i>
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="card-body">
+                              <div class="chart">
+                                  <canvas id="TeachingBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                              </div>
+                          </div>
+                          <!-- /.card-body -->
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputSkills" class="col-sm-2 col-form-label">Skills2</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                      <!-- /.card -->
+                  </div>
+        </div>
+        </div>
 
 
                 <!-- ---------------------------------- -->
                 <div class="tab-pane" id="Activities">
-                  <form class="form-horizontal">
-                    <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputName" placeholder="Name">
+                <div class="row g-2 mb-2">
+                      <div class="col-md-6 fv-row">
+                      <div class="card card-success">
+                          <div class="card-header">
+                              <h3 class="card-title">Enrollment Per Year By Sex</h3>
+                              <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                      <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                      <i class="fas fa-times"></i>
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="card-body">
+                              <div class="chart">
+                                  <canvas id="enrolleeBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                              </div>
+                          </div>
+                          <!-- /.card-body -->
                       </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputName2" class="col-sm-2 col-form-label">Name3</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
-                      </div>
-                    </div>
-                  </form>
+                      <!-- /.card -->
+                  </div>  
+
+                  <div class="col-md-6 fv-row">
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">Teacher Profile by Sex</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <!-- Use $teacherData to populate your chart -->
+                    <canvas id="enrolleeBarChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+            </div>
+
                 </div>
 
                 <!-- /.tab-pane -->
@@ -444,3 +425,222 @@ if (isset($_GET['school_id'])) {
   include("admin/includes/footer.php");
   ?>
   
+  <?php
+include 'admin/config/dbcon2.php';
+
+$selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
+
+$sql = "SELECT e.school_id, 
+               SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_teachers,
+               SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_teachers
+        FROM employment_record AS e
+        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+        WHERE e.school_id = $selectedSchoolId 
+        GROUP BY e.school_id";
+
+$result = $conn->query($sql);
+
+$teacherData = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $teacherData[] = [
+            'school_id' => $row['school_id'], // Changed 'year' to 'id'
+            'male_teachers' => $row['male_teachers'],
+            'female_teachers' => $row['female_teachers']
+        ];
+    }
+}
+?>
+
+<!-- Teaching Bar Chart -->
+<script>
+// Replace this with your database fetching code or API call
+var teacherData = <?php echo json_encode($teacherData); ?>;
+
+// Extract ids and male/female teachers for the chart
+var ids = teacherData.map(function(data) {
+    return data.school_id; // Changed from 'year' to 'id'
+});
+var maleTeachers = teacherData.map(function(data) {
+    return data.male_teachers;
+});
+var femaleTeachers = teacherData.map(function(data) {
+    return data.female_teachers;
+});
+
+// Chart.js configuration
+var ctx = document.getElementById('TeachingBarChart').getContext('2d');
+var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ids, // Changed from 'years' to 'ids'
+        datasets: [
+            {
+                label: 'Male Teachers',
+                data: maleTeachers,
+                backgroundColor: 'rgba(0, 128, 255, 0.6)'
+            },
+            {
+                label: 'Female Teachers',
+                data: femaleTeachers,
+                backgroundColor: 'rgba(255, 0, 0, 0.6)'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<!-- Enrolled students by Sex -->
+<?php
+include('admin/config/dbcon.php');
+
+$selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
+
+$sql = "SELECT year, 
+               SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) AS male_enrollees,
+               SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) AS female_enrollees
+        FROM school_enrol 
+        WHERE school_id = $selectedSchoolId 
+        GROUP BY year";
+
+$result = $conn->query($sql);
+
+$enrollData = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $enrollData[] = [
+            'year' => $row['year'],
+            'male_enrollees' => $row['male_enrollees'],
+            'female_enrollees' => $row['female_enrollees']
+        ];
+    }
+}
+?>
+
+<!-- Include your HTML and other code here -->
+
+<script>
+// Replace this with your database fetching code or API call
+var enrollData = <?php echo json_encode($enrollData); ?>;
+
+// Extract years and male/female enrollees for the chart
+var years = enrollData.map(function(data) {
+    return data.year;
+});
+var maleEnrollees = enrollData.map(function(data) {
+    return data.male_enrollees;
+});
+var femaleEnrollees = enrollData.map(function(data) {
+    return data.female_enrollees;
+});
+
+// Chart.js configuration
+var ctx = document.getElementById('enrolleeBarChart').getContext('2d');
+var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: years,
+        datasets: [
+            {
+                label: 'Male Enrollees',
+                data: maleEnrollees,
+                backgroundColor: 'rgba(0, 128, 255, 0.6)'
+            },
+            {
+                label: 'Female Enrollees',
+                data: femaleEnrollees,
+                backgroundColor: 'rgba(255, 0, 0, 0.6)'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+
+<?php
+include('admin/config/dbcon.php');
+
+$selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
+
+$sql = "SELECT year, grade_level, COUNT(enrolee) AS total_enrollees
+        FROM school_enrol 
+        WHERE school_id = $selectedSchoolId 
+        GROUP BY year, grade_level";
+
+$result = $conn->query($sql);
+
+$enrollDataByGrade = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $enrollDataByGrade[] = [
+            'year' => $row['year'],
+            'grade_level' => $row['grade_level'],
+            'total_enrollees' => $row['total_enrollees']
+        ];
+    }
+}
+?>
+
+<!-- Include your HTML and other code here -->
+
+<script>
+// Replace this with your database fetching code or API call
+var enrollDataByGrade = <?php echo json_encode($enrollDataByGrade); ?>;
+
+// Extract years, grade levels, and total enrollees for the chart
+var yearsByGrade = enrollDataByGrade.map(function(data) {
+    return data.year;
+});
+var gradeLevels = [...new Set(enrollDataByGrade.map(data => data.grade_level))]; // Get unique grade levels
+var totalEnrolleesByGrade = gradeLevels.map(function(grade) {
+    return {
+        label: grade,
+        data: enrollDataByGrade.filter(data => data.grade_level === grade).map(data => data.total_enrollees),
+        backgroundColor: getRandomColor(), // Function to generate random colors
+    };
+});
+
+// Function to generate random colors
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Chart.js configuration for the bar chart
+var ctx = document.getElementById('enrolleeBarChart2').getContext('2d');
+var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: yearsByGrade,
+        datasets: totalEnrolleesByGrade
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
