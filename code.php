@@ -31,31 +31,27 @@ function getSchoolInfo($school_id) {
 include('admin/includes/script.php');
 include('admin/config/dbcon.php');
 
-// Check if the form has been submitted
-if (isset($_POST['submit_sh_info'])) {
+$statusMsg = ''; // Initialize status message
 
-    // Retrieve form data
-    $Municipality = $_POST['Municipality'];
+// Check if the form has been submitted
+if (isset($_POST['save_changes'])) {
+
+    // Retrieve form data for school information
     $District = $_POST['district'];
-    $about_us = $_POST['about_us'];
     $school_id = $_POST['school_id'];
     $school_name = $_POST['school_name'];
     $school_address = $_POST['school_address'];
-    $school_type = $_POST['school_type'];
-    $school_number = $_POST['school_number'];
     $category = $_POST['category'];
     $school_email = $_POST['school_email'];
-    $sbm_level = $_POST['sbm'];
 
     // Check if files were uploaded successfully
     if (isset($_FILES['school_logo']['tmp_name']) && isset($_FILES['school_header']['tmp_name'])) {
-        $uploadsDirectory = 'uploads/'; // Path to the folder where you want to save the images
-
         // Generate unique filenames for the uploaded files
         $school_logo_filename = uniqid() . '_' . $_FILES['school_logo']['name'];
         $school_header_filename = uniqid() . '_' . $_FILES['school_header']['name'];
 
         // Move the uploaded files to the desired folder
+        $uploadsDirectory = 'uploads/'; // Path to the folder where you want to save the images
         $school_logo_path = $uploadsDirectory . $school_logo_filename;
         $school_header_path = $uploadsDirectory . $school_header_filename;
 
@@ -64,79 +60,107 @@ if (isset($_POST['submit_sh_info'])) {
             move_uploaded_file($_FILES['school_header']['tmp_name'], $school_header_path)
         ) {
             // Files were successfully moved
-            // Insert data into the database including the file paths
-            $sql = "INSERT INTO school_profile (school_id, school_name, school_address, about_school, school_type, contact_number, school_email_address, school_logo, school_header, Municipality, District, sbm_level, category) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // Update data in the database including the file paths
+                    $sql = "UPDATE school_profile SET 
+                    school_name = ?,
+                    school_address = ?,
+                    school_email_address = ?,
+                    school_logo = ?,
+                    school_header = ?,
+                    District = ?,
+                    category = ?
+                    WHERE school_id = ?";
 
-            // Use prepared statements to avoid SQL injection
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param(
-                $stmt,
-                "sssssssssssss",
-                $school_id,
-                $school_name,
-                $school_address,
-                $about_us,
-                $school_type,
-                $school_number,
-                $school_email,
-                $school_logo_path,
-                $school_header_path,
-                $Municipality,
-                $District,
-                $sbm_level,
-                $category
-            );
+                    // Use prepared statements to avoid SQL injection
+                    $stmt = mysqli_prepare($conn, $sql);
+                    mysqli_stmt_bind_param(
+                    $stmt,
+                    "ssssssss",
+                    $school_name,
+                    $school_address,
+                    $school_email,
+                    $school_logo_path,
+                    $school_header_path,
+                    $District,
+                    $category,
+                    $school_id
+                    );
 
-            $sql_run = mysqli_stmt_execute($stmt);
+                    $sql_run = mysqli_stmt_execute($stmt);
 
             if ($sql_run) {
-                echo 'Swal.fire({
-                        icon: "success",
-                        title: "Success!",
-                        text: "School Information Added Successfully",
-                        showConfirmButton: false,
-                        timer: 5000
-                      }).then(function() {
-                        window.location.href = "overview.php";
-                      });';
+                $statusMsg = "School Information Updated Successfully.";
             } else {
-                echo 'Swal.fire({
-                        icon: "error",
-                        title: "Error!",
-                        text: "School Information Not Added",
-                        showConfirmButton: false,
-                        timer: 5000
-                      }).then(function() {
-                        window.location.href = "overview.php";
-                      });';
+                $statusMsg = "Error! School Information Not Updated.";
             }
         } else {
             // Handle file upload errors here
-            echo 'Swal.fire({
-                    icon: "error",
-                    title: "Error!",
-                    text: "File Upload Failed",
-                    showConfirmButton: false,
-                    timer: 5000
-                  }).then(function() {
-                    window.location.href = "overview.php";
-                  });';
+            $statusMsg = "Error! File Upload Failed.";
         }
     } else {
         // Handle the case where files were not properly uploaded
-        echo 'Swal.fire({
-                icon: "error",
-                title: "Error!",
-                text: "File Upload Failed",
-                showConfirmButton: false,
-                timer: 5000
-              }).then(function() {
-                window.location.href = "overview.php";
-              });';
+        $statusMsg = "Error! File Upload Failed.";
     }
 }
+
+// Display status message and redirect
+echo $statusMsg;
+echo "<script>
+    if (confirm('{$statusMsg} Back to Profile?')) {
+        window.location.href = 'schoolprofile.php?school_id={$school_id}';
+    } else {
+        // Handle the case where the user chooses not to proceed
+        window.location.href = 'schoolprofile.php?school_id={$school_id}'; // You can modify this URL as needed
+    }
+</script>";
 ?>
+
+<script>
+// JavaScript function to show a success toast
+function showSuccessToast() {
+    const toast = document.getElementById('successToast');
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+
+    setTimeout(function() {
+        window.location.href = "overview.php";
+    }, 5000); // Redirect after 5 seconds
+}
+
+// JavaScript function to show an error toast
+function showErrorToast() {
+    const toast = document.getElementById('errorToast');
+    const bsToast = new bootstrap.Toast(toast);
+    bsToast.show();
+
+    setTimeout(function() {
+        window.location.href = "overview.php";
+    }, 5000); // Redirect after 5 seconds
+}
+</script>
+
+
+<!-- Bootstrap Toast for success message -->
+<div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white">
+        <strong class="me-auto">Success</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        School Information Added Successfully
+    </div>
+</div>
+
+<!-- Bootstrap Toast for error message -->
+<div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-danger text-white">
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        School Information Not Added
+    </div>
+</div>
 
 
 <?php
