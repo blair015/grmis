@@ -91,7 +91,7 @@ include ("admin/includes/sidebar.php");
                                         // Check if a result was found
                                         if ($emp_no) {
                                             // $emp_no now contains the value you retrieved
-                                            echo "Employee Number: " . $emp_no;
+                                            echo "";
                                         } else {
                                             // No result found
                                             echo "No result found for the provided email.";
@@ -123,7 +123,7 @@ include ("admin/includes/sidebar.php");
                                         // Check if a result was found
                                         if ($school_id) {
                                             // $school_id now contains the value you retrieved
-                                            echo "School ID: " . $school_id;
+                                            echo "";
                                         } else {
                                             // No result found
                                             echo "No employment record found for the provided emp_no.";
@@ -162,7 +162,7 @@ include ("admin/includes/sidebar.php");
 									<?php
                                 
                                 $user_school_id = $school_id; ?>
-                                <a>user school id: <?php  ?> </a>
+                                
                                 <?php
                                     
 
