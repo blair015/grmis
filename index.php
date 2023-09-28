@@ -1,13 +1,22 @@
 <?php
-if(isset($_POST['btn-proceed'])){
-    if(!isset($_POST['current_user_id']) || !isset($_POST['current_username']) || !isset($_POST['current_user_role']) || !isset($_POST['security_key']))
-    { echo "User ID has NO DATA = "; header("Location: http://202.137.126.58/"); exit(0); }
-}
+session_start();
 
-        $userID = $_POST['current_user_id'];    // id sa user sa masterlist... auto inc
-        $user_name = $_POST['current_username'];  //email
-        $user_role = $_POST['current_user_role']; // teacher, admin... etc..
-        $user_security = $_POST['security_key'];
+if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['user_role']) && isset($_SESSION['security_key'])) {
+    // Session data exists, you can proceed with your logic here
+    $userID = $_SESSION['user_id'];
+    $user_name = $_SESSION['username'];
+    $user_role = $_SESSION['user_role'];
+    $user_security = $_SESSION['security_key'];
+
+    echo $userID;
+    // Your logic for handling the session data here
+} else {
+    // Session data is missing, redirect to index.php
+    header("Location: http://202.137.126.58/");
+    exit(0);
+}
+?>
+
 
 include ("admin/includes/header.php");
 include ("admin/includes/navbar.php");
