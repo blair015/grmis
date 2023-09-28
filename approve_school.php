@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['user_role']) && isset($_SESSION['security_key'])) {
+    // Session data exists, you can proceed with your logic here
+    $userID = $_SESSION['user_id'];
+    $user_name = $_SESSION['username'];
+    $user_role = $_SESSION['user_role'];
+    $user_security = $_SESSION['security_key'];
+
+        // Your logic for handling the session data here
+} else {
+    // Session data is missing, redirect to index.php
+    header("Location: http://202.137.126.58/");
+    exit(0);
+}
+?>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
