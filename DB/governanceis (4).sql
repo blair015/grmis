@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2023 at 03:46 AM
+-- Generation Time: Sep 28, 2023 at 02:46 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `governanceis`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `approval`
+--
+
+CREATE TABLE `approval` (
+  `id` int(11) NOT NULL,
+  `school_id` varchar(255) NOT NULL,
+  `school_name` varchar(255) NOT NULL,
+  `school_address` varchar(255) NOT NULL,
+  `district` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL,
+  `email_address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -96,11 +112,12 @@ CREATE TABLE `location` (
 --
 
 INSERT INTO `location` (`id`, `school_id`, `latitude`, `longitude`, `frame`) VALUES
-(5, '304294', '', '', ''),
 (2, '125225', '6.606372475772369', '125.34345789443138', ''),
 (7, '302323', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126826.49216937121!2d125.21162196249999!3d6.606116700000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f9c9ad439ba14b%3A0xc0808e4e2027a107!2sSulop%20National%20High%20School!5e0!3m2!1sen!2sph!4v1692160314844!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
 (8, '304401', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.3703246048096!2d125.41547358320149!3d6.832750311381383!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f9a5bccf8e1841%3A0x42d5dada3fb630a9!2sSanta%20Cruz%20National%20High%20School!5e0!3m2!1sen!2sph!4v1692175435343!5m2!1sen!2sph\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
-(30, '129099', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d64904237.52978331!2d57.91551899999998!3d6.837699800000027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f9a5be8df1f979%3A0x763a4d96d17b409f!2sSanta%20Cruz%20Central%20Elementary%20School!5e0!3m2!1sen!2sus!4v1695172843747!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
+(30, '129099', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d64904237.52978331!2d57.91551899999998!3d6.837699800000027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f9a5be8df1f979%3A0x763a4d96d17b409f!2sSanta%20Cruz%20Central%20Elementary%20School!5e0!3m2!1sen!2sus!4v1695172843747!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
+(12, '304294', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.4666187980433!2d125.41401584731358!3d6.834521991391371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f9a5bccf8e1841%3A0x42d5dada3fb630a9!2sSanta%20Cruz%20National%20High%20School!5e0!3m2!1sen!2sus!4v1695186943524!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>'),
+(10, '129031', '', '', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.85588320174!2d125.19139467576206!3d6.664775421503911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f84aa1ea0f112b%3A0xdfc74c6725408705!2sBuri%20Elementary%20School!5e0!3m2!1sen!2sus!4v1695777095222!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>');
 
 -- --------------------------------------------------------
 
@@ -247,7 +264,10 @@ INSERT INTO `school_enrol` (`id`, `school_id`, `school_name`, `year`, `enrolee`,
 (9, '125225', 'SULOP', '2020', '500', '7', 'MALE'),
 (10, '125225', 'SULOP', '2020', '', '7', 'FEMALE'),
 (11, '125225', 'SULOP', '2021', '1500', '8', 'MALE'),
-(12, '125225', 'SULOP', '2021', '', '8', 'FEMALE');
+(12, '125225', 'SULOP', '2021', '', '8', 'FEMALE'),
+(11, '304294', 'STA. CRUZ NATIONAL HIGH SCHOOL', '2023-2024', '', '7', 'MALE'),
+(12, '304294', 'STA. CRUZ NATIONAL HIGH SCHOOL', '2023-2024', '', '8', 'FEMALE'),
+(13, '304294', 'STA. CRUZ NATIONAL HIGH SCHOOL', '2023-2024', '', '9', 'MALE');
 
 -- --------------------------------------------------------
 
@@ -323,26 +343,33 @@ CREATE TABLE `school_profile` (
 --
 
 INSERT INTO `school_profile` (`id`, `school_id`, `school_name`, `school_address`, `about_school`, `school_type`, `contact_number`, `school_email_address`, `school_logo`, `school_header`, `Municipality`, `District`, `sbm_level`, `category`, `academic_classroom`, `non_academic_classroom`, `needing_repair`, `tls`, `makeshift`, `arms_and_chairs`, `tables_and_chairs`, `functional_clinic`) VALUES
-(8, '1231233222', 'Matanao National High School', 'Apo Beach, Zone III', 'asd asd asd asd  asda asd asd asd asd asd', 'Secondary', '12312 123 131', 'blairbrian.torres@deped.gov.ph', '3.jpg', 'Mass Layout.png', 'MATANAO', 'North', '3', 'large', '', '', '', '', '', '', '', ''),
-(9, '2123 123 12', 'New Visayas Elementary School', 'New Visayas, Matanao, Davao del Sur', 'asd asd asd asd asd s', 'Elementary', '123 1231 23123 123 ', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (1).png', 'Recognition Tarp (1).png', 'MATANAO', 'South', '2', 'small', '', '', '', '', '', '', '', ''),
-(11, '122 32123 123', 'Barayong National High School', 'Barayong, Magsaysay, Davao del Sur', 'asd asd asd asd asd sasd asd asd', 'Secondary', '123 1231 23123 123 ', 'blairbrian.torres@deped.gov.ph', 'IMG20230706150128.jpg', 'DEPED_LOGO_vkcam.png', 'MAGSAYSAY', 'North', '3', 'medium', '', '', '', '', '', '', '', ''),
-(17, '304401', 'Kapatagan', 'Apo Beach, Zone III', 'dasd asdsa das das', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Explorer.png', 'A River.jpg', 'SANTA CRUZ', 'South', '3', 'large', '20', '1', '2', '3', '4', '5', '6', '7'),
-(18, '304294', 'Sta. Cruz Central Elementary School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Elementary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'view.png', 'Zoom Background Day 2.png', 'SANTA CRUZ', 'North', '3', 'large', '', '', '', '', '', '', '', ''),
-(19, '302323', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'North', '3', 'large', '', '', '', '', '', '', '', ''),
-(20, '422322', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(21, '2312312', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(22, '12312 1231 312 3', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(23, '111111222', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(24, '2232123121223', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(25, '1231231111', 'Federico Yap National High School', 'Apo Beach, Zone III', 'sad asd asd asda sdas das d', 'Secondary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (2).png', 'Copy of Black Beige Geometric Graduation Program (60 × 45.205 in).png', 'SANTA CRUZ', 'South', '3', 'large', '', '', '', '', '', '', '', ''),
-(26, '5231233', 'dsas  asdasd ', 'Apo Beach, Zone III', 'dasd asdas das das', 'Elementary', '', 'blairbrian.torres@deped.gov.ph', 'deped-logo.jpg', 'IMG20230706150128.jpg', 'SULOP', 'North', '2', 'medium', '', '', '', '', '', '', '', ''),
-(27, '112233', 'Matanao Central Elementary School', 'Apo Beach, Zone III', 'asdasdasd', 'Elementary', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Explorer.png', 'Firewall.jpg', 'BANSALAN', 'MATANAO II', '3', 'large', '', '', '', '', '', '', '', ''),
-(28, '125225', 'SULOP NATIONAL HIGH SCHOOL', 'SULOP, DAVAO DEL SUR', 'ASDA DASD ASD', 'URBAN', '12341233112', '125225@deped.gov.ph', 'Seal_of_the_Department_of_Education_of_the_Philippines (1).png', 'DEPED_LOGO_vkcam.png', 'BANSALAN', 'MATANAO II', '2', 'large', '5', '4', '2', '1', '2', '5', '5', '1'),
-(29, '304294', 'Sta. Cruz National High School', 'Apo Beach, Zone III', 'sadasd dasd', 'URBAN', '09517974460', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (1).png', 'variables.png', 'BANSALAN', 'MATANAO I', '2', 'large', '', '', '', '', '', '', '', ''),
-(30, '128816', 'Mabunga ES', 'Apo Beach, Zone III', 'asdsa sad asd ', 'URBAN', '123 1231 23123 123 ', 'blairbrian.torres@deped.gov.ph', 'A River.jpg', 'Zoom Background.jpg', 'BANSALAN', 'MATANAO I', '2', 'medium', '', '', '', '', '', '', '', ''),
+(28, '125225', 'Sulop National High School', 'Sulop, Davao del Sur', 'ASDA DASD ASD', 'URBAN', '12341233112', '125225@deped.gov.ph', 'uploads/6513d8b18df40_IMG20230925125028.jpg', 'uploads/6513d8b18df45_337282_autumn-tree-desktop-wallpaper-autumn-tree-backgrounds-new-wallpapers_1920x1200_h.jpg', 'BANSALAN', 'Sulop', '2', 'small', '5', '4', '2', '1', '2', '5', '5', '1'),
+(30, '128816', 'Mabunga Elementary School', 'Mabunga, Bansalan, Davao del Sur', 'asdsa sad asd ', 'URBAN', '123 1231 23123 123 ', '128816@deped.gov.ph', 'uploads/6513b549b2b33_IMG20230925125028 - Edited.png', 'uploads/6513b549b2b38_singapore-teen-gaming-addiction.jpg', 'BANSALAN', 'Bansalan East', '2', 'small', '', '', '', '', '', '', '', ''),
 (31, '128822', 'Union ES', 'Apo Beach, Zone III', 'dfsxddsds', 'URBAN', '123 1231 23123 123 ', 'blairbrian.torres@deped.gov.ph', 'Copy of Black Beige Geometric Graduation Program (1).png', 'Zoom Background.jpg', 'BANSALAN', 'MATANAO I', '2', 'medium', '', '', '', '', '', '', '', ''),
 (32, '128815', 'Mabuhay ES', 'Apo Beach, Zone III', 'dfgf fg dfg dgf', 'URBAN', '1232144 123 1', 'blairbrian.torres@deped.gov.ph', 'Zoom Background.jpg', 'variables.png', 'BANSALAN', 'Bansalan East', '2', 'small', '', '', '', '', '', '', '', ''),
-(33, '129099', 'Santa Cruz CES', 'Apo Beach, Zone III, Santa Cruz, Davao del Sur', 'asda sdsa das', 'URBAN', '12341233112', 'blairbrian.torres@deped.gov.ph', 'Zoom Background.jpg', 'Firewall.jpg', 'MATANAO', 'Sta. Cruz South', '3', 'large', '', '', '', '', '', '', '', '');
+(33, '129099', 'Santa Cruz CES', 'Apo Beach, Zone III, Santa Cruz, Davao del Sur', 'asda sdsa das', 'URBAN', '12341233112', 'blairbrian.torres@deped.gov.ph', 'Zoom Background.jpg', 'Firewall.jpg', 'MATANAO', 'Sta. Cruz South', '3', 'large', '2', '3', '4', '1', '2', '3', '4', '5'),
+(34, '128828', 'Dolo Elementary School', 'Dolo, Bansalan, Davao del Sur', 'sadas asd asd asd ', 'RURAL', '09517974460', '128828@deped.gov.ph', 'uploads/6513d5b468c3e_kim rohaina.jpg', 'uploads/6513d5b468c51_125316892_195313135420129_5548869138632988571_n.jpg', 'BANSALAN', 'Bansalan West', '1', 'small', '2', '3', '4', '5', '6', '7', '1', '1'),
+(35, '128826', 'Bitaug ES', 'Apo Beach, Zone III', '', 'RURAL', '', 'blairbrian.torres@deped.gov.ph', 'Zoom Background.jpg', '361657937_3131313877162025_5772383619876780379_n.jpg', 'BANSALAN', 'Bansalan West', '3', 'small', '', '', '', '', '', '', '', ''),
+(39, '128827', 'Darapuay ES', 'Apo Beach, Zone III', '', 'RURAL', '', 'blairbrian.torres@deped.gov.ph', 'Zoom Background.jpg', '361657937_3131313877162025_5772383619876780379_n.jpg', 'BANSALAN', 'Bansalan West', '3', 'small', '', '', '', '', '', '', '', ''),
+(42, '128935', 'Glamang es', 'Magsaysay', '', '', '', '', '', '', '', 'Magsaysay South', '', 'small', '', '', '', '', '', '', '', ''),
+(43, '128955', 'Benito Quibod ES', 'Malalag', '', '', '', '', '', '', '', 'Malalag', '', 'small', '', '', '', '', '', '', '', ''),
+(44, '128896', 'Benito Perez ES', 'Kiblawan', '', '', '', '', '', '', '', 'Kiblawan North', '', 'small', '', '', '', '', '', '', '', ''),
+(45, '304295', 'Bato NHS', 'Bato', '', '', '', '', '', '', '', 'Sta. Cruz South', '', 'medium', '', '', '', '', '', '', '', ''),
+(46, '129024', 'San Vicente ES', 'Matanao', '', '', '', '', '', '', '', 'Matanao I', '', 'medium', '', '', '', '', '', '', '', ''),
+(47, '129090', 'Apolinar Franco, Sr. ES', 'Sta. Cruz', '', '', '', '', '', '', '', 'Sta. Cruz South', '', 'small', '', '', '', '', '', '', '', ''),
+(48, '129037', 'Sulatorio ES', 'Apo Beach, Zone III', 'dsadasd asdasd', 'URBAN', '12341233112', 'blairbrian.torres@deped.gov.ph', 'Seal_of_the_Department_of_Education_of_the_Philippines (2).png', 'A River.jpg', 'SANTA CRUZ', 'Matanao II', '1', 'small', '', '', '', '', '', '', '', ''),
+(49, '129031', 'Buri Elementary School', 'Buri, Matanao Davao del Sur', 'dsadsadas', 'URBAN', '12312 123 131', '129031@deped.gov.ph', 'uploads/6513b1aae6216_IMG20230925125028.jpg', 'uploads/6513b1aae621c_337282_autumn-tree-desktop-wallpaper-autumn-tree-backgrounds-new-wallpapers_1920x1200_h.jpg', 'PADADA', 'Matanao II', '1', 'small', '', '', '', '', '', '', '', ''),
+(50, '129017', 'Matanao CES', 'Bato, Santa Cruz, Davao del Sur', '', '', '', '', '', '', '', 'Matanao I', '', 'small', '', '', '', '', '', '', '', ''),
+(51, '128950', 'Col. Lanzar ES', 'Malalag', '', '', '', '', '', '', '', 'Malalag', '', 'small', '', '', '', '', '', '', '', ''),
+(52, '128950', 'Col. Lanzar ES', 'Malalag', '', '', '', '', '', '', '', 'Malalag', '', 'small', '', '', '', '', '', '', '', ''),
+(53, '128950', 'Col. Lanzar ES', 'Malalag', '', '', '', '', '', '', '', 'Malalag', '', 'small', '', '', '', '', '', '', '', ''),
+(54, '128956', 'Ngub PS', 'Malalag', '', '', '', '', '', '', '', 'Malalag', '', 'small', '', '', '', '', '', '', '', ''),
+(55, '129031', 'Buri Elementary School', 'Buri, Matanao Davao del Sur', '', '', '', '129031@deped.gov.ph', 'uploads/6513b1aae6216_IMG20230925125028.jpg', 'uploads/6513b1aae621c_337282_autumn-tree-desktop-wallpaper-autumn-tree-backgrounds-new-wallpapers_1920x1200_h.jpg', '', 'Matanao II', '', 'small', '', '', '', '', '', '', '', ''),
+(56, '129083', 'Langan ES', 'Langan, Santa Cruz, Davao del Sur', '', '', '', '129083@deped.gov.ph', 'uploads/6513b75ed6301_IMG20230925125028.jpg', 'uploads/6513b75ed6306_337282_autumn-tree-desktop-wallpaper-autumn-tree-backgrounds-new-wallpapers_1920x1200_h (1).jpg', '', 'Sta. Cruz North', '', 'small', '', '', '', '', '', '', '', ''),
+(58, '304294', 'Sta. Cruz National High School', 'Brgy. Zone III, Santa Cruz, Davao del Sur', '', '', '', '304294', 'uploads/6514116468858_Seal_of_the_Department_of_Education_of_the_Philippines (2).png', 'uploads/651411646885d_Tarp Graduation 6th Rites.png', '', 'Sta. Cruz South', '', 'small', '', '', '', '', '', '', '', ''),
+(59, '128812', 'Bansalan Central ES', 'Kapatagan NHS', '', '', '', '', '', '', '', 'Bansalan East', '', 'medium', '', '', '', '', '', '', '', ''),
+(60, '205024', 'Sitio Project ES', 'Matanao', '', '', '', '', '', '', '', 'Matanao II', '', 'small', '', '', '', '', '', '', '', ''),
+(61, '304290', 'Sinawilan National High School', 'Sinawilan, Matanao, Davao del Sur', '', '', '', '304290@deped.gov.ph', 'uploads/6514c1cd3dc15_Seal_of_the_Department_of_Education_of_the_Philippines.png', 'uploads/6514c1cd3dc1a_Tarp Graduation 6th Rites.png', '', 'Matanao I', '', 'medium', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -412,6 +439,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `email_verified_a
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `approval`
+--
+ALTER TABLE `approval`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `educ_background`
@@ -500,6 +533,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `approval`
+--
+ALTER TABLE `approval`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
 -- AUTO_INCREMENT for table `educ_background`
 --
 ALTER TABLE `educ_background`
@@ -563,7 +602,7 @@ ALTER TABLE `school_info`
 -- AUTO_INCREMENT for table `school_profile`
 --
 ALTER TABLE `school_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `users`
