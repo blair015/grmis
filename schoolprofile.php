@@ -1,3 +1,21 @@
+
+<?php
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['user_role']) && isset($_SESSION['security_key'])) {
+    // Session data exists, you can proceed with your logic here
+    $userID = $_SESSION['user_id'];
+    $user_name = $_SESSION['username'];
+    $user_role = $_SESSION['user_role'];
+    $user_security = $_SESSION['security_key'];
+
+        // Your logic for handling the session data here
+} else {
+    // Session data is missing, redirect to index.php
+    header("Location: http://202.137.126.58/");
+    exit(0);
+}
+?>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -76,9 +94,36 @@ mysqli_close($conn);
             <br></br>
             <h5 class="author-card-name" style="font-size: 50px;"><?php echo $school_name; ?></h5>
             <span class="author-card-position" style="font-size: 20px; "><?php echo $school_address; ?></span><br>
-            <span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
-              <i class="fas fa-edit"></i> Edit Profile
-</span>
+            <?php
+
+
+// Assuming you have already set $user_school_id from the session
+$user_school_id = $_SESSION['user_school_id'];
+
+// Retrieve the school_id from the URL
+if (isset($_GET['school_id'])) {
+    $selectedSchoolId = $_GET['school_id'];
+
+    // Check if the user's school_id is not equal to the selected school's school_id
+    if ($user_school_id !== $selectedSchoolId) {
+        // User's school_id doesn't match, hide the "Edit Profile" icon
+        echo '<span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic;">';
+        echo '<i class="fas fa-edit" style="display: none;"></i>'; // Hide the icon
+        echo ' Edit Profile';
+        echo '</span>';
+    } else {
+        // User's school_id matches, show the "Edit Profile" icon
+        echo '<span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">';
+        echo '<i class="fas fa-edit"></i>';
+        echo ' Edit Profile';
+        echo '</span>';
+    }
+} else {
+    // Handle the case where school_id is not provided in the URL
+    echo 'School ID not provided.';
+}
+?>
+
         </div>
     </div>
 </div>
