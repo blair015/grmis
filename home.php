@@ -27,7 +27,7 @@ exit();
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>GRMIS</title>
+        <title>GRMIS</title>"
         <!-- Favicon-->
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
@@ -44,7 +44,7 @@ exit();
                 <h2 class="text-white fs-1 fw text-white-50">Welcome to</h2>
                 <h1 class="text-white fs-1 fw-bolder">Governance Resource Management and Information System</h1>
                 
-                <a class="button-77" role="button" href="index.php">Proceed</a>
+                <a class="button-77" id="btn-proceed" name="btn-proceed" role="button" href="index.php">Proceed</a>
                 <!-- <p class="text-white-50 mb-0">Landing Page Template</p> -->
             </div>
         </header>

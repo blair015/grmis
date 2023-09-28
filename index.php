@@ -1,25 +1,17 @@
 <?php
+if(isset($_POST['btn_proceed'])){
+    if(!isset($_POST['current_user_id']) || !isset($_POST['current_username']) || !isset($_POST['current_user_role']) || !isset($_POST['security_key']))
+    { echo "User ID has NO DATA = "; header("Location: http://202.137.126.58/"); exit(0); }
+}
 
-
+        $userID = $_POST['current_user_id'];    // id sa user sa masterlist... auto inc
+        $user_name = $_POST['current_username'];  //email
+        $user_role = $_POST['current_user_role']; // teacher, admin... etc..
+        $user_security = $_POST['security_key'];
 
 include ("admin/includes/header.php");
 include ("admin/includes/navbar.php");
 include ("admin/includes/sidebar.php");
-
-//if(isset($_POST['btn_login'])){
-    
-//}
-
-//        $userID = $_POST['userID'];    // id sa user sa masterlist... auto inc
- //       $user_name = $_POST['user_name'];  //email
- //       $user_role = $_POST['user_role']; // teacher, admin... etc..
- //       $user_security = $_POST['user_security'];
-
-        echo $userID;
-        echo $user_name;
-        echo $user_role;
-        echo $user_security;
-
 
 ?>
 
