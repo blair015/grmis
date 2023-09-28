@@ -37,7 +37,7 @@ include ("admin/includes/phpscript.php");
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="#!">Logout</a></li>
+          <li><a class="dropdown-item" href="http://202.137.126.58/">Back to Home</a></li>
         </ul>
       </li>
     </ul>
