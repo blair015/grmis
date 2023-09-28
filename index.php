@@ -15,7 +15,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
     header("Location: http://202.137.126.58/");
     exit(0);
 }
-?>
 
 
 include ("admin/includes/header.php");
