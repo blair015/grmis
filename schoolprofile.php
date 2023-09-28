@@ -94,15 +94,23 @@ mysqli_close($conn);
             <br></br>
             <h5 class="author-card-name" style="font-size: 50px;"><?php echo $school_name; ?></h5>
             <span class="author-card-position" style="font-size: 20px; "><?php echo $school_address; ?></span><br>
-            <span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
-              <i class="fas fa-edit"></i> Edit Profile 
-              <?php $userschoolid = $_GET['user_school_id'];
-                    $schoolid = $_GET['school_id'];
-                    
-                    echo $userschoolid;
-                    echo $schoolid;
-              ?>
-</span>
+            <span id="editProfileIcon" class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
+                    <i class="fas fa-edit"></i> Edit Profile 
+                </span>
+                <script>
+$(document).ready(function () {
+    // Get the values of user_school_id and school_id from PHP
+    var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
+    var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
+
+    // Check if the school_id is not equal to user_school_id
+    if (schoolId !== userSchoolId) {
+        // Hide the "Edit Profile" icon
+        $("#editProfileIcon").hide();
+    }
+});
+</script>
+
         </div>
     </div>
 </div>
