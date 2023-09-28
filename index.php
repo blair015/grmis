@@ -18,10 +18,10 @@ include ("admin/includes/sidebar.php");
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <?php
-include 'admin/config/dbcon.php'; // Include your database connection file
+include 'admin/config/dbcon3.php'; // Include your database connection file
 
 // SQL query to count the number of rows in the "school_profile" table
-$sql = "SELECT COUNT(*) as total_rows FROM school_profile";
+$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
 
 $result = $conn->query($sql);
 
