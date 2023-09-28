@@ -62,6 +62,16 @@ include ("admin/includes/sidebar.php");
                                 echo '</div>';
                             }
                             ?>
+                            <?php
+                                include("admin/config/dbcon2.php");
+
+                            $sql = "SELECT * FROM users where email = $user_name";
+                            $result = $conn->query($query);
+                                $emp_no = $result['emp_no'];
+
+                                echo $emp_no;
+
+                            ?>
 
 
                             <div class="card-body">
