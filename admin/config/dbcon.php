@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "@DavaosurDB2023";
 $dbname = "governanceis";
 
 // Create connection
