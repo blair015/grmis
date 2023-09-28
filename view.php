@@ -161,8 +161,11 @@ include ("admin/includes/sidebar.php");
                                     <tbody>
 									<?php
                                 
-                                $user_school_id = $school_id;
+                                $user_school_id = $school_id; ?>
+                                <a>user school id: <?php echo $user_school_id; ?> </a>
+                                <?php
                                     
+
                                 include ("admin/config/dbcon.php");
 
                                 $query = "SELECT * FROM school_profile";
@@ -195,6 +198,7 @@ include ("admin/includes/sidebar.php");
             
         </div>
     </main>
+
     <form action="save_school.php" method="POST">
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
