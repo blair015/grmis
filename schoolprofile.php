@@ -477,12 +477,15 @@ include('admin/config/dbcon3.php');
 
 $selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
 
-$sql = "SELECT year, 
-               SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) AS male_enrollees,
-               SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) AS female_enrollees
-        FROM school_enrol 
-        WHERE school_id = $selectedSchoolId 
-        GROUP BY year";
+$sql = "SELECT 
+            SUM(CASE WHEN d.gender = 'Male' THEN 1 ELSE 0 END) AS male_students,
+            SUM(CASE WHEN d.gender = 'Female' THEN 1 ELSE 0 END) AS female_students
+         FROM tblstudentenrollment e
+         INNER JOIN tblschool s ON s.id = e.s_id
+         INNER JOIN tblstudents d ON d.id = e.studentID
+         WHERE e.sy = '2022-2023'
+         AND s.schoolID = '$selectedSchoolId'
+         AND e.status = 'Enrolled'";
 
 $result = $conn->query($sql);
 
@@ -490,9 +493,8 @@ $enrollData = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $enrollData[] = [
-            'year' => $row['year'],
-            'male_enrollees' => $row['male_enrollees'],
-            'female_enrollees' => $row['female_enrollees']
+            'male_students' => $row['male_students'],
+            'female_students' => $row['female_students']
         ];
     }
 }
@@ -500,19 +502,19 @@ if ($result->num_rows > 0) {
 
 <!-- Include your HTML and other code here -->
 
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 // Replace this with your database fetching code or API call
 var enrollData = <?php echo json_encode($enrollData); ?>;
 
-// Extract years and male/female enrollees for the chart
-var years = enrollData.map(function(data) {
-    return data.year;
+// Extract male/female students for the chart
+var maleStudents = enrollData.map(function(data) {
+    return data.male_students;
 });
-var maleEnrollees = enrollData.map(function(data) {
-    return data.male_enrollees;
-});
-var femaleEnrollees = enrollData.map(function(data) {
-    return data.female_enrollees;
+var femaleStudents = enrollData.map(function(data) {
+    return data.female_students;
 });
 
 // Chart.js configuration
@@ -520,17 +522,12 @@ var ctx = document.getElementById('enrolleeBarChart').getContext('2d');
 var barChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: years,
+        labels: ['Male Students', 'Female Students'],
         datasets: [
             {
-                label: 'Male Enrollees',
-                data: maleEnrollees,
-                backgroundColor: 'rgba(0, 128, 255, 0.6)'
-            },
-            {
-                label: 'Female Enrollees',
-                data: femaleEnrollees,
-                backgroundColor: 'rgba(255, 0, 0, 0.6)'
+                label: 'Number of Students',
+                data: [maleStudents[0], femaleStudents[0]],
+                backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)']
             }
         ]
     },
@@ -544,6 +541,7 @@ var barChart = new Chart(ctx, {
     }
 });
 </script>
+
 
 
 <?php
