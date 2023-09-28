@@ -9,19 +9,23 @@
                                 Dashboard
                             </a>
                             
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                School Profile
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-
                             <?php
-                               
+
                                 // Check if user_role is "teacher"
                                 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'teacher') {
-                                    // Show the Transaction menu
+                                    // User is a teacher, show everything
+                                    echo '<div class="sb-sidenav-menu-heading">Interface</div>';
+                                    echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
+                                    echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
+                                    echo 'School Profile';
+                                    echo '<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>';
+                                    echo '</a>';
+                                    echo '<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">';
+                                    echo '<nav class="sb-sidenav-menu-nested nav">';
+                                    echo '<a class="nav-link" href="view.php">View School Profile</a>';
+                                    echo '<a class="nav-link" href="overview.php">Add School Profile</a>';
+                                    echo '</nav>';
+                                    echo '</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">';
                                     echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
                                     echo 'Transaction';
@@ -33,10 +37,16 @@
                                     echo '</nav>';
                                     echo '</div>';
                                 } else {
-                                    // Hide the Transaction menu
+                                    // User is not a teacher, hide the Transaction menu
                                 }
                                 ?>
-
+                                <script>
+$(document).ready(function () {
+    <?php if ($_SESSION['user_role'] !== 'teacher') : ?>
+        $("#date_of_validity").prop("disabled", true);
+    <?php endif; ?>
+});
+</script>
                            
 
 <!-- 
