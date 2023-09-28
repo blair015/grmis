@@ -5,15 +5,17 @@ include ("admin/includes/header.php");
 include ("admin/includes/navbar.php");
 include ("admin/includes/sidebar.php");
 
-if(isset($_POST['btn_login'])){
+//if(isset($_POST['btn_login'])){
     if(!isset($_POST['userID']) || !isset($_POST['user_name']) || !isset($_POST['user_role']) || !isset($_POST['user_security']))
-    { echo "User ID has NO DATA = "; header("Location: http://202.137.126.58/"); exit(0); }
-}
+    { echo "User ID has NO DATA = "; header("Location: http://202.137.126.58/"); exit(0); }{
+        echo $_POST['userID'];
+    }
+//}
 
-        $userID = $_POST['userID'];    // id sa user sa masterlist... auto inc
-        $user_name = $_POST['user_name'];  //email
-        $user_role = $_POST['user_role']; // teacher, admin... etc..
-        $user_security = $_POST['user_security'];
+//        $userID = $_POST['userID'];    // id sa user sa masterlist... auto inc
+ //       $user_name = $_POST['user_name'];  //email
+ //       $user_role = $_POST['user_role']; // teacher, admin... etc..
+ //       $user_security = $_POST['user_security'];
 
         echo $userID;
         echo $user_name;
