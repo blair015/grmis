@@ -4,10 +4,9 @@ include ("admin/includes/navbar.php");
 include ("admin/includes/sidebar.php");
 ?>
 
-                      <h1 class="mt-4">Governance Resource Information Management System </h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dasboard </li>
-                        </ol>
+                        <div style="margin-top: 10px;"></div>
+                        <div class="author-card-cover" style="background-image: url('assets/images/grmis.png'); height: 230px; background-position: center; background-size: contain;"></div>
+                        <div style="margin-top: 10px;"></div>
 <div>
 
  <!-- Main content -->
