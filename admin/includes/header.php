@@ -14,13 +14,37 @@
         
          <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-
+  <link rel="stylesheet" href="css/mycss.css"> 
   
 <link rel="stylesheet" type="text/css" href="css/profilecss.css">
-    </head>
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- Add your CSS styling for the notification bell icon here -->
+<style>
+    /* Example CSS for the notification bell icon */
+    .notification-bell {
+        position: relative;
+        display: inline-block;
+        padding: 1px 5px;
+    }
+
+    .notification-badge {
+        position: absolute;
+        top: -10px;
+        right: -15px;
+        background-color: red;
+        color: white;
+        border-radius: 90%;
+        padding: 1px 5px;
         
+    }
+</style>
+
+    </head>

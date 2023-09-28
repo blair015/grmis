@@ -11,12 +11,19 @@
 
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 
-      <div class="input-group">
+      <!-- <div class="input-group">
         <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
           aria-describedby="btnNavbarSearch" />
         <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-      </div>
-
+      </div> -->
+      <?php
+include ("admin/includes/phpscript.php");
+?>
+      <div class="notification-bell">
+    <a class="fa fa-bell" href="approval.php"></a>
+        <span class="notification-badge"><?php echo $rowCount; ?></span>
+    </div>
+    </a>
     </form>
 
     <!-- Navbar-->
@@ -34,6 +41,4 @@
         </ul>
       </li>
     </ul>
-
-
   </nav>
