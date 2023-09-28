@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <?php
 include("admin/includes/header.php");
 include("admin/includes/navbar.php");
@@ -176,8 +177,8 @@ if (isset($_GET['school_id'])) {
             <div class="card-header p-2">
               <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#Statistics" data-toggle="tab">Teaching & Non Teaching</a></li>
-                <li class="nav-item"><a class="nav-link" href="#Activities" data-toggle="tab">Key Performance Indicator</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
+                <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -191,14 +192,15 @@ if (isset($_GET['school_id'])) {
                   <!-- Your content here -->
 
                   <!-- Edit icon on the right side -->
-                  <i class="fas fa-edit" id="editIcon" style="position: absolute; top: 0; right: 0; font-size: 24px; color: green;"></i>
-              </div>
-        </div>
+                  <i class="fas fa-edit" id="editIcon" data-toggle="modal" data-target="#aboutModal" style="position: absolute; top: 0; right: 0; font-size: 24px; color: green;"></i>
+                 </div>
+                 </div>
 
-                 <div> <p> asdasdasd </p></div>
+
+
                 </div>
                 <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
-                <div class="tab-pane" id="Statistics">
+                <div class="tab-pane" id="Teaching">
                 <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
                       <div class="card card-success">
@@ -227,7 +229,7 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
-                <div class="tab-pane" id="Activities">
+                <div class="tab-pane" id="kpi">
                 <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
                       <div class="card card-success">
@@ -278,8 +280,7 @@ if (isset($_GET['school_id'])) {
             </div>
 
                 </div>
-
-                <!-- /.tab-pane -->
+              <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
             </div><!-- /.card-body -->
@@ -289,12 +290,9 @@ if (isset($_GET['school_id'])) {
         <!-- /.col -->
       </div>
       <!-- /.row -->
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
-  <!-- /.content -->
-
-  <!-- /.content-wrapper -->
-
+ 
 
   
 <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -306,7 +304,8 @@ if (isset($_GET['school_id'])) {
        
             </div>
             <form action="code.php" method="POST" enctype="multipart/form-data">
-                <div class="modal-header">
+            <div class="modal-header">
+                    <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i> <!-- School icon -->
                     <h5 class="modal-title">Edit Profile</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -377,49 +376,16 @@ if (isset($_GET['school_id'])) {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" name="save_changes">Save changes</button>
-                </div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="save_changes">Save changes</button>
+                        </div>
             </form>
 
-<!-- Modal for About Us-->
-<div class="modal fade" id="schoolModal" tabindex="-1" role="dialog" aria-labelledby="schoolModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="schoolModalLabel">Edit School Information</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" id="schoolInfo" rows="4"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="saveSchoolInfo()">Save</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-// Function to open the modal when the edit icon is clicked
-$("#editIcon").click(function() {
-    $("#schoolModal").modal("show");
-});
 
-// Function to save school information (you can customize this)
-function saveSchoolInfo() {
-    var schoolInfo = $("#schoolInfo").val();
-    // You can process and save the schoolInfo here as needed
-    console.log("School Information:", schoolInfo);
-    // Close the modal
-    $("#schoolModal").modal("hide");
-}
-</script>
+
 
 
 
@@ -440,6 +406,7 @@ $sql = "SELECT e.school_id,
         FROM employment_record AS e
         INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
         WHERE e.school_id = $selectedSchoolId 
+        AND e.position_type = 'Teaching'
         GROUP BY e.school_id";
 
 $result = $conn->query($sql);
@@ -448,13 +415,15 @@ $teacherData = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $teacherData[] = [
-            'school_id' => $row['school_id'], // Changed 'year' to 'id'
+            'school_id' => $row['school_id'],
             'male_teachers' => $row['male_teachers'],
             'female_teachers' => $row['female_teachers']
         ];
     }
 }
 ?>
+
+
 
 <!-- Teaching Bar Chart -->
 <script>

@@ -1,5 +1,13 @@
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <?php
 include("admin/config/dbcon.php");
+
+// Define a variable to store the error message
+$errorMsg = "";
 
 if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_GET['district'], $_GET['category'])) {
     $school_id = $_GET['school_id'];
@@ -13,22 +21,12 @@ if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_G
     $result = $conn->query($checkQuery);
 
     if (!$result) {
-        echo "Error checking for existing school ID: " . $conn->error;
+        $errorMsg = "Error checking for existing school ID: " . $conn->error;
     }
 
     if ($result->num_rows > 0) {
-        // School ID already exists, ask for confirmation using JavaScript
-        echo "<script>
-                var confirmation = confirm('School ID already exists. Do you want to continue and overwrite the existing data?');
-                if (confirmation) {
-                    // Proceed with overwriting existing data
-                    window.location.href = 'approve_school.php?confirm=true&school_id=$school_id';
-                } else {
-                    // Cancel confirmation, do nothing
-                    alert('Data not saved.');
-                    window.location.href = 'approval.php'; // Redirect to the previous page or wherever you want
-                }
-              </script>";
+        // School ID already exists, set the error message
+        $errorMsg = "School ID already exists. Data not saved.";
     } else {
         // School ID does not exist, perform the INSERT operation into the school_profile table
         $insertQuery = "INSERT INTO school_profile (school_id, school_name, school_address, district, category) VALUES ('$school_id', '$school_name', '$school_address', '$district', '$category')";
@@ -38,19 +36,31 @@ if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_G
             $deleteQuery = "DELETE FROM approval WHERE school_id = '$school_id'";
             
             if ($conn->query($deleteQuery) === TRUE) {
-                echo "Record inserted in school_profile and deleted from approval successfully.";
+                $errorMsg = "Record inserted in school_profile and deleted from approval successfully.";
             } else {
-                echo "Error deleting record from approval: " . $conn->error;
+                $errorMsg = "Error deleting record from approval: " . $conn->error;
             }
         } else {
-            echo "Error inserting record into school_profile: " . $conn->error;
+            $errorMsg = "Error inserting record into school_profile: " . $conn->error;
         }
     }
 } else {
-    echo "Invalid parameters.";
+    $errorMsg = "Invalid parameters.";
 }
 
 // Remove the page redirection for testing purposes
 // header("Location: approval.php");
 // exit;
 ?>
+
+<script>
+        $(document).ready(function(){
+            // Check if the error message is not empty, then display the toast
+            <?php if (!empty($errorMsg)) { ?>
+                $("#errorToast").toast({ autohide: false });
+                $("#errorToast").toast("show");
+            <?php } ?>
+        });
+    </script>
+
+    
