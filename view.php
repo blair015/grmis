@@ -162,7 +162,7 @@ include ("admin/includes/sidebar.php");
 									<?php
                                 
                                 $user_school_id = $school_id; ?>
-                                <a>user school id: <?php echo $user_school_id; ?> </a>
+                                <a>user school id: <?php  ?> </a>
                                 <?php
                                     
 
@@ -179,11 +179,9 @@ include ("admin/includes/sidebar.php");
                                             echo "<td>" . $row['school_address'] . "</td>";
                                             echo "<td>" . $row['District'] . "</td>";
                                             echo "<td>" . $row['category'] . "</td>";
-                                            echo "<td>
-                                            <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
-                                                 </td>";
-                                        
-
+                                            echo "<td>";
+                                                echo '<a href="schoolprofile.php?school_id=' . $row['school_id'] . '" data-school-id="' . $row['school_id'] . '"><i class="fas fa-eye fa-2x"></i></a>';
+                                                echo "</td>";
                                             echo "</tr>";
                                         }
                                     } else {
