@@ -17,25 +17,26 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
 
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="view.php">View School Profile</a>
-                                    <a class="nav-link" href="overview.php">Add School Profile</a>
-                                </nav>
-                            </div>
-                            
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Transaction
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
+                            <?php
+                                session_start();
 
-                            <div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="Approval.php">Schools for Approval</a>
-                                    
-                                </nav>
-                            </div>
+                                // Check if user_role is "teacher"
+                                if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'teacher') {
+                                    // Show the Transaction menu
+                                    echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts1" aria-expanded="false" aria-controls="collapseLayouts">';
+                                    echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
+                                    echo 'Transaction';
+                                    echo '<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>';
+                                    echo '</a>';
+                                    echo '<div class="collapse" id="collapseLayouts1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">';
+                                    echo '<nav class="sb-sidenav-menu-nested nav">';
+                                    echo '<a class="nav-link" href="Approval.php">Schools for Approval</a>';
+                                    echo '</nav>';
+                                    echo '</div>';
+                                } else {
+                                    // Hide the Transaction menu
+                                }
+                                ?>
 
                            
 
