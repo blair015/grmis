@@ -257,7 +257,7 @@ if (isset($_GET['school_id'])) {
                   <div class="col-md-6 fv-row">
         <div class="card card-success">
             <div class="card-header">
-                <h3 class="card-title">Teacher Profile by Sex</h3>
+                <h3 class="card-title">Students Enrollment by Year</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
@@ -545,14 +545,14 @@ var barChart = new Chart(ctx, {
 
 
 <?php
-include('admin/config/dbcon.php');
+include('admin/config/dbcon3.php');
 
 $selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
 
-$sql = "SELECT year, grade_level, COUNT(enrolee) AS total_enrollees
-        FROM school_enrol 
-        WHERE school_id = $selectedSchoolId 
-        GROUP BY year, grade_level";
+$sql = "SELECT s.sy AS year, s.gradelvl AS grade_level, COUNT(*) AS total_enrollees
+        FROM tblsection s
+        WHERE s.schoolID = '$selectedSchoolId'
+        GROUP BY s.sy, s.gradelvl";
 
 $result = $conn->query($sql);
 
@@ -568,7 +568,10 @@ if ($result->num_rows > 0) {
 }
 ?>
 
+
 <!-- Include your HTML and other code here -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 // Replace this with your database fetching code or API call
@@ -583,11 +586,19 @@ var totalEnrolleesByGrade = gradeLevels.map(function(grade) {
     return {
         label: grade,
         data: enrollDataByGrade.filter(data => data.grade_level === grade).map(data => data.total_enrollees),
-        backgroundColor: getRandomColor(), // Function to generate random colors
+        backgroundColor: getRandomColors(enrollDataByGrade.length), // Generate random colors
     };
 });
 
 // Function to generate random colors
+function getRandomColors(count) {
+    var colors = [];
+    for (var i = 0; i < count; i++) {
+        colors.push(getRandomColor());
+    }
+    return colors;
+}
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -610,6 +621,17 @@ var barChart = new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top'
+            }
+        },
+        datasets: {
+            bar: {
+                barPercentage: 0.9, // Adjust this value to change bar width (0.9 = 90% of the available space)
+                categoryPercentage: 0.8, // Adjust this value to change the space between bars
             }
         }
     }
