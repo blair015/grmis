@@ -161,6 +161,7 @@ include ("admin/includes/sidebar.php");
                                     <tbody>
 									<?php
                                 
+                                $user_school_id = $school_id;
                                     
                                 include ("admin/config/dbcon.php");
 
@@ -177,7 +178,7 @@ include ("admin/includes/sidebar.php");
                                             echo "<td>" . $row['category'] . "</td>";
                                             echo "<td>
                                             <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
-                                        </td>";
+                                                 </td>";
                                         
 
                                             echo "</tr>";
