@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['btn_proceed'])){
+if(isset($_POST['btn-proceed'])){
     if(!isset($_POST['current_user_id']) || !isset($_POST['current_username']) || !isset($_POST['current_user_role']) || !isset($_POST['security_key']))
     { echo "User ID has NO DATA = "; header("Location: http://202.137.126.58/"); exit(0); }
 }
