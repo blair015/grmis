@@ -18,8 +18,7 @@
                             </a>
 
                             <?php
-                                session_start();
-
+                               
                                 // Check if user_role is "teacher"
                                 if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'teacher') {
                                     // Show the Transaction menu
