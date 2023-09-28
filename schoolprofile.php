@@ -94,36 +94,15 @@ mysqli_close($conn);
             <br></br>
             <h5 class="author-card-name" style="font-size: 50px;"><?php echo $school_name; ?></h5>
             <span class="author-card-position" style="font-size: 20px; "><?php echo $school_address; ?></span><br>
-            <?php
-
-
-// Assuming you have already set $user_school_id from the session
-$user_school_id = $_SESSION['user_school_id'];
-
-// Retrieve the school_id from the URL
-if (isset($_GET['school_id'])) {
-    $selectedSchoolId = $_GET['school_id'];
-
-    // Check if the user's school_id is not equal to the selected school's school_id
-    if ($user_school_id !== $selectedSchoolId) {
-        // User's school_id doesn't match, hide the "Edit Profile" icon
-        echo '<span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic;">';
-        echo '<i class="fas fa-edit" style="display: none;"></i>'; // Hide the icon
-        echo ' Edit Profile';
-        echo '</span>';
-    } else {
-        // User's school_id matches, show the "Edit Profile" icon
-        echo '<span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">';
-        echo '<i class="fas fa-edit"></i>';
-        echo ' Edit Profile';
-        echo '</span>';
-    }
-} else {
-    // Handle the case where school_id is not provided in the URL
-    echo 'School ID not provided.';
-}
-?>
-
+            <span class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
+              <i class="fas fa-edit"></i> Edit Profile 
+              <?php $userschoolid = $_GET['user_school_id'];
+                    $schoolid = $_GET['school_id'];
+                    
+                    echo $userschoolid;
+                    echo $schoolid;
+              ?>
+</span>
         </div>
     </div>
 </div>
