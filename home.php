@@ -18,7 +18,7 @@
             <img class="img-fluid rounded-circle mb-4" src="assets/images/gov.png" alt="grmis logo" width="200" height="200" />
                 <h1 class="text-white fs-3 fw-bolder">Governance Resource Management and Information System</h1>
                 <a class="button-77" role="button" href="index.php">Proceed</a>
-                <p class="text-white-50 mb-0">Landing Page Template</p>
+                <!-- <p class="text-white-50 mb-0">Landing Page Template</p> -->
             </div>
         </header>
         <!-- Content section-->
