@@ -14,5 +14,3 @@ echo "";
 // Close the connection
 
 ?>
-
-<hello>

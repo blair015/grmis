@@ -18,10 +18,10 @@ include ("admin/includes/sidebar.php");
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <?php
-include 'admin/config/dbcon3.php'; // Include your database connection file
+include 'admin/config/dbcon.php'; // Include your database connection file
 
 // SQL query to count the number of rows in the "school_profile" table
-$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
+$sql = "SELECT COUNT(*) as total_rows FROM school_profile";
 
 $result = $conn->query($sql);
 
@@ -57,29 +57,24 @@ if ($result) {
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <?php
-            include('admin/config/dbcon.php');
+include 'admin/config/dbcon3.php'; // Include your database connection file
 
-$sql = "SELECT 
-          SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) AS total_male_enrollees,
-          SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) AS total_female_enrollees
-        FROM school_enrol";
+// SQL query to count the number of rows in the "school_profile" table
+$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
 
 $result = $conn->query($sql);
 
-$totalMaleEnrollees = 0;
-$totalFemaleEnrollees = 0;
-
-if ($result->num_rows > 0) {
+if ($result) {
     $row = $result->fetch_assoc();
-    $totalMaleEnrollees = $row['total_male_enrollees'];
-    $totalFemaleEnrollees = $row['total_female_enrollees'];
+    $totalRows1 = $row['total_rows'];
+} else {
+    // Handle the query error if needed
+    $totalRows1 = 0;
 }
-$total2 = $totalMaleEnrollees + $totalFemaleEnrollees;
 ?>
-
             <div class="small-box bg-success">
               <div class="inner">
-              <h3><?php echo $total2 ?></h3>
+              <h3><?php echo $totalRows1 ?></h3>
 
                 <p>Student</p>
               </div>
