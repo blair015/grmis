@@ -15,10 +15,10 @@ include ("admin/includes/sidebar.php");
  //       $user_role = $_POST['user_role']; // teacher, admin... etc..
  //       $user_security = $_POST['user_security'];
 
-        echo $userID;
-        echo $user_name;
-        echo $user_role;
-        echo $user_security;
+        // echo $userID;
+        // echo $user_name;
+        // echo $user_role;
+        // echo $user_security;
 
 
 ?>
