@@ -8,8 +8,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
     $user_role = $_SESSION['user_role'];
     $user_security = $_SESSION['security_key'];
 
-    echo $userID;
-    // Your logic for handling the session data here
+        // Your logic for handling the session data here
 } else {
     // Session data is missing, redirect to index.php
     header("Location: http://202.137.126.58/");
@@ -198,24 +197,28 @@ $totals = $totalMaleTeachers + $totalFemaleTeachers;
                             </div>
                         </div>
                         <?php
-                        include('admin/config/dbcon.php');
+                            include('admin/config/dbcon3.php');
 
-                        $sql = "SELECT 
-                                  SUM(CASE WHEN sex = 'Male' THEN 1 ELSE 0 END) AS total_male_enrollees,
-                                  SUM(CASE WHEN sex = 'Female' THEN 1 ELSE 0 END) AS total_female_enrollees
-                                FROM school_enrol";
+                            $sql = "SELECT 
+                                        SUM(CASE WHEN d.gender = 'Male' THEN 1 ELSE 0 END) AS male_students,
+                                        SUM(CASE WHEN d.gender = 'Female' THEN 1 ELSE 0 END) AS female_students
+                                    FROM tblstudentenrollment e
+                                    INNER JOIN tblstudents d ON d.id = e.studentID
+                                    WHERE e.status = 'Enrolled'";
 
-                        $result = $conn->query($sql);
+                            $result = $conn->query($sql);
 
-                        $totalMaleEnrollees = 0;
-                        $totalFemaleEnrollees = 0;
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $maleStudentsCount = $row['male_students'];
+                                $femaleStudentsCount = $row['female_students'];
+                            } else {
+                                // No data found, initialize counts to zero or handle the error
+                                $maleStudentsCount = 0;
+                                $femaleStudentsCount = 0;
+                            }
+                            ?>
 
-                        if ($result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                            $totalMaleEnrollees = $row['total_male_enrollees'];
-                            $totalFemaleEnrollees = $row['total_female_enrollees'];
-                        }
-                        ?>
 
                         <div class="card-body">
                             <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
@@ -283,17 +286,17 @@ include ("admin/includes/footer.php");
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 // Replace this with your PHP fetching code
-var totalMaleEnrollees = <?php echo $totalMaleEnrollees; ?>;
-var totalFemaleEnrollees = <?php echo $totalFemaleEnrollees; ?>;
+var maleStudentsCount = <?php echo $maleStudentsCount; ?>;
+var femaleStudentsCount = <?php echo $femaleStudentsCount; ?>;
 
 // Chart.js configuration for the pie chart
 var ctx = document.getElementById('pieChart').getContext('2d');
 var pieChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Male Enrollees', 'Female Enrollees'],
+        labels: ['Male Students', 'Female Students'],
         datasets: [{
-            data: [totalMaleEnrollees, totalFemaleEnrollees],
+            data: [maleStudentsCount, femaleStudentsCount],
             backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
             borderWidth: 0, // Remove the border
         }]
@@ -319,6 +322,7 @@ var pieChart = new Chart(ctx, {
     }
 });
 </script>
+
 
 <script>
 // Replace this with your PHP fetching code
