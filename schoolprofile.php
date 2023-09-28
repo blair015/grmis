@@ -473,7 +473,7 @@ var barChart = new Chart(ctx, {
 
 <!-- Enrolled students by Sex -->
 <?php
-include('admin/config/dbcon.php');
+include('admin/config/dbcon3.php');
 
 $selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
 
