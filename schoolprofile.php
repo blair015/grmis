@@ -97,11 +97,10 @@ mysqli_close($conn);
             <?php
 
 
-// Assuming you have already set $user_school_id from the session
-$user_school_id = $_SESSION['user_school_id'];
 
+// Assuming you have already set $user_school_id from the session
 // Retrieve the school_id from the URL
-if (isset($_GET['school_id'])) {
+if (isset($_GET['user_school_id'])) {
     $selectedSchoolId = $_GET['school_id'];
 
     // Check if the user's school_id is not equal to the selected school's school_id
