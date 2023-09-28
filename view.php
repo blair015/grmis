@@ -42,13 +42,27 @@ include ("admin/includes/sidebar.php");
     <main>
         <div class="container-fluid px-4">
         				<div class="card mb-4">
-                        <div class="card-header">
-                            Your school not in the list?
-                            <span class="float-right">
-                                <i class="fas fa-cog" id="openModalIcon" data-toggle="modal" data-target="#myModal" style="color: blue; font-size: 24px;"></i>
-                                <span style="margin-left: 5px;">Click gear icon to Add School</span>
-                            </span>
-                        </div>
+                        <?php
+
+
+                            // Check if user_role is "teacher"
+                            if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'teacher') {
+                                // User is a teacher, show the gear icon
+                                echo '<div class="card-header">';
+                                echo 'Your school not in the list?';
+                                echo '<span class="float-right">';
+                                echo '<i class="fas fa-cog" id="openModalIcon" data-toggle="modal" data-target="#myModal" style="color: blue; font-size: 24px;"></i>';
+                                echo '<span style="margin-left: 5px;">Click gear icon to Add School</span>';
+                                echo '</span>';
+                                echo '</div>';
+                            } else {
+                                // User is not a teacher, hide the gear icon
+                                echo '<div class="card-header">';
+                                echo 'Your school not in the list?';
+                                echo '</div>';
+                            }
+                            ?>
+
 
                             <div class="card-body">
                                 <table id="datatablesSimple">
