@@ -1,5 +1,3 @@
-
-
 <?php
 
 if(!isset($_POST['userID']) || !isset($_POST['user_name']) || !isset($_POST['user_role']) || !isset($_POST['user_security']))
