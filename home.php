@@ -11,10 +11,10 @@
 	header("Location: http://202.137.126.58/");
 exit();
   } else {
-    	echo "<p>ID: " . $userID . "</p>";
-	echo "<p>Username: " .  $user . "</p>";
-	echo "<p>User role: " . $role . "</p>";
-	echo "<p>server key: " . $key . "</p>";
+  //   	echo "<p>ID: " . $userID . "</p>";
+	// echo "<p>Username: " .  $user . "</p>";
+	// echo "<p>User role: " . $role . "</p>";
+	// echo "<p>server key: " . $key . "</p>";
 
 
   }
