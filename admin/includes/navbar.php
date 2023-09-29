@@ -1,42 +1,42 @@
 
 <?php
+include("admin/config/dbcon2.php");
 
-                                    include("admin/config/dbcon2.php");
+// Assuming you have already set $user_name from the session
 
-                                    // Assuming you have already set $user_name from the session
+// Prepare the SQL statement
+$sql = "SELECT emp_no, lname, fname FROM users WHERE email = ?";
+$stmt = $conn->prepare($sql);
 
-                                    // Prepare the SQL statement
-                                    $sql = "SELECT emp_no, lname, fname FROM users WHERE email = ?";
-                                    $stmt = $conn->prepare($sql);
+if ($stmt) {
+    // Bind the email parameter
+    $stmt->bind_param("s", $user_name);
 
-                                    if ($stmt) {
-                                        // Bind the email parameter
-                                        $stmt->bind_param("s", $user_name);
+    // Execute the query
+    $stmt->execute();
 
-                                        // Execute the query
-                                        $stmt->execute();
+    // Bind the result
+    $stmt->bind_result($emp_no, $lname, $fname); // Removed the extra comma
 
-                                        // Bind the result
-                                        $stmt->bind_result($emp_no, $lname,);
+    // Fetch the result (if any)
+    $stmt->fetch();
 
-                                        // Fetch the result (if any)
-                                        $stmt->fetch();
+    // Close the statement
+    $stmt->close();
 
-                                        // Close the statement
-                                        $stmt->close();
+    // Check if a result was found
+    if ($emp_no) {
+        // $emp_no now contains the value you retrieved
+        echo "";
+    } else {
+        // No result found
+        echo "No result found for the provided email.";
+    }
+} else {
+    // Handle error if the statement couldn't be prepared
+    echo "Error preparing the statement.";
+}
 
-                                        // Check if a result was found
-                                        if ($emp_no) {
-                                            // $emp_no now contains the value you retrieved
-                                            echo "";
-                                        } else {
-                                            // No result found
-                                            echo "No result found for the provided email.";
-                                        }
-                                    } else {
-                                        // Handle error if the statement couldn't be prepared
-                                        echo "Error preparing the statement.";
-                                    }
 
                                     $sql2 = "SELECT school_id FROM employment_record WHERE emp_no = ?";
                                     $stmt2 = $conn->prepare($sql2);
