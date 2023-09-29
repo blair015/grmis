@@ -1,3 +1,78 @@
+
+<?php
+
+                                    include("admin/config/dbcon2.php");
+
+                                    // Assuming you have already set $user_name from the session
+
+                                    // Prepare the SQL statement
+                                    $sql = "SELECT emp_no, lname, fname FROM users WHERE email = ?";
+                                    $stmt = $conn->prepare($sql);
+
+                                    if ($stmt) {
+                                        // Bind the email parameter
+                                        $stmt->bind_param("s", $user_name);
+
+                                        // Execute the query
+                                        $stmt->execute();
+
+                                        // Bind the result
+                                        $stmt->bind_result($emp_no, $lname,);
+
+                                        // Fetch the result (if any)
+                                        $stmt->fetch();
+
+                                        // Close the statement
+                                        $stmt->close();
+
+                                        // Check if a result was found
+                                        if ($emp_no) {
+                                            // $emp_no now contains the value you retrieved
+                                            echo "";
+                                        } else {
+                                            // No result found
+                                            echo "No result found for the provided email.";
+                                        }
+                                    } else {
+                                        // Handle error if the statement couldn't be prepared
+                                        echo "Error preparing the statement.";
+                                    }
+
+                                    $sql2 = "SELECT school_id FROM employment_record WHERE emp_no = ?";
+                                    $stmt2 = $conn->prepare($sql2);
+                                    
+                                    if ($stmt2) {
+                                        // Bind the emp_no parameter
+                                        $stmt2->bind_param("s", $emp_no);
+                                    
+                                        // Execute the query
+                                        $stmt2->execute();
+                                    
+                                        // Bind the result
+                                        $stmt2->bind_result($school_id);
+                                    
+                                        // Fetch the result (if any)
+                                        $stmt2->fetch();
+                                    
+                                        // Close the statement
+                                        $stmt2->close();
+                                    
+                                        // Check if a result was found
+                                        if ($school_id) {
+                                            // $school_id now contains the value you retrieved
+                                            echo "";
+                                        } else {
+                                            // No result found
+                                            echo "No employment record found for the provided emp_no.";
+                                        }
+                                    } else {
+                                        // Handle error if the statement couldn't be prepared
+                                        echo "Error preparing the statement.";
+                                    }
+                                    
+                                    ?>
+
+
 <body class="sb-nav-fixed">
 
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-orange">
@@ -27,6 +102,8 @@ include ("admin/includes/phpscript.php");
     </form>
 
     <!-- Navbar-->
+
+    <?php echo $fname ." ". $lname ?>
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
