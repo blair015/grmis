@@ -138,6 +138,8 @@ foreach ($teacherData as $data) {
 $totals = $totalMaleTeachers + $totalFemaleTeachers;
 
 ?>
+
+
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -153,11 +155,49 @@ $totals = $totalMaleTeachers + $totalFemaleTeachers;
             </div>
           </div>
           <!-- ./col -->
+
+          <?php
+// Include your database connection code here
+
+// Define the position type you want to count
+$positionType = "Non_Teaching";
+
+// Prepare the SQL statement
+$sql = "SELECT COUNT(*) FROM employment_record WHERE position_type = ?";
+
+// Initialize a prepared statement
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    // Bind the position type parameter
+    $stmt->bind_param("s", $positionType);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Bind the result
+    $stmt->bind_result($rowCount);
+
+    // Fetch the result
+    $stmt->fetch();
+
+    // Close the statement
+    $stmt->close();
+
+    // Output the count
+  //  echo "Number of Non_Teaching positions: " . $rowCount;
+} else {
+    // Handle the error if the statement couldn't be prepared
+    echo "Error preparing the statement.";
+}
+
+// Close your database connection here
+?>
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>1</h3>
+                <h3><?php echo $rowCount; ?></h3>
 
                 <p>Non-Teaching Personel</p>
               </div>
