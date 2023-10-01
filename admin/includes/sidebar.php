@@ -117,7 +117,7 @@ $(document).ready(function () {
                          <!-- Status Icon -->
     <?php
         // Define the CSS class based on the login status
-    $statusClass = $loggedIn ? "status-online" : "status-offline";
+        $statusClass = $loggedIn ? "status-online status-blinking" : "status-offline";
     ?>
 
     <i class="fas fa-circle <?php echo $statusClass; ?>"></i>
