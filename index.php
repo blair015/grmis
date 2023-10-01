@@ -104,39 +104,41 @@ if ($result) {
           <!-- ./col -->
 
           <?php
-include 'admin/config/dbcon2.php';
+// Include your database connection code here
 
-$sql = "SELECT 
-           SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_teachers,
-           SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_teachers
-        FROM employment_record AS e
-        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-        WHERE e.position_type = 'Teaching'";
+// Define the position type you want to count
+$positionType = "Teaching";
 
-$result = $conn->query($sql);
+// Prepare the SQL statement
+$sql = "SELECT COUNT(*) FROM employment_record WHERE position_type = ?";
 
-$teacherData = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $teacherData[] = [
-            'male_teachers' => $row['male_teachers'],
-            'female_teachers' => $row['female_teachers']
-        ];
-    }
+// Initialize a prepared statement
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    // Bind the position type parameter
+    $stmt->bind_param("s", $positionType);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Bind the result
+    $stmt->bind_result($rowCount1);
+
+    // Fetch the result
+    $stmt->fetch();
+
+    // Close the statement
+    $stmt->close();
+
+    // Output the count
+  //  echo "Number of Non_Teaching positions: " . $rowCount;
+} else {
+    // Handle the error if the statement couldn't be prepared
+    echo "Error preparing the statement.";
 }
 
-// Calculate the total number of male and female teachers
-$totalMaleTeachers = 0;
-$totalFemaleTeachers = 0;
-
-foreach ($teacherData as $data) {
-  $totalMaleTeachers += $data['male_teachers'];
-  $totalFemaleTeachers += $data['female_teachers'];
-}
-
-// Calculate the overall total of teachers (male + female)
-$totals = $totalMaleTeachers + $totalFemaleTeachers;
-
+// Close your database connection here
 ?>
 
 
@@ -144,7 +146,7 @@ $totals = $totalMaleTeachers + $totalFemaleTeachers;
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?php echo $totals; ?></h3>
+                <h3><?php echo $rowCount1; ?></h3>
                
                 <p>Teaching Personel</p>
               </div>
