@@ -129,4 +129,13 @@ $(document).ready(function () {
                     <div class="container-fluid px-4">
         
                  
+<style>
+                    /* Styles for online status */
+.status-online {
+    color: green; /* Change to the desired color for online status */
+}
 
+/* Styles for offline status */
+.status-offline {
+    color: gray; /* Change to the desired color for offline status */
+}
