@@ -112,8 +112,8 @@ $(document).ready(function () {
                             </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <?php echo  $user_role; ?>
+                        <div class="small">Logged in as: <?php echo  $user_role; ?></div>
+                        
                          <!-- Status Icon -->
     <?php
         // Define the CSS class based on the login status
