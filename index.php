@@ -104,6 +104,8 @@ if ($result) {
           <!-- ./col -->
 
           <?php
+
+include 'admin/config/dbcon2.php';
 // Include your database connection code here
 
 // Define the position type you want to count
@@ -159,6 +161,7 @@ if ($stmt) {
           <!-- ./col -->
 
           <?php
+          include 'admin/config/dbcon2.php';
 // Include your database connection code here
 
 // Define the position type you want to count
