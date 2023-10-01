@@ -13,7 +13,12 @@
 
                                 // Check if user_role is "teacher"
                                 if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'Teacher' || $_SESSION['user_role'] === 'Planning' || $_SESSION['user_role'] === 'SDS')) {
-                                    // User is a teacher, show everything
+                                    // User is logged in as one of these roles
+                                    $loggedIn = true;
+                                } else {
+                                    // User is not logged in or doesn't have the required role
+                                    $loggedIn = false;
+                                }if ($loggedIn) {
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
                                     echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
@@ -37,6 +42,8 @@
                                     echo '</nav>';
                                     echo '</div>';
                                 } else {
+
+                                    
                                     // User is not a teacher, hide the Transaction menu
                                 }
                                 ?>
@@ -107,6 +114,13 @@ $(document).ready(function () {
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         <?php echo  $user_role; ?>
+                         <!-- Status Icon -->
+    <?php
+        // Define the CSS class based on the login status
+    $statusClass = $loggedIn ? "status-online" : "status-offline";
+    ?>
+
+    <i class="fas fa-circle <?php echo $statusClass; ?>"></i>
                     </div>
                 </nav>
             </div>
