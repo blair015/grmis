@@ -12,7 +12,7 @@
                             <?php
 
                                 // Check if user_role is "teacher"
-                                if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Teacher') {
+                                if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'Teacher' || $_SESSION['user_role'] === 'Planning' || $_SESSION['user_role'] === 'SDS')) {
                                     // User is a teacher, show everything
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
