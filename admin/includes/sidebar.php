@@ -139,3 +139,14 @@ $(document).ready(function () {
 .status-offline {
     color: gray; /* Change to the desired color for offline status */
 }
+/* Keyframes animation for blinking */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Styles for the blinking status icon */
+.status-blinking {
+    animation: blink 1s infinite; /* Blinking animation */
+}
