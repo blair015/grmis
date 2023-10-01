@@ -112,15 +112,45 @@ $(document).ready(function () {
                             </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
+                        <div class="small">Logged in as: </div>
                         <?php echo  $user_role; ?>
-                        
+                         <!-- Status Icon -->
+    <?php
+        // Define the CSS class based on the login status
+        $statusClass = $loggedIn ? "status-online status-blinking" : "status-offline";
+    ?>
+
+    <i class="fas fa-circle <?php echo $statusClass; ?>"></i>
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
+        
+                 
+<style>
+                    /* Styles for online status */
+.status-online {
+    color: green; /* Change to the desired color for online status */
+}
+
+/* Styles for offline status */
+.status-offline {
+    color: gray; /* Change to the desired color for offline status */
+}
+/* Keyframes animation for blinking */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Styles for the blinking status icon */
+.status-blinking {
+    animation: blink 1s infinite; /* Blinking animation */
+}
+</style>
         
                  
 
