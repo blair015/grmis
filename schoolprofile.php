@@ -196,7 +196,7 @@ if (isset($_GET['school_id'])) {
     <div class="card-body">
         <?php if (isset($locationUrl)) { ?>
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="<?php echo $locationUrl; ?>" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <?php echo $locationUrl; ?>
             </div>
         <?php } else { ?>
             <p>No location found for this school.</p>
