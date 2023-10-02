@@ -161,7 +161,8 @@ include ("admin/includes/sidebar.php");
                                     <tbody>
 									<?php
                                 
-                                $user_school_id = $school_id; ?>
+                                $user_school_id = $school_id; 
+                                echo $user_school_id; ?>
                                 
                                 <?php
                                     
