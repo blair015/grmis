@@ -186,6 +186,7 @@ if (isset($_GET['school_id'])) {
         $locationUrl = $row['frame'];
     }
 }
+echo $userID;
 ?>
 
 <div class="card card-primary">
