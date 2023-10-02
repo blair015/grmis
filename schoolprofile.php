@@ -195,7 +195,9 @@ if (isset($_GET['school_id'])) {
     <!-- /.card-header -->
     <div class="card-body">
         <?php if (isset($locationUrl)) { ?>
-         <?php echo $locationUrl; ?>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="<?php echo $locationUrl; ?>" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         <?php } else { ?>
             <p>No location found for this school.</p>
         <?php } ?>
@@ -203,6 +205,7 @@ if (isset($_GET['school_id'])) {
     <!-- /.card-body -->
 </div>
 <!-- /.card -->
+
         </div>
         <div class="col-md-9">
           <div class="card">
