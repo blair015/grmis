@@ -180,13 +180,12 @@ if (isset($_GET['school_id'])) {
     $sql = "SELECT frame FROM location WHERE school_id = $school_id";
     $result = $conn->query($sql);
 
-    // Fetch the location URL from the database
+    // Fetch the location iframe code from the database
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $locationUrl = $row['frame'];
+        $locationIframeCode = $row['frame'];
     }
 }
-echo $userID;
 ?>
 
 <div class="card card-primary">
@@ -195,24 +194,9 @@ echo $userID;
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <?php if (isset($locationUrl)) { ?>
+        <?php if (isset($locationIframeCode)) { ?>
             <div class="embed-responsive embed-responsive-16by9">
-                <div class="map-container">
-                    <iframe class="embed-responsive-item" id="locationMap" src="<?php echo $locationUrl; ?>" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <script>
-                    // JavaScript to toggle map size when clicked
-                    var locationMap = document.getElementById('locationMap');
-                    var mapContainer = document.querySelector('.map-container');
-                    
-                    locationMap.addEventListener('click', function() {
-                        if (mapContainer.classList.contains('enlarged')) {
-                            mapContainer.classList.remove('enlarged');
-                        } else {
-                            mapContainer.classList.add('enlarged');
-                        }
-                    });
-                </script>
+                <?php echo $locationIframeCode; ?>
             </div>
         <?php } else { ?>
             <p>No location found for this school.</p>
@@ -220,7 +204,6 @@ echo $userID;
     </div>
     <!-- /.card-body -->
 </div>
-<!-- /.card -->
 
 <style>
     .map-container.enlarged {
