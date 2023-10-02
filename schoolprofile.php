@@ -196,7 +196,22 @@ if (isset($_GET['school_id'])) {
     <div class="card-body">
         <?php if (isset($locationUrl)) { ?>
             <div class="embed-responsive embed-responsive-16by9">
-                <?php echo $locationUrl; ?>
+                <div class="map-container">
+                    <iframe class="embed-responsive-item" id="locationMap" src="<?php echo $locationUrl; ?>" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <script>
+                    // JavaScript to toggle map size when clicked
+                    var locationMap = document.getElementById('locationMap');
+                    var mapContainer = document.querySelector('.map-container');
+                    
+                    locationMap.addEventListener('click', function() {
+                        if (mapContainer.classList.contains('enlarged')) {
+                            mapContainer.classList.remove('enlarged');
+                        } else {
+                            mapContainer.classList.add('enlarged');
+                        }
+                    });
+                </script>
             </div>
         <?php } else { ?>
             <p>No location found for this school.</p>
@@ -205,6 +220,27 @@ if (isset($_GET['school_id'])) {
     <!-- /.card-body -->
 </div>
 <!-- /.card -->
+
+<style>
+    .map-container.enlarged {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .map-container.enlarged iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
 
         </div>
         <div class="col-md-9">
