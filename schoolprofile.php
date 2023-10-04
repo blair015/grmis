@@ -279,7 +279,7 @@ if (isset($_GET['school_id'])) {
                       </div>
                       <!-- /.card -->
                   </div>
-        </div>
+        
                     <div class="col-md-6 fv-row">
                       <div class="card card-success">
                           <div class="card-header">
@@ -302,6 +302,7 @@ if (isset($_GET['school_id'])) {
                       </div>
                       <!-- /.card -->
                   </div>
+            </div>    
         </div>
 
 
