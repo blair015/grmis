@@ -280,8 +280,7 @@ if (isset($_GET['school_id'])) {
                       <!-- /.card -->
                   </div>
         </div>
-        <div class="row g-2 mb-2">
-                      <div class="col-md-6 fv-row">
+                    <div class="col-md-6 fv-row">
                       <div class="card card-success">
                           <div class="card-header">
                               <h3 class="card-title">Non-Teaching Profile</h3>
@@ -303,7 +302,6 @@ if (isset($_GET['school_id'])) {
                       </div>
                       <!-- /.card -->
                   </div>
-        </div>
         </div>
 
 
@@ -549,6 +547,81 @@ var barChart = new Chart(ctx, {
     }
 });
 </script>
+<?php
+$selectedSchoolId1 = $_GET['school_id']; // You should sanitize and validate this input
+
+$sql = "SELECT e.school_id, 
+               SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_non_teaching,
+               SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_non_teaching
+        FROM employment_record AS e
+        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+        WHERE e.school_id = $selectedSchoolId1 
+        AND e.position_type = 'Non_Teaching'
+        GROUP BY e.school_id";
+
+$result = $conn->query($sql);
+
+$teacherData1 = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $teacherData1[] = [
+            'school_id' => $row['school_id'],
+            'male_non_teaching' => $row['male_non_teaching'],
+            'female_non_teaching' => $row['female_non_teaching']
+        ];
+    }
+}
+?>
+
+?>
+
+<!-- Teaching Bar Chart -->
+<script>
+// Replace this with your database fetching code or API call
+var teacherData1 = <?php echo json_encode($teacherData1); ?>;
+
+// Extract ids and male/female teachers for the chart
+var ids = teacherData1.map(function(data) {
+    return data.school_id; // Changed from 'year' to 'id'
+});
+var malenonteaching = teacherData1.map(function(data) {
+    return data.malenonteaching;
+});
+var femalenonteaching = teacherData1.map(function(data) {
+    return data.femalenonteaching;
+});
+
+// Chart.js configuration
+var ctx = document.getElementById('Non_TeachingBarChart').getContext('2d');
+var barChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ids, // Changed from 'years' to 'ids'
+        datasets: [
+            {
+                label: 'Male Non-Teaching',
+                data: malenonteaching,
+                backgroundColor: 'rgba(0, 128, 255, 0.6)'
+            },
+            {
+                label: 'Female Non-Teaching',
+                data: femalenonteaching,
+                backgroundColor: 'rgba(255, 0, 0, 0.6)'
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+
 
 <!-- Enrolled students by Sex -->
 <?php
