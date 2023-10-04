@@ -1,8 +1,26 @@
 <?php
+session_start();
+
+if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSION['user_role']) && isset($_SESSION['security_key'])) {
+    // Session data exists, you can proceed with your logic here
+    $userID = $_SESSION['user_id'];
+    $user_name = $_SESSION['username'];
+    $user_role = $_SESSION['user_role'];
+    $user_security = $_SESSION['security_key'];
+
+        // Your logic for handling the session data here
+} else {
+    // Session data is missing, redirect to index.php
+    header("Location: http://202.137.126.58/");
+    exit(0);
+}
+?>
+<?php
 include ("admin/includes/header.php");
 include ("admin/includes/navbar.php");
 include ("admin/includes/sidebar.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
