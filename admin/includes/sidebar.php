@@ -66,7 +66,7 @@ $(document).ready(function () {
     
     <div class="notification-bell">
     <i class="fa fa-bell"></i>
-        <span class="notification-badge"><?php echo $rowCount; ?></span>
+        <span class="notification-badge" href="approval.php"><?php echo $rowCount; ?></span>
     </div>
     </a> -->
 
