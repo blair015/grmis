@@ -95,10 +95,10 @@ if ($stmt) {
 include ("admin/includes/phpscript.php");
 ?>
       <div class="notification-bell">
-    <a class="fa fa-bell" href="approval.php"></a>
+    <a class="fa fa-bell" href="approval.php">
         <span class="notification-badge"><?php echo $rowCount; ?></span>
-    </div>
     </a>
+</div>
     </form>
 
     <!-- Navbar-->
