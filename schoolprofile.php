@@ -260,7 +260,7 @@ if (isset($_GET['school_id'])) {
                       <div class="col-md-6 fv-row">
                       <div class="card card-success">
                           <div class="card-header">
-                              <h3 class="card-title">Teacher Profile by Sex</h3>
+                              <h3 class="card-title">Teacher Profile</h3>
                               <div class="card-tools">
                                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                       <i class="fas fa-minus"></i>
@@ -273,6 +273,30 @@ if (isset($_GET['school_id'])) {
                           <div class="card-body">
                               <div class="chart">
                                   <canvas id="TeachingBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                              </div>
+                          </div>
+                          <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->
+                  </div>
+        </div>
+        <div class="row g-2 mb-2">
+                      <div class="col-md-6 fv-row">
+                      <div class="card card-success">
+                          <div class="card-header">
+                              <h3 class="card-title">Non-Teaching Profile</h3>
+                              <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                      <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                      <i class="fas fa-times"></i>
+                                  </button>
+                              </div>
+                          </div>
+                          <div class="card-body">
+                              <div class="chart">
+                                  <canvas id="Non_TeachingBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                               </div>
                           </div>
                           <!-- /.card-body -->
