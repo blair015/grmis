@@ -28,6 +28,7 @@
                                     echo '<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">';
                                     echo '<nav class="sb-sidenav-menu-nested nav">';
                                     echo '<a class="nav-link" href="view.php">View School Profile</a>';
+                                    echo '<a class="nav-link" href="$">View District Profile</a>';
                                     //echo '<a class="nav-link" href="overview.php">Add School Profile</a>';
                                     echo '</nav>';
                                     echo '</div>';
