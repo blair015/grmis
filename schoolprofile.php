@@ -548,6 +548,8 @@ var barChart = new Chart(ctx, {
     }
 });
 </script>
+
+<!-- Non Teaching -->
 <?php
 $selectedSchoolId1 = $_GET['school_id']; // You should sanitize and validate this input
 
@@ -574,39 +576,37 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-?>
-
-<!-- Teaching Bar Chart -->
+<!-- Non Teaching Bar Chart -->
 <script>
 // Replace this with your database fetching code or API call
 var teacherData1 = <?php echo json_encode($teacherData1); ?>;
 
-// Extract ids and male/female teachers for the chart
-var ids = teacherData1.map(function(data) {
-    return data.school_id; // Changed from 'year' to 'id'
+// Extract school_ids and male/female non-teaching staff for the chart
+var schoolIds = teacherData1.map(function(data) {
+    return data.school_id;
 });
-var malenonteaching = teacherData1.map(function(data) {
-    return data.malenonteaching;
+var maleNonTeaching = teacherData1.map(function(data) {
+    return data.male_non_teaching;
 });
-var femalenonteaching = teacherData1.map(function(data) {
-    return data.femalenonteaching;
+var femaleNonTeaching = teacherData1.map(function(data) {
+    return data.female_non_teaching;
 });
 
-// Chart.js configuration
-var ctx = document.getElementById('Non_TeachingBarChart').getContext('2d');
-var barChart = new Chart(ctx, {
+// Chart.js configuration for the Non-Teaching bar chart
+var ctxNonTeaching = document.getElementById('Non_TeachingBarChart').getContext('2d');
+var barChartNonTeaching = new Chart(ctxNonTeaching, {
     type: 'bar',
     data: {
-        labels: ids, // Changed from 'years' to 'ids'
+        labels: schoolIds,
         datasets: [
             {
                 label: 'Male Non-Teaching',
-                data: malenonteaching,
+                data: maleNonTeaching,
                 backgroundColor: 'rgba(0, 128, 255, 0.6)'
             },
             {
                 label: 'Female Non-Teaching',
-                data: femalenonteaching,
+                data: femaleNonTeaching,
                 backgroundColor: 'rgba(255, 0, 0, 0.6)'
             }
         ]
@@ -621,6 +621,7 @@ var barChart = new Chart(ctx, {
     }
 });
 </script>
+
 
 
 
