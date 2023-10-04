@@ -22,7 +22,7 @@
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
                                     echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
-                                    echo 'School Profile';
+                                    echo 'Profile';
                                     echo '<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>';
                                     echo '</a>';
                                     echo '<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">';
