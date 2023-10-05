@@ -97,19 +97,20 @@ mysqli_close($conn);
             <span id="editProfileIcon" class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
                     <i class="fas fa-edit"></i> Edit Profile 
                 </span>
-                <!-- <script>
+                <script>
 $(document).ready(function () {
-    // Get the values of user_school_id and school_id from PHP
-    var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
-    var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
+    // Get the user_role from PHP
+    var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
 
-    // Check if the school_id is not equal to user_school_id
-    if (schoolId !== userSchoolId) {
+    // Check if the user_role is one of the specified roles
+    if (userRole !== 'Planning' &&
+        userRole !== 'SDS' &&
+        userRole !== 'Admin') {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
     }
 });
-</script> -->
+</script>
 
         </div>
     </div>
