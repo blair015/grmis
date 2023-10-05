@@ -52,7 +52,7 @@ include ("admin/includes/sidebar.php");
                                 echo 'Your school is not in the list?';
                                 echo '<span class="float-right">';
                                 echo '<button id="openModalButton" data-toggle="modal" data-target="#myModal" style="background-color: blue; border: none; color: white; font-size: 24px; padding: 5px 10px;">
-                                Add School
+                                    <i class="fas fa-plus-circle" style="margin-right: 5px;"></i>Add School
                                 </button>';
                                 echo '</span>';
                                 echo '</div>';
