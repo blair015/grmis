@@ -12,7 +12,7 @@
                             <?php
 
                                 // Check if user_role is "teacher"
-                                if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'Teacher' || $_SESSION['user_role'] === 'Planning' || $_SESSION['user_role'] === 'SDS')) {
+                                if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'Admin' || $_SESSION['user_role'] === 'Planning' || $_SESSION['user_role'] === 'SDS')) {
                                     // User is logged in as one of these roles
                                     $loggedIn = true;
                                 } else {
