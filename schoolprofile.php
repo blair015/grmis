@@ -97,7 +97,7 @@ mysqli_close($conn);
             <span id="editProfileIcon" class="author-card-position" style="font-size: 20px; color: blue; font-style: italic; cursor: pointer;" data-toggle="modal" data-target="#updateProfileModal">
                     <i class="fas fa-edit"></i> Edit Profile 
                 </span>
-                <script>
+                <!-- <script>
 $(document).ready(function () {
     // Get the values of user_school_id and school_id from PHP
     var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
@@ -109,7 +109,7 @@ $(document).ready(function () {
         $("#editProfileIcon").hide();
     }
 });
-</script>
+</script> -->
 
         </div>
     </div>
