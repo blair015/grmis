@@ -46,7 +46,7 @@ include ("admin/includes/sidebar.php");
 
 
                             // Check if user_role is "teacher"
-                            if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Teacher') {
+                            if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'Admin' || $_SESSION['user_role'] === 'Planning' || $_SESSION['user_role'] === 'SDS')) {
                                 // User is a teacher, show the gear icon
                                echo '<div class="card-header">';
                                 echo 'Your school is not in the list?';
@@ -164,7 +164,7 @@ include ("admin/includes/sidebar.php");
 									<?php
                                 
                                 $user_school_id = $school_id; 
-                                echo $user_school_id; ?>
+                                //echo $user_school_id; ?>
                                 
                                 <?php
                                     
