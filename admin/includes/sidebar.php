@@ -42,7 +42,7 @@
                                     echo '<a class="nav-link" href="Approval.php">Schools for Approval</a>';
                                     echo '</nav>';
                                     echo '</div>';
-                                } elseif ($loggedIn) {
+                                } else {
 
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
@@ -58,9 +58,6 @@
                                     echo '</nav>';
                                     echo '</div>';
                                     // User is not a teacher, hide the Transaction menu
-                                }else {
-
-                                    
                                 }
                                 ?>
                                 <script>
