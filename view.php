@@ -48,13 +48,15 @@ include ("admin/includes/sidebar.php");
                             // Check if user_role is "teacher"
                             if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Teacher') {
                                 // User is a teacher, show the gear icon
-                                echo '<div class="card-header">';
-                                echo 'Your school not in the list?';
+                               echo '<div class="card-header">';
+                                echo 'Your school is not in the list?';
                                 echo '<span class="float-right">';
-                                echo '<i class="fas fa-cog" id="openModalIcon" data-toggle="modal" data-target="#myModal" style="color: blue; font-size: 24px;"></i>';
-                                echo '<span style="margin-left: 5px;">Click gear icon to Add School</span>';
+                                echo '<button id="openModalButton" data-toggle="modal" data-target="#myModal" style="background-color: blue; border: none; color: white; font-size: 24px; padding: 5px 10px;">
+                                Add School
+                                </button>';
                                 echo '</span>';
                                 echo '</div>';
+
                             } else {
                                 // User is not a teacher, hide the gear icon
                                 echo '<div class="card-header">';
