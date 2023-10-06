@@ -331,49 +331,6 @@ if ($stmt) {
                         <?php
                         include 'admin/config/dbcon2.php';
 
-                        $sql = "SELECT e.school_id, 
-                                SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_non_teaching,
-                                SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_non_teaching
-                            FROM employment_record AS e
-                            INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-                                INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-                                WHERE e.position_type = 'Non_Teaching'";
-
-                            $result = $conn->query($sql);
-
-                            $teacherData1 = [];
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $teacherData1[] = [
-                                        'male_non_teaching' => $row['male_non_teaching'],
-                                        'female_non_teaching' => $row['female_non_teaching']
-                                    ];
-                                }
-                            }
-                        ?>
-                                                <div class="card-body">
-                                                    <canvas id="pieChart3" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                    <div class="card card-success">
-                        <div class="card-header">
-                            <h3 class="card-title">Total Number of Male & Female Teaching Related</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <?php
-                        include 'admin/config/dbcon2.php';
-
                         $sql = "SELECT 
                                 SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_teachers,
                                 SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_teachers
@@ -394,7 +351,7 @@ if ($stmt) {
                         }
                         ?>
                                                 <div class="card-body">
-                                                    <canvas id="pieChart4" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                    <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                                                 </div>
 
                                             </div>
@@ -463,44 +420,6 @@ var pieChart2 = new Chart(ctx2, {
         labels: ['Male Teachers', 'Female Teachers'],
         datasets: [{
             data: [totalMaleTeachers, totalFemaleTeachers],
-            backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
-            borderWidth: 0, // Remove the border
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false, // Allow the chart to adjust to its container
-        plugins: {
-            legend: {
-                display: true,
-                position: 'right', // Display the legend on the right
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        var label = context.label || '';
-                        var value = context.formattedValue;
-                        return label + ': ' + value; // Display label and value in the tooltip
-                    }
-                }
-            }
-        }
-    }
-});
-</script>
-<script>
-// Replace this with your PHP fetching code
-var maleNonTeachingCount = <?php echo $teacherData1[0]['male_non_teaching']; ?>;
-var femaleNonTeachingCount = <?php echo $teacherData1[0]['female_non_teaching']; ?>;
-
-// Chart.js configuration for the pie chart
-var ctxPieChart3 = document.getElementById('pieChart3').getContext('2d');
-var pieChart3 = new Chart(ctxPieChart3, {
-    type: 'pie',
-    data: {
-        labels: ['Male Non-Teaching', 'Female Non-Teaching'],
-        datasets: [{
-            data: [maleNonTeachingCount, femaleNonTeachingCount],
             backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
             borderWidth: 0, // Remove the border
         }]
