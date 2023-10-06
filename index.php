@@ -228,7 +228,7 @@ if ($stmt) {
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Enrolled Students</h3>
@@ -272,7 +272,7 @@ if ($stmt) {
                     </div>
                 </div>
                 <!-- /.col (RIGHT) -->
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Male & Female Teachers</h3>
@@ -315,7 +315,7 @@ if ($stmt) {
                                         </div>
                                     </div>
             <!-- /.row -->
-            <div class="col-md-6">
+            <div class="col-md-3">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Male & Female Non Teaching</h3>
