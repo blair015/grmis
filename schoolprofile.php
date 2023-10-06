@@ -104,16 +104,20 @@ $(document).ready(function () {
     var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
     var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
 
-    // Check if the school_id is not equal to user_school_id
-    // and if the user_role is not one of the specified roles
-    if (schoolId !== userSchoolId &&
-        userRole !== 'Planning' &&
-        userRole !== 'SDS' &&
-        userRole !== 'Admin') {
+    // Check if the school_id is equal to user_school_id
+    // and if the user_role is one of the specified roles
+    if (schoolId === userSchoolId &&
+        (userRole === 'Planning' ||
+         userRole === 'SDS' ||
+         userRole === 'Admin')) {
+        // Show the "Edit Profile" icon
+        $("#editProfileIcon").show();
+    } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
     }
 });
+
 
 </script>
 
