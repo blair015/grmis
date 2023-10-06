@@ -183,7 +183,7 @@ include ("admin/includes/sidebar.php");
                                             echo "<td>" . $row['District'] . "</td>";
                                             echo "<td>" . $row['category'] . "</td>";
                                             echo "<td>
-                                            <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
+                                            <a href='schoolprofile.php?school_id=" . $row['school_id']"'><i class='fas fa-eye fa-2x'></i></a>
                                                  </td>";
                                         
 
