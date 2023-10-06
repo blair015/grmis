@@ -99,17 +99,22 @@ mysqli_close($conn);
                 </span>
                 <script>
 $(document).ready(function () {
-    // Get the user_role from PHP
+    // Get the values of user_school_id, school_id, and user_role from PHP
+    var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
+    var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
     var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
 
-    // Check if the user_role is one of the specified roles
-    if (userRole !== 'Planning' &&
+    // Check if the school_id is not equal to user_school_id
+    // and if the user_role is not one of the specified roles
+    if (schoolId !== userSchoolId &&
+        userRole !== 'Planning' &&
         userRole !== 'SDS' &&
         userRole !== 'Admin') {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
     }
 });
+
 </script>
 
         </div>
