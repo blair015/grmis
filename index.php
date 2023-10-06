@@ -228,7 +228,7 @@ if ($stmt) {
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Enrolled Students</h3>
@@ -272,7 +272,7 @@ if ($stmt) {
                     </div>
                 </div>
                 <!-- /.col (RIGHT) -->
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Male & Female Teachers</h3>
@@ -315,7 +315,7 @@ if ($stmt) {
                                         </div>
                                     </div>
             <!-- /.row -->
-            <div class="col-md-3">
+            <div class="col-md-6">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">Total Number of Male & Female Non Teaching</h3>
@@ -351,7 +351,49 @@ if ($stmt) {
                         }
                         ?>
                                                 <div class="card-body">
-                                                    <canvas id="pieChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                    <canvas id="pieChart3" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Total Number of Male & Female Teaching Related</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <?php
+                        include 'admin/config/dbcon2.php';
+
+                        $sql = "SELECT 
+                                SUM(CASE WHEN pi.sex = 'Male' THEN 1 ELSE 0 END) AS male_teachers,
+                                SUM(CASE WHEN pi.sex = 'Female' THEN 1 ELSE 0 END) AS female_teachers
+                                FROM employment_record AS e
+                                INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                                WHERE e.position_type = 'Teaching'";
+
+                        $result = $conn->query($sql);
+
+                        $teacherData = [];
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $teacherData[] = [
+                                    'male_teachers' => $row['male_teachers'],
+                                    'female_teachers' => $row['female_teachers']
+                                ];
+                            }
+                        }
+                        ?>
+                                                <div class="card-body">
+                                                    <canvas id="pieChart4" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                                                 </div>
 
                                             </div>
