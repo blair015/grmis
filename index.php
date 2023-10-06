@@ -410,6 +410,84 @@ include ("admin/includes/script.php");
 include ("admin/includes/footer.php");
 ?>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Replace this with your PHP fetching code
+var maleStudentsCount = <?php echo $maleStudentsCount; ?>;
+var femaleStudentsCount = <?php echo $femaleStudentsCount; ?>;
+
+// Chart.js configuration for the pie chart
+var ctx = document.getElementById('pieChart').getContext('2d');
+var pieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Male Students', 'Female Students'],
+        datasets: [{
+            data: [maleStudentsCount, femaleStudentsCount],
+            backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
+            borderWidth: 0, // Remove the border
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false, // Allow the chart to adjust to its container
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right', // Display the legend on the right
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        var label = context.label || '';
+                        var value = context.formattedValue;
+                        return label + ': ' + value; // Display label and value in the tooltip
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
+
+
+<script>
+// Replace this with your PHP fetching code
+var totalMaleTeachers = <?php echo $teacherData[0]['male_teachers']; ?>;
+var totalFemaleTeachers = <?php echo $teacherData[0]['female_teachers']; ?>;
+
+// Chart.js configuration for the pie chart
+var ctx2 = document.getElementById('pieChart2').getContext('2d');
+var pieChart2 = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+        labels: ['Male Teachers', 'Female Teachers'],
+        datasets: [{
+            data: [totalMaleTeachers, totalFemaleTeachers],
+            backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
+            borderWidth: 0, // Remove the border
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false, // Allow the chart to adjust to its container
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right', // Display the legend on the right
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        var label = context.label || '';
+                        var value = context.formattedValue;
+                        return label + ': ' + value; // Display label and value in the tooltip
+                    }
+                }
+            }
+        }
+    }
+});
+</script>
 <div class="col-md-6">
     <div class="card card-success">
         <div class="card-header">
@@ -475,47 +553,6 @@ $.ajax({
     },
     error: function(xhr, status, error) {
         console.error(error);
-    }
-});
-</script>
-
-
-
-<script>
-// Replace this with your PHP fetching code
-var totalMaleTeachers = <?php echo $teacherData[0]['male_teachers']; ?>;
-var totalFemaleTeachers = <?php echo $teacherData[0]['female_teachers']; ?>;
-
-// Chart.js configuration for the pie chart
-var ctx2 = document.getElementById('pieChart2').getContext('2d');
-var pieChart2 = new Chart(ctx2, {
-    type: 'pie',
-    data: {
-        labels: ['Male Teachers', 'Female Teachers'],
-        datasets: [{
-            data: [totalMaleTeachers, totalFemaleTeachers],
-            backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
-            borderWidth: 0, // Remove the border
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false, // Allow the chart to adjust to its container
-        plugins: {
-            legend: {
-                display: true,
-                position: 'right', // Display the legend on the right
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        var label = context.label || '';
-                        var value = context.formattedValue;
-                        return label + ': ' + value; // Display label and value in the tooltip
-                    }
-                }
-            }
-        }
     }
 });
 </script>
