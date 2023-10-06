@@ -488,71 +488,41 @@ var pieChart2 = new Chart(ctx2, {
     }
 });
 </script>
-<div class="col-md-6">
-    <div class="card card-success">
-        <div class="card-header">
-            <h3 class="card-title">Total Number of Male & Female Non Teaching</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        </div>
-        <div class="card-body">
-            <canvas id="pieChart3" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-        </div>
-    </div>
-</div>
-
 <script>
-// AJAX to fetch data from the server
-$.ajax({
-    url: 'index.php', // Replace with the actual URL of your PHP script
-    type: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        // Extract data from the response
-        var maleNonTeachingCount = data.male_non_teaching;
-        var femaleNonTeachingCount = data.female_non_teaching;
+// Replace this with your PHP fetching code
+var maleNonTeachingCount = <?php echo $teacherData1[0]['male_non_teaching']; ?>;
+var femaleNonTeachingCount = <?php echo $teacherData1[0]['female_non_teaching']; ?>;
 
-        // Chart.js configuration for the pie chart
-        var ctxPieChart3 = document.getElementById('pieChart3').getContext('2d');
-        var pieChart3 = new Chart(ctxPieChart3, {
-            type: 'pie',
-            data: {
-                labels: ['Male Non-Teaching', 'Female Non-Teaching'],
-                datasets: [{
-                    data: [maleNonTeachingCount, femaleNonTeachingCount],
-                    backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
-                    borderWidth: 0, // Remove the border
-                }]
+// Chart.js configuration for the pie chart
+var ctxPieChart3 = document.getElementById('pieChart3').getContext('2d');
+var pieChart3 = new Chart(ctxPieChart3, {
+    type: 'pie',
+    data: {
+        labels: ['Male Non-Teaching', 'Female Non-Teaching'],
+        datasets: [{
+            data: [maleNonTeachingCount, femaleNonTeachingCount],
+            backgroundColor: ['rgba(0, 128, 255, 0.6)', 'rgba(255, 0, 0, 0.6)'],
+            borderWidth: 0, // Remove the border
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false, // Allow the chart to adjust to its container
+        plugins: {
+            legend: {
+                display: true,
+                position: 'right', // Display the legend on the right
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false, // Allow the chart to adjust to its container
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'right', // Display the legend on the right
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                var label = context.label || '';
-                                var value = context.formattedValue;
-                                return label + ': ' + value; // Display label and value in the tooltip
-                            }
-                        }
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        var label = context.label || '';
+                        var value = context.formattedValue;
+                        return label + ': ' + value; // Display label and value in the tooltip
                     }
                 }
             }
-        });
-    },
-    error: function(xhr, status, error) {
-        console.error(error);
+        }
     }
 });
 </script>
