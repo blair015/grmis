@@ -17,7 +17,7 @@
                                     $loggedIn = true;
                                 } else {
                                     // User is not logged in or doesn't have the required role
-                                    $loggedIn = True;
+                                    $loggedIn = false;
                                 }if ($loggedIn) {
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
