@@ -130,8 +130,8 @@ $(document).ready(function () {
                          <!-- Status Icon -->
     <?php
         // Define the CSS class based on the login status
-        $statusClass = "status-online status-blinking";
-        //$statusClass = $loggedIn ? "status-online status-blinking" : "status-offline";
+        //$statusClass = "status-online status-blinking";
+        $statusClass = $loggedIn ? "status-online status-blinking" : "status-online-admin status-blinking";
     ?>
 
     <i class="fas fa-circle <?php echo $statusClass; ?>"></i>
@@ -147,6 +147,9 @@ $(document).ready(function () {
                     /* Styles for online status */
 .status-online {
     color: green; /* Change to the desired color for online status */
+}
+.status-online-admin {
+    color: blue; /* Change to the desired color for online status */
 }
 
 /* Styles for offline status */
