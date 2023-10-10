@@ -75,31 +75,18 @@ include ("admin/includes/sidebar.php");
                                     $stmt = $conn->prepare($sql);
 
                                     if ($stmt) {
-                                        // Bind the email parameter
                                         $stmt->bind_param("s", $user_name);
-
-                                        // Execute the query
                                         $stmt->execute();
-
-                                        // Bind the result
                                         $stmt->bind_result($emp_no);
-
-                                        // Fetch the result (if any)
                                         $stmt->fetch();
-
-                                        // Close the statement
                                         $stmt->close();
-
-                                        // Check if a result was found
                                         if ($emp_no) {
-                                            // $emp_no now contains the value you retrieved
                                             echo "";
                                         } else {
-                                            // No result found
                                             echo "No result found for the provided email.";
                                         }
                                     } else {
-                                        // Handle error if the statement couldn't be prepared
+                                        
                                         echo "Error preparing the statement.";
                                     }
 
@@ -107,31 +94,17 @@ include ("admin/includes/sidebar.php");
                                     $stmt2 = $conn->prepare($sql2);
                                     
                                     if ($stmt2) {
-                                        // Bind the emp_no parameter
                                         $stmt2->bind_param("s", $emp_no);
-                                    
-                                        // Execute the query
                                         $stmt2->execute();
-                                    
-                                        // Bind the result
                                         $stmt2->bind_result($school_id);
-                                    
-                                        // Fetch the result (if any)
                                         $stmt2->fetch();
-                                    
-                                        // Close the statement
                                         $stmt2->close();
-                                    
-                                        // Check if a result was found
                                         if ($school_id) {
-                                            // $school_id now contains the value you retrieved
                                             echo "";
                                         } else {
-                                            // No result found
                                             echo "No employment record found for the provided emp_no.";
                                         }
                                     } else {
-                                        // Handle error if the statement couldn't be prepared
                                         echo "Error preparing the statement.";
                                     }
                                     

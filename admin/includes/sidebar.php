@@ -42,7 +42,7 @@
                                     echo '<a class="nav-link" href="Approval.php">Schools for Approval</a>';
                                     echo '</nav>';
                                     echo '</div>';
-                                } else {
+                                } else  {
 
                                     echo '<div class="sb-sidenav-menu-heading">Interface</div>';
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
@@ -62,7 +62,7 @@
                                 ?>
                                 <script>
 $(document).ready(function () {
-    <?php if ($_SESSION['user_role'] !== 'teacher') : ?>
+    <?php if ($_SESSION['user_role'] !== 'Teacher') : ?>
         $("#date_of_validity").prop("disabled", true);
     <?php endif; ?>
 });
