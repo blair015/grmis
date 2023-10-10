@@ -256,7 +256,7 @@ if (isset($_GET['school_id'])) {
                               <div style="position: relative;">
                   <!-- Your content here -->
 
-                  <button id="editButton" data-toggle="modal" data-target="#aboutModal" style="position: absolute; top: 0; right: 0;">
+                  <button id="editButton" data-toggle="modal" data-target="#editaboutModal" style="position: absolute; top: 0; right: 0;">
     <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
 </button>
 
@@ -476,7 +476,7 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- edit about school profile modal -->
-            <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="editaboutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
