@@ -256,7 +256,7 @@ if (isset($_GET['school_id'])) {
                               <div style="position: relative;">
                   <!-- Your content here -->
 
-                  <button id="editButton" data-toggle="modal" data-target="#editaboutModal" style="position: absolute; top: 0; right: 0;">
+                  <button id="editButton" style="position: absolute; top: 0; right: 0;">
   <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
 </button>
 
@@ -474,28 +474,25 @@ if (isset($_GET['school_id'])) {
                         </div>
             </form>
 
+  <!-- javascript for editaboutmodal -->
+  <script>
+document.getElementById('editButton').addEventListener('click', function() {
+  // Make an AJAX request to fetch the modal content from home.php
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // Inject the modal content into a hidden element
+      var modalContainer = document.getElementById('modalContainer');
+      modalContainer.innerHTML = xhr.responseText;
 
-                <!-- edit about school profile modal -->
-                <div class="modal fade" id="editaboutModal" tabindex="-1" role="dialog" aria-labelledby="editaboutModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editaboutModalLabel">Edit Modal Title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Edit Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+      // Show the modal
+      $('#editaboutModal').modal('show');
+    }
+  };
+  xhr.open('GET', 'home1.php', true);
+  xhr.send();
+});
+</script>
 
 
 
