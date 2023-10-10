@@ -44,7 +44,19 @@
                                     echo '</div>';
                                 } else  {
 
-                                    
+                                    echo '<div class="sb-sidenav-menu-heading">Interface</div>';
+                                    echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">';
+                                    echo '<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>';
+                                    echo 'Profile';
+                                    echo '<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>';
+                                    echo '</a>';
+                                    echo '<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">';
+                                    echo '<nav class="sb-sidenav-menu-nested nav">';
+                                    echo '<a class="nav-link" href="view.php">View School Profile</a>';
+                                    echo '<a class="nav-link" href="404.php">View District Profile</a>';
+                                    //echo '<a class="nav-link" href="overview.php">Add School Profile</a>';
+                                    echo '</nav>';
+                                    echo '</div>';
                                     // User is not a teacher, hide the Transaction menu
                                 }
                                 ?>
