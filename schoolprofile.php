@@ -256,9 +256,10 @@ if (isset($_GET['school_id'])) {
                               <div style="position: relative;">
                   <!-- Your content here -->
 
-                  <button id="editButton" data-toggle="modal" data-target="#aboutModal" style="position: absolute; top: 0; left: 0; font-size: 24px; color: green;">
-    Edit
+                  <button id="editButton" data-toggle="modal" data-target="#aboutModal" style="position: absolute; top: 0; right: 0;">
+    <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
 </button>
+
 </div>
                  </div>
 
