@@ -356,6 +356,44 @@ if (isset($_GET['school_id'])) {
                   </div>
             </div>    
         </div>
+        <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                    <h5 class="my-3">John Smith</h5>
+                    <p class="text-muted mb-1">Full Stack Developer</p>
+                    <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                    <div class="d-flex justify-content-center mb-2">
+                        <button type="button" class="btn btn-primary">Follow</button>
+                        <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Repeat the above card code for three more teachers -->
+        
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                        class="rounded-circle img-fluid" style="width: 150px;">
+                    <h5 class="my-3">Teacher 4</h5>
+                    <p class="text-muted mb-1">Position 4</p>
+                    <p class="text-muted mb-4">Location 4</p>
+                    <div class="d-flex justify-content-center mb-2">
+                        <button type="button" class="btn btn-primary">Follow</button>
+                        <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
