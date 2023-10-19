@@ -357,16 +357,18 @@ if (isset($_GET['school_id'])) {
             </div>    
             <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
-                      <div class="card" style="width: 18rem;">
-    <img src="teacher.jpg" class="card-img-top" alt="Teacher's Picture">
-    <div class="card-body">
-        <h5 class="card-title">John Doe</h5>
-        <p class="card-text">Teaching Position: Math Teacher</p>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Email: john.doe@example.com</li>
-    </ul>
-</div>
+                      <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">John Smith</h5>
+            <p class="text-muted mb-1">Full Stack Developer</p>
+            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <div class="d-flex justify-content-center mb-2">
+              <button type="button" class="btn btn-primary">Follow</button>
+              <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+            </div>
+          </div>
 </div>
 </div>
         </div>
