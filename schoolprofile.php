@@ -255,7 +255,7 @@ if (isset($_GET['school_id'])) {
         .history-content {
             text-align: justify;
         }
-        .history-content p:first-of-type {
+        .history-content p {
             text-indent: 1em;
         }
     </style>
@@ -263,7 +263,7 @@ if (isset($_GET['school_id'])) {
     <div style="position: relative;">
         <!-- Your content here -->
         <div class="history-content">
-            <p>History of the school: This is the current content that can be edited.</p>
+            <p><strong>History of the school:</strong> This is the current content that can be edited.</p>
             <p>This is the second paragraph in the school's history.</p>
         </div>
 
