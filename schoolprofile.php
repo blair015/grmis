@@ -390,10 +390,6 @@ if (isset($_GET['school_id'])) {
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
 
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
