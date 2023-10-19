@@ -251,15 +251,15 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
-                <<div class="active tab-pane" id="About">
+                <div class="active tab-pane" id="About">
     <div style="position: relative;">
+        <!-- Your content here -->
+        <p>History of the school: This is the current content that can be edited.</p>
+
         <!-- Edit button that triggers the modal -->
-        <button id="editButton" style="position: absolute; top: 5px; right: 5px;">
+        <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
             <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
         </button>
-
-        <!-- Your content here -->
-        <p>History of the school: This is the current content that can be edited. You can adjust the position of the Edit button as needed to prevent it from blocking text.</p>
     </div>
 </div>
 
@@ -294,7 +294,6 @@ if (isset($_GET['school_id'])) {
         document.querySelector(".active#About p").textContent = "History of the school: " + newHistory;
     }
 </script>
-
 
                 <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
                 <div class="tab-pane" id="Teaching">
