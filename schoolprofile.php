@@ -355,19 +355,56 @@ if (isset($_GET['school_id'])) {
                       <!-- /.card -->
                   </div>
             </div>
+            <?php
+            include 'admin/config/dbcon2.php';
+
+            $selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
+            
+            $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image
+                    FROM employment_record AS e
+                    INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                    INNER JOIN profile_pic AS pp ON pi.emp_no = pp.emp_no
+                    WHERE e.school_id = ?";
+
+            if ($stmt = $connection->prepare($sql)) {
+                $stmt->bind_param("i", $selectedSchoolId);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    ?>
+
             <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-4 g-4">
+    <?php
+                while ($row = $result->fetch_assoc()) {
+                    ?>
         <div class="col">
             <div class="card">
                 <div class="card-body text-center">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                   <img src="<?php echo $row['image']; ?>" alt="Teacher's Picture"
                         class="rounded-circle img-fluid" style="width: 150px;">
-                    <h5 class="my-3">John Smith</h5>
-                    <p class="text-muted mb-1">Full Stack Developer</p>
-                    <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                        <h5 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h5>
+                        <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
                 </div>
             </div>
         </div>
+        <?php
+                }
+                ?>
+            </div>
+        </div>
+
+        <?php
+    } else {
+        echo "No teachers found for the selected school.";
+    }
+
+    $stmt->close();
+} else {
+    echo "Error in preparing the SQL statement.";
+}
+?>
     </div>
 </div>
   
