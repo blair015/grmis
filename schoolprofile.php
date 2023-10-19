@@ -382,12 +382,12 @@ if (isset($_GET['school_id'])) {
                     
                     $lname=$row['lastname'];
                     $fname=$row['firstname'];
-                    $mname=$row['mname'];
                     $emp_no = $row['emp_no'];
-                    $imageFolder = $lname."_".$fname."_".$emp_no;
-                    $teacherId = $lname."_".$fname."_".$emp_no;
-                    $imageFileName = $teacherId . '.jpg';
-                    $imageUrl = "../heroes/admin/uploads/profilepic/$imageFolder/$imageFileName";
+                    $image = $row['image'];
+                    //$imageFolder = $image;
+                   // $teacherId = $lname."_".$fname."_".$emp_no;
+                  //  $imageFileName = $teacherId . '.jpg';
+                    $imageUrl = "../heroes/admin/$image";
                     ?>
                     <div class="col">
                         <div class="card">
