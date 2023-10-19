@@ -355,6 +355,20 @@ if (isset($_GET['school_id'])) {
                       <!-- /.card -->
                   </div>
             </div>    
+            <div class="row g-2 mb-2">
+                      <div class="col-md-6 fv-row">
+                      <div class="card" style="width: 18rem;">
+    <img src="teacher.jpg" class="card-img-top" alt="Teacher's Picture">
+    <div class="card-body">
+        <h5 class="card-title">John Doe</h5>
+        <p class="card-text">Teaching Position: Math Teacher</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Email: john.doe@example.com</li>
+    </ul>
+</div>
+</div>
+</div>
         </div>
 
 
