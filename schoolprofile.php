@@ -354,9 +354,8 @@ if (isset($_GET['school_id'])) {
                       </div>
                       <!-- /.card -->
                   </div>
-            </div>    
-        </div>
-        <div class="container mt-4">
+            </div>
+            <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
             <div class="card">
@@ -393,9 +392,8 @@ if (isset($_GET['school_id'])) {
         </div>
     </div>
 </div>
-
-
-
+  
+        </div>
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
                 <div class="row g-2 mb-2">
