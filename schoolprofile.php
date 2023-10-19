@@ -374,7 +374,7 @@ if (isset($_GET['school_id'])) {
                 if ($result->num_rows > 0) {
                     ?>
 
-            <div class="container mt-4">
+    <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-4 g-4">
     <?php
                 while ($row = $result->fetch_assoc()) {
@@ -408,7 +408,6 @@ if (isset($_GET['school_id'])) {
     </div>
 </div>
   
-        </div>
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
                 <div class="row g-2 mb-2">
