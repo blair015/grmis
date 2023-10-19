@@ -252,20 +252,49 @@ if (isset($_GET['school_id'])) {
 
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
                 <div class="active tab-pane" id="About">
-                <div style="position: relative;">
-                              <div style="position: relative;">
-                  <!-- Your content here -->
+    <div style="position: relative;">
+        <!-- Your content here -->
+        <p>History of the school: This is the current content that can be edited.</p>
 
-                  <button id="editButton" style="position: absolute; top: 0; right: 0;">
-  <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
-</button>
-
+        <!-- Edit button that triggers the modal -->
+        <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
+            <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
+        </button>
+    </div>
 </div>
-                 </div>
 
+<!-- The Modal -->
+<div class="modal" id="aboutModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit History of the School</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
+            <!-- Modal body -->
+            <div class="modal-body">
+                <textarea id="schoolHistory" rows="5" class="form-control" placeholder="Enter the updated history of the school"></textarea>
+            </div>
 
-                </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateHistory()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to update the history
+    function updateHistory() {
+        var newHistory = document.getElementById("schoolHistory").value;
+        document.querySelector(".active#About p").textContent = "History of the school: " + newHistory;
+    }
+</script>
+
                 <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
                 <div class="tab-pane" id="Teaching">
                 <div class="row g-2 mb-2">

@@ -30,11 +30,5 @@
     </div>
 </div>
 
-<script>
-    function updateHistory() {
-        var newHistory = document.getElementById("schoolHistory").value;
-        // Update the content on the page with the new history
-        document.querySelector(".active#About p").textContent = "History of the school: " + newHistory;
-    }
-</script>
+
 </html>
