@@ -137,7 +137,7 @@ include ("admin/includes/sidebar.php");
 									<?php
                                 
                                 $user_school_id = $school_id; 
-                                echo $user_school_id; ?>
+                                ?>
                                 
                                 <?php
                                     
@@ -181,7 +181,7 @@ include ("admin/includes/sidebar.php");
         <div class="modal-content">
                         <div class="modal-header" style="background-color: blue; color: white;">
                     <h4 class="modal-title" id="myModalLabel">
-                        <i class="fas fa-plus-circle" style="margin-right: 10px;"></i> Add School
+                        <i class="fas fa-plus-circle" style="margin-right: 10px;"></i> Add District
                     </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
                         <span aria-hidden="true">&times;</span>
