@@ -378,11 +378,21 @@ if (isset($_GET['school_id'])) {
     <div class="row row-cols-1 row-cols-md-4 g-4">
     <?php
                 while ($row = $result->fetch_assoc()) {
+                    
+                    
+                    $lname=$row['lastname'];
+                    $fname=$row['firstname'];
+                    $mname=$row['mname'];
+                    $emp_no = $row['emp_no'];
+                    $imageFolder = $lname."_".$fname."_".$emp_no;
+                    $teacherId = $lname."_".$fname."_".$emp_no;
+                    $imageFileName = $teacherId . '.jpg';
+                    $imageUrl = "../heroes/admin/uploads/profilepic/$imageFolder/$imageFileName";
                     ?>
-        <div class="col">
-            <div class="card">
-                <div class="card-body text-center">
-                   <img src="<?php echo $row['image']; ?>" alt="Teacher's Picture"
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
                         class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h5>
                         <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
