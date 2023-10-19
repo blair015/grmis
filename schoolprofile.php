@@ -251,7 +251,9 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
-    <style>
+    
+                <div class="active tab-pane" id="About">
+                <style>
         .history-content {
             text-align: justify;
         }
@@ -259,7 +261,6 @@ if (isset($_GET['school_id'])) {
             text-indent: 1em;
         }
     </style>
-                <div class="active tab-pane" id="About">
     <div style="position: relative;">
         <!-- Your content here -->
         <div class="history-content">
@@ -282,7 +283,7 @@ if (isset($_GET['school_id'])) {
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Edit History of the School</h4>
+                <h4 class a="modal-title">Edit History of the School</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -310,7 +311,7 @@ if (isset($_GET['school_id'])) {
         $.ajax({
             type: 'POST',
             url: 'update_history.php', // Create this PHP file to handle the update
-            data: { schoolId2: schoolId2, newHistory: newHistory },
+            data: { schoolId: schoolId2, newHistory: newHistory },
             success: function(response) {
                 if (response === 'success') {
                     // Update the content on the page with the new history
@@ -323,6 +324,7 @@ if (isset($_GET['school_id'])) {
         });
     }
 </script>
+
 
                 <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
                 <div class="tab-pane" id="Teaching">
