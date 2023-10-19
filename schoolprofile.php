@@ -251,10 +251,21 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
+    <style>
+        .history-content {
+            text-align: justify;
+        }
+        .history-content p:first-of-type {
+            text-indent: 1em;
+        }
+    </style>
                 <div class="active tab-pane" id="About">
     <div style="position: relative;">
         <!-- Your content here -->
-        <p>History of the school: This is the current content that can be edited.</p>
+        <div class="history-content">
+            <p>History of the school: This is the current content that can be edited.</p>
+            <p>This is the second paragraph in the school's history.</p>
+        </div>
 
         <!-- Edit button that triggers the modal -->
         <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
@@ -291,7 +302,7 @@ if (isset($_GET['school_id'])) {
     // Function to update the history
     function updateHistory() {
         var newHistory = document.getElementById("schoolHistory").value;
-        document.querySelector(".active#About p").textContent = "History of the school: " + newHistory;
+        document.querySelector(".active#About .history-content").innerHTML = newHistory;
     }
 </script>
 
