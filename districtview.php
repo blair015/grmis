@@ -115,21 +115,21 @@ include ("admin/includes/sidebar.php");
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>School ID</th>
-                                            <th>Name of School</th>
+                                            <th>District ID</th>
+                                            <th>Name of District</th>
                                             <th>Address</th>
-                                            <th>District</th>
-                                            <th>School Category</th>
+                                            <th>Total Number of Schools</th>
+                                            <th>PSDS</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-											<th>School ID</th>
-                                            <th>Name of School</th>
+                                            <th>District ID</th>
+                                            <th>Name of District</th>
                                             <th>Address</th>
-                                            <th>District</th>
-                                            <th>School Category</th>
+                                            <th>Total Number of Schools</th>
+                                            <th>PSDS</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -144,17 +144,17 @@ include ("admin/includes/sidebar.php");
 
                                 include ("admin/config/dbcon.php");
 
-                                $query = "SELECT * FROM school_profile";
+                                $query = "SELECT * FROM district_profile";
                                 $result = $conn->query($query);
                                     // Loop through the fetched data and populate the table rows
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
                                             echo "<tr>";
-                                            echo "<td>" . $row['school_id'] . "</td>";
-                                            echo "<td>" . $row['school_name'] . "</td>";
-                                            echo "<td>" . $row['school_address'] . "</td>";
-                                            echo "<td>" . $row['District'] . "</td>";
-                                            echo "<td>" . $row['category'] . "</td>";
+                                            echo "<td>" . $row['district_id'] . "</td>";
+                                            echo "<td>" . $row['district_name'] . "</td>";
+                                            echo "<td>" . $row['district_address'] . "</td>";
+                                            echo "<td>" . $row['district_email'] . "</td>";
+                                            echo "<td>" . $row['total_school'] . "</td>";
                                             echo "<td>
                                             <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
                                                  </td>";
