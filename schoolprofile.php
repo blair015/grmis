@@ -366,7 +366,7 @@ if (isset($_GET['school_id'])) {
                     INNER JOIN profile_pic AS pp ON pi.emp_no = pp.emp_no
                     WHERE e.school_id = ?";
 
-            if ($stmt = $connection->prepare($sql)) {
+            if ($stmt = $conn->prepare($sql)) {
                 $stmt->bind_param("i", $selectedSchoolId);
                 $stmt->execute();
                 $result = $stmt->get_result();
