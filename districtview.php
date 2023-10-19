@@ -33,9 +33,9 @@ include ("admin/includes/sidebar.php");
 
 <?php ("admin/includes/sidebar2.php"); ?>
 
-                      <h1 class="mt-4">Database of Schools in Divison of Davao del Sur</h1>
+                      <h1 class="mt-4">Database of District in Divison of Davao del Sur</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">List of Registered School</li>
+                            <li class="breadcrumb-item active">List of District</li>
                         </ol>
 <div>
             
