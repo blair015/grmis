@@ -275,6 +275,8 @@ if (isset($_GET['school_id'])) {
 </div>
 
 <!-- The Modal -->
+<input type="hidden" id="schoolId" value="<?php echo $selectedSchoolId; ?>">
+
 <div class="modal" id="aboutModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -302,7 +304,23 @@ if (isset($_GET['school_id'])) {
     // Function to update the history
     function updateHistory() {
         var newHistory = document.getElementById("schoolHistory").value;
-        document.querySelector(".active#About .history-content").innerHTML = newHistory;
+        var schoolId = document.getElementById("schoolId").value;
+        
+        // Send the updated history to the server using AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'update_history.php', // Create this PHP file to handle the update
+            data: { schoolId: schoolId, newHistory: newHistory },
+            success: function(response) {
+                if (response === 'success') {
+                    // Update the content on the page with the new history
+                    document.querySelector(".active#About .history-content").innerHTML = newHistory;
+                } else {
+                    // Handle error
+                    alert("Failed to update history. Please try again.");
+                }
+            }
+        });
     }
 </script>
 
