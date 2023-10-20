@@ -166,7 +166,7 @@ $(document).ready(function () {
 
 
                     if ($stmt = $conn->prepare($sql)) {
-                        $stmt->bind_param("i", $selectedSchoolId);
+                        $stmt->bind_param();
                         $stmt->execute();
                         $result = $stmt->get_result();
 
