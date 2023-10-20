@@ -159,10 +159,9 @@ $(document).ready(function () {
                         $selectedSchoolId = $_GET['school_id'];
 
                         $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname
-                            FROM employment_record AS e
-                            INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-                            WHERE e.position_type = 'Teaching_Related' AND e.school_id = ?";
-
+                                FROM employment_record AS e
+                                INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                                WHERE e.position_type = 'Teaching_Related' AND e.school_id = ?";
 
                         if ($stmt = $conn->prepare($sql)) {
                             $stmt->bind_param("i", $selectedSchoolId);
@@ -170,15 +169,19 @@ $(document).ready(function () {
                             $result = $stmt->get_result();
 
                             if ($result->num_rows > 0) {
+                                $school_head_name = ''; // Initialize the variable
                                 while ($row = $result->fetch_assoc()) {
                                     $lname = $row['lastname'];
                                     $fname = $row['firstname'];
-                                    
-                            
+                                    $school_head_name .= $fname . " " . $lname . ', '; // Append names
                                 }
-                            }
-                            $school_head_name = $fname . " " . $lname;
+                                // Remove the trailing comma and space
+                                $school_head_name = rtrim($school_head_name, ', ');
 
+                                // Now, you can use $school_head_name in your HTML to display the names
+                            } else {
+                                $school_head_name = "No assigned school head";
+                            }
                         }
                         ?>
 
