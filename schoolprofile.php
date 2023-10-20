@@ -180,8 +180,8 @@ $(document).ready(function () {
                         }
                         
 
-                        }
-                    }
+                        
+                    
                             ?>
 
               <ul class="list-group list-group-unbordered mb-3">
@@ -191,7 +191,10 @@ $(document).ready(function () {
                 <li class="list-group-item">
                   <b>School Head:</b> <a class="float-right"><?php echo $school_head_name; ?></a>
                 </li>
-
+                        <?php
+                        }
+                    }
+                        ?>
                 <li class="list-group-item">
                   <b>Email Address:</b> <a class="float-right"><?php echo $school_email_address; ?></a>
                 </li>
