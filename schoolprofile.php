@@ -594,6 +594,12 @@ if (isset($_GET['school_id'])) {
                                 </select>
                             </div>
                         </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted"><h5>Contact Number:</h5></label>
+                                <input class="form-control form-control-solid" type="text" name="contact_number" id="contact_number" value="<?php echo $contact_number; ?>">
+                            </div>
+                        </div>
 
                         <div class="row mb-4">
                             <div class="col-md-6">

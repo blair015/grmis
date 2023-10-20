@@ -67,6 +67,7 @@ if (isset($_POST['save_changes'])) {
                     school_email_address = ?,
                     school_logo = ?,
                     school_header = ?,
+                    contact_number =?,
                     District = ?,
                     category = ?
                     WHERE school_id = ?";
@@ -81,6 +82,7 @@ if (isset($_POST['save_changes'])) {
                     $school_email,
                     $school_logo_path,
                     $school_header_path,
+                    $contact_number,
                     $District,
                     $category,
                     $school_id
