@@ -96,8 +96,9 @@ include ("admin/includes/phpscript.php");
 ?>
       <div class="notification-bell">
     <a class="fa fa-bell" href="approval.php"></a>
-        <span class="notification-badge"><?php echo $rowCount; ?></span>
-    </div>
+    <span class="notification-badge"><?php echo $rowCount; ?></span>
+</div>
+
     </a>
     </form>
     <style>
