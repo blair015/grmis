@@ -169,13 +169,13 @@ $(document).ready(function () {
 
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            $lname = $row['lastname'];
-                                            $fname = $row['firstname'];
-                                            $school_head_name = $fname . " " . $lname;
+                                            
                                         }
                                     }
                                     
-                                   
+                                    $lname = $row['lastname'];
+                                    $fname = $row['firstname'];
+                                    $school_head_name = $fname . " " . $lname;
                                 }
                                 ?>
 
