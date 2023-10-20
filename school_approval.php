@@ -72,7 +72,7 @@ include ("admin/includes/sidebar.php");
                                                     echo "<td>" . $row['district'] . "</td>";
                                                     echo "<td>" . $row['category'] . "</td>";
                                                     echo "<td>
-                                                    <a href='approval.php?school_id=" . $row['school_id'] . "&school_name=" . $row['school_name'] . "&school_address=" . $row['school_address'] . "&district=" . $row['district'] . "&category=" . $row['category'] . "'>
+                                                    <a href='school_approval.php?school_id=" . $row['school_id'] . "&school_name=" . $row['school_name'] . "&school_address=" . $row['school_address'] . "&district=" . $row['district'] . "&category=" . $row['category'] . "'>
                                                     <i class=\"fas fa-check-circle fa-2x\" style=\"color: green;\"></i>
                                                 </a>
                                                         <a href='delete_school.php?school_id=" . $row['school_id'] . "'>

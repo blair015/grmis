@@ -54,7 +54,7 @@ if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_G
             
             if ($conn->query($deleteQuery) === TRUE) {
                 // Approval successful, now redirect to approval.php
-                echo '<script>window.location.href = "approval.php";</script>';
+                echo '<script>window.location.href = "school_approval.php";</script>';
                 exit;
             } else {
                 $errorMsg = "Error deleting record from approval: " . $conn->error;
