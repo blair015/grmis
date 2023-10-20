@@ -137,7 +137,7 @@ include ("admin/includes/sidebar.php");
 									<?php
                                 
                                 $user_school_id = $school_id; 
-                                echo $user_school_id; ?>
+                                ?>
                                 
                                 <?php
                                     
