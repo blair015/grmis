@@ -251,7 +251,9 @@ if (isset($_GET['school_id'])) {
 
 
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
-    <style>
+    
+                <div class="active tab-pane" id="About">
+                <style>
         .history-content {
             text-align: justify;
         }
@@ -259,7 +261,6 @@ if (isset($_GET['school_id'])) {
             text-indent: 1em;
         }
     </style>
-                <div class="active tab-pane" id="About">
     <div style="position: relative;">
         <!-- Your content here -->
         <div class="history-content">
@@ -275,12 +276,14 @@ if (isset($_GET['school_id'])) {
 </div>
 
 <!-- The Modal -->
+<input type="hidden" id="schoolId2" value="<?php echo $selectedSchoolId; ?>">
+
 <div class="modal" id="aboutModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Edit History of the School</h4>
+                <h4 class a="modal-title">Edit History of the School</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -302,9 +305,26 @@ if (isset($_GET['school_id'])) {
     // Function to update the history
     function updateHistory() {
         var newHistory = document.getElementById("schoolHistory").value;
-        document.querySelector(".active#About .history-content").innerHTML = newHistory;
+        var schoolId2 = document.getElementById("schoolId2").value;
+        
+        // Send the updated history to the server using AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'update_history.php', // Create this PHP file to handle the update
+            data: { schoolId: schoolId2, newHistory: newHistory },
+            success: function(response) {
+                if (response === 'success') {
+                    // Update the content on the page with the new history
+                    document.querySelector(".active#About .history-content").innerHTML = newHistory;
+                } else {
+                    // Handle error
+                    alert("Failed to update history. Please try again.");
+                }
+            }
+        });
     }
 </script>
+
 
                 <!-- ------------------------TEACHING AND NON TEACHING TAB---------- -->
                 <div class="tab-pane" id="Teaching">
@@ -378,13 +398,23 @@ if (isset($_GET['school_id'])) {
     <div class="row row-cols-1 row-cols-md-4 g-4">
     <?php
                 while ($row = $result->fetch_assoc()) {
+                    
+                    
+                    $lname=$row['lastname'];
+                    $fname=$row['firstname'];
+                    $emp_no = $row['emp_no'];
+                    $image = $row['image'];
+                    //$imageFolder = $image;
+                   // $teacherId = $lname."_".$fname."_".$emp_no;
+                  //  $imageFileName = $teacherId . '.jpg';
+                    $imageUrl = "../heroes/admin/$image";
                     ?>
-        <div class="col">
-            <div class="card">
-                <div class="card-body text-center">
-                   <img src="<?php echo $row['image']; ?>" alt="Teacher's Picture"
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
                         class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h5>
+                        <h6 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h6>
                         <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
                 </div>
             </div>
