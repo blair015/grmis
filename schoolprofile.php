@@ -179,10 +179,9 @@ $(document).ready(function () {
                             $school_head_name = $fname." ".$lname;
                         }
                         
-
-                        
-                    
-                            ?>
+                    }
+                }
+                           ?>
 
               <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
@@ -191,10 +190,7 @@ $(document).ready(function () {
                 <li class="list-group-item">
                   <b>School Head:</b> <a class="float-right"><?php echo $school_head_name; ?></a>
                 </li>
-                        <?php
-                        }
-                    }
-                        ?>
+                       
                 <li class="list-group-item">
                   <b>Email Address:</b> <a class="float-right"><?php echo $school_email_address; ?></a>
                 </li>
