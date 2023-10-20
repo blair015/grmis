@@ -41,6 +41,7 @@ if (isset($_POST['save_changes'])) {
     $school_id = $_POST['school_id'];
     $school_name = $_POST['school_name'];
     $school_address = $_POST['school_address'];
+    $contact_number = $_POST['contact_number'];
     $category = $_POST['category'];
     $school_email = $_POST['school_email'];
 
