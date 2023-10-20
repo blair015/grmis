@@ -77,7 +77,7 @@ if (isset($_POST['save_changes'])) {
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param(
                     $stmt,
-                    "ssssssss",
+                    "sssssssss",
                     $school_name,
                     $school_address,
                     $school_email,
