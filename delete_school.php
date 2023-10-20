@@ -22,7 +22,7 @@ if (isset($_GET['school_id'])) {
                 if (confirmed) {
                     window.location.href = "'.$_SERVER['PHP_SELF'].'?school_id='.$school_id.'&confirm=yes";
                 } else {
-                    window.location.href = "approval.php";
+                    window.location.href = "school_approval.php";
                 }
               </script>';
     }
