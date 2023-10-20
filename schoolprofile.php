@@ -546,9 +546,6 @@ if (isset($_GET['school_id'])) {
     }
 </script>
 
-<div class="active tab-pane" id="About">
-       
-</div>
   
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
