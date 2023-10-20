@@ -280,7 +280,7 @@ if (isset($_GET['school_id'])) {
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
+                <li class="nav-item"><a class="nav-link" href="pf" data-toggle="tab">Physical Facilities</a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -473,79 +473,6 @@ if (isset($_GET['school_id'])) {
 }
 ?>
     </div>
-<div class="active tab-pane" id="About">
-                <style>
-        .history-content {
-            text-align: justify;
-        }
-        .history-content p {
-            text-indent: 1em;
-        }
-    </style>
-    <div style="position: relative;">
-        <!-- Your content here -->
-        <div class="history-content">
-            <p><strong>History of the school:</strong> This is the current content that can be edited.</p>
-            <p>This is the second paragraph in the school's history.</p>
-        </div>
-
-        <!-- Edit button that triggers the modal -->
-        <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
-            <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
-        </button>
-    </div>
-</div>
-
-<!-- The Modal -->
-<input type="hidden" id="schoolId2" value="<?php echo $selectedSchoolId; ?>">
-
-<div class="modal" id="aboutModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class a="modal-title">Edit History of the School</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <textarea id="schoolHistory" rows="5" class="form-control" placeholder="Enter the updated history of the school"></textarea>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateHistory()">Save Changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    // Function to update the history
-    function updateHistory() {
-        var newHistory = document.getElementById("schoolHistory").value;
-        var schoolId2 = document.getElementById("schoolId2").value;
-        
-        // Send the updated history to the server using AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'update_history.php', // Create this PHP file to handle the update
-            data: { schoolId: schoolId2, newHistory: newHistory },
-            success: function(response) {
-                if (response === 'success') {
-                    // Update the content on the page with the new history
-                    document.querySelector(".active#About .history-content").innerHTML = newHistory;
-                } else {
-                    // Handle error
-                    alert("Failed to update history. Please try again.");
-                }
-            }
-        });
-    }
-</script>
-
   
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
