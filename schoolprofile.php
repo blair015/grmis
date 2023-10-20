@@ -159,9 +159,10 @@ $(document).ready(function () {
                         $selectedSchoolId = $_GET['school_id'];
 
                         $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname
-                                FROM employment_record AS e
-                                INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-                                WHERE e.position_type = 'Teaching_Related' AND e.school_id = ?";
+                        FROM employment_record AS e
+                        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                        WHERE e.position_type = 'Teaching_Related' AND e.school_id = ? AND e.position_rank IN ('School Principal I', 'School Principal II', 'School Principal III', 'School Principal IV')";
+
 
                         if ($stmt = $conn->prepare($sql)) {
                             $stmt->bind_param("i", $selectedSchoolId);
