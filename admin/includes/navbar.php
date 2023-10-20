@@ -95,32 +95,30 @@ if ($stmt) {
 include ("admin/includes/phpscript.php");
 ?>
       <div class="notification-bell">
-    <a class="fa fa-bell" href="approval.php"></a>
-    <span class="notification-badge"><?php echo $rowCount; ?></span>
-</div>
+        <a class="fa fa-bell" href="approval.php"></a>
+        <span class="notification-badge"><?php echo $rowCount; ?></span>
+    </div>
 
     </a>
     </form>
     <style>
-      .notification-bell {
-    position: relative;
-}
+        .notification-bell {
+            position: relative;
+        }
 
-.notification-bell a.fa-bell:hover {
-    animation: bellMove 0.5s alternate infinite;
-}
+        .notification-bell a.fa-bell:hover {
+            animation: bellMove 0.5s alternate infinite;
+        }
 
-@keyframes bellMove {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(10px); /* Adjust the distance as needed */
-    }
-}
-
-
-      </style>
+        @keyframes bellMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(10px); /* Adjust the distance as needed */
+            }
+        }
+    </style>
 
     <!-- Navbar-->
 
