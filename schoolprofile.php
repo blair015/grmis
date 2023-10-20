@@ -358,7 +358,7 @@ if (isset($_GET['school_id'])) {
             <?php
             include 'admin/config/dbcon2.php';
 
-            $selectedSchoolId = $_GET['school_id']; // You should sanitize and validate this input
+            $selectedSchoolId = $_GET['school_id'];
             
             $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image
                     FROM employment_record AS e
