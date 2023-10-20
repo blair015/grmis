@@ -153,57 +153,50 @@ $(document).ready(function () {
                 <h3 class="profile-username text-center">Nina Mcintire</h3>
 
                 <p class="text-muted text-center">Software Engineer</p> -->
-                <?php 
+                <?php
+                                include 'admin/config/dbcon2.php';
 
-                    include 'admin/config/dbcon2.php';
+                                $selectedSchoolId = $_GET['school_id'];
 
-                    $selectedSchoolId = $_GET['school_id'];
+                                $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank
+                                        FROM employment_record AS e
+                                        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                                        WHERE e.position_rank = 'Teaching_Related'";
 
-                    $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank
-                        FROM employment_record AS e
-                        INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
-                        WHERE e.position_rank = 'Teaching_Related'";
+                                if ($stmt = $conn->prepare($sql)) {
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
 
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $lname = $row['lastname'];
+                                            $fname = $row['firstname'];
+                                            $school_head_name = $fname . " " . $lname;
+                                        }
+                                    }
+                                    
+                                   
+                                }
+                                ?>
 
-                    if ($stmt = $conn->prepare($sql)) {
-                        $stmt->execute();
-                        $result = $stmt->get_result();
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>School ID:</b> <a class="float-right"><?php echo $school_id; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>School Head:</b> <a class="float-right"><?php echo $school_head_name; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Email Address:</b> <a class="float-right"><?php echo $school_email_address; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>District:</b> <a class="float-right"><?php echo $district; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Category:</b> <a class="float-right"><?php echo $category; ?></a>
+                                    </li>
+                                </ul>
 
-                        if ($result->num_rows > 0) {
-                           
-                        while ($row = $result->fetch_assoc()) {
-                            
-                            
-                            $lname = $row['lastname'];
-                            $fname = $row['firstname'];
-                            $school_head_name = $fname." ".$lname;
-                        }
-                        
-                    }
-                }
-                           ?>
-
-              <ul class="list-group list-group-unbordered mb-3">
-                <li class="list-group-item">
-                  <b>School ID:</b> <a class="float-right"><?php echo $school_id; ?></a>
-                </li>
-                <li class="list-group-item">
-                  <b>School Head:</b> <a class="float-right"><?php echo $school_head_name; ?></a>
-                </li>
-                       
-                <li class="list-group-item">
-                  <b>Email Address:</b> <a class="float-right"><?php echo $school_email_address; ?></a>
-                </li>
-
-                <li class="list-group-item">
-                  <b>District</b> <a class="float-right"><?php echo $district; ?></a>
-                </li>
-
-                <li class="list-group-item">
-                  <b>Category</b> <a class="float-right"><?php echo $category; ?></a>
-                </li>
-                
-              </ul>
 
               <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
             </div>
