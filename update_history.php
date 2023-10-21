@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    $connection->close();
-} else {
+
+   } else {
     echo 'Invalid request';
 }
 ?>
