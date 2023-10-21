@@ -16,7 +16,8 @@ $newHistory = $_POST['newHistory'];
     if ($stmt->execute()) {
         echo 'success';
     } else {
-        echo 'error';
+        echo 'error: ' . $stmt->error;
+
     }
 
     $stmt->close();
