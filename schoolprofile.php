@@ -320,7 +320,7 @@ if (isset($_GET['school_id'])) {
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class a="modal-title">Edit History of the School</h4>
+            <h4 class="modal-title">Edit History of the School</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 

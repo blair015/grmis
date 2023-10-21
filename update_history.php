@@ -2,8 +2,9 @@
 include 'admin/config/dbcon.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $schoolId = $_POST['schoolId'];
-    $newHistory = $_POST['newHistory'];
+    $schoolId = $_POST['schoolId2'];
+$newHistory = $_POST['newHistory'];
+
 
     // Sanitize and validate data as needed
 
