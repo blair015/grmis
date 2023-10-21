@@ -589,10 +589,10 @@ if (isset($_GET['school_id'])) {
                             <div class="col-md-6">
                                 <label class="fw-bold text-muted"><h5>School Size</h5></label>
                                 <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select Category" name="category">
-                                    <option value="small">Small</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="large">Large</option>
-                                    <option value="very_large">Very Large</option>
+                                    <option value="Small">Small</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="Large">Large</option>
+                                    <option value="Very Large">Very Large</option>
                                 </select>
                             </div>
                         </div>
