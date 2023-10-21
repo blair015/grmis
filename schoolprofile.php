@@ -290,10 +290,11 @@ if (isset($_GET['school_id'])) {
                 <!-- --------------ABOUT THE SCHOOL TAB-------------------- -->
     
                 <div class="active tab-pane" id="About">
-                <style>
+    <style>
         .history-content {
             text-align: justify;
         }
+
         .history-content p {
             text-indent: 1em;
         }
@@ -301,7 +302,7 @@ if (isset($_GET['school_id'])) {
     <div style="position: relative;">
         <!-- Your content here -->
         <div class="history-content">
-            <p><strong>History of the school:</strong> This is the current content that can be edited.</p>
+            <p><strong>History of the school:</strong> <span id="schoolHistoryText">This is the current content that can be edited.</span></p>
             <p>This is the second paragraph in the school's history.</p>
         </div>
 
@@ -320,45 +321,47 @@ if (isset($_GET['school_id'])) {
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">Edit History of the School</h4>
+                <h4 class="modal-title">Edit History of the School</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <textarea id="schoolHistory" rows="5" class="form-control" placeholder="Enter the updated history of the school"></textarea>
+                <textarea id="schoolHistory" rows="5" class="form-control"
+                          placeholder="Enter the updated history of the school"></textarea>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="updateHistory()">Save Changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveHistory()">Save Changes</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Function to update the history
-    function updateHistory() {
+    function saveHistory() {
+        // Get the updated history from the textarea
         var newHistory = document.getElementById("schoolHistory").value;
-        var schoolId2 = <?php echo $selectedSchoolId; ?>;
-        
-        // Send the updated history to the server using AJAX
-        $.ajax({
-            type: 'POST',
-            url: 'update_history.php', // Create this PHP file to handle the update
-            data: { schoolId2: schoolId2, newHistory: newHistory },
-            success: function(response) {
+        var schoolId = document.getElementById("schoolId2").value;
+
+        // Send the data to the server using AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "update_history.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = xhr.responseText;
                 if (response === 'success') {
-                    // Update the content on the page with the new history
-                    document.querySelector(".active#About .history-content").innerHTML = newHistory;
+                    // Update the displayed history on success
+                    document.getElementById("schoolHistoryText").innerText = newHistory;
                 } else {
-                    // Handle error
-                    alert("Failed to update history. Please try again.");
+                    alert("Error: " + response);
                 }
             }
-        });
+        };
+        xhr.send("newHistory=" + newHistory + "&schoolId=" + schoolId);
     }
 </script>
 
