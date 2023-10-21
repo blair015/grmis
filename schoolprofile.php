@@ -326,7 +326,7 @@ if (isset($_GET['school_id'])) {
 
             <!-- Modal body -->
             <div class="modal-body">
-                <textarea id="schoolHistory" rows="5" class="form-control" placeholder="Enter the updated history of the school"></textarea>
+                <textarea id="newHistory" rows="5" class="form-control" placeholder="Enter the updated history of the school"></textarea>
             </div>
 
             <!-- Modal footer -->
@@ -341,7 +341,7 @@ if (isset($_GET['school_id'])) {
 <script>
     // Function to update the history
     function updateHistory() {
-        var newHistory = document.getElementById("schoolHistory").value;
+        var newHistory = document.getElementById("newHistory").value;
         var schoolId2 = document.getElementById("schoolId2").value;
         
         // Send the updated history to the server using AJAX
