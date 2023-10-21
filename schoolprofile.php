@@ -348,7 +348,7 @@ if (isset($_GET['school_id'])) {
         $.ajax({
             type: 'POST',
             url: 'update_history.php', // Create this PHP file to handle the update
-            data: { schoolId: schoolId2, newHistory: newHistory },
+            data: { schoolId2: schoolId2, newHistory: newHistory },
             success: function(response) {
                 if (response === 'success') {
                     // Update the content on the page with the new history
