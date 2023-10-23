@@ -479,9 +479,9 @@ if (isset($_GET['school_id'])) {
   
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
                 <div class="tab-pane" id="kpi">
-                <div class="row g-2 mb-2">
-                      <div class="col-md-6 fv-row">
-                      <div class="card card-success">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-6 fv-row">
+                            <div class="card card-success">
                           <div class="card-header">
                               <h3 class="card-title">Enrollment Per Year By Sex</h3>
                               <div class="card-tools">
@@ -491,9 +491,9 @@ if (isset($_GET['school_id'])) {
                                   <button type="button" class="btn btn-tool" data-card-widget="remove">
                                       <i class="fas fa-times"></i>
                                   </button>
-                              </div>
-                          </div>
-                          <div class="card-body">
+                                 </div>
+                                 </div>
+                                <div class="card-body">
                               <div class="chart">
                                   <canvas id="enrolleeBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                               </div>
@@ -504,16 +504,16 @@ if (isset($_GET['school_id'])) {
                   </div>  
 
                   <div class="col-md-6 fv-row">
-        <div class="card card-success">
-            <div class="card-header">
-                <h3 class="card-title">Students Enrollment by Year</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Students Enrollment by Year</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
                 </div>
             </div>
             <div class="card-body">
@@ -532,14 +532,18 @@ if (isset($_GET['school_id'])) {
 
 
                 </div>
+                <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
+<div class="tab-pane" id="pf">
+    <!-- Add your content for the Physical Facilities tab here -->
+    <h3>Physical Facilities</h3>
+    <p>This is the content for the Physical Facilities tab.</p>
+</div>
+<!-- Closing </div> for <div class="tab-content"> -->
+</div>
                 
               <!-- /.tab-pane -->
               </div>
-              <div class="tab-pane" id="pf">
-                    <!-- Add your content for the Physical Facilities tab here -->
-                    <h3>Physical Facilities</h3>
-                    <p>This is the content for the Physical Facilities tab.</p>
-                </div>
+              
               <!-- /.tab-content -->
             </div><!-- /.card-body -->
           </div>
