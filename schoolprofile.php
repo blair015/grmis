@@ -280,7 +280,7 @@ if (isset($_GET['school_id'])) {
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
-                <li class="nav-item"><a class="nav-link" href="pf" data-toggle="tab">Physical Facilities</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -498,8 +498,8 @@ if (isset($_GET['school_id'])) {
                                   <canvas id="enrolleeBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                               </div>
                           </div>
-                          <!-- /.card-body -->
-                      </div>  
+                      </div>
+                  </div>  
 
                   <div class="col-md-6 fv-row">
                     <div class="card card-success">
@@ -524,12 +524,8 @@ if (isset($_GET['school_id'])) {
         </div>
         <!-- /.card -->
     </div>
-    
-            </div>
-           
-
-
-                </div>
+    </div>
+</div>
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
     <!-- Add your content for the Physical Facilities tab here -->
