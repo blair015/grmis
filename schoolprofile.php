@@ -529,7 +529,7 @@ if (isset($_GET['school_id'])) {
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
 <div class="row">
-          <div class="col-md-3 col-sm-6 col-12">
+          <div class="col-md-3 col-sm-6 col-6">
             <div class="info-box">
               <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
 
