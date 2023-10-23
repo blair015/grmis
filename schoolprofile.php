@@ -528,6 +528,41 @@ if (isset($_GET['school_id'])) {
 </div>
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
+
+<?php
+    include 'admin/config/dbcon.php';
+
+    $selectedSchoolId2 = $_GET['school_id'];
+
+    $sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
+            FROM school_profile AS sp
+            WHERE sp.school_id = ?";
+
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $selectedSchoolId2);
+        $stmt->execute();
+        $stmt->bind_result($academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
+        
+        if ($stmt->fetch()) {
+            // Display the fetched data in your HTML
+            echo '<h3>Physical Facilities</h3>';
+            echo '<p>Academic Classrooms: ' . $academic_classroom . '</p>';
+            echo '<p>Non-Academic Classrooms: ' . $non_academic_classroom . '</p>';
+            echo '<p>Needing Repair: ' . $needing_repair . '</p>';
+            echo '<p>TLS (Teacher Learning Materials): ' . $tls . '</p>';
+            echo '<p>Makeshift Facilities: ' . $makeshift . '</p>';
+            echo '<p>Arms and Chairs: ' . $arms_and_chairs . '</p>';
+            echo '<p>Tables and Chairs: ' . $tables_and_chairs . '</p>';
+            echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
+        } else {
+            echo 'No data found for the selected school.';
+        }
+
+        $stmt->close();
+    } else {
+        echo 'Error in preparing the SQL statement.';
+    }
+    ?>
 <div class="row">
           <div class="col-md-3 col-sm-6 col-6">
             <div class="info-box">
