@@ -554,14 +554,7 @@ if (isset($_GET['school_id'])) {
             echo '<p>Arms and Chairs: ' . $arms_and_chairs . '</p>';
             echo '<p>Tables and Chairs: ' . $tables_and_chairs . '</p>';
             echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
-        } else {
-            echo 'No data found for the selected school.';
-        }
-
-        $stmt->close();
-    } else {
-        echo 'Error in preparing the SQL statement.';
-    }
+        
     ?>
 <div class="row">
           <div class="col-md-3 col-sm-6 col-6">
@@ -577,6 +570,17 @@ if (isset($_GET['school_id'])) {
             <!-- /.info-box -->
           </div>
 </div>
+<?php
+} else {
+    echo 'No data found for the selected school.';
+}
+
+$stmt->close();
+} else {
+echo 'Error in preparing the SQL statement.';
+}
+
+?>
 <!-- Closing </div> for <div class="tab-content"> -->
 </div>
                 
