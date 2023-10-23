@@ -526,13 +526,14 @@ if (isset($_GET['school_id'])) {
         </div>
         <!-- /.card -->
     </div>
-    <div class="tab-pane" id="pf">
+    
+            </div>
+            <div class="tab-pane" id="pf">
     <!-- Add your content for the Physical Facilities tab here -->
     <h3>Physical Facilities</h3>
     <p>This is the content for the Physical Facilities tab.</p>
 </div>
 
-            </div>
 
                 </div>
               <!-- /.tab-pane -->
