@@ -556,20 +556,19 @@ if (isset($_GET['school_id'])) {
             echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
         
     ?>
-<div class="row">
-          <div class="col-md-3 col-sm-6 col-6">
-            <div class="info-box">
-              <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Academic Classroom</span>
-                <span class="info-box-number"><strong><?php $echo $academic_classroom; ?></strong></span>
-              </div>
-              <!-- /.info-box-content -->
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info"><i class="far fa-envelope"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Academic Classroom</span>
+                            <span class="info-box-number"><strong><?php echo $academic_classroom; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
             </div>
-            <!-- /.info-box -->
-          </div>
-</div>
 <?php
 } else {
     echo 'No data found for the selected school.';
