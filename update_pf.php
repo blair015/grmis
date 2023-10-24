@@ -3,6 +3,8 @@ session_start(); // Start the session
 
 include "admin/config/dbcon.php";
 
+$_SESSION['school_id'] = $school_id;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
     $academic_classroom = $_POST['academic_classroom'];
