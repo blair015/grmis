@@ -15,8 +15,8 @@ $pdf->SetFont('Arial', 'B', 14);
 $pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
 
 // Add custom headers at the top
-$pdf->Image('assets/logo/divisionlogo.png', 60, 10, 20);  // Replace with the path to your left logo
-$pdf->Image('assets/logo/depedseal.png', 140, 10, 20);  // Replace with the path to your right logo
+$pdf->Image('assets/logo/divisionlogo.png', 50, 10, 50, 50);  // Replace with the path to your left logo
+$pdf->Image('assets/logo/depedseal.png', 140, 10, 50, 50);  // Replace with the path to your right logo
 
 $pdf->SetFont('Arial', 'B', 12);
 $pdf->Cell(0, 10, 'Republic of the Philippines', 0, 1, 'C');
