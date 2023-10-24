@@ -580,6 +580,28 @@ $selectedSchoolId2 = $_GET['school_id'];
                     </div>
                     <!-- /.info-box -->
                 </div>
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Non - Academic Classroom</span>
+                            <span class="info-box-number"><strong><?php echo $non_academic_classroom; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Needing Repair</span>
+                            <span class="info-box-number"><strong><?php echo $needing_repair; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
             </div>
 <?php
 } else {
