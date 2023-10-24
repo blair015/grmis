@@ -592,7 +592,7 @@ $selectedSchoolId2 = $_GET['school_id'];
                     <!-- /.info-box -->
                 </div>
                 <div class="col-md-3 col-sm-6 col-6">
-                    <div class="info-box">
+                    <div class="info-box bg-danger">
                         <span class="info-box-icon bg-info"><i class="fas fa-hammer"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Needing Repair</span>
@@ -650,8 +650,8 @@ $selectedSchoolId2 = $_GET['school_id'];
                     <!-- /.info-box -->
                 </div>
                 <div class="col-md-3 col-sm-6 col-6">
-                    <div class="info-box">
-                    <span class="info-box-icon bg-info"><i class="fas fa-hospital"></i></span>
+                    <div class="info-box bg-success">
+                     <span class="info-box-icon bg-info"><i class="fas fa-hospital"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Number of Functional Clinic</span>
                             <span class="info-box-number"><strong><?php echo $functional_clinic; ?></strong></span>
