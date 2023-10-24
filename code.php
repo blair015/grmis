@@ -170,48 +170,51 @@ function showErrorToast() {
 include ('admin/config/dbcon.php');
 
 if (isset($_POST['update_pf'])) {
-    // Get the input values from the form
-    $school_id = $_POST['school_id'];
-    $academic_classroom = $_POST['academic_classroom'];
-    $non_academic_classroom = $_POST['non_academic_classroom'];
-    $needing_repair = $_POST['needing_repair'];
-    $tls = $_POST['tls'];
-    $makeshift = $_POST['makeshift'];
-    $arms_and_chairs = $_POST['arms_and_chairs'];
-    $tables_and_chairs = $_POST['tables_and_chairs'];
-    $functional_clinic = $_POST['functional_clinic'];
-    
-    // Prepare the update query
-    $sql = "UPDATE school_profile SET 
-            academic_classroom = '$academic_classroom', 
-            non_academic_classroom = '$non_academic_classroom', 
-            needing_repair = '$needing_repair', 
-            tls = '$tls', 
-            makeshift = '$makeshift', 
-            arms_and_chairs = '$arms_and_chairs', 
-            tables_and_chairs = '$tables_and_chairs', 
-            functional_clinic = '$functional_clinic' 
-            WHERE school_id = '$school_id'";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "Record updated successfully.";
-        echo '<script type="text/javascript">';
-        echo 'Swal.fire({
-                icon: "success",
-                title: "Success!",
-                text: "School Information Updated Successfully",
-                showConfirmButton: false,
-                timer: 5000
-              }).then(function() {
-                window.location.href = "overview.php";
-              });';
-        echo '</script>';
+    // Check if school_id is set in the session
+    if (isset($_SESSION['school_id'])) {
+        // Get the input values from the form
+        $school_id = $_SESSION['school_id']; // Use the school_id from the session
+        $academic_classroom = $_POST['academic_classroom'];
+        $non_academic_classroom = $_POST['non_academic_classroom'];
+        $needing_repair = $_POST['needing_repair'];
+        $tls = $_POST['tls'];
+        $makeshift = $_POST['makeshift'];
+        $arms_and_chairs = $_POST['arms_and_chairs'];
+        $tables_and_chairs = $_POST['tables_and_chairs'];
+        $functional_clinic = $_POST['functional_clinic'];
+        
+        // Prepare the update query
+        $sql = "UPDATE school_profile SET 
+                academic_classroom = '$academic_classroom', 
+                non_academic_classroom = '$non_academic_classroom', 
+                needing_repair = '$needing_repair', 
+                tls = '$tls', 
+                makeshift = '$makeshift', 
+                arms_and_chairs = '$arms_and_chairs', 
+                tables_and_chairs = '$tables_and_chairs', 
+                functional_clinic = '$functional_clinic' 
+                WHERE school_id = '$school_id'";
+        
+        if ($conn->query($sql) === TRUE) {
+            echo "Record updated successfully.";
+            echo '<script type="text/javascript">';
+            echo 'Swal.fire({
+                    icon: "success",
+                    title: "Success!",
+                    text: "School Information Updated Successfully",
+                    showConfirmButton: false,
+                    timer: 5000
+                  }).then(function() {
+                    window.location.href = "overview.php";
+                  });';
+            echo '</script>';
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
     } else {
-        echo "Error updating record: " . $conn->error;
+        echo "School identifier not found in the session.";
     }
 }
-
-//$conn->close();
 ?>
 
 
