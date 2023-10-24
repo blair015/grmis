@@ -54,6 +54,7 @@ $school_email_address ='';
 $district = '';
 $category ='';
 $contact_number = '';
+$sbm ='';
 // Get the school_id dynamically from the URL
 if (isset($_GET['school_id'])) {
     $school_id = $_GET['school_id'];
@@ -62,13 +63,13 @@ if (isset($_GET['school_id'])) {
     $school_id = mysqli_real_escape_string($conn, $school_id);
     
     // Fetch the image URLs from the database based on the dynamic school_id
-    $sql = "SELECT school_header, school_logo, school_name, school_address, school_email_address,contact_number, District, category FROM school_profile WHERE school_id = ?";
+    $sql = "SELECT school_header, school_logo, school_name, school_address, school_email_address,contact_number, District, category, sbm_level FROM school_profile WHERE school_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
     
     if ($stmt) {
         mysqli_stmt_bind_param($stmt, "i", $school_id); // "i" represents an integer parameter
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $school_header, $school_logo, $school_name, $school_address, $school_email_address, $contact_number, $district, $category); // Fetch the results
+        mysqli_stmt_bind_result($stmt, $school_header, $school_logo, $school_name, $school_address, $school_email_address, $contact_number, $district, $category, $sbm); // Fetch the results
         
         if (mysqli_stmt_fetch($stmt)) {
             // Images found in the database
@@ -204,6 +205,9 @@ $(document).ready(function () {
                                     </li>
                                     <li class="list-group-item">
                                         <b>Category:</b> <a class="float-right"><?php echo $category; ?></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>SBM Level:</b> <a class="float-right"><?php echo $category; ?></a>
                                     </li>
                                 </ul>
 
