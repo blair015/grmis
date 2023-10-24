@@ -4,6 +4,16 @@ include 'admin/config/dbcon.php';
 
 $selectedSchoolId2 = $_GET['school_id'];
 
+$sql = "SELECT school_name, academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
+        FROM school_profile AS sp
+        WHERE sp.school_id = ?";
+
+if ($stmt = $conn->prepare($sql)) {
+    $stmt->bind_param("i", $selectedSchoolId2);
+    $stmt->execute();
+    $stmt->bind_result($school_name, $academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
+
+    if ($stmt->fetch()) {
 // Create a new PDF instance
 $pdf = new FPDF();
 $pdf->AddPage();
@@ -37,18 +47,10 @@ $pdf->SetY($y - 5);
 $pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
 
 $pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
+$pdf->Cell(0, 10, 'of '.$school_name, 0, 1, 'C');
 
 // Execute your database query and fetch data
-$sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
-        FROM school_profile AS sp
-        WHERE sp.school_id = ?";
 
-if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("i", $selectedSchoolId2);
-    $stmt->execute();
-    $stmt->bind_result($academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
-
-    if ($stmt->fetch()) {
         // Add a section heading
         $pdf->SetFont('Arial', 'B', 12);
         $pdf->Cell(0, 10, 'Physical Facilities', 0, 1);
