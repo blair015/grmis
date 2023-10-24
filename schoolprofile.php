@@ -530,7 +530,7 @@ if (isset($_GET['school_id'])) {
 <div class="tab-pane" id="pf">
 
 <?php
-require('fpdf.php');
+require('fpdf/fpdf.php');
 include 'admin/config/dbcon.php';
 
 $selectedSchoolId2 = $_GET['school_id'];
