@@ -573,7 +573,15 @@ if ($stmt = $conn->prepare($sql)) {
         // Output the PDF to the browser
         $pdf->Output();
 
+    } else {
+        echo "No data found in the database.";
+    }
+    } else {
+    echo "Error in the database query.";
+    }
+
         ?>
+
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <div class="info-box">
@@ -588,12 +596,7 @@ if ($stmt = $conn->prepare($sql)) {
                 </div>
             </div>
 <?php
- } else {
-    echo "No data found in the database.";
-}
-} else {
-echo "Error in the database query.";
-}
+ 
 ?>
 <!-- Closing </div> for <div class="tab-content"> -->
 </div>
