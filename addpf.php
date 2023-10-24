@@ -3,19 +3,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Edit Physical Facilities</h5>
+                <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i> <!-- School icon -->
+                <h5 class="modal-title">Edit Physical Facilities</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="code.php" method="POST" enctype="multipart/form-data">
-            <div class="modal-header">
-                    <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i> <!-- School icon -->
-                    <h5 class="modal-title">Edit Physical Facilities</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
                 <div class="modal-body">
                     <div class="card-body p-9">
                         <div class="row mb-4">
@@ -49,7 +43,6 @@
                                 <label class="fw-bold text-muted"><h5>Arms Chairs:</h5></label>
                                 <input class="form-control form-control-solid" type="text" name="arm_chairs" id="arm_chairs">
                             </div>
-                            
                         </div>
                         <div class="row mb-4">
                             <div class="col-md-6">
@@ -61,11 +54,13 @@
                                 <input class="form-control form-control-solid" type="text" name="functional_clinic" id="functional_clinic">
                             </div>
                         </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save Changes</button>
-            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
