@@ -69,25 +69,3 @@
         </div>
     </div>
 </div>
-
-<?php
-include('admin/config/dbcon.php');
-
-
-    // Update the school profile with the new history
-    $sql = "UPDATE school_profile SET about_school = ? WHERE school_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $newHistory, $schoolId);
-
-    if ($stmt->execute()) {
-        echo 'success';
-    } else {
-        echo 'error: ' . $stmt->error;
-    }
-
-    $stmt->close();
-
-   } else {
-    echo 'Invalid request';
-}
-?>
