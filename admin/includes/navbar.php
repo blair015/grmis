@@ -122,7 +122,7 @@ include ("admin/includes/phpscript.php");
 
     <!-- Navbar-->
 
-    <?php echo $fname ." ". $lname ?>
+    <!-- <?php echo $fname ." ". $lname ?> -->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
