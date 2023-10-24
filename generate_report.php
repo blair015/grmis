@@ -68,12 +68,32 @@ $pdf->Cell(0, 10, 'of '.$school_name, 0, 1, 'C');
         $pdf->Cell(0, 10, 'Tables and Chairs: ' . $tables_and_chairs, 0, 1);
         $pdf->Cell(0, 10, 'Functional Clinic: ' . $functional_clinic, 0, 1);
 
-        // Set headers to force download
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="report.pdf');
+        // Add a section for signatories in the footer
+$pdf->SetY(-30);  // Position at 30mm from the bottom of the page
 
-        // Output the PDF to the browser
-        $pdf->Output();
+// Left side (Prepared by)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(90, 10, 'Prepared by:', 0, 0, 'L');
+
+// Next 3 lines for the name of the principal
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'Name of the Principal - Blair Brian A. Torres', 0, 1, 'L');
+
+// Right side (Checked by)
+$pdf->SetX(100);  // Move to the right side
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(90, 10, 'Checked by:', 0, 0, 'L');
+
+// Next 3 lines for the name of the checker
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'Name of the Checker - Rannie Taborada', 0, 1, 'L');
+
+// Set headers to force download
+header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="report.pdf');
+
+// Output the PDF to the browser
+$pdf->Output();
     } else {
         echo "No data found in the database.";
     }
