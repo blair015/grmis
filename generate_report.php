@@ -4,6 +4,26 @@ include 'admin/config/dbcon.php';
 
 $selectedSchoolId2 = $_GET['school_id'];
 
+// Create a new PDF instance
+$pdf = new FPDF();
+$pdf->AddPage();
+
+// Set font and size for the report
+$pdf->SetFont('Arial', 'B', 14);
+
+// Add a title to the report
+$pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
+
+// Add custom headers at the top
+$pdf->Image('path/to/left_logo.png', 10, 10, 20);  // Replace with the path to your left logo
+$pdf->Image('path/to/right_logo.png', 180, 10, 20);  // Replace with the path to your right logo
+
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(0, 10, 'Republic of the Philippines', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Region XI', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
+
+// Execute your database query and fetch data
 $sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
         FROM school_profile AS sp
         WHERE sp.school_id = ?";
@@ -12,16 +32,6 @@ if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("i", $selectedSchoolId2);
     $stmt->execute();
     $stmt->bind_result($academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
-
-    // Create a new PDF instance
-    $pdf = new FPDF();
-    $pdf->AddPage();
-
-    // Set font and size for the report
-    $pdf->SetFont('Arial', 'B', 14);
-
-    // Add a title to the report
-    $pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
 
     if ($stmt->fetch()) {
         // Add a section heading
@@ -41,7 +51,7 @@ if ($stmt = $conn->prepare($sql)) {
 
         // Set headers to force download
         header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="report.pdf"');
+        header('Content-Disposition: attachment; filename="report.pdf');
 
         // Output the PDF to the browser
         $pdf->Output();
