@@ -19,6 +19,8 @@ $pdf->Image('assets/logo/divisionlogo.png', 30, 10, 30, 30);  // Replace with th
 $pdf->Image('assets/logo/depedseal.png', 140, 10, 30, 30);  // Replace with the path to your right logo
 
 $pdf->SetFont('Arial', 'B', 12);
+$pdf->SetLineSpacing(0);
+
 $pdf->Cell(0, 10, 'Republic of the Philippines', 0, 1, 'C');
 $pdf->Cell(0, 10, 'Region XI', 0, 1, 'C');
 $pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
