@@ -12,7 +12,7 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 14);
 
 // Add a title to the report
-$pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
+
 
 // Add custom headers at the top
 $pdf->Image('assets/logo/divisionlogo.png', 30, 10, 30, 30);  // Replace with the path to your left logo
@@ -35,6 +35,8 @@ $pdf->Cell(0, 10, 'Region XI', 0, 1, 'C');
 $y = $pdf->GetY();
 $pdf->SetY($y - 5);
 $pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
+
+$pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
 
 // Execute your database query and fetch data
 $sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
