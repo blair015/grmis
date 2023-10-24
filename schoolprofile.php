@@ -529,92 +529,42 @@ if (isset($_GET['school_id'])) {
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
 
- <!-- Add a button to trigger the PDF generation -->
- <button id="generate-pdf-button" class="btn btn-primary">
-        <i class="fas fa-download"></i> Generate PDF Report
-    </button>
+<div class="tab-pane" id="pf">
+    <form action="generate_report.php" method="post">
+        <button type="submit" class="download-button">
+            <i class="fas fa-file-download"></i> Download Report
+        </button>
+    </form>
+</div>
 
-    <!-- JavaScript to handle the button click -->
-    <script>
-        document.getElementById("generate-pdf-button").addEventListener("click", function () {
-            // Use AJAX to trigger the PDF generation
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>", true);
-            xhr.responseType = "blob"; // Set response type to binary data
-            xhr.send();
-
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // Create a download link for the PDF
-                    var blob = new Blob([xhr.response], { type: "application/pdf" });
-                    var url = window.URL.createObjectURL(blob);
-                    var a = document.createElement("a");
-                    a.href = url;
-                    a.download = "report.pdf";
-                    a.style.display = "none";
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(url);
-                } else {
-                    alert("Failed to generate PDF report.");
-                }
-            };
-        });
-    </script>
 
 <?php
-require('fpdf/fpdf.php');
-include 'admin/config/dbcon.php';
+    include 'admin/config/dbcon.php';
 
-$selectedSchoolId2 = $_GET['school_id'];
+    $selectedSchoolId2 = $_GET['school_id'];
 
-$sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
-        FROM school_profile AS sp
-        WHERE sp.school_id = ?";
+    $sql = "SELECT academic_classroom, non_academic_classroom, needing_repair, tls, makeshift, arms_and_chairs, tables_and_chairs, functional_clinic
+            FROM school_profile AS sp
+            WHERE sp.school_id = ?";
 
-if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param("i", $selectedSchoolId2);
-    $stmt->execute();
-    $stmt->bind_result($academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
-
-    // Create a new PDF instance
-    $pdf = new FPDF();
-    $pdf->AddPage();
-
-    // Set font and size for the report
-    $pdf->SetFont('Arial', 'B', 14);
-
-    // Add a title to the report
-    $pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
-
-    if ($stmt->fetch()) {
-        // Add a section heading
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(0, 10, 'Physical Facilities', 0, 1);
-
-        $pdf->SetFont('Arial', '', 12);
-        // Add the data from the database to the report
-        $pdf->Cell(0, 10, 'Academic Classrooms: ' . $academic_classroom, 0, 1);
-        $pdf->Cell(0, 10, 'Non-Academic Classrooms: ' . $non_academic_classroom, 0, 1);
-        $pdf->Cell(0, 10, 'Needing Repair: ' . $needing_repair, 0, 1);
-        $pdf->Cell(0, 10, 'TLS (Teacher Learning Materials): ' . $tls, 0, 1);
-        $pdf->Cell(0, 10, 'Makeshift Facilities: ' . $makeshift, 0, 1);
-        $pdf->Cell(0, 10, 'Arms and Chairs: ' . $arms_and_chairs, 0, 1);
-        $pdf->Cell(0, 10, 'Tables and Chairs: ' . $tables_and_chairs, 0, 1);
-        $pdf->Cell(0, 10, 'Functional Clinic: ' . $functional_clinic, 0, 1);
-
-        // Output the PDF to the browser
-        $pdf->Output();
-
-    } else {
-        echo "No data found in the database.";
-    }
-    } else {
-    echo "Error in the database query.";
-    }
-
-        ?>
-
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $selectedSchoolId2);
+        $stmt->execute();
+        $stmt->bind_result($academic_classroom, $non_academic_classroom, $needing_repair, $tls, $makeshift, $arms_and_chairs, $tables_and_chairs, $functional_clinic);
+        
+        if ($stmt->fetch()) {
+            // Display the fetched data in your HTML
+            echo '<h3>Physical Facilities</h3>';
+            echo '<p>Academic Classrooms: ' . $academic_classroom . '</p>';
+            echo '<p>Non-Academic Classrooms: ' . $non_academic_classroom . '</p>';
+            echo '<p>Needing Repair: ' . $needing_repair . '</p>';
+            echo '<p>TLS (Teacher Learning Materials): ' . $tls . '</p>';
+            echo '<p>Makeshift Facilities: ' . $makeshift . '</p>';
+            echo '<p>Arms and Chairs: ' . $arms_and_chairs . '</p>';
+            echo '<p>Tables and Chairs: ' . $tables_and_chairs . '</p>';
+            echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
+        
+    ?>
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <div class="info-box">
@@ -629,7 +579,15 @@ if ($stmt = $conn->prepare($sql)) {
                 </div>
             </div>
 <?php
- 
+} else {
+    echo 'No data found for the selected school.';
+}
+
+$stmt->close();
+} else {
+echo 'Error in preparing the SQL statement.';
+}
+
 ?>
 <!-- Closing </div> for <div class="tab-content"> -->
 </div>
