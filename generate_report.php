@@ -19,10 +19,21 @@ $pdf->Image('assets/logo/divisionlogo.png', 30, 10, 30, 30);  // Replace with th
 $pdf->Image('assets/logo/depedseal.png', 140, 10, 30, 30);  // Replace with the path to your right logo
 
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->SetLineSpacing(0);
+// Y-coordinate for the first line
+$y = $pdf->GetY();
 
+// Add each line with a specific Y-coordinate
+$pdf->SetY($y);
 $pdf->Cell(0, 10, 'Republic of the Philippines', 0, 1, 'C');
+
+// Adjust the Y-coordinate for the next line
+$y = $pdf->GetY();
+$pdf->SetY($y - 5); // You can adjust the value (-5) to control line spacing
 $pdf->Cell(0, 10, 'Region XI', 0, 1, 'C');
+
+// Adjust the Y-coordinate for the next line
+$y = $pdf->GetY();
+$pdf->SetY($y - 5);
 $pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
 
 // Execute your database query and fetch data
