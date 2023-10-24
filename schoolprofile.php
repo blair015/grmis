@@ -614,6 +614,53 @@ $selectedSchoolId2 = $_GET['school_id'];
                     <!-- /.info-box -->
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Arm Chairs</span>
+                            <span class="info-box-number"><strong><?php echo $arms_and_chairs; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Make Shift</span>
+                            <span class="info-box-number"><strong><?php echo $makeshift; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Tables and Chairs</span>
+                            <span class="info-box-number"><strong><?php echo $tables_and_chairs; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Number of Functional Clinic</span>
+                            <span class="info-box-number"><strong><?php echo $functional_clinic; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                
+         </div>
 <?php
 } else {
     echo 'No data found for the selected school.';
