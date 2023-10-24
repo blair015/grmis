@@ -529,6 +529,39 @@ if (isset($_GET['school_id'])) {
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
 
+ <!-- Add a button to trigger the PDF generation -->
+ <button id="generate-pdf-button" class="btn btn-primary">
+        <i class="fas fa-download"></i> Generate PDF Report
+    </button>
+
+    <!-- JavaScript to handle the button click -->
+    <script>
+        document.getElementById("generate-pdf-button").addEventListener("click", function () {
+            // Use AJAX to trigger the PDF generation
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>", true);
+            xhr.responseType = "blob"; // Set response type to binary data
+            xhr.send();
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Create a download link for the PDF
+                    var blob = new Blob([xhr.response], { type: "application/pdf" });
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement("a");
+                    a.href = url;
+                    a.download = "report.pdf";
+                    a.style.display = "none";
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    alert("Failed to generate PDF report.");
+                }
+            };
+        });
+    </script>
+
 <?php
 require('fpdf/fpdf.php');
 include 'admin/config/dbcon.php';
