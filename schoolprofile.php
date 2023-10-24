@@ -557,15 +557,15 @@ $selectedSchoolId2 = $_GET['school_id'];
         
         if ($stmt->fetch()) {
             // Display the fetched data in your HTML
-            echo '<h3>Physical Facilities</h3>';
-            echo '<p>Academic Classrooms: ' . $academic_classroom . '</p>';
-            echo '<p>Non-Academic Classrooms: ' . $non_academic_classroom . '</p>';
-            echo '<p>Needing Repair: ' . $needing_repair . '</p>';
-            echo '<p>TLS (Teacher Learning Materials): ' . $tls . '</p>';
-            echo '<p>Makeshift Facilities: ' . $makeshift . '</p>';
-            echo '<p>Arms and Chairs: ' . $arms_and_chairs . '</p>';
-            echo '<p>Tables and Chairs: ' . $tables_and_chairs . '</p>';
-            echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
+           // echo '<h3>Physical Facilities</h3>';
+            //echo '<p>Academic Classrooms: ' . $academic_classroom . '</p>';
+            //echo '<p>Non-Academic Classrooms: ' . $non_academic_classroom . '</p>';
+            //echo '<p>Needing Repair: ' . $needing_repair . '</p>';
+            //echo '<p>TLS (Teacher Learning Materials): ' . $tls . '</p>';
+            //echo '<p>Makeshift Facilities: ' . $makeshift . '</p>';
+            //echo '<p>Arms and Chairs: ' . $arms_and_chairs . '</p>';
+            //echo '<p>Tables and Chairs: ' . $tables_and_chairs . '</p>';
+            //echo '<p>Functional Clinic: ' . $functional_clinic . '</p>';
         
     ?>
             <div class="row">
@@ -615,6 +615,17 @@ $selectedSchoolId2 = $_GET['school_id'];
                 </div>
             </div>
             <div class="row">
+            <div class="col-md-3 col-sm-6 col-6">
+                    <div class="info-box">
+                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Make Shift</span>
+                            <span class="info-box-number"><strong><?php echo $makeshift; ?></strong></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
                 <div class="col-md-3 col-sm-6 col-6">
                     <div class="info-box">
                       <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
@@ -626,17 +637,7 @@ $selectedSchoolId2 = $_GET['school_id'];
                     </div>
                     <!-- /.info-box -->
                 </div>
-                <div class="col-md-3 col-sm-6 col-6">
-                    <div class="info-box">
-                      <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text">Make Shift</span>
-                            <span class="info-box-number"><strong><?php echo $makeshift; ?></strong></span>
-                        </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
+                
                 <div class="col-md-3 col-sm-6 col-6">
                     <div class="info-box">
                       <span class="info-box-icon bg-info"><i class="fas fa-school"></i></span>
