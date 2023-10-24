@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="update_pf.php" method="POST" enctype="multipart/form-data">
+            <form action="code.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="card-body p-9">
                         <div class="row mb-4">
