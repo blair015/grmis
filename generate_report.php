@@ -73,20 +73,20 @@ $pdf->SetY(-30);  // Position at 30mm from the bottom of the page
 
 // Left side (Prepared by)
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(90, 10, 'Prepared by:', 0, 0, 'L');
+$pdf->Cell(70, 10, 'Prepared by:', 0, 0, 'L');
 
 // Next 3 lines for the name of the principal
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 10, 'Name of the Principal - Blair Brian A. Torres', 0, 1, 'L');
+$pdf->Cell(0, 10, 'Blair Brian A. Torres', 0, 1, 'L');
 
 // Right side (Checked by)
 $pdf->SetX(100);  // Move to the right side
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(90, 10, 'Checked by:', 0, 0, 'L');
+$pdf->Cell(70, 10, 'Checked by:', 0, 0, 'L');
 
 // Next 3 lines for the name of the checker
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 10, 'Name of the Checker - Rannie Taborada', 0, 1, 'L');
+$pdf->Cell(0, 10, 'Rannie Taborada', 0, 1, 'L');
 
 // Set headers to force download
 header('Content-Type: application/pdf');
