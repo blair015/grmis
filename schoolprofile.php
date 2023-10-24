@@ -207,7 +207,7 @@ $(document).ready(function () {
                                         <b>Category:</b> <a class="float-right"><?php echo $category; ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>SBM Level:</b> <a class="float-right"><?php echo $category; ?></a>
+                                        <b>SBM Level:</b> <a class="float-right"><?php echo $sbm; ?></a>
                                     </li>
                                 </ul>
 
