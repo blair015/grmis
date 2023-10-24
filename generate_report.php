@@ -69,7 +69,7 @@ $pdf->Cell(0, 10, 'of '.$school_name, 0, 1, 'C');
         $pdf->Cell(0, 10, 'Functional Clinic: ' . $functional_clinic, 0, 1);
 
        // Add a section for signatories in the footer
-if ($pdf->GetY() + 30 > $pdf->GetPageHeight()) {
+if ($pdf->GetY() + 10 > $pdf->GetPageHeight()) {
     $pdf->AddPage(); // Move to a new page if the footer doesn't fit on the current page
 }
 
