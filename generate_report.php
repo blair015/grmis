@@ -25,7 +25,7 @@ $pdf->SetFont('Arial', 'B', 14);
 
 
 // Add custom headers at the top
-$pdf->Image('assets/logo/divisionlogo.png', 30, 10, 25, 25);  // Replace with the path to your left logo
+$pdf->Image('assets/logo/divisionlogo.png', 35, 10, 28, 28);  // Replace with the path to your left logo
 $pdf->Image('assets/logo/depedseal.png', 150, 10, 30, 30);  // Replace with the path to your right logo
 
 $pdf->SetFont('Arial', 'B', 12);
