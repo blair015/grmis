@@ -1,6 +1,6 @@
 <!-- Modal for editing -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i> <!-- School icon -->
