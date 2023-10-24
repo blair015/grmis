@@ -3,13 +3,13 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i> <!-- School icon -->
+                <i class="fas fa-school" style="color: blue; margin-right: 10px;"></i>
                 <h5 class="modal-title">Edit Physical Facilities</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="code.php" method="POST" enctype="multipart/form-data">
+            <form action="update_pf.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="card-body p-9">
                         <div class="row mb-4">
@@ -22,7 +22,6 @@
                                 <input class="form-control form-control-solid" type="text" name="non_academic_classroom" id="non_academic_classroom">
                             </div>
                         </div>
-
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="fw-bold text-muted"><h5>Needing Repair</h5></label>
@@ -40,7 +39,7 @@
                                 <input class="form-control form-control-solid" type="text" name="make_shift" id="makeshift">
                             </div>
                             <div class="col-md-6">
-                                <label class="fw-bold text-muted"><h5>Arms Chairs:</h5></label>
+                                <label class="fw-bold text-muted"><h5>Arm Chairs:</h5></label>
                                 <input class="form-control form-control-solid" type="text" name="arm_chairs" id="arm_chairs">
                             </div>
                         </div>
@@ -64,3 +63,6 @@
         </div>
     </div>
 </div>
+
+<?php
+

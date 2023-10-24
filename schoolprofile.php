@@ -543,7 +543,7 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 ?>
 <div class="tab-pane" id="pf">
-    <form action="addpf" method="post" target="_blank">
+    <form action="addpf.php" method="post" target="_blank">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">
         <i class="fas fa-edit"></i> Edit
     </button>
