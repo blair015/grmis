@@ -44,9 +44,11 @@ $pdf->Cell(0, 10, 'Region XI', 0, 1, 'C');
 // Adjust the Y-coordinate for the next line
 $y = $pdf->GetY();
 $pdf->SetY($y - 5);
-$pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 1, 'C');
+$pdf->Cell(0, 10, 'Schools Division of Davao del Sur', 0, 2, 'C');
 
 $pdf->Cell(0, 10, 'Physical Facilities Report', 0, 1, 'C');
+$y = $pdf->GetY();
+$pdf->SetY($y - 5);
 $pdf->Cell(0, 10, 'of '.$school_name, 0, 1, 'C');
 
 // Execute your database query and fetch data
