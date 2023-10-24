@@ -1,10 +1,6 @@
 <?php
 session_start(); // Start the session
 
-include "admin/config/dbcon.php";
-
-$_SESSION['school_id'] = $school_id;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
     $academic_classroom = $_POST['academic_classroom'];
@@ -15,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $amr_chairs = $_POST['arm_chairs'];
     $tables_and_chairs = $_POST['tables_and_chairs'];
     $functional_clinic = $_POST['functional_clinic'];
-    
-    // Add other form fields as needed
 
     // School identifier (e.g., school_id) should be passed or retrieved from a session
     if (isset($_SESSION['school_id'])) {
