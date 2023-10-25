@@ -119,35 +119,35 @@ $(document).ready(function () {
     }
 });
 
-<script>
-$(document).ready(function () {
-    // Get the values of user_school_id, school_id, and user_role from PHP
-    var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
-    var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
-    var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
+// <script>
+// $(document).ready(function () {
+//     // Get the values of user_school_id, school_id, and user_role from PHP
+//     var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
+//     var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
+//     var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
 
-    // Check if the school_id is equal to user_school_id
-    // and if the user_role is one of the specified roles
-    if (schoolId === userSchoolId &&
-        (userRole === 'Planning' ||
-         userRole === 'SDS' ||
-         userRole === 'Admin')) {
-        // Show the "Edit Profile" icon
-        $("#editProfileIcon").show();
-        // Show the "Edit" button
-        $("#editButton").show();
-        // Show the "Download Report" button
-        $("#downloadButton").show();
-    } else {
-        // Hide the "Edit Profile" icon
-        $("#editProfileIcon").hide();
-        // Hide the "Edit" button
-        $("#editButton").hide();
-        // Hide the "Download Report" button
-        $("#downloadButton").hide();
-    }
-});
-</script>
+//     // Check if the school_id is equal to user_school_id
+//     // and if the user_role is one of the specified roles
+//     if (schoolId === userSchoolId &&
+//         (userRole === 'Planning' ||
+//          userRole === 'SDS' ||
+//          userRole === 'Admin')) {
+//         // Show the "Edit Profile" icon
+//         $("#editProfileIcon").show();
+//         // Show the "Edit" button
+//         $("#editButton").show();
+//         // Show the "Download Report" button
+//         $("#downloadButton").show();
+//     } else {
+//         // Hide the "Edit Profile" icon
+//         $("#editProfileIcon").hide();
+//         // Hide the "Edit" button
+//         $("#editButton").hide();
+//         // Hide the "Download Report" button
+//         $("#downloadButton").hide();
+//     }
+// });
+//
 </script>
 
         </div>
