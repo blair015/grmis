@@ -1,13 +1,16 @@
-
-<?php                                    
+<?php
 session_start(); // Start the session
 include 'admin/config/dbcon.php';
 
+// Check if the form was submitted via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if school identifier exists in the session
+    // Check if the school identifier exists in the session
     if (isset($_SESSION['school_id'])) {
         $schoolId = $_SESSION['school_id'];
-
+        
+        // Define the user_school_id if available
+        $user_school_id = isset($_SESSION['user_school_id']) ? $_SESSION['user_school_id'] : '';
+        
         // Retrieve form data
         $academic_classroom = $_POST['academic_classroom'];
         $non_academic_classroom = $_POST['non_academic_classroom'];
@@ -37,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Error updating data: " . $stmt->error;
             }
             
-
             $stmt->close();
         } else {
             // Error in preparing the SQL statement
