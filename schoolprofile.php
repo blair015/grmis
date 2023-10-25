@@ -99,6 +99,26 @@ mysqli_close($conn);
                     <i class="fas fa-edit"></i> Edit Profile 
                 </span>
                 <script>
+$(document).ready(function () {
+    // Get the values of user_school_id, school_id, and user_role from PHP
+    var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
+    var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
+    var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
+
+    // Check if the school_id is equal to user_school_id
+    // and if the user_role is one of the specified roles
+    if (schoolId === userSchoolId &&
+        (userRole === 'Planning' ||
+         userRole === 'SDS' ||
+         userRole === 'Admin')) {
+        // Show the "Edit Profile" icon
+        $("#editProfileIcon").show();
+    } else {
+        // Hide the "Edit Profile" icon
+        $("#editProfileIcon").hide();
+    }
+});
+
 <script>
 $(document).ready(function () {
     // Get the values of user_school_id, school_id, and user_role from PHP
@@ -127,6 +147,7 @@ $(document).ready(function () {
         $("#downloadButton").hide();
     }
 });
+</script>
 </script>
 
         </div>
@@ -548,15 +569,15 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">
-        <i class="fas fa-edit"></i> Edit
-    </button>
+    <button type="button" class="btn btn-success" id="editButton" data-toggle="modal" data-target="#editModal">
+    <i class="fas fa-edit"></i> Edit
+</button>
 
-    <form action="generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>" method="post" target="_blank">
-        <button type="submit" class="download-button">
-            <i class="fas fa-file-download"></i> Download Report
-        </button>
-    </form>
+<form action="generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>" method="post" target="_blank">
+    <button type="submit" class="download-button" id="downloadButton">
+        <i class="fas fa-file-download"></i> Download Report
+    </button>
+</form>
 <?php
     include 'admin/config/dbcon.php';
 
