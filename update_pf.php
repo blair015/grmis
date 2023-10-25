@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $schoolId = $_SESSION['school_id'];
         
         // Define the user_school_id if available
-        $user_school_id = isset($_SESSION['user_school_id']) ? $_SESSION['user_school_id'] : '';
+        $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
         
         // Retrieve form data
         $academic_classroom = $_POST['academic_classroom'];
