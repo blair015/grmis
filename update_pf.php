@@ -1,22 +1,20 @@
 <?php
 session_start(); // Start the session
 
-$schoolId = $schoolId;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
-    $academic_classroom = $_POST['academic_classroom'];
-    $non_academic_classroom = $_POST['non_academic_classroom'];
-    $needing_repair = $_POST['needing_repair'];
-    $tls = $_POST['tls'];
-    $make_shift = $_POST['make_shift'];
-    $amr_chairs = $_POST['arm_chairs'];
-    $tables_and_chairs = $_POST['tables_and_chairs'];
-    $functional_clinic = $_POST['functional_clinic'];
-
-    // School identifier (e.g., school_id) should be passed or retrieved from a session
+    // Check if school identifier exists in the session
     if (isset($_SESSION['school_id'])) {
         $schoolId = $_SESSION['school_id'];
+
+        // Retrieve form data
+        $academic_classroom = $_POST['academic_classroom'];
+        $non_academic_classroom = $_POST['non_academic_classroom'];
+        $needing_repair = $_POST['needing_repair'];
+        $tls = $_POST['tls'];
+        $make_shift = $_POST['make_shift'];
+        $arm_chairs = $_POST['arm_chairs'];
+        $tables_and_chairs = $_POST['tables_and_chairs'];
+        $functional_clinic = $_POST['functional_clinic'];
 
         // Update query to update the corresponding columns in school_profile
         $sql = "UPDATE school_profile
@@ -24,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 WHERE school_id = ?";
 
         if ($stmt = $conn->prepare($sql)) {
-            $stmt->bind_param("ssssssssi", $academic_classroom, $non_academic_classroom, $needing_repair, $tls, $make_shift, $amr_chairs, $tables_and_chairs, $functional_clinic, $schoolId);
+            $stmt->bind_param("ssssssssi", $academic_classroom, $non_academic_classroom, $needing_repair, $tls, $make_shift, $arm_chairs, $tables_and_chairs, $functional_clinic, $schoolId);
 
             if ($stmt->execute()) {
                 // Data updated successfully

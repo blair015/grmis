@@ -10,12 +10,16 @@
                 </button>
             </div>
             <?php
-            session_start(); // Start the session
-                $school_id = $_GET['school_id'];
+                    session_start(); // Start the session
 
-                echo $school_id;
+                    if (isset($_GET['school_id'])) {
+                        $_SESSION['school_id'] = $_GET['school_id'];
+                    } else {
+                        echo "School identifier is missing.";
+                        exit;
+                    }
+                    ?>
 
-            ?>
             <form action="update_pf.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="card-body p-9">
