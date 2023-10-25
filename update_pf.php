@@ -1,8 +1,5 @@
 <?php
-
 session_start(); // Start the session
-include 'admin/config/dbcon.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if school identifier exists in the session
@@ -29,11 +26,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($stmt->execute()) {
                 // Data updated successfully
-                echo "Data updated successfully!";
+                echo '<script type="text/javascript">';
+                echo 'alert("Data updated successfully! Please go back to the school profile.");';
+                echo 'setTimeout(function(){ window.location = "schoolprofile.php"; }, 1000);'; // Redirect after 1 second
+                echo '</script>';
             } else {
                 // Error handling (e.g., database error)
                 echo "Error updating data: " . $stmt->error;
             }
+            
 
             $stmt->close();
         } else {
