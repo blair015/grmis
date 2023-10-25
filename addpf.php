@@ -9,6 +9,13 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <?php
+
+                $school_id = $_GET['school_id'];
+
+                echo $school_id;
+
+            ?>
             <form action="code.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="card-body p-9">
