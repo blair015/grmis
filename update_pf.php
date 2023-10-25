@@ -1,7 +1,7 @@
 <?php
 session_start(); // Start the session
 
-$schoolId = $_GET['school_id'];
+$schoolId = $schoolId;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve form data
