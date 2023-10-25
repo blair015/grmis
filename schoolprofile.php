@@ -532,7 +532,6 @@ if (isset($_GET['school_id'])) {
 </div>
                 <!-- ------------------PHYSICAL FACILITIES TAB---------------- -->
 <div class="tab-pane" id="pf">
-<div class="tab-pane" id="pf">
 <?php
 
 
@@ -542,13 +541,11 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
-<div class="tab-pane" id="pf">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">
         <i class="fas fa-edit"></i> Edit
     </button>
 </div>
 
-<div class="tab-pane" id="pf">
     <form action="generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>" method="post" target="_blank">
         <button type="submit" class="download-button">
             <i class="fas fa-file-download"></i> Download Report
