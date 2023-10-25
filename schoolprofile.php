@@ -99,6 +99,7 @@ mysqli_close($conn);
                     <i class="fas fa-edit"></i> Edit Profile 
                 </span>
                 <script>
+<script>
 $(document).ready(function () {
     // Get the values of user_school_id, school_id, and user_role from PHP
     var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
@@ -113,13 +114,19 @@ $(document).ready(function () {
          userRole === 'Admin')) {
         // Show the "Edit Profile" icon
         $("#editProfileIcon").show();
+        // Show the "Edit" button
+        $("#editButton").show();
+        // Show the "Download Report" button
+        $("#downloadButton").show();
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
+        // Hide the "Edit" button
+        $("#editButton").hide();
+        // Hide the "Download Report" button
+        $("#downloadButton").hide();
     }
 });
-
-
 </script>
 
         </div>
