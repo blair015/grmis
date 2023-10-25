@@ -113,6 +113,7 @@ $(document).ready(function () {
          userRole === 'Admin')) {
         // Show the "Edit Profile" icon
         $("#editProfileIcon").show();
+        $("#editButton1").show();
         // Show the "Edit" button
          $("#editButton").show();
          // Show the "Download Report" button
@@ -120,6 +121,7 @@ $(document).ready(function () {
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
+        $("#editButton1").show();
         // Hide the "Edit" button
            $("#editButton").hide();
        // Hide the "Download Report" button
@@ -127,35 +129,7 @@ $(document).ready(function () {
     }
 });
 
-// <script>
-// $(document).ready(function () {
-//     // Get the values of user_school_id, school_id, and user_role from PHP
-//     var userSchoolId = <?php echo json_encode($_GET['user_school_id']); ?>;
-//     var schoolId = <?php echo json_encode($_GET['school_id']); ?>;
-//     var userRole = <?php echo json_encode($_SESSION['user_role']); ?>;
 
-//     // Check if the school_id is equal to user_school_id
-//     // and if the user_role is one of the specified roles
-//     if (schoolId === userSchoolId &&
-//         (userRole === 'Planning' ||
-//          userRole === 'SDS' ||
-//          userRole === 'Admin')) {
-//         // Show the "Edit Profile" icon
-//         $("#editProfileIcon").show();
-//         // Show the "Edit" button
-//         $("#editButton").show();
-//         // Show the "Download Report" button
-//         $("#downloadButton").show();
-//     } else {
-//         // Hide the "Edit Profile" icon
-//         $("#editProfileIcon").hide();
-//         // Hide the "Edit" button
-//         $("#editButton").hide();
-//         // Hide the "Download Report" button
-//         $("#downloadButton").hide();
-//     }
-// });
-//
 </script>
 
         </div>
@@ -347,7 +321,7 @@ if (isset($_GET['school_id'])) {
         </div>
 
         <!-- Edit button that triggers the modal -->
-        <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
+        <button id="editButton1" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
             <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
         </button>
     </div>
