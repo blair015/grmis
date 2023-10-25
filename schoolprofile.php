@@ -121,7 +121,7 @@ $(document).ready(function () {
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
-        $("#editButton").show();
+        $("#editButton").hide();
         // Hide the "Edit" button
            $("#Buttonedit").hide();
        // Hide the "Download Report" button
