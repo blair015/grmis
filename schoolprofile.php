@@ -113,9 +113,17 @@ $(document).ready(function () {
          userRole === 'Admin')) {
         // Show the "Edit Profile" icon
         $("#editProfileIcon").show();
+        // Show the "Edit" button
+         $("#editButton").show();
+         // Show the "Download Report" button
+         $("#downloadButton").show();
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
+        // Hide the "Edit" button
+           $("#editButton").hide();
+       // Hide the "Download Report" button
+        $("#downloadButton").hide()
     }
 });
 
