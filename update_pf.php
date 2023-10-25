@@ -1,5 +1,6 @@
 <?php
 session_start(); // Start the session
+include 'admin/config/dbcon.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if school identifier exists in the session
