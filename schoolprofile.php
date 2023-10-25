@@ -113,17 +113,17 @@ $(document).ready(function () {
          userRole === 'Admin')) {
         // Show the "Edit Profile" icon
         $("#editProfileIcon").show();
-        $("#editButton1").show();
+        $("#editButton").show();
         // Show the "Edit" button
-         $("#editButton").show();
+         $("#Buttonedit").show();
          // Show the "Download Report" button
          $("#downloadButton").show();
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
-        $("#editButton1").show();
+        $("#editButton").show();
         // Hide the "Edit" button
-           $("#editButton").hide();
+           $("#Buttonedit").hide();
        // Hide the "Download Report" button
         $("#downloadButton").hide()
     }
@@ -321,7 +321,7 @@ if (isset($_GET['school_id'])) {
         </div>
 
         <!-- Edit button that triggers the modal -->
-        <button id="editButton1" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
+        <button id="editButton" style="position: absolute; top: 0; right: 0;" data-toggle="modal" data-target="#aboutModal">
             <i class="fas fa-edit" style="margin-right: 5px;"></i>Edit
         </button>
     </div>
@@ -551,7 +551,7 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
-    <button type="button" class="btn btn-success" id="editButton" data-toggle="modal" data-target="#editModal">
+    <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Edit
 </button>
 
