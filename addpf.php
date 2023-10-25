@@ -10,7 +10,7 @@
                 </button>
             </div>
             <?php
-                    session_start(); // Start the session
+                    
 
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
