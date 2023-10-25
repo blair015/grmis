@@ -46,32 +46,28 @@ if ($stmt = $conn->prepare($sql)) {
         $pdf->Cell(0, 10, 'Tables and Chairs: ' . $tables_and_chairs, 0, 1);
         $pdf->Cell(0, 10, 'Functional Clinic: ' . $functional_clinic, 0, 1);
 
-        // Add a section for signatories at the bottom
-        $pdf->SetY(240); // Position at the bottom of the page
+       // Add a section for signatories in the footer
+$pdf->SetY(-30);  // Position at 30mm from the bottom of the page
 
-        // Left side (Prepared by)
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70, 10, 'Prepared by:', 0, 0, 'L');
+// Left side (Prepared by)
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(70, 10, 'Prepared by:', 0, 0, 'L');
 
-        // Name of the principal
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Blair Brian A. Torres', 0, 1, 'L');
+// Name of the principal
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'Blair Brian A. Torres', 0, 1, 'L');
 
-        // Right side (Checked by)
-        $pdf->SetX(100); // Move to the right side
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->Cell(70, 10, 'Checked by:', 0, 0, 'L');
+// Right side (Checked by)
+$pdf->SetX(100);  // Move to the right side
+$pdf->SetFont('Arial', 'B', 12);
+$pdf->Cell(70, 10, 'Checked by:', 0, 0, 'L');
 
-        // Name of the checker
-        $pdf->SetFont('Arial', '', 12);
-        $pdf->Cell(0, 10, 'Rannie Taborada', 0, 1, 'L');
+// Name of the checker
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'Rannie Taborada', 0, 1, 'L');
 
-        // Set headers to force download
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="report.pdf');
-
-        // Output the PDF to the browser
-        $pdf->Output();
+// Output the PDF to the browser
+$pdf->Output();
     } else {
         echo "No data found in the database.";
     }
