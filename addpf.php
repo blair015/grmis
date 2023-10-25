@@ -10,13 +10,13 @@
                 </button>
             </div>
             <?php
-
+            session_start(); // Start the session
                 $school_id = $_GET['school_id'];
 
                 echo $school_id;
 
             ?>
-            <form action="code.php" method="POST" enctype="multipart/form-data">
+            <form action="update_pf.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="card-body p-9">
                         <div class="row mb-4">
