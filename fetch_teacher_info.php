@@ -18,26 +18,28 @@
 
     .teacher-labels {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start; /* Align labels to the left */
     }
 
     .teacher-labels label {
-        text-align: center;
         margin: 5px;
     }
 
     .teacher-details {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .info-group {
         text-align: center;
         margin: 10px;
+    }
+
+    /* Center the input fields */
+    .info-group input {
+        text-align: center;
     }
 </style>
 
