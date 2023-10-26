@@ -23,23 +23,26 @@ if ($stmt = $conn->prepare($sql)) {
         $age = $dob->diff($currentDate)->y;
 
         // Format the teacher's information for display
-        $html = "<h5>Teacher Profile</h5>";
-        $html .= "<p>Name: " . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</p>";
-        $html .= "<p>Employee Number: " . $row['emp_no'] . "</p>";
-        $html .= "<p>Item Number: " . $row['item_no'] . "</p>";
-        $html .= "<p>Designation: " . $row['position_type'] . "</p>";
-        $html .= "<p>Position: " . $row['position_rank'] . "</p>";
-        $html .= "<p>Years in Service: " . $row['yrs_in_serv'] . "</p>";
-        $html .= "<p>Age: " . $age . " years</p>"; // Display the age
-        $html .= "<p>Birthday: " . $row['dob'] . "</p>";
-        $html .= "<p>Sex: " . $row['sex'] . "</p>";
-        $html .= "<p>Civil Status: " . $row['civilstatus'] . "</p>";
-        $html .= "<p>Mobile Number: " . $row['mobile'] . "</p>";
-        $html .= "<p>Email Address: " . $row['email'] . "</p>";
-
-        // Add more information here...
-
-        echo $html;
+        echo '
+        <div class="teacher-profile">
+            <div class="teacher-header">
+                <img src="teacher-avatar.jpg" alt="Teacher Avatar" class="teacher-avatar">
+                <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
+                <p>Employee Number: ' . $row['emp_no'] . '</p>
+                <p>Item Number: ' . $row['item_no'] . '</p>
+            </div>
+            <div class="teacher-details">
+                <p>Designation: ' . $row['position_type'] . '</p>
+                <p>Position: ' . $row['position_rank'] . '</p>
+                <p>Years in Service: ' . $row['yrs_in_serv'] . '</p>
+                <p>Age: ' . $age . ' years old</p>
+                <p>Birthday: ' . $row['dob'] . '</p>
+                <p>Sex: ' . $row['sex'] . '</p>
+                <p>Civil Status: ' . $row['civilstatus'] . '</p>
+                <p>Mobile Number: ' . $row['mobile'] . '</p>
+                <p>Email Address: ' . $row['email'] . '</p>
+            </div>
+        </div>';
     } else {
         echo "Teacher not found.";
     }
