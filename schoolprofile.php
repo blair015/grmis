@@ -439,7 +439,7 @@ if (isset($_GET['school_id'])) {
 
             $selectedSchoolId = $_GET['school_id'];
             
-            $sql = "SELECT pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image
+            $sql = "SELECT e.yrs_in_serv, e.position_type, e.item_no, pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image, pi.dob, pi.pob, pi.sex, pi.civilstatus, pi.mobile, pi.email
                     FROM employment_record AS e
                     INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
                     INNER JOIN profile_pic AS pp ON pi.emp_no = pp.emp_no
@@ -461,6 +461,15 @@ if (isset($_GET['school_id'])) {
             $fname = $row['firstname'];
             $emp_no = $row['emp_no'];
             $image = $row['image'];
+            $yrs_in_serv = $row['yrs_in_serv'];
+            $position_type = $row['position_type'];
+            $item_no = $row['item_no'];
+            $dob = $row['dob'];
+            $pob = $row ['pob'];
+            $sex = $row['sex'];
+            $civilstatus = $row['civilstatus'];
+            $mobile = $row['mobile'];
+            $email = $row['email'];
             $imageUrl = "../heroes/admin/$image";
     ?>
         <div class="col">
@@ -497,7 +506,7 @@ if (isset($_GET['school_id'])) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Teacher Profile</h5>
+               <strong> <h5 class="modal-title"><?php echo $fname." ".$lname; ?></h5></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
