@@ -1,3 +1,46 @@
+<style>
+    .teacher-profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teacher-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .teacher-header h3 {
+        text-align: center;
+    }
+
+    .teacher-labels {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .teacher-labels label {
+        text-align: center;
+        margin: 5px;
+    }
+
+    .teacher-details {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .info-group {
+        text-align: center;
+        margin: 10px;
+    }
+</style>
+
 <?php
 include 'admin/config/dbcon2.php';
 
@@ -26,6 +69,7 @@ if ($stmt = $conn->prepare($sql)) {
         echo '
         <div class="teacher-profile">
             <div class="teacher-header">
+                <img src="teacher-avatar.jpg" alt="Teacher Avatar" class="teacher-avatar">
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
                 <div class="teacher-labels">
                     <label for="emp_no">Employee Number</label>
