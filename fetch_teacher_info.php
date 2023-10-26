@@ -20,7 +20,15 @@ if ($stmt = $conn->prepare($sql)) {
         $html = "<h5>Teacher Profile</h5>";
         $html .= "<p>Name: " . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</p>";
         $html .= "<p>Employee Number: " . $row['emp_no'] . "</p>";
-
+        $html .= "<p>Item Number: " . $row['item_no'] . "</p>";
+        $html .= "<p>Designation: " . $row['position_type'] . "</p>";
+        $html .= "<p>Position: " . $row['position_rank'] . "</p>";
+        $html .= "<p>Years in Service: " . $row['yrs_in_serv'] . "</p>";
+        $html .= "<p>Birthday: " . $row['dob'] . "</p>";
+        $html .= "<p>Sex: " . $row['sex'] . "</p>";
+        $html .= "<p>Civil Status: " . $row['civilstatus'] . "</p>";
+        $html .= "<p>Mobile Number: " . $row['mobile'] . "</p>";
+        $html .= "<p>Email Address: " . $row['email'] . "</p>";
         
 
         // Add more information here...
