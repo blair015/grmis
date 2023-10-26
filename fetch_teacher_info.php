@@ -16,6 +16,12 @@ if ($stmt = $conn->prepare($sql)) {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+
+        // Calculate age from DOB and current date
+        $dob = new DateTime($row['dob']);
+        $currentDate = new DateTime();
+        $age = $dob->diff($currentDate)->y;
+
         // Format the teacher's information for display
         $html = "<h5>Teacher Profile</h5>";
         $html .= "<p>Name: " . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</p>";
@@ -24,12 +30,12 @@ if ($stmt = $conn->prepare($sql)) {
         $html .= "<p>Designation: " . $row['position_type'] . "</p>";
         $html .= "<p>Position: " . $row['position_rank'] . "</p>";
         $html .= "<p>Years in Service: " . $row['yrs_in_serv'] . "</p>";
+        $html .= "<p>Age: " . $age . " years</p>"; // Display the age
         $html .= "<p>Birthday: " . $row['dob'] . "</p>";
         $html .= "<p>Sex: " . $row['sex'] . "</p>";
         $html .= "<p>Civil Status: " . $row['civilstatus'] . "</p>";
         $html .= "<p>Mobile Number: " . $row['mobile'] . "</p>";
         $html .= "<p>Email Address: " . $row['email'] . "</p>";
-        
 
         // Add more information here...
 
