@@ -472,7 +472,7 @@ if (isset($_GET['school_id'])) {
                     <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
                 </div>
                 <div class="position-absolute bottom-0 end-0">
-                    <button class="btn btn-success">View</button>
+                <button class="btn btn-success view-profile">View</button>
                 </div>
             </div>
         </div>
@@ -492,6 +492,20 @@ if (isset($_GET['school_id'])) {
     echo "Error in preparing the SQL statement.";
 }
 ?>
+<!-- Teacher Profile Modal -->
+<div class="modal" id="teacherProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Teacher Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Content for the teacher profile goes here -->
+            </div>
+        </div>
+    </div>
+</div>
     </div>
   
                 <!-- ------------------KEY PERFORMANCE INDICATOR TAB---------------- -->
@@ -1156,3 +1170,21 @@ var barChart = new Chart(ctx, {
     }
 });
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const viewButtons = document.querySelectorAll(".view-profile");
+        const teacherProfileModal = new bootstrap.Modal(document.getElementById("teacherProfileModal"));
+
+        viewButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                // Handle button click, fetch and display teacher profile data
+                // You can fetch the teacher's profile data and populate the modal here
+
+                // Show the modal when the button is clicked
+                teacherProfileModal.show();
+            });
+        });
+    });
+</script>
+
