@@ -561,9 +561,9 @@ $selectedSchoolId2 = $_GET['school_id'];
 </button>
 <br></br>
 <form action="generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>" method="post" target="_blank">
-    <button type="submit" class="download-button" id="downloadButton">
-        <i class="fas fa-file-download"></i> Download Report
-    </button>
+<button type="submit" class="download-button" id="downloadButton" style="background-color: blue; color: white;">
+    <i class="fas fa-file-download"></i> Download Report
+</button>
 </form>
 <?php
     include 'admin/config/dbcon.php';
