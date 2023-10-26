@@ -1180,73 +1180,25 @@ var barChart = new Chart(ctx, {
 });
 </script>
 
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const viewButtons = document.querySelectorAll(".view-profile");
-        const teacherProfileModal = new bootstrap.Modal(document.getElementById("teacherProfileModal"));
-        const modalTitle = document.querySelector("#teacherProfileModal .modal-title");
-        const modalBody = document.querySelector("#teacherProfileModal .modal-body");
+    $(document).ready(function() {
+        // Handle the "View" button click event
+        $(".view-profile").click(function() {
+            // Get the teacher ID associated with the clicked button
+            var teacherId = $(this).data("teacher-id");
 
-        viewButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                const teacherId = button.getAttribute("data-teacher-id");
-
-                // Fetch teacher data based on the teacherId
-                fetchTeacherData(teacherId)
-                    .then((teacherData) => {
-                        // Set the modal title to the teacher's name
-                        modalTitle.textContent = teacherData.firstname + " " + teacherData.lastname;
-
-                        // Clear existing modal content
-                        modalBody.innerHTML = '';
-
-                        // Create labels and display data in the modal
-                        displayTeacherData(teacherData);
-                    });
-
-                // Show the modal when the button is clicked
-                teacherProfileModal.show();
+            // Make an AJAX request to fetch the teacher's information
+            $.ajax({
+                type: "GET",
+                url: "fetch_teacher_info.php", // Create this PHP file to fetch teacher info
+                data: { emp_no: teacherId },
+                success: function(data) {
+                    // Update the modal content with the fetched teacher information
+                    $(".modal-body").html(data);
+                    $("#teacherProfileModal").modal("show");
+                }
             });
         });
-
-        function fetchTeacherData(teacherId) {
-            // You should implement this function to fetch teacher data based on the teacherId
-            // and return it as an object.
-            // Example: Perform an AJAX request or use your preferred method to get the data.
-            // For testing purposes, you can manually create a sample teacherData object.
-            const sampleTeacherData = {
-                emp_no: "12345",
-                firstname: "John",
-                lastname: "Doe",
-                yrs_in_serv: "5",
-                position_type: "Teacher",
-                // Add more data fields here...
-            };
-            return Promise.resolve(sampleTeacherData);
-        }
-
-        function displayTeacherData(teacherData) {
-            // Populate the modal with the teacher's data here
-            // Use a loop or individual lines for each data field.
-            // Example:
-            const labelsAndData = [
-                { label: 'Employee Number', data: teacherData.emp_no },
-                { label: 'Years in Service', data: teacherData.yrs_in_serv },
-                // Add more fields here...
-            ];
-
-            labelsAndData.forEach(({ label, data }) => {
-                const labelElement = document.createElement('h6');
-                labelElement.textContent = label;
-                modalBody.appendChild(labelElement);
-
-                const dataElement = document.createElement('p');
-                dataElement.textContent = data;
-                modalBody.appendChild(dataElement);
-            });
-        }
     });
 </script>
-
-
-
