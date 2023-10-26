@@ -17,8 +17,9 @@ if ($stmt = $conn->prepare($sql)) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         // Format the teacher's information for display
-        $html = "<h5>Teacher Profile</h5>";
+        $html .= "<h5>" . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "Profile</h5>";
         $html .= "<p>Name: " . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . "</p>";
+
         // Add more information here...
 
         echo $html;
