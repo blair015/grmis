@@ -22,25 +22,25 @@ if ($stmt = $conn->prepare($sql)) {
         $currentDate = new DateTime();
         $age = $dob->diff($currentDate)->y;
 
-        // Format the teacher's information for display
+        // Display the teacher's information using input fields
         echo '
         <div class="teacher-profile">
             <div class="teacher-header">
                 <img src="teacher-avatar.jpg" alt="Teacher Avatar" class="teacher-avatar">
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
-                <p>Employee Number: ' . $row['emp_no'] . '</p>
-                <p>Item Number: ' . $row['item_no'] . '</p>
+                <input type="text" value="' . $row['emp_no'] . '" readonly>
+                <input type="text" value="' . $row['item_no'] . '" readonly>
             </div>
             <div class="teacher-details">
-                <p>Designation: ' . $row['position_type'] . '</p>
-                <p>Position: ' . $row['position_rank'] . '</p>
-                <p>Years in Service: ' . $row['yrs_in_serv'] . '</p>
-                <p>Age: ' . $age . ' years old</p>
-                <p>Birthday: ' . $row['dob'] . '</p>
-                <p>Sex: ' . $row['sex'] . '</p>
-                <p>Civil Status: ' . $row['civilstatus'] . '</p>
-                <p>Mobile Number: ' . $row['mobile'] . '</p>
-                <p>Email Address: ' . $row['email'] . '</p>
+                <input type="text" value="' . $row['position_type'] . '" readonly>
+                <input type="text" value="' . $row['position_rank'] . '" readonly>
+                <input type="text" value="' . $row['yrs_in_serv'] . '" readonly>
+                <input type="text" value="' . $age . ' years" readonly>
+                <input type="text" value="' . $row['dob'] . '" readonly>
+                <input type="text" value="' . $row['sex'] . '" readonly>
+                <input type="text" value="' . $row['civilstatus'] . '" readonly>
+                <input type="text" value="' . $row['mobile'] . '" readonly>
+                <input type="text" value="' . $row['email'] . '" readonly>
             </div>
         </div>';
     } else {
