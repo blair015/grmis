@@ -22,25 +22,38 @@ if ($stmt = $conn->prepare($sql)) {
         $currentDate = new DateTime();
         $age = $dob->diff($currentDate)->y;
 
-        // Display the teacher's information using input fields
+        // Display the teacher's information using input fields with labels
         echo '
         <div class="teacher-profile">
             <div class="teacher-header">
                 <img src="teacher-avatar.jpg" alt="Teacher Avatar" class="teacher-avatar">
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
-                <input type="text" value="' . $row['emp_no'] . '" readonly>
-                <input type="text" value="' . $row['item_no'] . '" readonly>
+                <div class="teacher-labels">
+                    <label for="emp_no">Employee Number</label>
+                    <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
+                    <label for="item_no">Item Number</label>
+                    <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
+                </div>
             </div>
             <div class="teacher-details">
-                <input type="text" value="' . $row['position_type'] . '" readonly>
-                <input type="text" value="' . $row['position_rank'] . '" readonly>
-                <input type="text" value="' . $row['yrs_in_serv'] . '" readonly>
-                <input type="text" value="' . $age . ' years" readonly>
-                <input type="text" value="' . $row['dob'] . '" readonly>
-                <input type="text" value="' . $row['sex'] . '" readonly>
-                <input type="text" value="' . $row['civilstatus'] . '" readonly>
-                <input type="text" value="' . $row['mobile'] . '" readonly>
-                <input type="text" value="' . $row['email'] . '" readonly>
+                <label for="position_type">Designation</label>
+                <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
+                <label for="position_rank">Position</label>
+                <input type="text" id="position_rank" value="' . $row['position_rank'] . '" readonly>
+                <label for="yrs_in_serv">Years in Service</label>
+                <input type="text" id="yrs_in_serv" value="' . $row['yrs_in_serv'] . '" readonly>
+                <label for="age">Age</label>
+                <input type="text" id="age" value="' . $age . ' years" readonly>
+                <label for="dob">Birthday</label>
+                <input type="text" id="dob" value="' . $row['dob'] . '" readonly>
+                <label for="sex">Sex</label>
+                <input type="text" id="sex" value="' . $row['sex'] . '" readonly>
+                <label for="civilstatus">Civil Status</label>
+                <input type="text" id="civilstatus" value="' . $row['civilstatus'] . '" readonly>
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" value="' . $row['mobile'] . '" readonly>
+                <label for="email">Email Address</label>
+                <input type="text" id="email" value="' . $row['email'] . '" readonly>
             </div>
         </div>';
     } else {
