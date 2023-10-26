@@ -453,31 +453,35 @@ if (isset($_GET['school_id'])) {
                 if ($result->num_rows > 0) {
                     ?>
 
-    <div class="container mt-4">
+<div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-4 g-4">
     <?php
-                while ($row = $result->fetch_assoc()) {
-                    
-                    
-                    $lname=$row['lastname'];
-                    $fname=$row['firstname'];
-                    $emp_no = $row['emp_no'];
-                    $image = $row['image'];
-                    //$imageFolder = $image;
-                   // $teacherId = $lname."_".$fname."_".$emp_no;
-                  //  $imageFileName = $teacherId . '.jpg';
-                    $imageUrl = "../heroes/admin/$image";
-                    ?>
-                    <div class="col">
-                    <div class="card border-primary shadow">
-                            <div class="card-body text-center">
-                                <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
-                                class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                        <b><h6 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h6></b>
-                        <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
+        while ($row = $result->fetch_assoc()) {
+            $lname = $row['lastname'];
+            $fname = $row['firstname'];
+            $emp_no = $row['emp_no'];
+            $image = $row['image'];
+            $imageUrl = "../heroes/admin/$image";
+    ?>
+        <div class="col">
+            <div class="card border-primary shadow position-relative">
+                <div class="card-body text-center">
+                    <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
+                         class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                    <b><h6 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h6></b>
+                    <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
+                </div>
+                <div class="position-absolute bottom-0 end-0">
+                    <button class="btn btn-success">View</button>
                 </div>
             </div>
         </div>
+    <?php
+        }
+    ?>
+    </div>
+</div>
+
         <?php
                 }
                 ?>
