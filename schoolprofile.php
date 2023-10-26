@@ -1189,8 +1189,8 @@ var barChart = new Chart(ctx, {
         viewButtons.forEach(function (button) {
             button.addEventListener("click", function () {
                 const teacherId = button.getAttribute("data-teacher-id");
-                // You can now fetch the teacher's data using the teacherId and populate the modal
-                // Example: Fetch teacher data via AJAX and populate modal with the retrieved data
+
+                // Fetch teacher data based on the teacherId
                 fetchTeacherData(teacherId)
                     .then((teacherData) => {
                         // Clear existing modal content
@@ -1209,6 +1209,14 @@ var barChart = new Chart(ctx, {
             // You should implement this function to fetch teacher data based on the teacherId
             // and return it as an object.
             // Example: Perform an AJAX request or use your preferred method to get the data.
+            // For testing purposes, you can manually create a sample teacherData object.
+            const sampleTeacherData = {
+                emp_no: "12345",
+                yrs_in_serv: "5",
+                position_type: "Teacher",
+                // Add more data fields here...
+            };
+            return Promise.resolve(sampleTeacherData);
         }
 
         function displayTeacherData(teacherData) {
@@ -1233,5 +1241,6 @@ var barChart = new Chart(ctx, {
         }
     });
 </script>
+
 
 
