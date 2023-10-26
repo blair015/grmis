@@ -313,6 +313,11 @@ if (isset($_GET['school_id'])) {
             text-indent: 1em;
         }
     </style>
+    <?php
+        include('admin/config/dbcon.php');
+
+
+    ?>
     <div style="position: relative;">
         <!-- Your content here -->
         <div class="history-content">
@@ -552,9 +557,9 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 ?>
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
-    <i class="fas fa-edit"></i> Edit
+    <i class="fas fa-edit"></i> Add / Edit
 </button>
-
+<br></br>
 <form action="generate_report.php?school_id=<?php echo $selectedSchoolId2; ?>" method="post" target="_blank">
     <button type="submit" class="download-button" id="downloadButton">
         <i class="fas fa-file-download"></i> Download Report
