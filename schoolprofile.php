@@ -506,7 +506,7 @@ if (isset($_GET['school_id'])) {
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-               <strong> <h5 class="modal-title"><?php echo $fname." ".$lname; ?></h5></strong>
+                <h5 class="modal-title"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -1184,6 +1184,7 @@ var barChart = new Chart(ctx, {
     document.addEventListener("DOMContentLoaded", function () {
         const viewButtons = document.querySelectorAll(".view-profile");
         const teacherProfileModal = new bootstrap.Modal(document.getElementById("teacherProfileModal"));
+        const modalTitle = document.querySelector("#teacherProfileModal .modal-title");
         const modalBody = document.querySelector("#teacherProfileModal .modal-body");
 
         viewButtons.forEach(function (button) {
@@ -1193,6 +1194,9 @@ var barChart = new Chart(ctx, {
                 // Fetch teacher data based on the teacherId
                 fetchTeacherData(teacherId)
                     .then((teacherData) => {
+                        // Set the modal title to the teacher's name
+                        modalTitle.textContent = teacherData.firstname + " " + teacherData.lastname;
+
                         // Clear existing modal content
                         modalBody.innerHTML = '';
 
@@ -1212,6 +1216,8 @@ var barChart = new Chart(ctx, {
             // For testing purposes, you can manually create a sample teacherData object.
             const sampleTeacherData = {
                 emp_no: "12345",
+                firstname: "John",
+                lastname: "Doe",
                 yrs_in_serv: "5",
                 position_type: "Teacher",
                 // Add more data fields here...
