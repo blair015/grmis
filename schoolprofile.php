@@ -505,7 +505,7 @@ if (isset($_GET['school_id'])) {
 <div class="modal" id="teacherProfileModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-header" style="background-color: green; color: white;">
             <i class="fas fa-user-circle fa-2x"></i>
                 <h5 class="modal-title"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
