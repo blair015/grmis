@@ -49,7 +49,7 @@ if ($stmt = $conn->prepare($sql)) {
                 </div>
                 <div class="info-group">
                     <label for="age">Age</label>
-                    <input type="text" id="age" value="' . $age . ' years" readonly>
+                    <input type="text" id="age" value="' . $age . ' years old" readonly>
                 </div>
                 <div class="info-group">
                     <label for="dob">Birthday</label>
