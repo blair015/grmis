@@ -411,7 +411,7 @@ if (isset($_GET['school_id'])) {
                 <div class="tab-pane" id="Teaching">
                 <div class="row g-2 mb-2">
                       <div class="col-md-6 fv-row">
-                      <div class="card card-success">
+                      <div class="card card-orange">
                           <div class="card-header">
                               <h3 class="card-title">Teacher Profile</h3>
                               <div class="card-tools">
@@ -434,7 +434,7 @@ if (isset($_GET['school_id'])) {
                   </div>
         
                     <div class="col-md-6 fv-row">
-                      <div class="card card-success">
+                      <div class="card card-orange">
                           <div class="card-header">
                               <h3 class="card-title">Non-Teaching Profile</h3>
                               <div class="card-tools">
@@ -545,7 +545,7 @@ if (isset($_GET['school_id'])) {
                 <div class="tab-pane" id="kpi">
                     <div class="row g-2 mb-2">
                         <div class="col-md-6 fv-row">
-                            <div class="card card-success">
+                            <div class="card card-orange">
                           <div class="card-header">
                               <h3 class="card-title">Enrollment Per Year By Sex</h3>
                               <div class="card-tools">
@@ -566,7 +566,7 @@ if (isset($_GET['school_id'])) {
                   </div>  
 
                   <div class="col-md-6 fv-row">
-                    <div class="card card-success">
+                    <div class="card card-orange">
                         <div class="card-header">
                             <h3 class="card-title">Students Enrollment by Year</h3>
                             <div class="card-tools">
