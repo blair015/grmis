@@ -71,7 +71,7 @@ if ($stmt = $conn->prepare($sql)) {
         echo '
         <div class="teacher-profile">
             <div class="teacher-header">
-                <img src="teacher-avatar.jpg" alt="Teacher Avatar" class="teacher-avatar">
+                
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
                 <div class="teacher-labels">
                     <label for="emp_no">Employee Number</label>
