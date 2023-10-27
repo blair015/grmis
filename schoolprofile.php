@@ -306,7 +306,7 @@ if (isset($_GET['school_id'])) {
         height: 100%;
     }
     /* Define a custom class for the active tab */
-.nav-pills .nav-link.active {
+.nav-pills .nav-link {
     background-color: #FFA500; /* Orange background color */
     color: #fff; /* Text color for the active tab */
 }
