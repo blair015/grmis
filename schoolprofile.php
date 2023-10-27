@@ -162,7 +162,7 @@ $(document).ready(function () {
         <div class="col-md-3">
 
           <!-- Profile Image -->
-          <div class="card card-primary">
+          <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">School Profile</h3>
             </div>
