@@ -6,14 +6,8 @@
     }
 
     .teacher-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .teacher-header h3 {
         text-align: center;
+        margin-bottom: 20px;
     }
 
     .teacher-labels {
@@ -24,24 +18,15 @@
 
     .teacher-labels label {
         margin: 5px;
+        font-weight: bold;
     }
 
     .teacher-details {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .info-group {
         text-align: left;
         margin: 10px;
     }
 
-    .info-group label {
-        font-weight: bold;
-    }
-
-    .info-group input {
+    .teacher-details input {
         width: 100%;
         padding: 5px;
         border: 1px solid #ccc;
@@ -78,18 +63,16 @@ if ($stmt = $conn->prepare($sql)) {
         <div class="teacher-profile">
             <div class="teacher-header">
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
-                <div class="teacher-labels">
-                    <div class="info-group">
-                        <label for="emp_no">Employee Number:</label>
-                        <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
-                    </div>
-                    <div class="info-group">
-                        <label for="item_no">Item Number:</label>
-                        <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
-                    </div>
-                </div>
             </div>
-            <div class="teacher-details">
+            <div class="teacher-labels">
+                <div class="info-group">
+                    <label for="emp_no">Employee Number:</label>
+                    <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
+                </div>
+                <div class="info-group">
+                    <label for="item_no">Item Number:</label>
+                    <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
+                </div>
                 <div class="info-group">
                     <label for="position_type">Designation:</label>
                     <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
