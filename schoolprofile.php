@@ -118,6 +118,7 @@ $(document).ready(function () {
          $("#Buttonedit").show();
          // Show the "Download Report" button
          $("#downloadButton").show();
+         $("#tpview").show();
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
@@ -126,6 +127,7 @@ $(document).ready(function () {
            $("#Buttonedit").hide();
        // Hide the "Download Report" button
         $("#downloadButton").hide()
+        $("#tpview").hide()
     }
 });
 
@@ -482,7 +484,7 @@ if (isset($_GET['school_id'])) {
                     <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
                 </div>
                 <div class="position-absolute bottom-0 end-0">
-                <button class="btn btn-success view-profile" data-teacher-id="<?php echo $emp_no; ?>">View</button>
+                <button class="btn btn-success view-profile" id="tpview" data-teacher-id="<?php echo $emp_no; ?>">View</button>
                 </div>
             </div>
         </div>
