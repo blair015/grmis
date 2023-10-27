@@ -66,58 +66,58 @@ if ($stmt = $conn->prepare($sql)) {
             </div>
             <div class="teacher-labels">
     <div class="info-group">
-        <i class="fas fa-id-card"></i>
-        <label for="emp_no">Employee Number:</label>
+        <i class="fas fa-id-card" style="color: #0074D9;"></i>
+        <label for="emp_no" style="color: #0074D9;">Employee Number:</label>
         <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-briefcase"></i>
-        <label for="item_no">Item Number:</label>
+        <i class="fas fa-briefcase" style="color: #FF851B;"></i>
+        <label for="item_no" style="color: #FF851B;">Item Number:</label>
         <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-user-tie"></i>
-        <label for="position_type">Designation:</label>
+        <i class="fas fa-user-tie" style="color: #2ECC40;"></i>
+        <label for="position_type" style="color: #2ECC40;">Designation:</label>
         <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-chalkboard-teacher"></i>
-        <label for="position_rank">Position:</label>
+        <i class="fas fa-chalkboard-teacher" style="color: #FF4136;"></i>
+        <label for="position_rank" style="color: #FF4136;">Position:</label>
         <input type="text" id="position_rank" value="' . $row['position_rank'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-clock"></i>
-        <label for="yrs_in_serv">Years in Service:</label>
+        <i class="fas fa-clock" style="color: #FFDC00;"></i>
+        <label for="yrs_in_serv" style="color: #FFDC00;">Years in Service:</label>
         <input type="text" id="yrs_in_serv" value="' . $row['yrs_in_serv'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-birthday-cake"></i>
-        <label for="age">Age:</label>
+        <i class="fas fa-birthday-cake" style="color: #85144B;"></i>
+        <label for="age" style="color: #85144B;">Age:</label>
         <input type="text" id="age" value="' . $age . ' years old" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-calendar-alt"></i>
-        <label for="dob">Birthday:</label>
+        <i class="fas fa-calendar-alt" style="color: #F012BE;"></i>
+        <label for="dob" style="color: #F012BE;">Birthday:</label>
         <input type="text" id="dob" value="' . $row['dob'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-venus-mars"></i>
-        <label for="sex">Sex:</label>
+        <i class="fas fa-venus-mars" style="color: #39CCCC;"></i>
+        <label for="sex" style="color: #39CCCC;">Sex:</label>
         <input type="text" id="sex" value="' . $row['sex'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-ring"></i>
-        <label for="civilstatus">Civil Status:</label>
+        <i class="fas fa-ring" style="color: #B10DC9;"></i>
+        <label for "civilstatus" style="color: #B10DC9;">Civil Status:</label>
         <input type="text" id="civilstatus" value="' . $row['civilstatus'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-mobile-alt"></i>
-        <label for="mobile">Mobile Number:</label>
+        <i class="fas fa-mobile-alt" style="color: #01FF70;"></i>
+        <label for="mobile" style="color: #01FF70;">Mobile Number:</label>
         <input type="text" id="mobile" value="' . $row['mobile'] . '" readonly>
     </div>
     <div class="info-group">
-        <i class="fas fa-envelope"></i>
-        <label for="email">Email Address:</label>
+        <i class="fas fa-envelope" style="color: #FF851B;"></i>
+        <label for="email" style="color: #FF851B;">Email Address:</label>
         <input type="text" id="email" value="' . $row['email'] . '" readonly>
     </div>
 </div>
