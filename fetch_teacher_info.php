@@ -37,7 +37,10 @@
         margin: 10px;
     }
 
-    /* Center the input fields */
+    .info-group label {
+        font-weight: bold;
+    }
+
     .info-group input {
         width: 100%;
         padding: 5px;
@@ -74,50 +77,53 @@ if ($stmt = $conn->prepare($sql)) {
         echo '
         <div class="teacher-profile">
             <div class="teacher-header">
-                
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
                 <div class="teacher-labels">
-                    <label for="emp_no">Employee Number</label>
-                    <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
-                    <label for="item_no">Item Number</label>
-                    <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
+                    <div class="info-group">
+                        <label for="emp_no">Employee Number:</label>
+                        <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
+                    </div>
+                    <div class="info-group">
+                        <label for="item_no">Item Number:</label>
+                        <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
+                    </div>
                 </div>
             </div>
             <div class="teacher-details">
                 <div class="info-group">
-                    <label for="position_type">Designation</label>
+                    <label for="position_type">Designation:</label>
                     <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="position_rank">Position</label>
+                    <label for="position_rank">Position:</label>
                     <input type="text" id="position_rank" value="' . $row['position_rank'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="yrs_in_serv">Years in Service</label>
+                    <label for="yrs_in_serv">Years in Service:</label>
                     <input type="text" id="yrs_in_serv" value="' . $row['yrs_in_serv'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="age">Age</label>
+                    <label for="age">Age:</label>
                     <input type="text" id="age" value="' . $age . ' years old" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="dob">Birthday</label>
+                    <label for="dob">Birthday:</label>
                     <input type="text" id="dob" value="' . $row['dob'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="sex">Sex</label>
+                    <label for="sex">Sex:</label>
                     <input type="text" id="sex" value="' . $row['sex'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="civilstatus">Civil Status</label>
+                    <label for="civilstatus">Civil Status:</label>
                     <input type="text" id="civilstatus" value="' . $row['civilstatus'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="mobile">Mobile Number</label>
+                    <label for="mobile">Mobile Number:</label>
                     <input type="text" id="mobile" value="' . $row['mobile'] . '" readonly>
                 </div>
                 <div class="info-group">
-                    <label for="email">Email Address</label>
+                    <label for="email">Email Address:</label>
                     <input type="text" id="email" value="' . $row['email'] . '" readonly>
                 </div>
             </div>
