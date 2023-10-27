@@ -1,4 +1,15 @@
 
+<style>
+
+body {
+    background-image: url('assets/images/Background.png'); /* Replace with your image file path */
+    background-size: cover; /* Adjust as needed */
+    background-repeat: no-repeat;
+}
+
+
+</style>
+
 <?php
 session_start();
 
