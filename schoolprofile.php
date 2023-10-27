@@ -270,7 +270,7 @@ if (isset($_GET['school_id'])) {
 }
 ?>
 
-<div class="card card-primary">
+<div class="card card-orange">
     <div class="card-header">
         <h3 class="card-title">Our Location</h3>
     </div>
