@@ -51,7 +51,6 @@ if ($stmt = $conn->prepare($sql)) {
 $pdf->Cell(0, 10, '', 0, 1);
 
 // Add a section for signatories in the footer
-$pdf->SetY(-30);  // Position at 30mm from the bottom of the page
 
 // Left side (Prepared by)
 $pdf->SetFont('Arial', 'B', 12);
