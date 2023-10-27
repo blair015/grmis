@@ -476,7 +476,7 @@ if (isset($_GET['school_id'])) {
             $imageUrl = "../heroes/admin/$image";
     ?>
                 <div class="col">
-            <div class="card border-primary shadow position-relative">
+                <div class="card border-primary shadow position-relative" style="background-color: #f5f5f5; border: 1px solid #ccc;">
                 <div class="card-body text-center">
                     <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
                     <b><h6 class="my-1"><?php echo $row['lastname'] . ', ' . $row['firstname']; ?></h6></b>
