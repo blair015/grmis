@@ -160,9 +160,18 @@ $(document).ready(function () {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
+        <style>
+    .text-orange {
+        color: #ffA500; /* Replace with your desired shade of orange */
+    }
+    
+    .bg-orange {
+        background-color: #ffA500; /* Replace with your desired shade of orange */
+    }
+</style>
 
           <!-- Profile Image -->
-          <div class="card card-success">
+          <div class="card bg-orange">
             <div class="card-header">
               <h3 class="card-title">School Profile</h3>
             </div>
