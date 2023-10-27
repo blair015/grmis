@@ -65,51 +65,63 @@ if ($stmt = $conn->prepare($sql)) {
                 <h3>' . $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'] . '</h3>
             </div>
             <div class="teacher-labels">
-                <div class="info-group">
-                    <label for="emp_no">Employee Number:</label>
-                    <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="item_no">Item Number:</label>
-                    <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="position_type">Designation:</label>
-                    <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="position_rank">Position:</label>
-                    <input type="text" id="position_rank" value="' . $row['position_rank'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="yrs_in_serv">Years in Service:</label>
-                    <input type="text" id="yrs_in_serv" value="' . $row['yrs_in_serv'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="age">Age:</label>
-                    <input type="text" id="age" value="' . $age . ' years old" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="dob">Birthday:</label>
-                    <input type="text" id="dob" value="' . $row['dob'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="sex">Sex:</label>
-                    <input type="text" id="sex" value="' . $row['sex'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="civilstatus">Civil Status:</label>
-                    <input type="text" id="civilstatus" value="' . $row['civilstatus'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="mobile">Mobile Number:</label>
-                    <input type="text" id="mobile" value="' . $row['mobile'] . '" readonly>
-                </div>
-                <div class="info-group">
-                    <label for="email">Email Address:</label>
-                    <input type="text" id="email" value="' . $row['email'] . '" readonly>
-                </div>
-            </div>
+    <div class="info-group">
+        <i class="fas fa-id-card"></i>
+        <label for="emp_no">Employee Number:</label>
+        <input type="text" id="emp_no" value="' . $row['emp_no'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-briefcase"></i>
+        <label for="item_no">Item Number:</label>
+        <input type="text" id="item_no" value="' . $row['item_no'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-user-tie"></i>
+        <label for="position_type">Designation:</label>
+        <input type="text" id="position_type" value="' . $row['position_type'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <label for="position_rank">Position:</label>
+        <input type="text" id="position_rank" value="' . $row['position_rank'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-clock"></i>
+        <label for="yrs_in_serv">Years in Service:</label>
+        <input type="text" id="yrs_in_serv" value="' . $row['yrs_in_serv'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-birthday-cake"></i>
+        <label for="age">Age:</label>
+        <input type="text" id="age" value="' . $age . ' years old" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-calendar-alt"></i>
+        <label for="dob">Birthday:</label>
+        <input type="text" id="dob" value="' . $row['dob'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-venus-mars"></i>
+        <label for="sex">Sex:</label>
+        <input type="text" id="sex" value="' . $row['sex'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-ring"></i>
+        <label for="civilstatus">Civil Status:</label>
+        <input type="text" id="civilstatus" value="' . $row['civilstatus'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-mobile-alt"></i>
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" value="' . $row['mobile'] . '" readonly>
+    </div>
+    <div class="info-group">
+        <i class="fas fa-envelope"></i>
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" value="' . $row['email'] . '" readonly>
+    </div>
+</div>
+
         </div>';
     } else {
         echo "Teacher not found.";
