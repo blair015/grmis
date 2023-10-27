@@ -33,13 +33,16 @@
     }
 
     .info-group {
-        text-align: center;
+        text-align: left;
         margin: 10px;
     }
 
     /* Center the input fields */
     .info-group input {
-        text-align: center;
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
     }
 </style>
 
