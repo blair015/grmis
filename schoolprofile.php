@@ -475,19 +475,19 @@ if (isset($_GET['school_id'])) {
             $email = $row['email'];
             $imageUrl = "../heroes/admin/$image";
     ?>
-        <div class="col">
+                <div class="col">
             <div class="card border-primary shadow position-relative">
                 <div class="card-body text-center">
-                    <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
-                         class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                    <b><h6 class="my-3"><?php echo $row['lastname'] . ', ' . $row['firstname']; ?></h6></b>
-                    <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
+                    <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture" class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
+                    <b><h6 class="my-2"><?php echo $row['lastname'] . ', ' . $row['firstname']; ?></h6></b>
+                    <p class="text-muted mb-2"><?php echo $row['position_rank']; ?></p>
                 </div>
                 <div class="position-absolute bottom-0 end-0">
-                <button class="btn btn-success view-profile view-profile-button" data-teacher-id="<?php echo $emp_no; ?>">View</button>
+                    <button class="btn btn-success view-profile view-profile-button" data-teacher-id="<?php echo $emp_no; ?>">View</button>
                 </div>
             </div>
         </div>
+
         <?php
                 }
                 ?>
