@@ -477,7 +477,7 @@ if (isset($_GET['school_id'])) {
                 <div class="card-body text-center">
                     <img src="<?php echo $imageUrl; ?>" alt="Teacher's Picture"
                          class="rounded-circle img-fluid" style="width: 150px; height: 150px;">
-                    <b><h6 class="my-3"><?php echo $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname']; ?></h6></b>
+                    <b><h6 class="my-3"><?php echo $row['lastname'] . ', ' . $row['firstname'] . ' ' . $row['middlename']; ?></h6></b>
                     <p class="text-muted mb-1"><?php echo $row['position_rank']; ?></p>
                 </div>
                 <div class="position-absolute bottom-0 end-0">
