@@ -305,35 +305,21 @@ if (isset($_GET['school_id'])) {
         width: 100%;
         height: 100%;
     }
-    /* Define a custom class for the active tab with an orange background */
-.custom-active {
-    background-color: #FFA500; /* Orange background color */
-    color: #fff; /* Text color for the active tab */
-}
-
+    
 </style>
 
 
         </div>
         <div class="col-md-9">
           <div class="card">
-          <div class="card-header p-2">
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active custom-active" href="#About" data-toggle="tab">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link custom-active" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link custom-active" href="#kpi" data-toggle="tab">Key Performance Indicator</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link custom-active" href="#pf" data-toggle="tab">Physical Facilities</a>
-        </li>
-    </ul>
-</div><!-- /.card-header -->
-
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
+                <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
+              </ul>
+            </div><!-- /.card-header -->
             <div class="card-body">
               <div class="tab-content">
 
