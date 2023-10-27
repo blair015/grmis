@@ -40,13 +40,17 @@ if ($stmt = $conn->prepare($sql)) {
         $pdf->Cell(0, 10, 'Academic Classrooms: ' . $academic_classroom, 0, 1);
         $pdf->Cell(0, 10, 'Non-Academic Classrooms: ' . $non_academic_classroom, 0, 1);
         $pdf->Cell(0, 10, 'Needing Repair: ' . $needing_repair, 0, 1);
-        $pdf->Cell(0, 10, 'TLS (Teacher Learning Materials): ' . $tls, 0, 1);
-        $pdf->Cell(0, 10, 'Makeshift Facilities: ' . $makeshift, 0, 1);
+        $pdf->Cell(0, 10, 'TLS (Temporary Learning Shelter): ' . $tls, 0, 1);
+        $pdf->Cell(0, 10, 'Makeshift: ' . $makeshift, 0, 1);
         $pdf->Cell(0, 10, 'Arms and Chairs: ' . $arms_and_chairs, 0, 1);
         $pdf->Cell(0, 10, 'Tables and Chairs: ' . $tables_and_chairs, 0, 1);
         $pdf->Cell(0, 10, 'Functional Clinic: ' . $functional_clinic, 0, 1);
 
        // Add a section for signatories in the footer
+// Add space
+$pdf->Cell(0, 10, '', 0, 1);
+
+// Add a section for signatories in the footer
 $pdf->SetY(-30);  // Position at 30mm from the bottom of the page
 
 // Left side (Prepared by)
