@@ -632,14 +632,14 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
-  <div class="float-right">
+ <div class="float-right">
   <div class="btn-group dropright">
     <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Dropleft
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Organizational Outcome</a>
-      <div class="dropdown-menu btn-group dropright">
+      <div class="dropdown-menu">
         <a class="dropdown-item" href="#">Sub-Item 1</a>
         <a class="dropdown-item" href="#">Sub-Item 2</a>
       </div>
