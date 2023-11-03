@@ -633,7 +633,9 @@ $selectedSchoolId2 = $_GET['school_id'];
     Dropleft
   </button>
   <div class="dropdown-menu">
-    <!-- Dropdown menu links -->
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
   </div>
 </div>
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
