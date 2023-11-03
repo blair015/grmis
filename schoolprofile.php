@@ -633,7 +633,7 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 ?>
  <div class="float-right"> <!-- Add 'float-right' class to position on the right -->
-    <div class="btn-group dropleft">
+    <div class="btn-group dropright">
       <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Dropleft
       </button>
