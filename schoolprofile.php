@@ -640,8 +640,8 @@ $selectedSchoolId2 = $_GET['school_id'];
     <div class="dropdown-menu">
       <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Organizational Outcome</a>
       <div class="dropdown-menu dropdown-menu-right"> <!-- Add 'dropdown-menu-right' class -->
-        <a class="dropdown-item" href="#">Sub-Item 1</a>
-        <a class="dropdown-item" href="#">Sub-Item 2</a>
+        <a class="dropdown-item" href="#">Add</a>
+        <a class="dropdown-item" href="#">Download</a>
       </div>
       <a class="dropdown-item" href="#">New action</a>
       <a class="dropdown-item" href="#">Additional item</a>
