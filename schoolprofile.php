@@ -632,16 +632,19 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
-<div class="btn-group dropleft">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropleft
-  </button>
-  <div class="dropdown-menu dropdown-menu-right"> <!-- Add 'dropdown-menu-right' class -->
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-  </div>
-</div>
+ <div class="float-right"> <!-- Add 'float-right' class to position on the right -->
+    <div class="btn-group dropleft">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropleft
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">New action</a>
+        <a class="dropdown-item" href="#">Additional item</a>
+      </div>
+    </div><br></br>
 
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
