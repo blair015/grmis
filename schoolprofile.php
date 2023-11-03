@@ -66,13 +66,15 @@ $district = '';
 $category ='';
 $contact_number = '';
 $sbm ='';
+
 // Get the school_id dynamically from the URL
 if (isset($_GET['school_id'])) {
     $school_id = $_GET['school_id'];
     
     // Sanitize and validate the school_id to prevent SQL injection
     $school_id = mysqli_real_escape_string($conn, $school_id);
-    
+        
+
     // Fetch the image URLs from the database based on the dynamic school_id
     $sql = "SELECT school_header, school_logo, school_name, school_address, school_email_address,contact_number, District, category, sbm_level FROM school_profile WHERE school_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -196,6 +198,14 @@ $(document).ready(function () {
                         INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
                         WHERE e.position_type = 'Teaching_Related' AND e.school_id = ? AND e.position_rank IN ('School Principal I', 'School Principal II', 'School Principal III', 'School Principal IV')";
 
+                         
+                        // Query to get the district supervisor's name
+                        $sql2 = "SELECT pi.lastname, pi.firstname
+                        FROM employment_record AS er
+                        INNER JOIN personal_info AS pi ON er.emp_no = pi.emp_no
+                        WHERE er.position_rank = 'public school district supervisor'
+                        AND er.district = (SELECT district FROM employment_record WHERE school_id = ? LIMIT 1)";
+
 
                         if ($stmt = $conn->prepare($sql)) {
                             $stmt->bind_param("i", $selectedSchoolId);
@@ -217,6 +227,19 @@ $(document).ready(function () {
                                 $school_head_name = "No assigned school head";
                             }
                         }
+                        // Execute the query to get the district supervisor's name
+                            if ($stmt2 = $conn->prepare($sql2)) {
+                                $stmt2->bind_param("i", $selectedSchoolId);
+                                $stmt2->execute();
+                                $result2 = $stmt2->get_result();
+
+                                if ($result2->num_rows > 0) {
+                                    $row2 = $result2->fetch_assoc();
+                                    $district_supervisor_name = $row2['firstname'] . ' ' . $row2['lastname'];
+                                } else {
+                                    $district_supervisor_name = "No assigned district supervisor";
+                                }
+                            }
                         ?>
 
                                     <ul class="list-group list-group-unbordered mb-3">
@@ -242,7 +265,7 @@ $(document).ready(function () {
                                         <b>SBM Level:</b> <a class="float-right"><?php echo $sbm; ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>District Supervisor:</b> <a class="float-right"><?php echo $sbm; ?></a>
+                                    <b>District Supervisor:</b> <a class="float-right"><?php echo $district_supervisor_name; ?></a>
                                     </li>
                                 </ul>
 
