@@ -636,12 +636,10 @@ $selectedSchoolId2 = $_GET['school_id'];
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropleft
   </button>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu dropdown-menu-right"> <!-- Add 'dropdown-menu-right' class -->
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>
-    <a class="dropdown-item" href="#">New action</a>
-    <a class="dropdown-item" href="#">Additional item</a>
   </div>
 </div>
 
