@@ -241,6 +241,9 @@ $(document).ready(function () {
                                     <li class="list-group-item">
                                         <b>SBM Level:</b> <a class="float-right"><?php echo $sbm; ?></a>
                                     </li>
+                                    <li class="list-group-item">
+                                        <b>District Supervisor:</b> <a class="float-right"><?php echo $sbm; ?></a>
+                                    </li>
                                 </ul>
 
 
