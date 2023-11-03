@@ -636,8 +636,11 @@ $selectedSchoolId2 = $_GET['school_id'];
     <a class="dropdown-item" href="#">Action</a>
     <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>
+    <a class="dropdown-item" href="#">New action</a>
+    <a class="dropdown-item" href="#">Additional item</a>
   </div>
 </div>
+
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
 </button>
