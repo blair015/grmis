@@ -638,11 +638,8 @@ $selectedSchoolId2 = $_GET['school_id'];
       Dropleft
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Physical Facilities</a>
-      <a class="dropdown-item" href="#">Proficiency Level</a>
-      <div class="dropdown-divider"></div>
       <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Organizational Outcome</a>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu btn-group dropright">
         <a class="dropdown-item" href="#">Sub-Item 1</a>
         <a class="dropdown-item" href="#">Sub-Item 2</a>
       </div>
