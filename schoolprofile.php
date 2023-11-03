@@ -639,7 +639,7 @@ $selectedSchoolId2 = $_GET['school_id'];
     </button>
     <div class="dropdown-menu">
       <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Organizational Outcome</a>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu dropdown-menu-right"> <!-- Add 'dropdown-menu-right' class -->
         <a class="dropdown-item" href="#">Sub-Item 1</a>
         <a class="dropdown-item" href="#">Sub-Item 2</a>
       </div>
@@ -647,8 +647,6 @@ $selectedSchoolId2 = $_GET['school_id'];
       <a class="dropdown-item" href="#">Additional item</a>
     </div>
   </div>
-<br></br>
-
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
 </button>
