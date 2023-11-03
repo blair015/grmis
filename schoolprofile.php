@@ -632,19 +632,23 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
- <div class="float-right"> <!-- Add 'float-right' class to position on the right -->
-    <div class="btn-group dropright">
-      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropleft
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <a class="dropdown-item" href="#">New action</a>
-        <a class="dropdown-item" href="#">Additional item</a>
+  <div class="btn-group dropright">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropleft
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Organizational Outcome</a>
+      <div class="dropdown-submenu"> <!-- Submenu for "Organizational Outcome" -->
+        <a class="dropdown-item" href="#">Sub-Item 1</a>
+        <a class="dropdown-item" href="#">Sub-Item 2</a>
       </div>
-    </div><br></br>
+      <a class="dropdown-item" href="#">Physical Facilities</a>
+      <a class="dropdown-item" href="#">Proficiency Level</a>
+      <a class="dropdown-item" href="#">New action</a>
+      <a class="dropdown-item" href="#">Additional item</a>
+    </div>
+  </div>
+</div><br></br>
 
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
