@@ -661,9 +661,8 @@ display: inline-block;
 pointer-events: none;
 }
 </style>
- <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-    data-mdb-toggle="dropdown" aria-expanded="false">
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
     Dropdown button
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -671,20 +670,20 @@ pointer-events: none;
     <li>
       <a class="dropdown-item" href="#">Another action</a>
     </li>
-    <li>
+    <li class="dropdown-submenu">
       <a class="dropdown-item" href="#">
         Submenu &raquo;
       </a>
-      <ul class="dropdown-menu dropdown-submenu">
+      <ul class="dropdown-menu">
         <li>
           <a class="dropdown-item" href="#">Submenu item 1</a>
         </li>
         <li>
           <a class="dropdown-item" href="#">Submenu item 2</a>
         </li>
-        <li>
-          <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
-          <ul class="dropdown-menu dropdown-submenu">
+        <li class="dropdown-submenu">
+          <a class="dropdown-item" href="#">Submenu item 3 &raquo;</a>
+          <ul class="dropdown-menu">
             <li>
               <a class="dropdown-item" href="#">Multi level 1</a>
             </li>
@@ -703,6 +702,7 @@ pointer-events: none;
     </li>
   </ul>
 </div>
+
 
 
 
