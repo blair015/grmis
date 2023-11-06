@@ -170,18 +170,11 @@ $(document).ready(function () {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-        <style>
-   /* Define a custom "orange" class for the card */
-.card-orange {
-    background-color: #FFA500; /* Replace with your desired shade of orange */
-    border-color: #FFA500; /* Set border color to match */
-    color: #fff; /* Set text color to white or your desired text color */
-}
+        
 
-</style>
 
           <!-- Profile Image -->
-          <div class="card card-orange">
+          <div class="card">
             <div class="card-header">
               <h3 class="card-title">School Profile</h3>
             </div>
