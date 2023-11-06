@@ -632,31 +632,44 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
- <div class="float-right">
-  <div class="btn-group dropright">
-  <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Drop Right
+ <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+    data-mdb-toggle="dropdown" aria-expanded="false">
+    Dropdown button
   </button>
-  <ul class="dropdown-menu">
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add data</a></li>
-        <li><a tabindex="-1" href="#">Download Reports</a></li>
-      </ul>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add data</a></li>
-        <li><a tabindex="-1" href="#">Download Reports</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li>
+      <a class="dropdown-item" href="#">
+        Organization Outcome &raquo;
+      </a>
+      <ul class="dropdown-menu dropdown-submenu">
+        <li>
+          <a class="dropdown-item" href="#">Add Data</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Download Reports</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
+          <ul class="dropdown-menu dropdown-submenu">
+            <li>
+              <a class="dropdown-item" href="#">Multi level 1</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Multi level 2</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Submenu item 4</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="#">Submenu item 5</a>
+        </li>
       </ul>
     </li>
   </ul>
-  </div>
-  </div>
-  </div>
+</div>
 
 
 
