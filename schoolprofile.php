@@ -674,23 +674,6 @@ $selectedSchoolId2 = $_GET['school_id'];
                 <li>
                     <a class="dropdown-item" href="#">Submenu item 2</a>
                 </li>
-                <li>
-                    <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
-                    <ul class="dropdown-menu dropdown-submenu">
-                        <li>
-                            <a class="dropdown-item" href="#">Multi level 1</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Multi level 2</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Submenu item 4</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Submenu item 5</a>
-                </li>
             </ul>
         </li>
     </ul>
