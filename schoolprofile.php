@@ -34,10 +34,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 <?php
 include("admin/includes/header.php");
@@ -635,76 +632,94 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 
 ?>
+                <style>
+                        /* Style for the dropdown menu */
+                        .dropdown {
+                            position: relative;
+                            display: inline-block;
+                        }
 
-<style>
+                        /* Style for the dropdown button */
+                        .dropdown button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 12px;
+                            border: none;
+                            cursor: pointer;
+                        }
 
-.dropdown-menu li {
-position: relative;
-}
-.dropdown-menu .dropdown-submenu {
-display: none;
-position: absolute;
-left: 100%;
-top: -7px;
-}
-.dropdown-menu .dropdown-submenu-left {
-right: 100%;
-left: auto;
-}
-.dropdown-menu > li:hover > .dropdown-submenu {
-display: block;
-}
+                        /* Style for the dropdown content */
+                        .dropdown-content {
+                            display: none;
+                            position: absolute;
+                            background-color: #f9f9f9;
+                            min-width: 160px;
+                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                            z-index: 1;
+                        }
 
-.dropdown-hover:hover>.dropdown-menu {
-display: inline-block;
-}
+                        /* Style for the menu items */
+                        .dropdown-content a {
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                        }
 
-.dropdown-hover>.dropdown-toggle:active {
-/*Without this, clicking will make it sticky*/
-pointer-events: none;
-}
-</style>
-<div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li>
-      <a class="dropdown-item" href="#">Another action</a>
-    </li>
-    <li class="dropdown-submenu">
-      <a class="dropdown-item" href="#">
-        Organization Outcome &raquo;
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-          <a class="dropdown-item" href="#">Add Data</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Download Reports</a>
-        </li>
-        <li class="dropdown-submenu">
-          <a class="dropdown-item" href="#">Submenu item 3 &raquo;</a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#">Multi level 1</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Multi level 2</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Submenu item 4</a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">Submenu item 5</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+                        /* Style for sub-menus */
+                        .sub-menu {
+                            display: none;
+                            position: absolute;
+                            background-color: #f9f9f9;
+                            min-width: 160px;
+                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        }
+                    </style>
+                <div class="dropdown">
+                    <button>Menu 1</button>
+                    <div class="dropdown-content">
+                        <a href="#">Sub-Menu 1-1</a>
+                        <a href="#">Sub-Menu 1-2</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button>Menu 2</button>
+                    <div class="dropdown-content">
+                        <a href="#">Sub-Menu 2-1</a>
+                        <a href="#">Sub-Menu 2-2</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button>Menu 3</button>
+                    <div class="dropdown-content">
+                        <a href="#">Sub-Menu 3-1</a>
+                        <a href="#">Sub-Menu 3-2</a>
+                    </div>
+                </div>
+
+                <script>
+                    // JavaScript to toggle the visibility of dropdown content
+                    var dropdowns = document.getElementsByClassName("dropdown");
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        dropdowns[i].addEventListener("click", function() {
+                            this.querySelector(".dropdown-content").classList.toggle("show");
+                        });
+                    }
+
+                    // Close the dropdown menu if the user clicks outside of it
+                    window.addEventListener("click", function(event) {
+                        if (!event.target.matches(".dropdown button")) {
+                            var dropdownContents = document.getElementsByClassName("dropdown-content");
+                            for (var i = 0; i < dropdownContents.length; i++) {
+                                var content = dropdownContents[i];
+                                if (content.classList.contains("show")) {
+                                    content.classList.remove("show");
+                                }
+                            }
+                        }
+                    });
+                </script>
 
 
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
