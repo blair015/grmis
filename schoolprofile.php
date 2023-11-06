@@ -34,6 +34,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 
 <?php
@@ -662,7 +663,7 @@ pointer-events: none;
 }
 </style>
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -672,14 +673,14 @@ pointer-events: none;
     </li>
     <li class="dropdown-submenu">
       <a class="dropdown-item" href="#">
-        Submenu &raquo;
+        Organization Outcome &raquo;
       </a>
       <ul class="dropdown-menu">
         <li>
-          <a class="dropdown-item" href="#">Submenu item 1</a>
+          <a class="dropdown-item" href="#">Add Data</a>
         </li>
         <li>
-          <a class="dropdown-item" href="#">Submenu item 2</a>
+          <a class="dropdown-item" href="#">Download Reports</a>
         </li>
         <li class="dropdown-submenu">
           <a class="dropdown-item" href="#">Submenu item 3 &raquo;</a>
@@ -702,9 +703,6 @@ pointer-events: none;
     </li>
   </ul>
 </div>
-
-
-
 
 
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
