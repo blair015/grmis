@@ -665,14 +665,14 @@ $selectedSchoolId2 = $_GET['school_id'];
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li>
             <a class="dropdown-item" href="#">
-                Submenu &raquo;
+                Organization Outcome &raquo;
             </a>
             <ul class="dropdown-menu dropdown-submenu">
                 <li>
-                    <a class="dropdown-item" href="#">Submenu item 1</a>
+                    <a class="dropdown-item" href="#">Add Data</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">Submenu item 2</a>
+                    <a class="dropdown-item" href="#">Download Report</a>
                 </li>
             </ul>
         </li>
