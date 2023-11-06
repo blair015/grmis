@@ -654,7 +654,11 @@ $selectedSchoolId2 = $_GET['school_id'];
       </ul>
     </li>
   </ul>
-</div>
+  </div>
+  </div>
+  </div>
+
+
 
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
