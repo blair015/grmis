@@ -634,24 +634,28 @@ $selectedSchoolId2 = $_GET['school_id'];
 ?>
  <div class="float-right">
   <div class="btn-group dropright">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Drop Right
-    </button>
-    <ul class="dropdown-menu">
-      <li class="dropdown-submenu">
-        <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a tabindex="-1" href="#">Add data</a></li>
-          <li><a tabindex="-1" href="#">Download Reports</a></li>
-      </li>
-      <li class="dropdown-submenu">
-        <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a tabindex="-1" href="#">Add data</a></li>
-          <li><a tabindex="-1" href="#">Download Reports</a></li>
-      </li>
-      
-  </div>
+  <div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Drop Right
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Add data</a></li>
+        <li><a tabindex="-1" href="#">Download Reports</a></li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a class="test" tabindex="-1" href="#">Organizational Outcome<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Add data</a></li>
+        <li><a tabindex="-1" href="#">Download Reports</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
     <button type="button" class="btn btn-success" id="Buttonedit" data-toggle="modal" data-target="#editModal">
     <i class="fas fa-edit"></i> Add / Edit
 </button>
