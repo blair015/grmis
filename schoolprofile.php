@@ -352,6 +352,7 @@ if (isset($_GET['school_id'])) {
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
                 <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#pf" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Physical Facilities
                     </a>
