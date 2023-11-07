@@ -1,12 +1,46 @@
 <?php
 session_start();
 include('../admin/config/dbcon.php');
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+//     include('../admin/config/dbcon.php'); // Include your database connection script
+
+//     $schoolId = $_POST['schoolId'];
+//     $researchCompleted = $_POST['researchCompleted'];
+//     $quarter = $_POST['quarter'];
+//     $schoolYear = $_POST['schoolYear']; // Retrieve the selected school year
+//     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
+
+//     // You should perform some validation and sanitization of input data here to prevent SQL injection
+
+//     // Assuming your table is named "oo_research", you can use a prepared statement to insert the data into the table.
+//     $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)");
+//     $stmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
+
+//     if ($stmt->execute()) {
+//         // Data has been successfully inserted
+//         echo "Data saved successfully.";
+//         echo '<script>alert("Data saved successfully.");</script>';
+//         echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+//     } else {
+//         // Error occurred while inserting data
+//         echo "Error: " . $stmt->error;
+//         echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+//     }
+
+//     $stmt->close();
+//     $conn->close();
+// } else {
+//     // If the request is not POST, you can handle it as needed.
+//     echo "Invalid request method.";
+// }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $schoolId = $_POST['schoolId'] ?? null;
-    $researchCompleted = $_POST['researchCompleted'] ?? null;
-    $quarter = $_POST['quarter'] ?? null;
-    $schoolYear = $_POST['schoolYear'] ?? null; // Retrieve the selected school year
+    // Include your database connection script
+
+    $schoolId = $_POST['schoolId'];
+    $researchCompleted = $_POST['researchCompleted'];
+    $quarter = $_POST['quarter'];
+    $schoolYear = $_POST['schoolYear']; // Retrieve the selected school year
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
 
     // You should perform some validation and sanitization of input data here to prevent SQL injection
@@ -17,55 +51,53 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
     $result = $checkStmt->get_result();
-
+    
     if ($result->num_rows > 0) {
-        // Data already exists, prompt the user for confirmation using a Bootstrap modal dialog
-        echo '<div class="modal fade" id="overwriteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="overwriteConfirmationModalLabel" aria-hidden="true">';
-        echo '    <div class="modal-dialog" role="document">';
-        echo '        <div class="modal-content">';
-        echo '            <div class="modal-header">';
-        echo '                <h5 class="modal-title" id="overwriteConfirmationModalLabel">Confirmation</h5>';
-        echo '                <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-        echo '                    <span aria-hidden="true">&times;</span>';
-        echo '                </button>';
-        echo '            </div>';
-        echo '            <div class="modal-body">';
-        echo '                Data for the selected school year and quarter already exists. Do you want to overwrite it?';
-        echo '            </div>';
-        echo '            <div class="modal-footer">';
-        echo '                <form method="post" action="oomodal/save_research.php">';
-        echo '                    <input type="hidden" name="schoolId" value="' . $schoolId . '">';
-        echo '                    <input type="hidden" name="researchCompleted" value="' . $researchCompleted . '">';
-        echo '                    <input type="hidden" name="quarter" value="' . $quarter . '">';
-        echo '                    <input type="hidden" name="schoolYear" value="' . $schoolYear . '">';
-        echo '                    <button type="submit" name="confirm_overwrite" class="btn btn-primary">Yes</button>';
-        echo '                    <button type="submit" name="cancel_overwrite" class="btn btn-secondary" data-dismiss="modal">No</button>';
-        echo '                </form>';
-        echo '            </div>';
-        echo '        </div>';
-        echo '    </div>';
-        echo '</div>';
-        echo '<script>$("#overwriteConfirmationModal").modal("show");</script>';
+        // Data already exists, prompt the user for confirmation
+        echo "Data for the selected school year and quarter already exists. Do you want to overwrite it?";
+        echo '<form method="post">';
+        echo '<input type="submit" name="confirm_overwrite" value="Yes">';
+        echo '<input type="submit" name="cancel_overwrite" value="No">';
+        echo '</form>';
     } else {
-        // Data does not exist, proceed with redirection
-        header("Location: insert_research.php?schoolId=$schoolId&researchCompleted=$researchCompleted&quarter=$quarter&schoolYear=$schoolYear&user_school_id=$user_school_id");
-        exit;
+        // Data does not exist, proceed with insertion
+        insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id);
     }
 
-    $checkStmt->close();
-    $conn->close();
+   // $checkStmt->close();
+   // $conn->close();
+} elseif (isset($_POST['confirm_overwrite']) && $_POST['confirm_overwrite'] === "Yes") {
+    // User confirmed overwrite, proceed with insertion
+    include('../admin/config/dbcon.php');
+    $schoolId = $_POST['schoolId'];
+    $researchCompleted = $_POST['researchCompleted'];
+    $quarter = $_POST['quarter'];
+    $schoolYear = $_POST['schoolYear'];
+    $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
+
+    insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id);
 } else {
     // If the request is not POST, you can handle it as needed.
     echo "Invalid request method.";
 }
+
+function insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id) {
+    $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
+
+    if ($stmt->execute()) {
+        // Data has been successfully inserted
+        echo "Data saved successfully.";
+        echo '<script>alert("Data saved successfully.");</script>';
+        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+    } else {
+        // Error occurred while inserting data
+        echo "Error: " . $stmt->error;
+        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+    }
+
+    $stmt->close();
+}
+
+
 ?>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<!-- Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
