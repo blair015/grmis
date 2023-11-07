@@ -342,23 +342,87 @@ if (isset($_GET['school_id'])) {
     
 </style>
 
-
-        </div>
-        <div class="col-md-9">
-          <div class="card">
-            <div class="card-header p-2">
-              <ul class="nav nav-pills">
+<div class="col-md-9">
+    <div class="card">
+        <div class="card-header p-2">
+            <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
                 <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Physical Facilities
+                    <a class="nav-link dropdown-toggle" href="#" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Physical Facilities
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="physicalFacilitiesDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Education Policy Development Program &raquo;
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="physicalFacilitiesDropdown">
-                                <a class="dropdown-item" href="#">Education Policy Development Program &raquo;</a>
-                                <!-- Add your nested dropdown content here -->
-                            </div>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#researchCompletedModal">Research Completed</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Basic Education Inputs Program &raquo;
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>
+                                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Output Indicators</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Inclusive Education Program &raquo;
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>
+                                    <a class= "dropdown-item" href="#">Outcome Indicators</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Output Indicators</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Support to Schools and Learners Program &raquo;
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>
+                                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Output Indicators</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Education Human Resource Development Program &raquo;
+                            </a>
+                            <ul class="dropdown-menu dropdown-submenu">
+                                <li>
+                                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Output Indicators</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.card-header -->
+    </div>
+</div>
+
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
