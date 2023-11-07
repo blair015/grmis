@@ -87,9 +87,11 @@ $(document).ready(function () {
         $("#researchForm").off("submit"); // Remove the previous event handler
         $("#researchForm").submit(); // Submit the form
     });
+
     $("#confirm_overwrite").on("click", function() {
-        $("#researchForm").off("submit"); // Remove the previous event handler
-        $("#researchForm").submit(); // Submit the form
+        // Submit the form when "Yes" is clicked
+        $("#researchForm").submit();
     });
 });
 </script>
+
