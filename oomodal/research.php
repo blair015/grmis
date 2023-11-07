@@ -9,54 +9,49 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- Add your content for the modal here -->
-                <?php
-                    
-
+                <form id="researchForm" method="post" action="save_research.php">
+                    <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
                     } else {
                         echo "School identifier is missing.";
                         exit;
                     }
+                    include ('../admin/config/dbcon.php');
+                    $school_id = $_SESSION['school_id'];
+                    echo $school_id;
                     ?>
-                    
-                    <?php $school_id = $_SESSION['school_id']; 
-
-                        echo $school_id;
-                    ?>
-                <input type="hidden" id="schoolId" name="schoolId" value="YOUR_SCHOOL_ID">
-
-                <div class="form-group">
-                    <label for="researchCompleted">Research Completed</label>
-                    <input type="text" id="researchCompleted" name="researchCompleted" class="form-control" placeholder="Enter Research Completed">
-                </div>
-
-                <div class="form-group">
-                    <label>Quarters</label>
-                    <div class="row">
-                        <div class="col">
-                            <label for="quarter1">Q1</label>
-                            <input type="radio" id="quarter1" name="quarter" value="1">
-                        </div>
-                        <div class="col">
-                            <label for="quarter2">Q2</label>
-                            <input type="radio" id="quarter2" name="quarter" value="2">
-                        </div>
-                        <div class="col">
-                            <label for="quarter3">Q3</label>
-                            <input type="radio" id="quarter3" name="quarter" value="3">
-                        </div>
-                        <div class="col">
-                            <label for="quarter4">Q4</label>
-                            <input type="radio" id="quarter4" name="quarter" value="4">
+                    <input type="hidden" id="schoolId" name="schoolId" value="<?php echo $school_id; ?>">
+                    <div class="form-group">
+                        <label for="researchCompleted">Research Completed</label>
+                        <input type="text" id="researchCompleted" name="researchCompleted" class="form-control" placeholder="Enter Research Completed">
+                    </div>
+                    <div class="form-group">
+                        <label>Quarters</label>
+                        <div class="row">
+                            <div class="col">
+                                <label for="quarter1">Q1</label>
+                                <input type="radio" id="quarter1" name="quarter" value="1">
+                            </div>
+                            <div class="col">
+                                <label for="quarter2">Q2</label>
+                                <input type="radio" id="quarter2" name="quarter" value="2">
+                            </div>
+                            <div class="col">
+                                <label for ="quarter3">Q3</label>
+                                <input type="radio" id="quarter3" name="quarter" value="3">
+                            </div>
+                            <div class="col">
+                                <label for="quarter4">Q4</label>
+                                <input type="radio" id="quarter4" name="quarter" value="4">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
