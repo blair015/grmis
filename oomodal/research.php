@@ -47,10 +47,24 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="schoolYear">School Year</label>
+                        <select id="schoolYear" name="schoolYear" class="form-control">
+                            <?php
+                            // Generate options for school years from 2023-2024 to 2030
+                            for ($year = 2023; $year <= 2030; $year++) {
+                                $nextYear = $year + 1;
+                                $schoolYear = $year . '-' . $nextYear;
+                                echo '<option value="' . $schoolYear . '">' . $schoolYear . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
+
                 </form>
             </div>
         </div>

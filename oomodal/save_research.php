@@ -7,13 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $schoolId = $_POST['schoolId'];
     $researchCompleted = $_POST['researchCompleted'];
     $quarter = $_POST['quarter'];
+    $schoolYear = $_POST['schoolYear']; // Retrieve the selected school year
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
 
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Assuming your table is named "oo_research", you can use a prepared statement to insert the data into the table.
-    $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $schoolId, $researchCompleted, $quarter);
+    $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
 
     if ($stmt->execute()) {
         // Data has been successfully inserted
@@ -23,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Error occurred while inserting data
         echo "Error: " . $stmt->error;
-        echo '<script>alert("Error occurred while saving data.");</script>';
+        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
     }
 
     $stmt->close();

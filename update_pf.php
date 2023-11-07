@@ -37,7 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '</script>';
             } else {
                 // Error handling (e.g., database error)
-                echo "Error updating data: " . $stmt->error;
+                echo '<script type="text/javascript">';
+                echo 'alert("Error!");';
+                echo 'setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);';
+                echo '</script>';
             }
             
             $stmt->close();
