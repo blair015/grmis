@@ -1,7 +1,7 @@
 <?php
 
 // Include your database connection here
-include('admin/config/dbcon.php');
+include('../admin/config/dbcon.php');
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
