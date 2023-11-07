@@ -64,8 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id);
     }
 
-    $checkStmt->close();
-    $conn->close();
+   // $checkStmt->close();
+   // $conn->close();
 } elseif (isset($_POST['confirm_overwrite']) && $_POST['confirm_overwrite'] === "Yes") {
     // User confirmed overwrite, proceed with insertion
     include('../admin/config/dbcon.php');
