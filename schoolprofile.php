@@ -665,14 +665,63 @@ $selectedSchoolId2 = $_GET['school_id'];
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li>
             <a class="dropdown-item" href="#">
-                Organization Outcome &raquo;
+                Education Policy Development Program &raquo;
             </a>
             <ul class="dropdown-menu dropdown-submenu">
                 <li>
-                    <a class="dropdown-item" href="#">Add Data</a>
+                    <a class="dropdown-item" href="#">Research Completed</a>
+                </li>
+           </ul>
+        </li>
+        <li>
+            <a class="dropdown-item" href="#">
+                Basic Education Inputs Program &raquo;
+            </a>
+            <ul class="dropdown-menu dropdown-submenu">
+                <li>
+                    <a class="dropdown-item" href="#">Outcome Indicators</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">Download Report</a>
+                    <a class="dropdown-item" href="#">Output Indicators</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-item" href="#">
+                Inclusive Education Program &raquo;
+            </a>
+            <ul class="dropdown-menu dropdown-submenu">
+                <li>
+                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Output Indicators</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-item" href="#">
+                Support to Schools and Learners Program &raquo;
+            </a>
+            <ul class="dropdown-menu dropdown-submenu">
+                <li>
+                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Output Indicators</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="dropdown-item" href="#">
+                Education Human Resource Development Program &raquo;
+            </a>
+            <ul class="dropdown-menu dropdown-submenu">
+                <li>
+                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">Output Indicators</a>
                 </li>
             </ul>
         </li>
