@@ -76,15 +76,16 @@
 
 <script>
 $(document).ready(function () {
-    // When the "Save" button is clicked, trigger the modal form submission
-    $("#saveResearchBtn").on("click", function() {
-        $("#researchForm").submit();
-    });
-
     // When the form is submitted, show the confirmation modal
     $("#researchForm").on("submit", function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission
         $("#researchCompletedModal").modal("show");
+    });
+
+    // When the "Save" button in the modal is clicked, submit the form
+    $("#confirmSaveBtn").on("click", function() {
+        $("#researchForm").off("submit"); // Remove the previous event handler
+        $("#researchForm").submit(); // Submit the form
     });
 });
 </script>
