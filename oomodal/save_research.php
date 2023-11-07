@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    include('admin/config/dbcon.php'); // Include your database connection script
+    include('../admin/config/dbcon.php'); // Include your database connection script
 
     $schoolId = $_POST['schoolId'];
     $researchCompleted = $_POST['researchCompleted'];
