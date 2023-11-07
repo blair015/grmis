@@ -35,12 +35,12 @@ include('../admin/config/dbcon.php');
 // }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Include your database connection script
+    include('../admin/config/dbcon.php'); // Include your database connection script
 
-    $schoolId = $_POST['schoolId'];
-    $researchCompleted = $_POST['researchCompleted'];
-    $quarter = $_POST['quarter'];
-    $schoolYear = $_POST['schoolYear']; // Retrieve the selected school year
+    $schoolId = $_POST['schoolId'] ?? null;
+    $researchCompleted = $_POST['researchCompleted'] ?? null;
+    $quarter = $_POST['quarter'] ?? null;
+    $schoolYear = $_POST['schoolYear'] ?? null; // Retrieve the selected school year
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
 
     // You should perform some validation and sanitization of input data here to prevent SQL injection
@@ -51,11 +51,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
     $result = $checkStmt->get_result();
-    
+
     if ($result->num_rows > 0) {
         // Data already exists, prompt the user for confirmation
         echo "Data for the selected school year and quarter already exists. Do you want to overwrite it?";
         echo '<form method="post">';
+        echo '<input type="hidden" name="schoolId" value="' . $schoolId . '">';
+        echo '<input type="hidden" name="researchCompleted" value="' . $researchCompleted . '">';
+        echo '<input type="hidden" name="quarter" value="' . $quarter . '">';
+        echo '<input type="hidden" name="schoolYear" value="' . $schoolYear . '">';
         echo '<input type="submit" name="confirm_overwrite" value="Yes">';
         echo '<input type="submit" name="cancel_overwrite" value="No">';
         echo '</form>';
@@ -64,8 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id);
     }
 
-   // $checkStmt->close();
-   // $conn->close();
+    $checkStmt->close();
+    $conn->close();
 } elseif (isset($_POST['confirm_overwrite']) && $_POST['confirm_overwrite'] === "Yes") {
     // User confirmed overwrite, proceed with insertion
     include('../admin/config/dbcon.php');
@@ -82,6 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 function insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id) {
+    if ($schoolId === null) {
+        echo "Error: Missing schoolId value.";
+        return;
+    }
+
     $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
 
@@ -98,6 +107,5 @@ function insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear,
 
     $stmt->close();
 }
-
 
 ?>
