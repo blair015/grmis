@@ -7,6 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $schoolId = $_POST['schoolId'];
     $researchCompleted = $_POST['researchCompleted'];
     $quarter = $_POST['quarter'];
+    $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
+
 
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
@@ -17,9 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt->execute()) {
         // Data has been successfully inserted
         echo "Data saved successfully.";
+        echo '<script>alert("Data saved successfully.");</script>';
+        echo 'setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);';
     } else {
         // Error occurred while inserting data
         echo "Error: " . $stmt->error;
+        echo '<script>alert("Error occurred while saving data.");</script>';
     }
 
     $stmt->close();
