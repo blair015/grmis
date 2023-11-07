@@ -22,24 +22,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $checkStmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Data already exists, prompt the user for confirmation
-        echo "Data for the selected school year and quarter already exists. Do you want to overwrite it?";
-        echo '<form method="post">';
-        echo '<input type="hidden" name="schoolId" value="' . $schoolId . '">';
-        echo '<input type="hidden" name="researchCompleted" value="' . $researchCompleted . '">';
-        echo '<input type="hidden" name="quarter" value="' . $quarter . '">';
-        echo '<input type="hidden" name="schoolYear" value="' . $schoolYear . '">';
-        echo '<input type="submit" id="confirm_overwrite" value="Yes">';
-        echo '<input type="submit" name="cancel_overwrite" value="No">';
-        echo '</form>';
+        // Data already exists, prompt the user for confirmation using JavaScript
+        echo '<script>
+            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
+            if (confirmOverwrite) {
+                window.location = "?school_id=' . $schoolId . '&confirm_overwrite=1";
+            } else {
+                window.location = "?school_id=' . $schoolId . '";
+            }
+        </script>';
     } else {
         // Data does not exist, proceed with insertion
         insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id);
     }
-} elseif (isset($_POST['confirm_overwrite']) && $_POST['confirm_overwrite'] === "Yes") {
+} elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
     // User confirmed overwrite, proceed with insertion
-    include('../admin/config/dbcon.php');
-    $schoolId = $_POST['schoolId'];
+    $schoolId = $_GET['school_id'];
     $researchCompleted = $_POST['researchCompleted'];
     $quarter = $_POST['quarter'];
     $schoolYear = $_POST['schoolYear'];
