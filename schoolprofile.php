@@ -660,6 +660,8 @@ $selectedSchoolId2 = $_GET['school_id'];
 
 <?php
 include ('oomodal/research.php');
+include ('oomodal/outcome_ratio.php');
+include ('oomodal/output_ratio.php');
 
 ?>
 <div class="dropdown">
