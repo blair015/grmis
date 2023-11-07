@@ -658,6 +658,10 @@ $selectedSchoolId2 = $_GET['school_id'];
     }
 </style>
 
+<?php
+include ('oomodal/research.php');
+
+?>
 <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
         Organizationl Outcome
@@ -669,7 +673,7 @@ $selectedSchoolId2 = $_GET['school_id'];
             </a>
             <ul class="dropdown-menu dropdown-submenu">
                 <li>
-                    <a class="dropdown-item" href="#">Research Completed</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#researchCompletedModal">Research Completed</a>
                 </li>
            </ul>
         </li>
