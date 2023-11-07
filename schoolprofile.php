@@ -342,15 +342,17 @@ if (isset($_GET['school_id'])) {
     
 </style>
 
-<div class="col-md-9">
-    <div class="card">
-        <div class="card-header p-2">
-            <ul class="nav nav-pills">
+
+        </div>
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#pf" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Physical Facilities
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="physicalFacilitiesDropdown">
@@ -383,7 +385,7 @@ if (isset($_GET['school_id'])) {
                             </a>
                             <ul class="dropdown-menu dropdown-submenu">
                                 <li>
-                                    <a class= "dropdown-item" href="#">Outcome Indicators</a>
+                                    <a class ="dropdown-item" href="#">Outcome Indicators</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="#">Output Indicators</a>
@@ -418,11 +420,6 @@ if (isset($_GET['school_id'])) {
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </div><!-- /.card-header -->
-    </div>
-</div>
-
               </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
