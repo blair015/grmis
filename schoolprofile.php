@@ -684,12 +684,18 @@ include ('oomodal/output_ratio.php');
                 Basic Education Inputs Program &raquo;
             </a>
             <ul class="dropdown-menu dropdown-submenu">
-                <li>
-                    <a class="dropdown-item" href="#">Outcome Indicators</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Output Indicators</a>
-                </li>
+            <li>
+                        <a class="dropdown-item" href="#">Outcome Indicators &raquo;</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#outcomeIndicatorsModal">Outcome Indicators</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Output Indicators &raquo;</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#outputIndicatorsModal">Output Indicators</a>
+                    </li>
             </ul>
         </li>
         <li>
