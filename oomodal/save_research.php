@@ -1,6 +1,8 @@
 <?php
 session_start();
+
 include('../admin/config/dbcon.php');
+include('../admin/includes/script.php');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Include your database connection script
