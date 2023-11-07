@@ -345,15 +345,29 @@ if (isset($_GET['school_id'])) {
 
         </div>
         <div class="col-md-9">
-          <div class="card">
-            <div class="card-header p-2">
-              <ul class="nav nav-pills">
+    <div class="card">
+        <div class="card-header p-2">
+            <ul class="nav nav-pills">
                 <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
                 <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
-              </ul>
-            </div><!-- /.card-header -->
+                <!-- Replace "Physical Facilities" tab with the dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="physicalFacilitiesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Physical Facilities
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="physicalFacilitiesDropdown">
+                        <a class="dropdown-item" href="#">
+                            Education Policy Development Program &raquo;
+                        </a>
+                        <!-- Add your nested dropdown content here -->
+                    </div>
+                </li>
+            </ul>
+        </div><!-- /.card-header -->
+    </div>
+</div>
+
             <div class="card-body">
               <div class="tab-content">
 
