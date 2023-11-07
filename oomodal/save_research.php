@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '<input type="hidden" name="researchCompleted" value="' . $researchCompleted . '">';
         echo '<input type="hidden" name="quarter" value="' . $quarter . '">';
         echo '<input type="hidden" name="schoolYear" value="' . $schoolYear . '">';
-        echo '<input type="submit" name="confirm_overwrite" value="Yes">';
+        echo '<input type="submit" id="confirm_overwrite" value="Yes">';
         echo '<input type="submit" name="cancel_overwrite" value="No">';
         echo '</form>';
     } else {
