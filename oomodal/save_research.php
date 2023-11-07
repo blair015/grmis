@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $quarter = $_POST['quarter'];
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
 
-
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Assuming your table is named "oo_research", you can use a prepared statement to insert the data into the table.
@@ -20,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Data has been successfully inserted
         echo "Data saved successfully.";
         echo '<script>alert("Data saved successfully.");</script>';
-        echo 'setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);';
+        echo '<script>setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
     } else {
         // Error occurred while inserting data
         echo "Error: " . $stmt->error;
