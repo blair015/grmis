@@ -1,7 +1,8 @@
 <?php
+session_start();
 
-include('admin/config/dbcon.php');
-include('admin/includes/script.php');
+include('../admin/config/dbcon.php');
+include('../admin/includes/script.php');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Include your database connection script
@@ -58,11 +59,11 @@ function insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear,
         // Data has been successfully inserted
         echo "Data saved successfully.";
         echo '<script>alert("Data saved successfully.");</script>';
-        echo '<script>setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
     } else {
         // Error occurred while inserting data
         echo "Error: " . $stmt->error;
-        echo '<script>setTimeout(function() { window.location = "schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
     }
 
     $stmt->close();
