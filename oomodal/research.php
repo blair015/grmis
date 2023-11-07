@@ -10,6 +10,21 @@
             </div>
             <div class="modal-body">
                 <!-- Add your content for the modal here -->
+                <?php
+                    
+
+                    if (isset($_GET['school_id'])) {
+                        $_SESSION['school_id'] = $_GET['school_id'];
+                    } else {
+                        echo "School identifier is missing.";
+                        exit;
+                    }
+                    ?>
+                    
+                    <?php $school_id = $_SESSION['school_id']; 
+
+                        echo $school_id;
+                    ?>
                 <input type="hidden" id="schoolId" name="schoolId" value="YOUR_SCHOOL_ID">
 
                 <div class="form-group">
