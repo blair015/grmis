@@ -1,39 +1,31 @@
 <?php
+session_start();
 
-// Include your database connection file here
-include('../admin/config/dbcon.php');
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    include('admin/config/dbcon.php'); // Include your database connection script
 
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve data from the form
     $schoolId = $_POST['schoolId'];
     $researchCompleted = $_POST['researchCompleted'];
     $quarter = $_POST['quarter'];
 
-    // Prepare and execute the SQL statement to insert data into the database
-    $stmt = $mysqli->prepare("INSERT INTO oo_research (school_id, research_completed, quarter) VALUES (?, ?, ?)");
+    // You should perform some validation and sanitization of input data here to prevent SQL injection
 
-    // Check if the statement was prepared successfully
-    if ($stmt) {
-        $stmt->bind_param("iss", $schoolId, $researchCompleted, $quarter);
+    // Assuming your table is named "oo_research", you can use a prepared statement to insert the data into the table.
+    $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter) VALUES (?, ?, ?)");
+    $stmt->bind_param("iss", $schoolId, $researchCompleted, $quarter);
 
-        if ($stmt->execute()) {
-            // Data has been successfully inserted into the database
-            echo "Data saved successfully!";
-        } else {
-            // Handle the error if the insert fails
-            echo "Error: " . $stmt->error;
-        }
-
-        $stmt->close();
+    if ($stmt->execute()) {
+        // Data has been successfully inserted
+        echo "Data saved successfully.";
     } else {
-        // Handle the case where the statement couldn't be prepared
-        echo "Error preparing the SQL statement.";
+        // Error occurred while inserting data
+        echo "Error: " . $stmt->error;
     }
-} else {
-    // Handle the case where the form data is not submitted
-    echo "Form data not submitted.";
-}
 
-// Close the database connection
-$mysqli->close();
+    $stmt->close();
+    $conn->close();
+} else {
+    // If the request is not POST, you can handle it as needed.
+    echo "Invalid request method.";
+}
+?>
