@@ -62,7 +62,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="confirmSaveBtn" class="btn btn-primary">Save</button>
+                            <button type="button" id="saveResearchBtn" class="btn btn-primary">Save</button>
                         </div>
 
                 </form>
@@ -82,11 +82,14 @@ $(document).ready(function () {
         $("#researchCompletedModal").modal("show");
     });
 
-    // When the "Yes" button in the modal is clicked, submit the form
+    // When the "Save" button in the modal is clicked, submit the form
+    $("#confirmSaveBtn").on("click", function() {
+        $("#researchForm").off("submit"); // Remove the previous event handler
+        $("#researchForm").submit(); // Submit the form
+    });
     $("#confirm_overwrite").on("click", function() {
         $("#researchForm").off("submit"); // Remove the previous event handler
         $("#researchForm").submit(); // Submit the form
     });
 });
-
 </script>
