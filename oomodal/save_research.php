@@ -50,20 +50,49 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 function insertData($conn, $schoolId, $researchCompleted, $quarter, $schoolYear, $user_school_id) {
-    $stmt = $conn->prepare("INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
+    // Check if data already exists for the given school year and quarter
+    $checkQuery = "SELECT * FROM oo_research WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkStmt = $conn->prepare($checkQuery);
+    $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
+    $checkStmt->execute();
+    $result = $checkStmt->get_result();
 
-    if ($stmt->execute()) {
-        // Data has been successfully inserted
-        echo "Data saved successfully.";
-        echo '<script>alert("Data saved successfully.");</script>';
-        echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+    if ($result->num_rows > 0) {
+        // Data already exists, update the existing record
+        $updateQuery = "UPDATE oo_research SET research_completed = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
+        $updateStmt = $conn->prepare($updateQuery);
+        $updateStmt->bind_param("siss", $researchCompleted, $schoolId, $quarter, $schoolYear);
+
+        if ($updateStmt->execute()) {
+            // Data has been successfully updated
+            echo "Data updated successfully.";
+            echo '<script>alert("Data updated successfully.");</script>';
+        } else {
+            // Error occurred while updating data
+            echo "Error: " . $updateStmt->error;
+        }
+
+        $updateStmt->close();
     } else {
-        // Error occurred while inserting data
-        echo "Error: " . $stmt->error;
-        echo '<script>setTimeout(function() { window location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
+        // Data does not exist, proceed with insertion
+        $insertQuery = "INSERT INTO oo_research (school_id, research_completed, quarter, school_year) VALUES (?, ?, ?, ?)";
+        $insertStmt = $conn->prepare($insertQuery);
+        $insertStmt->bind_param("isss", $schoolId, $researchCompleted, $quarter, $schoolYear);
+
+        if ($insertStmt->execute()) {
+            // Data has been successfully inserted
+            echo "Data saved successfully.";
+            echo '<script>alert("Data saved successfully.");</script>';
+        } else {
+            // Error occurred while inserting data
+            echo "Error: " . $insertStmt->error;
+        }
+
+        $insertStmt->close();
     }
 
-    $stmt->close();
+    // Redirect to the appropriate page
+    echo '<script>setTimeout(function() { window.location = "../schoolprofile.php?school_id=' . $schoolId . '&user_school_id=' . $user_school_id . '"; }, 1000);</script>';
 }
+
 ?>
