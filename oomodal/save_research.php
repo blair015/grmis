@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include('../admin/config/dbcon.php');
 // if ($_SERVER["REQUEST_METHOD"] === "POST") {
 //     include('../admin/config/dbcon.php'); // Include your database connection script
 
@@ -35,7 +35,7 @@ session_start();
 // }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    include('../admin/config/dbcon.php'); // Include your database connection script
+    // Include your database connection script
 
     $schoolId = $_POST['schoolId'];
     $researchCompleted = $_POST['researchCompleted'];
