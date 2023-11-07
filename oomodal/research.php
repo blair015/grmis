@@ -12,27 +12,29 @@
                 <!-- Add your content for the modal here -->
                 <input type="hidden" id="schoolId" name="schoolId" value="YOUR_SCHOOL_ID">
 
-                <label for="researchCompleted">Research Completed</label>
-                <input type="text" id="researchCompleted" name="researchCompleted" class="form-control" placeholder="Enter Research Completed">
+                <div class="form-group">
+                    <label for="researchCompleted">Research Completed</label>
+                    <input type="text" id="researchCompleted" name="researchCompleted" class="form-control" placeholder="Enter Research Completed">
+                </div>
 
                 <div class="form-group">
                     <label>Quarters</label>
                     <div class="row">
                         <div class="col">
                             <label for="quarter1">Q1</label>
-                            <input type="checkbox" id="quarter1" name="quarter[]" value="1">
+                            <input type="radio" id="quarter1" name="quarter" value="1">
                         </div>
                         <div class="col">
                             <label for="quarter2">Q2</label>
-                            <input type="checkbox" id="quarter2" name="quarter[]" value="2">
+                            <input type="radio" id="quarter2" name="quarter" value="2">
                         </div>
                         <div class="col">
                             <label for="quarter3">Q3</label>
-                            <input type="checkbox" id="quarter3" name="quarter[]" value="3">
+                            <input type="radio" id="quarter3" name="quarter" value="3">
                         </div>
                         <div class="col">
                             <label for="quarter4">Q4</label>
-                            <input type="checkbox" id="quarter4" name="quarter[]" value="4">
+                            <input type="radio" id="quarter4" name="quarter" value="4">
                         </div>
                     </div>
                 </div>
