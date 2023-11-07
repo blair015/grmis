@@ -83,7 +83,7 @@ $(document).ready(function () {
     });
 
     // When the "Save" button in the modal is clicked, submit the form
-    $("#confirmSaveBtn").on("click", function() {
+    $("#saveResearchBtn").on("click", function() {
         $("#researchForm").off("submit"); // Remove the previous event handler
         $("#researchForm").submit(); // Submit the form
     });
