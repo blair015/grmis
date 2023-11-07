@@ -82,10 +82,11 @@ $(document).ready(function () {
         $("#researchCompletedModal").modal("show");
     });
 
-    // When the "Save" button in the modal is clicked, submit the form
-    $("#confirmSaveBtn").on("click", function() {
+    // When the "Yes" button in the modal is clicked, submit the form
+    $("#confirm_overwrite").on("click", function() {
         $("#researchForm").off("submit"); // Remove the previous event handler
         $("#researchForm").submit(); // Submit the form
     });
 });
+
 </script>
