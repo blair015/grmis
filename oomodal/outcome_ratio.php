@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="ratioForm" method="post" action="oomodal/save_ratio.php">
+            <form id="ratioForm" method="post" action="oomodal/save_ratio_outcome.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
