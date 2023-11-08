@@ -52,7 +52,7 @@
                         <select id="schoolYear" name="schoolYear" class="form-control">
                             <?php
                             // Generate options for school years from 2023-2024 to 2030
-                            for ($year = 2023; $year <= 2030; $year++) {
+                            for ($year = 2023; $year <= 2050; $year++) {
                                 $nextYear = $year + 1;
                                 $schoolYear = $year . '-' . $nextYear;
                                 echo '<option value="' . $schoolYear . '">' . $schoolYear . '</option>';
