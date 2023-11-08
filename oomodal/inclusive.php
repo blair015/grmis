@@ -80,8 +80,8 @@
                             <label>Do you offer ALS Program?</label>
                             <div class="row">
                                 <div class="col">
-                                    <label for="alseyes">Yes</label>
-                                    <input type="radio" id="alsdyes" name="alsOption" value="1">
+                                    <label for="alsyes">Yes</label>
+                                    <input type="radio" id="alsyes" name="alsOption" value="1">
                                 </div>
                                 <div class="col">
                                     <label for="alsno">No</label>
