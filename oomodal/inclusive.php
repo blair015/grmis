@@ -26,32 +26,40 @@
                             <label>Do you offer SPED Program?</label>
                             <div class="row">
                                 <div class="col">
-                                    <label for="quarter1">Yes</label>
+                                    <label for="spedyes">Yes</label>
                                     <input type="radio" id="spedyes" name="spedOption" value="1">
                                 </div>
                                 <div class="col">
-                                    <label for="quarter2">No</label>
+                                    <label for="spedno">No</label>
                                     <input type="radio" id="spedno" name="spedOption" value="2">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group" id="spedInput" style="display: none;">
-                            <label for="spedText">Please provide more details:</label>
+                            <label for="spedText">Number of Enrolled Learners:</label>
                             <input type="text" id="spedText" name="spedText">
                         </div>
-                    <div class="form-group">
-                        <label for="researchCompleted">Enter the number of enrolled learners in SPED</label>
-                        <input type="text" id="sped" name="standardRatio" class="form-control" placeholder="Enter the standard ratio for teachers">
-                    </div>
-                    <div class="form-group">
-                        <label for="researchCompleted">Ratio for Classrooms</label>
-                        <input type="text" id="classroomRatio" name="classroomRatio" class="form-control" placeholder="Enter the ratio for classrooms">
-                    </div>
-                    <div class="form-group">
-                        <label for="researchCompleted">ICT Packages Received</label>
-                        <input type="text" id="receivedPackages" name="receivedPackages" class="form-control" placeholder="Enter the ICT Packages received">
-                    </div>
+                        <div class="form-group">
+                            <label>Do you offer ALIVE Program?</label>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="aliveyes">Yes</label>
+                                    <input type="radio" id="aliveyes" name="aliveOption" value="1">
+                                </div>
+                                <div class="col">
+                                    <label for="aliveno">No</label>
+                                    <input type="radio" id="aliveno" name="aliveOption" value="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="aliveInput" style="display: none;">
+                            <label for="spedText">Number of Enrolled Learners:</label>
+                            <input type="text" id="aliveText" name="aliveText">
+                        </div>
+                    
+                   
                     <div class="form-group">
                         <label>Quarters</label>
                         <div class="row">
@@ -127,6 +135,9 @@ $(document).ready(function () {
     const spedyes = document.getElementById("spedyes");
     const spedno = document.getElementById("spedno");
     const spedInput = document.getElementById("spedInput");
+    const aliveyes = document.getElementById("aliveyes");
+    const aliveno = document.getElementById("aliveno");
+    const aliveInput = document.getElementById("aliveInput");
 
     spedyes.addEventListener("change", function () {
         if (spedyes.checked) {
@@ -137,6 +148,17 @@ $(document).ready(function () {
     spedno.addEventListener("change", function () {
         if (spedno.checked) {
             spedInput.style.display = "none";
+        }
+    });
+    aliveyes.addEventListener("change", function () {
+        if (aliveyes.checked) {
+            aliveInput.style.display = "block";
+        }
+    });
+
+    aliveno.addEventListener("change", function () {
+        if (aliveno.checked) {
+            aliveInput.style.display = "none";
         }
     });
 </script>
