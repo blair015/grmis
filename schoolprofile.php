@@ -663,6 +663,7 @@ include ('oomodal/research.php');
 include ('oomodal/outcome_ratio.php');
 include ('oomodal/output_ratio.php');
 include ('oomodal/inclusive.php');
+include ('oomodal/hrm.php');
 
 ?>
 <div class="dropdown">
