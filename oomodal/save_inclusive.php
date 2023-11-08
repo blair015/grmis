@@ -99,13 +99,13 @@ function insertData($conn, $schoolId, $spedOption, $spedText,  $ipedOption, $ipe
     } else {
         // Data does not exist, proceed with insertion
         $insertQuery = "INSERT INTO oo_inclusive (school_id, 
-            sped_option, sped_text, 
-            alive_option, alive_text, 
-            iped_option, iped_text, 
-            als_option, als_text, 
-            quarter, school_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sped, sped_data, 
+            iped, iped_data, 
+            alive, alive_data, 
+            als, als_data, 
+            quarter, school_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
-        $insertStmt->bind_param("ssssssssis", $schoolId, $spedOption, $spedText,  $ipedOption, $ipedText, $aliveOption, $aliveText, $alsOption, $alsText, $quarter, $schoolYear);
+        $insertStmt->bind_param("ssssssssiss", $schoolId, $spedOption, $spedText,  $ipedOption, $ipedText, $aliveOption, $aliveText, $alsOption, $alsText, $quarter, $schoolYear);
 
         if ($insertStmt->execute()) {
             // Data has been successfully inserted
