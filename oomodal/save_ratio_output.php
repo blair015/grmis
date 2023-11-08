@@ -76,7 +76,7 @@ function insertData($conn, $schoolId, $classroomConstructed, $ongoingConstructio
         // Data already exists, update the existing record
         $updateQuery = "UPDATE oo_lm SET new_constructed = ?, on_going = ?, lm_procured = ?, scimath_package = ?, ict_package2 = ?, tvl_package = ?, new_position = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
         $updateStmt = $conn->prepare($updateQuery);
-        $updateStmt->bind_param("sssssssis", $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $schoolId, $quarter, $schoolYear);
+        $updateStmt->bind_param("sssssssiss", $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $schoolId, $quarter, $schoolYear);
 
         if ($updateStmt->execute()) {
             // Data has been successfully updated
