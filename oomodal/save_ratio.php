@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_research WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -79,7 +79,7 @@ function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $received
         $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
-        $insertQuery = "INSERT INTO oo_research (school_id, standard_ratio, classroom_ratio, received_packages, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO oo_ratio (school_id, standard_ratio, classroom_ratio, received_packages, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ssssis", $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear);
 
