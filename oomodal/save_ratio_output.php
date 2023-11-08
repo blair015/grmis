@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_ratio_output WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_lm WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 function insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear, $user_school_id) {
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_ratio_output WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_lm WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -84,7 +84,7 @@ function insertData($conn, $schoolId, $classroomConstructed, $ongoingConstructio
 
     if ($result->num_rows > 0) {
         // Data already exists, update the existing record
-        $updateQuery = "UPDATE oo_ratio_output SET classroom_constructed = ?, ongoing_construction = ?, textbooks = ?, scimath = ?, ict_package = ?, tv_package = ?, newly_created = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
+        $updateQuery = "UPDATE oo_lm SET new_constructed = ?, on_going = ?, lm_procured = ?, scimath_package = ?, ict_package2 = ?, tvl_package = ?, new_position = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
         $updateStmt = $conn->prepare($updateQuery);
         $updateStmt->bind_param("sssssssis", $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $schoolId, $quarter, $schoolYear);
 
@@ -100,7 +100,7 @@ function insertData($conn, $schoolId, $classroomConstructed, $ongoingConstructio
         $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
-        $insertQuery = "INSERT INTO oo_ratio_output (school_id, classroom_constructed, ongoing_construction, textbooks, scimath, ict_package, tv_package, newly_created, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO oo_lm (school_id, new_constructed, on_going, lm_procured, scimath_package, ict_package2, tvl_package, new_position, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ssssssssis", $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear);
 
