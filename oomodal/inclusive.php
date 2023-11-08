@@ -58,6 +58,42 @@
                             <label for="spedText">Number of Enrolled Learners:</label>
                             <input type="text" id="aliveText" name="aliveText">
                         </div>
+                        <div class="form-group">
+                            <label>Do you offer IPED Program?</label>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="ipedeyes">Yes</label>
+                                    <input type="radio" id="ipedyes" name="ipedOption" value="1">
+                                </div>
+                                <div class="col">
+                                    <label for="ipedno">No</label>
+                                    <input type="radio" id="ipedno" name="ipedOption" value="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="ipedInput" style="display: none;">
+                            <label for="ipedText">Number of Enrolled Learners:</label>
+                            <input type="text" id="ipedText" name="ipedText">
+                        </div>
+                        <div class="form-group">
+                            <label>Do you offer ALS Program?</label>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="alseyes">Yes</label>
+                                    <input type="radio" id="alsdyes" name="alsOption" value="1">
+                                </div>
+                                <div class="col">
+                                    <label for="alsno">No</label>
+                                    <input type="radio" id="alsno" name="alsOption" value="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="alsInput" style="display: none;">
+                            <label for="alsText">Number of Enrolled Learners:</label>
+                            <input type="text" id="alsText" name="alsText">
+                        </div>
                     
                    
                     <div class="form-group">
@@ -138,6 +174,12 @@ $(document).ready(function () {
     const aliveyes = document.getElementById("aliveyes");
     const aliveno = document.getElementById("aliveno");
     const aliveInput = document.getElementById("aliveInput");
+    const ipedyes = document.getElementById("ipedyes");
+    const ipedno = document.getElementById("ipedno");
+    const ipedInput = document.getElementById("ipedInput");
+    const alsyes = document.getElementById("alsyes");
+    const alsno = document.getElementById("alsno");
+    const alsInput = document.getElementById("alsInput");
 
     spedyes.addEventListener("change", function () {
         if (spedyes.checked) {
@@ -159,6 +201,28 @@ $(document).ready(function () {
     aliveno.addEventListener("change", function () {
         if (aliveno.checked) {
             aliveInput.style.display = "none";
+        }
+    });
+    ipedyes.addEventListener("change", function () {
+        if (ipedyes.checked) {
+            ipedInput.style.display = "block";
+        }
+    });
+
+    ipedno.addEventListener("change", function () {
+        if (ipedno.checked) {
+            ipedInput.style.display = "none";
+        }
+    });
+    alsyes.addEventListener("change", function () {
+        if (alsyes.checked) {
+            alsInput.style.display = "block";
+        }
+    });
+
+    alsno.addEventListener("change", function () {
+        if (alsno.checked) {
+            alsInput.style.display = "none";
         }
     });
 </script>
