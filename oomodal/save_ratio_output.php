@@ -29,21 +29,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result->num_rows > 0) {
         // Data already exists, prompt the user for confirmation using JavaScript
-                echo '<script>
-                var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
-                if (confirmOverwrite) {
-                    window.location = "?school_id=' . $schoolId . '&confirm_overwrite=1&classroomConstructed=' . urlencode($classroomConstructed) . '&ongoingConstruction=' . urlencode($ongoingConstruction) . 
-                    '&textbooks=' . urlencode($textbooks) . '&scimath=' . urlencode($scimath)  
-                    . '&ictPackage=' . urlencode($ictPackage) . '&tvPackage=' . urlencode($tvPackage) 
-                    . '&newlyCreated=' . urlencode($newlyCreated) . '&quarter=' . $quarter . '&schoolYear=' . urlencode($schoolYear) . '";
-                } else {
-                    window.location = "?school_id=' . $schoolId . '";
-                }
-            </script>';
-    
+        echo '<script>
+            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
+            if (confirmOverwrite) {
+                window.location = "?schoolId=' . $schoolId . '&confirm_overwrite=1&classroomConstructed=' . urlencode($classroomConstructed) . '&ongoingConstruction=' . urlencode($ongoingConstruction) . 
+                '&textbooks=' . urlencode($textbooks) . '&scimath=' . urlencode($scimath)  
+                . '&ictPackage=' . urlencode($ictPackage) . '&tvPackage=' . urlencode($tvPackage) 
+                . '&newlyCreated=' . urlencode($newlyCreated) . '&quarter=' . $quarter . '&schoolYear=' . urlencode($schoolYear) . '";
+            } else {
+                window.location = "?schoolId=' . $schoolId . '";
+            }
+        </script>';
     } else {
         // Data does not exist, proceed with insertion
-        insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks,  $scimath,  $ictPackage,  $tvPackage,  $newlyCreated, $quarter, $schoolYear, $user_school_id);
+        insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear, $user_school_id);
     }
 } elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
     // User confirmed overwrite, proceed with insertion
