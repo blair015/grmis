@@ -101,4 +101,4 @@ $(document).ready(function () {
         $("#researchForm").submit();
     });
 });
-
+</script>
