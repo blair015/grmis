@@ -662,6 +662,7 @@ $selectedSchoolId2 = $_GET['school_id'];
 include ('oomodal/research.php');
 include ('oomodal/outcome_ratio.php');
 include ('oomodal/output_ratio.php');
+include ('oomodal/inclusive.php');
 
 ?>
 <div class="dropdown">
@@ -698,10 +699,7 @@ include ('oomodal/output_ratio.php');
             </a>
             <ul class="dropdown-menu dropdown-submenu">
                 <li>
-                    <a class="dropdown-item" href="#">Outcome Indicators</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">Output Indicators</a>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#inclusiveEducationModal">Add Data</a>
                 </li>
             </ul>
         </li>
