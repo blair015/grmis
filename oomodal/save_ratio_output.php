@@ -48,13 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
     // User confirmed overwrite, proceed with insertion
     $schoolId = $_POST['schoolId'];
-    $classroomConstructed = $_POST['classroomConstructed'];
-    $ongoingConstruction = $_POST['ongoingConstruction'];
-    $textbooks = $_POST['textbooks'];
-    $scimath = $_POST['scimath'];
-    $ictPackage = $_POST['ictPackage'];
-    $tvPackage = $_POST['tvPackage'];
-    $newlyCreated = $_POST['newlyCreated'];
+    $classroomConstructed = urldecode($_GET['classroomConstructed']);
+    $ongoingConstruction = urldecode($_GET['ongoingConstruction']);
+    $textbooks = urldecode($_GET['textbooks']);
+    $scimath = urldecode($_GET['scimath']);
+    $ictPackage = urldecode($_GET['ictPackage']);
+    $tvPackage = urldecode($_GET['tvPackage']);
+    $newlyCreated = urldecode($_GET['newlyCreated']);
     $quarter = $_POST['quarter'];
     $schoolYear = $_POST['schoolYear'];
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
