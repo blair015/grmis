@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="ratioForm" method="post" action="oomodal/save_ratio_outcome.php">
+            <form id="inclusiveForm" method="post" action="oomodal/save_inclusive.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -132,7 +132,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="saveRatio" class="btn btn-primary">Save</button>
+                            <button type="button" id="saveInclusive" class="btn btn-primary">Save</button>
                         </div>
 
                 </form>
@@ -147,20 +147,20 @@
 <script>
 $(document).ready(function () {
     // When the form is submitted, show the confirmation modal
-    $("#ratioForm").on("submit", function (event) {
+    $("#inclusiveForm").on("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
-        $("#outcomeIndicatorsModal").modal("show"); // Corrected modal ID
+        $("#inclusiveEducationModal").modal("show"); // Corrected modal ID
     });
 
     // When the "Save" button in the modal is clicked, submit the form
-    $("#saveRatio").on("click", function() {
-        $("#ratioForm").off("submit"); // Remove the previous event handler
-        $("#ratioForm").submit(); // Submit the form
+    $("#saveInclusive").on("click", function() {
+        $("#inclusiveForm").off("submit"); // Remove the previous event handler
+        $("#inclusiveForm").submit(); // Submit the form
     });
 
     $("#confirm_overwrite").on("click", function() {
         // Submit the form when "Yes" is clicked
-        $("#ratioForm").submit();
+        $("#inclusiveForm").submit();
     });
 });
 </script>
