@@ -3,13 +3,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="hrmModalLabel">Outcome Indicators Modal</h5>
+                <h5 class="modal-title" id="hrmModalLabel">Education Human Resource Development Program</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <form id="ratioForm" method="post" action="oomodal/save_hrm.php">
+            <form id="hrmForm" method="post" action="oomodal/save_hrm.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -70,7 +70,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="saveRatio" class="btn btn-primary">Save</button>
+                            <button type="button" id="savehrm" class="btn btn-primary">Save</button>
                         </div>
 
                 </form>
@@ -85,20 +85,20 @@
 <script>
 $(document).ready(function () {
     // When the form is submitted, show the confirmation modal
-    $("#ratioForm").on("submit", function (event) {
+    $("#hrmForm").on("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
-        $("#outcomeIndicatorsModal").modal("show"); // Corrected modal ID
+        $("#hrmModal").modal("show"); // Corrected modal ID
     });
 
     // When the "Save" button in the modal is clicked, submit the form
-    $("#saveRatio").on("click", function() {
-        $("#ratioForm").off("submit"); // Remove the previous event handler
-        $("#ratioForm").submit(); // Submit the form
+    $("#savehrm").on("click", function() {
+        $("#hrmForm").off("submit"); // Remove the previous event handler
+        $("#hrmForm").submit(); // Submit the form
     });
 
     $("#confirm_overwrite").on("click", function() {
         // Submit the form when "Yes" is clicked
-        $("#ratioForm").submit();
+        $("#hrmForm").submit();
     });
 });
 </script>
