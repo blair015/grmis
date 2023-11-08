@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM your_table_name WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_inclusive WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
