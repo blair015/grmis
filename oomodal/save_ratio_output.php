@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 include('../admin/config/dbcon.php');
 include('../admin/includes/script.php');
 
@@ -20,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_lm WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -28,53 +29,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result->num_rows > 0) {
         // Data already exists, prompt the user for confirmation using JavaScript
-        echo '<script>
-            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
-            if (confirmOverwrite) {
-                // Use a POST request for confirmation
-                var form = document.createElement("form");
-                form.method = "post";
-                form.action = "save_ratio_output.php"; // The same script
-                form.style.display = "none";
-
-                var fields = {
-                    "confirm_overwrite": "1",
-                    "schoolId": "' . $schoolId . '",
-                    "classroomConstructed": "' . $classroomConstructed . '",
-                    "ongoingConstruction": "' . $ongoingConstruction . '",
-                    "textbooks": "' . $textbooks . '",
-                    "scimath": "' . $scimath . '",
-                    "ictPackage": "' . $ictPackage . '",
-                    "tvPackage": "' . $tvPackage . '",
-                    "newlyCreated": "' . $newlyCreated . '",
-                    "quarter": "' . $quarter . '",
-                    "schoolYear": "' . $schoolYear . '"
-                };
-
-                for (var key in fields) {
-                    var input = document.createElement("input");
-                    input.type = "hidden";
-                    input.name = key;
-                    input.value = fields[key];
-                    form.appendChild(input);
+                echo '<script>
+                var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
+                if (confirmOverwrite) {
+                    window.location = "?school_id=' . $schoolId . '&confirm_overwrite=1&classroomConstructed=' . urlencode($classroomConstructed) . '&ongoingConstruction=' . urlencode($ongoingConstruction) . 
+                    '&textbooks=' . urlencode($textbooks) . '&scimath=' . urlencode($scimath)  
+                    . '&ictPackage=' . urlencode($ictPackage) . '&tvPackage=' . urlencode($tvPackage) 
+                    . '&newlyCreated=' . urlencode($newlyCreated) . '&quarter=' . $quarter . '&schoolYear=' . urlencode($schoolYear) . '";
+                } else {
+                    window.location = "?school_id=' . $schoolId . '";
                 }
-
-                document.body.appendChild(form);
-                form.submit();
-            } else {
-                window.location = "?school_id=' . $schoolId . '";
-            }
-        </script>';
+            </script>';
+    
     } else {
         // Data does not exist, proceed with insertion
-        insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear, $user_school_id);
+        insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks,  $scimath,  $ictPackage,  $tvPackage,  $newlyCreated, $quarter, $schoolYear, $user_school_id);
     }
+} elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
+    // User confirmed overwrite, proceed with insertion
+    $schoolId = $_POST['schoolId'];
+    $classroomConstructed = $_POST['classroomConstructed'];
+    $ongoingConstruction = $_POST['ongoingConstruction'];
+    $textbooks = $_POST['textbooks'];
+    $scimath = $_POST['scimath'];
+    $ictPackage = $_POST['ictPackage'];
+    $tvPackage = $_POST['tvPackage'];
+    $newlyCreated = $_POST['newlyCreated'];
+    $quarter = $_POST['quarter'];
+    $schoolYear = $_POST['schoolYear'];
+    $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
+
+    insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear, $user_school_id);
 } else {
-    // If the request is not POST, you can handle it as needed.
+    // If the request is not POST or GET, you can handle it as needed.
     echo "Invalid request method.";
 }
 
-function insertData($conn, $schoolId, $classroomConstructed, $ongoingConstruction, $textbooks, $scimath, $ictPackage, $tvPackage, $newlyCreated, $quarter, $schoolYear, $user_school_id) {
+function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear, $user_school_id) {
     // Check if data already exists for the given school year and quarter
     $checkQuery = "SELECT * FROM oo_lm WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
