@@ -79,7 +79,7 @@ function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $received
         $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
-        $insertQuery = "INSERT INTO oo_ratio (school_id, standard_ratio, classroom_ratio, received_packages, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO oo_ratio (school_id, ratio_teacher, ratio_classroom, ict_package1, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ssssis", $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear);
 
