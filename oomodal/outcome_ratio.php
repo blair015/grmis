@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="ratioform" method="post" action="oomodal/save_ratio.php">
+            <form id="researchForm" method="post" action="oomodal/save_ratio.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -85,7 +85,7 @@
 <script>
 $(document).ready(function () {
     // When the form is submitted, show the confirmation modal
-    $("#ratioform").on("submit", function (event) {
+    $("#researchForm").on("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
         $("#outcomeIndicatorsModal").modal("show"); // Corrected modal ID
     });
