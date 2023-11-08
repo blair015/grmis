@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="researchForm" method="post" action="oomodal/save_ratio.php">
+            <form id="ratioForm" method="post" action="oomodal/save_ratio.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -70,7 +70,7 @@
                     </div>
                     <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="saveResearchBtn" class="btn btn-primary">Save</button>
+                            <button type="button" id="saveRatio" class="btn btn-primary">Save</button>
                         </div>
 
                 </form>
@@ -85,20 +85,20 @@
 <script>
 $(document).ready(function () {
     // When the form is submitted, show the confirmation modal
-    $("#researchForm").on("submit", function (event) {
+    $("#ratioForm").on("submit", function (event) {
         event.preventDefault(); // Prevent the default form submission
         $("#outcomeIndicatorsModal").modal("show"); // Corrected modal ID
     });
 
     // When the "Save" button in the modal is clicked, submit the form
-    $("#saveResearchBtn").on("click", function() {
-        $("#researchForm").off("submit"); // Remove the previous event handler
-        $("#researchForm").submit(); // Submit the form
+    $("#saveRatio").on("click", function() {
+        $("#ratioForm").off("submit"); // Remove the previous event handler
+        $("#ratioForm").submit(); // Submit the form
     });
 
     $("#confirm_overwrite").on("click", function() {
         // Submit the form when "Yes" is clicked
-        $("#researchForm").submit();
+        $("#ratioForm").submit();
     });
 });
 </script>

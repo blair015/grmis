@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear, $user_school_id) {
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_research WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -63,7 +63,7 @@ function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $received
 
     if ($result->num_rows > 0) {
         // Data already exists, update the existing record
-        $updateQuery = "UPDATE oo_research SET standard_ratio = ?, classroom_ratio = ?, received_packages = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
+        $updateQuery = "UPDATE oo_ratio SET ratio_teacher = ?, ratio_classroom = ?, ict_package1 = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
         $updateStmt = $conn->prepare($updateQuery);
         $updateStmt->bind_param("ssssis", $standardRatio, $classroomRatio, $receivedPackages, $schoolId, $quarter, $schoolYear);
 
