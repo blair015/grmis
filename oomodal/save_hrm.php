@@ -37,9 +37,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Data does not exist, proceed with insertion
         insertData($conn, $schoolId, $lacSession, $teachersTrained, $relatedTrained, $quarter, $schoolYear, $user_school_id);
     }
+// Inside your save_hrm.php script
 } elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
     // User confirmed overwrite, proceed with insertion
-    $schoolId = $_GET['school_id'];
+    $schoolId = $_GET['school_id']; // Updated to correctly retrieve 'school_id'
     $lacSession = urldecode($_GET['lacSession']);
     $teachersTrained = urldecode($_GET['teachersTrained']);
     $relatedTrained = urldecode($_GET['relatedTrained']);
@@ -48,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user_school_id = isset($_SESSION['school_id']) ? $_SESSION['school_id'] : '';
 
     insertData($conn, $schoolId, $lacSession, $teachersTrained, $relatedTrained, $quarter, $schoolYear, $user_school_id);
+
 } else {
     // If the request is not POST or GET, you can handle it as needed.
     echo "Invalid request method.";
