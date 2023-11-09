@@ -4,11 +4,18 @@ include '../admin/config/dbcon.php';
 
 class PDF extends FPDF
 {
+    public $columnWidths; // Declare the property to store column widths
+
     function Header()
     {
         $this->SetFont('Arial', 'B', 12);
-        // Add a row at the top with "PAPS" centered across all columns
-        $this->Cell(array_sum($this->columnWidths), 10, 'PAPS', 0, 1, 'C');
+        
+        // Check if columnWidths is set before using it
+        if(isset($this->columnWidths)){
+            // Add a row at the top with "PAPS" centered across all columns
+            $this->Cell(array_sum($this->columnWidths), 10, 'PAPS', 0, 1, 'C');
+        }
+
         $this->Cell(0, 10, 'Table with 5 columns and 10 rows', 0, 1, 'C');
     }
 
