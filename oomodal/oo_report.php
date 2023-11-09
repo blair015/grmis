@@ -1,50 +1,35 @@
+
 <?php
-require('../fpdf/fpdf.php');
+
 include '../admin/config/dbcon.php';
 
-class PDF extends FPDF
-{
-    public $columnWidths = array(); // Initialize the property with an empty array
+$sql = "SELECT school_id, research_completed, quarter, school_year FROM oo_research";
+$result = $conn->query($sql);
 
-    function Header()
-    {
-        $this->SetFont('Arial', 'B', 12);
+if ($result->num_rows > 0) {
+    // Output data in a table format
+    echo "<table border='1'>
+            <tr>
+                <th>School ID</th>
+                <th>Research Completed</th>
+                <th>Quarter</th>
+                <th>School Year</th>
+            </tr>";
 
-        // Check if columnWidths is set and not empty before using it
-        if (!empty($this->columnWidths)) {
-            // Add a row at the top with "PAPS" centered across all columns
-            $this->Cell(array_sum($this->columnWidths), 10, 'PAPS', 1, 1, 'C'); // Use 1 for the border
-        }
-
-        foreach ($this->columnWidths as $width) {
-            $this->Cell($width, 10, '', 1);
-        }
-        $this->Ln();
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row["school_id"]. "</td>
+                <td>" . $row["research_completed"]. "</td>
+                <td>" . $row["quarter"]. "</td>
+                <td>" . $row["school_year"]. "</td>
+              </tr>";
     }
 
-    function Footer()
-    {
-        $this->SetY(-15);
-        $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
-    }
+    echo "</table>";
+} else {
+    echo "0 results";
 }
 
-$pdf = new PDF();
-$pdf->AddPage();
-
-// Column widths
-$columnWidths = array(40, 40, 40, 40, 40);
-$pdf->columnWidths = $columnWidths; // Assign column widths to the class property
-
-// Data
-$pdf->SetFont('Arial', '', 10);
-for ($i = 1; $i <= 10; $i++) {
-    foreach ($columnWidths as $width) {
-        $pdf->Cell($width, 10, 'Row ' . $i . ', Col', 1);
-    }
-    $pdf->Ln();
-}
-
-$pdf->Output();
+$conn->close();
 ?>

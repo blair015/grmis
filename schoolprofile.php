@@ -727,8 +727,8 @@ include ('oomodal/hrm.php');
                 </li>
             </ul>
         </li>
-        <li>
-    <a class="dropdown-item" href="oomodal/oo_report.php" target="_blank">
+       <li>
+    <a class="dropdown-item" href="oo_report.php" target="_blank">
         Download Organization Outcome Report
     </a>
 </li>
