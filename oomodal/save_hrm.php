@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 // Inside your save_hrm.php script
 } elseif (isset($_GET['confirm_overwrite']) && $_GET['confirm_overwrite'] === "1") {
     // User confirmed overwrite, proceed with insertion
-    $schoolId = $_GET['school_id']; // Updated to correctly retrieve 'school_id'
+    $schoolId = $_GET['schoolId']; // Updated to correctly retrieve 'school_id'
     $lacSession = urldecode($_GET['lacSession']);
     $teachersTrained = urldecode($_GET['teachersTrained']);
     $relatedTrained = urldecode($_GET['relatedTrained']);

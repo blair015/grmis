@@ -19,7 +19,7 @@
                     }
                     include ('admin/config/dbcon.php');
                     $school_id = $_SESSION['school_id'];
-                    echo $school_id;
+                   // echo $school_id;
                     ?>
                     <input type="hidden" id="schoolId" name="schoolId" value="<?php echo $school_id; ?>">
                     <div class="form-group">
