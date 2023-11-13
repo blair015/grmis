@@ -35,7 +35,7 @@ WHERE rs.school_id = ? AND rs.school_year = ?"; // Include quarter in the condit
 
     // Use a prepared statement to prevent SQL injection
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iss", $schoolId, $schoolYear); // Add $quarter to the binding parameters
+    $stmt->bind_param("is", $schoolId, $schoolYear); // Add $quarter to the binding parameters
 
     // Execute the query
     if (!$stmt->execute()) {
