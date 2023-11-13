@@ -8,6 +8,7 @@ if (isset($_GET['school_id'])) {
     echo "School identifier is missing.";
     exit;
 }
+
 $school_id = $_SESSION['school_id'];
 
 // Check if the form is submitted
@@ -32,19 +33,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("is", $schoolId, $schoolYear);
 
- // Execute the query
-if (!$stmt->execute()) {
-    echo "Error executing query: " . $stmt->error;
-} else {
-    // Fetch only one row since we expect one row for the given school ID and year
-    $row = $stmt->get_result()->fetch_assoc();
-}
+    // Execute the query
+    if (!$stmt->execute()) {
+        echo "Error executing query: " . $stmt->error;
+    } else {
+        // Fetch only one row since we expect one row for the given school ID and year
+        $row = $stmt->get_result()->fetch_assoc();
 
-// Check if there are any errors
-if ($stmt->error) {
-    echo "Error: " . $stmt->error;
+        // Check if there are any errors
+        if ($stmt->error) {
+            echo "Error: " . $stmt->error;
+        }
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +94,7 @@ if ($stmt->error) {
 
     <?php
     // Check if there are rows in the result set
-    if ($result && $result->num_rows > 0) {
+    if ($row) {
         ?>
         <table>
             <tr>
@@ -111,29 +112,21 @@ if ($stmt->error) {
                 }
                 ?>
             </tr>
-            <?php
-            // Loop through the rows and display data in the table
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                <tr>
-                    <td>1.Number of education researches completed</td>
-                    <?php
-                    // Dynamically display data based on the number of quarters
-                    for ($i = 1; $i <= 4; $i++) {
-                        echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
-                    }
-                    ?>
-                </tr>
-                <!-- Add more rows based on your data -->
+            <tr>
+                <td>1.Number of education researches completed</td>
                 <?php
-            }
-            ?>
+                // Dynamically display data based on the number of quarters
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                }
+                ?>
+            </tr>
+            <!-- Add more rows based on your data -->
         </table>
     <?php
     } else {
         echo "<p>No results found.</p>";
     }
-}
     ?>
 </body>
 </html>
