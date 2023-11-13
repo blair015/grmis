@@ -81,8 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
         <button type="submit">Submit</button>
     </form>
-
+            
     <?php
+            $research_completed = $row['research_completed'];
+            echo $research_completed;
     // Check if there are rows in the result set
     if ($result && $result->num_rows > 0) {
         ?>
