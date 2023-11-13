@@ -100,6 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Fetch the result
         $row = $result->fetch_assoc();
 
+$research = $row['research_completed'];
+echo $research;
+
         if ($result->num_rows > 0) {
             ?>
             <table>
