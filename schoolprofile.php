@@ -150,7 +150,7 @@ $(document).ready(function () {
        // Hide the "Download Report" button
         $("#downloadButton").hide()
         $(".view-profile-button").hide();
-        $("#dropdownMenuButton").show();
+        $("#dropdownMenuButton").hide();
     }
 });
 
