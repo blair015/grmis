@@ -82,11 +82,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </style>
             </head>
             <body>
-                <form method="post" action="">
-                    <label for="schoolYear">Select School Year:</label>
-                    <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
-                    <button type="submit">Submit</button>
-                </form>
+            <form method="post" action="">
+                <label for="schoolYear">Select School Year:</label>
+                <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
+                <button type="submit">Submit</button>
+            </form>
+
 
                 <table>
                     <tr>
