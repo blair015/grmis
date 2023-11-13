@@ -125,7 +125,7 @@ if ($result !== null) {
     $data = array();
     while ($row = $result->fetch_assoc()) {
         $data[$row['quarter']]['research_completed'] = $row['research_completed'];
-        $data[$row['quarter1']]['ratio_teacher'] = $row['ratio_teacher'];
+        //$data[$row['quarter1']]['ratio_teacher'] = $row['ratio_teacher'];
     }
 
     // Display data for each quarter
