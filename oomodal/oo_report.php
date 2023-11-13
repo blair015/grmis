@@ -114,18 +114,20 @@ if ($result !== null) {
                 <?php
                 // Dynamically create table headers based on the number of quarters
                 for ($i = 1; $i <= 4; $i++) {
-                    echo "<td style='text-align: center;'>{$i}st Quarter</td>";
+                    echo "<td style='text-align: center;'>Quarter {$i}</td>";
                 }
                 ?>
             </tr>
             <tr>
                 <td>1. Number of education researches completed</td>
                 <?php
-                // Fetch and display data for each quarter separately
+                // Dynamically display data for each quarter separately
                 for ($i = 1; $i <= 4; $i++) {
+                    // Fetch the result inside the loop
                     $row = $result->fetch_assoc();
+
                     echo "<td>";
-                    if ($row['quarter'] == $i) {
+                    if ($row && $row['quarter'] == $i) {
                         echo $row['research_completed'];
                     }
                     echo "</td>";
