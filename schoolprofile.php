@@ -140,6 +140,7 @@ $(document).ready(function () {
          // Show the "Download Report" button
          $("#downloadButton").show();
          $(".view-profile-button").show();
+         $("#dropdownMenuButton").show();
     } else {
         // Hide the "Edit Profile" icon
         $("#editProfileIcon").hide();
@@ -149,6 +150,7 @@ $(document).ready(function () {
        // Hide the "Download Report" button
         $("#downloadButton").hide()
         $(".view-profile-button").hide();
+        $("#dropdownMenuButton").show();
     }
 });
 
@@ -668,8 +670,8 @@ include ('oomodal/hrm.php');
 
 ?>
 <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-        Organizationl Outcome
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" name ="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+        Organizational Outcome
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li>
