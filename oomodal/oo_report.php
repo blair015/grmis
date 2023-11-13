@@ -133,6 +133,7 @@ if ($stmt->error) {
     } else {
         echo "<p>No results found.</p>";
     }
+}
     ?>
 </body>
 </html>
