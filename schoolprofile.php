@@ -962,7 +962,7 @@ echo 'Error in preparing the SQL statement.';
                             </div>
                             <div class="col-md-6">
                                 <label class="fw-bold text-muted"><h5>SBM Level</h5></label>
-                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select Category" name="category">
+                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select Category" name="sbm_level">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
