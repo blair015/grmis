@@ -2,7 +2,49 @@
 <?php
 
 include '../admin/config/dbcon.php';
+
+                    if (isset($_GET['school_id'])) {
+                        $_SESSION['school_id'] = $_GET['school_id'];
+                    } else {
+                        echo "School identifier is missing.";
+                        exit;
+                    }
+                    include ('admin/config/dbcon.php');
+                    $school_id = $_SESSION['school_id'];
+                    //echo $school_id;
+       // Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the selected quarter and school year from the form
+    $quarter = $_POST["quarter"];
+    $schoolYear = $_POST["schoolYear"];
+    $schoolId = $school_id;
+
+    // Your SQL query should include a condition based on the user's selection
+    $sql = "SELECT rs.research_completed, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
+                    rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
+                    lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained
+            FROM oo_research AS rs
+            INNER JOIN oo_support AS sp ON rs.school_id = sp.school_id
+            INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
+            INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
+            INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
+            INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
+            WHERE rs.school_id = ? AND rs.quarter = ? AND rs.school_year = ?";
+    
+    // Use a prepared statement to prevent SQL injection
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
+
+    // Replace $schoolId with the actual value of the school ID
+
+    // Execute the query
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->get_result();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,6 +103,21 @@ include '../admin/config/dbcon.php';
     </style>
 </head>
 <body>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <label for="quarter">Select Quarter:</label>
+        <select name="quarter" id="quarter">
+            <option value="1">1st Quarter</option>
+            <option value="2">2nd Quarter</option>
+            <option value="3">3rd Quarter</option>
+            <option value="4">4th Quarter</option>
+        </select>
+
+        <label for="schoolYear">Select School Year:</label>
+        <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
+
+        <button type="submit">Submit</button>
+    </form>
+
 
 <table>
     <tr>
