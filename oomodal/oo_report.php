@@ -10,6 +10,9 @@ if (isset($_GET['school_id'])) {
 }
 $school_id = $_SESSION['school_id'];
 
+// Initialize $result
+$result = null;
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the selected quarter and school year from the form
@@ -36,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$stmt->execute()) {
         echo "Error executing query: " . $stmt->error;
     } else {
-        // Fetch only one row since we expect one row for the given school ID and year
+        // Fetch the result
         $result = $stmt->get_result();
 
         // Check if there are any errors
@@ -46,6 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Table Example</title>
     <style>
         /* Define a CSS style for the table and its elements */
         table {
@@ -76,17 +86,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: grey; /* Change the background color as needed */
         }
     </style>
+</head>
+<body>
     <form method="post" action="">
         <label for="schoolYear">Select School Year:</label>
         <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
         <button type="submit">Submit</button>
     </form>
-            
+
     <?php
-            $research_completed = $row['research_completed'];
-            echo $research_completed;
     // Check if there are rows in the result set
-    if ($result && $result->num_rows > 0) {
+    if ($result !== null && $result->num_rows > 0) {
         ?>
         <table>
             <tr>
@@ -127,3 +137,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>No results found.</p>";
     }
     ?>
+</body>
+</html>
