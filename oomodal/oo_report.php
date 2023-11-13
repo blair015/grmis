@@ -103,21 +103,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <form method="post" action="">
-        <label for="quarter">Select Quarter:</label>
-        <select name="quarter" id="quarter">
-            <option value="1">1st Quarter</option>
-            <option value="2">2nd Quarter</option>
-            <option value="3">3rd Quarter</option>
-            <option value="4">4th Quarter</option>
-        </select>
-
-        <label for="schoolYear">Select School Year:</label>
+                <label for="schoolYear">Select School Year:</label>
         <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
 
         <button type="submit">Submit</button>
     </form>
 
-
+    <?php
+        // Check if there are rows in the result set
+        if ($result->num_rows > 0) {
+            // Loop through the rows and display data in the table
+            while ($row = $result->fetch_assoc()) {
+                ?>
 <table>
     <tr>
     <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
@@ -227,8 +224,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <td>Data 10-4</td>
         <td>Data 10-5</td>
     </tr>
-</table>
-
+    <?php
+}
+        } else {
+            echo "<tr><td colspan='5'>No results found.</td></tr>";
+        }
+        ?>
+    </table>
 </body>
 </html>
 <?php
