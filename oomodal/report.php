@@ -3,8 +3,6 @@
 session_start();
 include '../admin/config/dbcon.php';
 
-// Initialize $result
-$result = null;
 
 if (isset($_GET['school_id'])) {
     $_SESSION['school_id'] = $_GET['school_id'];
@@ -32,46 +30,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
             WHERE rs.school_id = ? AND rs.school_year = ?";
 
-    // Use a prepared statement to prevent SQL injection
-    $stmt = $conn->prepare($sql);
+    // Prepare the SQL statement
+$stmt = $conn->prepare($sql);
 
-    if (!$stmt) {
-        echo "Error preparing statement: " . $conn->error;
-        exit;
-    }
+// Bind parameters
+$stmt->bind_param("ss", $school_id, $schoolYear);
 
-    $stmt->bind_param("is", $schoolId, $schoolYear);
+// Execute the query
+$stmt->execute();
 
-    // Execute the query
-    if (!$stmt->execute()) {
-        echo "Error executing query: " . $stmt->error;
-        exit;
-    } else {
-        // Fetch the result
-$result = $stmt->get_result();
+// Bind the result variables
+$stmt->bind_result(
+    $research_completed1, $research_completed2, $research_completed3, $research_completed4,
+    $retention_rate, $completion_rate, $nat_proportion, $feeding_program, $esc, $voucher, $joint_delivery,
+    $ratio_teacher, $ratio_classroom, $ict_package1, $new_constructed, $on_going, $lm_procured, $scimath_package,
+    $ict_package2, $tvl_package, $new_position, $sped, $sped_data, $iped, $iped_data, $alive, $alive_data,
+    $als, $als_data, $lac, $teacher_trained, $related_trained
+);
 
-// Check if there are any errors
-if ($stmt->error) {
-    echo "Error: " . $stmt->error;
-    exit;
-}
+// Fetch the values
+$stmt->fetch();
 
-// Fetch the data as an associative array
-$row = $result->fetch_assoc();
+// Display the values (you can customize this part based on your needs)
+echo "Research Completed 1: $research_completed1 <br>";
+echo "Research Completed 2: $research_completed2 <br>";
+echo "Research Completed 3: $research_completed3 <br>";
+echo "Research Completed 4: $research_completed4 <br>";
+echo "Retention Rate: $retention_rate <br>";
+echo "Completion Rate: $completion_rate <br>";
+// ... (continue for other variables)
 
-// Check if any rows are returned
-if ($row) {
-    // Assign values to variables
-    $research1 = $row['research_completed1'];
-    $research2 = $row['research_completed2'];
-    $research3 = $row['research_completed3'];
-    $research4 = $row['research_completed4'];
-} else {
-    // Handle the case where no rows are returned
-    echo "No data found for the specified school and year.";
-    exit;
-}
-    }
+// Close the statement
+$stmt->close();
 }
 ?>
 
