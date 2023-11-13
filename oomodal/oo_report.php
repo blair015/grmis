@@ -126,6 +126,7 @@ if ($result !== null) {
                     echo "<td>";
                     if ($row['quarter'] == $i) {
                         echo $row['research_completed'];
+                        $row = $result->fetch_assoc(); // Move to the next row
                     }
                     echo "</td>";
                 }
