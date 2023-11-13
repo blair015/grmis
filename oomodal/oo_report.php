@@ -32,13 +32,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("is", $schoolId, $schoolYear);
 
-    // Execute the query
-    $stmt->execute();
+  // Execute the query
+if (!$stmt->execute()) {
+    echo "Error executing query: " . $stmt->error;
+} else {
+    // Fetch only one row since we expect one row for the given school ID and year
+    $row = $result->fetch_assoc();
+}
 
-    // Fetch the result
-    $result = $stmt->get_result();
+// Check if there are any errors
+if ($stmt->error) {
+    echo "Error: " . $stmt->error;
 }
 ?>
+>
 
 <!DOCTYPE html>
 <html lang="en">
