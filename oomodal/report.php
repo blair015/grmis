@@ -1,40 +1,43 @@
-
 <?php
 session_start();
 include '../admin/config/dbcon.php';
 
-
+// Check if the school_id is set in the GET parameters
 if (isset($_GET['school_id'])) {
     $_SESSION['school_id'] = $_GET['school_id'];
 } else {
     echo "School identifier is missing.";
     exit;
 }
+
+// Get the school_id from the session
 $school_id = $_SESSION['school_id'];
 
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the selected quarter and school year from the form
-//    $schoolYear = $_POST["schoolYear"];
-    $schoolId = $school_id;
+// Your SQL query should include a condition based on the user's selection
+$sql = "SELECT rs.research_completed1, rs.research_completed2, rs.research_completed3, rs.research_completed4, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
+                rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
+                lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained
+        FROM oo_research AS rs
+        INNER JOIN oo_support AS sp ON rs.school_id = sp.school_id
+        INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
+        INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
+        INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
+        INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
+        WHERE rs.school_id = ?";
 
-    // Your SQL query should include a condition based on the user's selection
-    $sql = "SELECT rs.research_completed1, rs.research_completed2, rs.research_completed3, rs.research_completed4, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
-                    rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
-                    lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained
-            FROM oo_research AS rs
-            INNER JOIN oo_support AS sp ON rs.school_id = sp.school_id
-            INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
-            INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
-            INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
-            INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
-            WHERE rs.school_id = ?";
+// Establish the database connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Prepare the SQL statement
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Prepare the SQL statement
 $stmt = $conn->prepare($sql);
 
 // Bind parameters
-$stmt->bind_param("ss", $school_id, $schoolYear);
+$stmt->bind_param("s", $school_id);
 
 // Execute the query
 $stmt->execute();
@@ -62,8 +65,11 @@ echo "Completion Rate: $completion_rate <br>";
 
 // Close the statement
 $stmt->close();
-}
+
+// Close the database connection
+$conn->close();
 ?>
+
 
 <!-- <!DOCTYPE html>
 <html lang="en">
