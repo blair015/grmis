@@ -2,6 +2,9 @@
 session_start();
 include '../admin/config/dbcon.php';
 
+// Initialize $result
+$result = null;
+
 if (isset($_GET['school_id'])) {
     $_SESSION['school_id'] = $_GET['school_id'];
 } else {
@@ -9,9 +12,6 @@ if (isset($_GET['school_id'])) {
     exit;
 }
 $school_id = $_SESSION['school_id'];
-
-// Initialize $result
-$result = null;
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -96,45 +96,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
     // Check if there are rows in the result set
-    if ($result !== null && $result->num_rows > 0) {
-        ?>
-        <table>
-            <tr>
-                <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
-            </tr>
-            <tr>
-                <th colspan="5">EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>
-            </tr>
-            <tr>
-                <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
-                <?php
-                // Dynamically create table headers based on the number of quarters
-                for ($i = 1; $i <= 4; $i++) {
-                    echo "<td style='text-align: center;'>{$i}st Quarter</td>";
-                }
-                ?>
-            </tr>
-            <?php
-            // Loop through the rows and display data in the table
-            while ($row = $result->fetch_assoc()) {
-                ?>
+    if ($result !== null) {
+        if ($result->num_rows > 0) {
+            ?>
+            <table>
                 <tr>
-                    <td>1.Number of education researches completed</td>
+                    <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
+                </tr>
+                <tr>
+                    <th colspan="5">EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>
+                </tr>
+                <tr>
+                    <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
                     <?php
-                    // Dynamically display data based on the number of quarters
+                    // Dynamically create table headers based on the number of quarters
                     for ($i = 1; $i <= 4; $i++) {
-                        echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                        echo "<td style='text-align: center;'>{$i}st Quarter</td>";
                     }
                     ?>
                 </tr>
-                <!-- Add more rows based on your data -->
                 <?php
-            }
-            ?>
-        </table>
-    <?php
-    } else {
-        echo "<p>No results found.</p>";
+                // Loop through the rows and display data in the table
+                while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td>1.Number of education researches completed</td>
+                        <?php
+                        // Dynamically display data based on the number of quarters
+                        for ($i = 1; $i <= 4; $i++) {
+                            echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                        }
+                        ?>
+                    </tr>
+                    <!-- Add more rows based on your data -->
+                    <?php
+                }
+                ?>
+            </table>
+        <?php
+        } else {
+            echo "<p>No results found.</p>";
+        }
     }
     ?>
 </body>
