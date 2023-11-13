@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 include '../admin/config/dbcon.php';
 
                     if (isset($_GET['school_id'])) {
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="post" action="">
         <label for="quarter">Select Quarter:</label>
         <select name="quarter" id="quarter">
             <option value="1">1st Quarter</option>
@@ -231,4 +231,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+<?php
+// Fetch the result
+$result = $stmt->get_result();
 
+// Check if there are rows in the result set
+if ($result->num_rows > 0) {
+    // Loop through the rows and display data in the table
+    while ($row = $result->fetch_assoc()) {
+        // Display data in the table cells
+    }
+} else {
+    echo "No results found.";
+}
+?>
