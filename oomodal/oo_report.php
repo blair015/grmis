@@ -168,7 +168,7 @@ WHERE rs.school_id = ? AND rs.school_year = ? AND rs.quarter = ?"; // Include qu
                     <?php
                     // Dynamically display data based on the number of quarters
                     for ($i = 1; $i <= 4; $i++) {
-                        echo "<td>{$row['ration_classroom']}</td>";
+                        echo "<td>{$row['ratio_classroom']}</td>";
                     }
                     ?>
                 </tr>
