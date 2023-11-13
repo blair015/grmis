@@ -46,13 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Table Example</title>
     <style>
         /* Define a CSS style for the table and its elements */
         table {
@@ -83,8 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: grey; /* Change the background color as needed */
         }
     </style>
-</head>
-<body>
     <form method="post" action="">
         <label for="schoolYear">Select School Year:</label>
         <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
@@ -134,5 +125,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>No results found.</p>";
     }
     ?>
-</body>
-</html>
