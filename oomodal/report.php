@@ -1,77 +1,4 @@
-<?php
-session_start();
-include '../admin/config/dbcon.php';
-
-// Check if the school_id is set in the GET parameters
-if (isset($_GET['school_id'])) {
-    $_SESSION['school_id'] = $_GET['school_id'];
-} else {
-    echo "School identifier is missing.";
-    exit;
-}
-
-// Get the school_id from the session
-$school_id = $_SESSION['school_id'];
-
-// Your SQL query should include a condition based on the user's selection
-$sql = "SELECT rs.research_completed1, rs.research_completed2, rs.research_completed3, rs.research_completed4, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
-                rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
-                lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained
-        FROM oo_research AS rs
-        INNER JOIN oo_support AS sp ON rs.school_id = sp.school_id
-        INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
-        INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
-        INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
-        INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
-        WHERE rs.school_id = ?";
-
-// Establish the database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Prepare the SQL statement
-$stmt = $conn->prepare($sql);
-
-// Bind parameters
-$stmt->bind_param("s", $school_id);
-
-// Execute the query
-$stmt->execute();
-
-// Bind the result variables
-$stmt->bind_result(
-    $research_completed1, $research_completed2, $research_completed3, $research_completed4,
-    $retention_rate, $completion_rate, $nat_proportion, $feeding_program, $esc, $voucher, $joint_delivery,
-    $ratio_teacher, $ratio_classroom, $ict_package1, $new_constructed, $on_going, $lm_procured, $scimath_package,
-    $ict_package2, $tvl_package, $new_position, $sped, $sped_data, $iped, $iped_data, $alive, $alive_data,
-    $als, $als_data, $lac, $teacher_trained, $related_trained
-);
-
-// Fetch the values
-$stmt->fetch();
-
-// Display the values (you can customize this part based on your needs)
-echo "Research Completed 1: $research_completed1 <br>";
-echo "Research Completed 2: $research_completed2 <br>";
-echo "Research Completed 3: $research_completed3 <br>";
-echo "Research Completed 4: $research_completed4 <br>";
-echo "Retention Rate: $retention_rate <br>";
-echo "Completion Rate: $completion_rate <br>";
-// ... (continue for other variables)
-
-// Close the statement
-$stmt->close();
-
-// Close the database connection
-$conn->close();
-?>
-
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -147,12 +74,12 @@ $conn->close();
         <td style="text-align: center;">4th Quarter</td>
     </tr>
     <tr>
-    <td>1.Number of education researches completed</td>
-    <td><?= isset($result['research_completed1']) ? $result['research_completed1'] : ''; ?></td>
-    <td><?= isset($result['research_completed2']) ? $result['research_completed2'] : ''; ?></td>
-    <td><?= isset($result['research_completed3']) ? $result['research_completed3'] : ''; ?></td>
-    <td><?= isset($result['research_completed4']) ? $result['research_completed4'] : ''; ?></td>
-</tr>
+        <td>1.Number of education researches completed</td>
+        <td>Data 2-2</td>
+        <td>Data 2-3</td>
+        <td>Data 2-4</td>
+        <td>Data 2-5</td>
+    </tr>
     <tr>
         <td colspan="5" >BASIC EDUCATION INPUTS PROGRAM-(PPRD)</td>
         
@@ -242,4 +169,4 @@ $conn->close();
 </table>
 
 </body>
-</html> -->
+</html>
