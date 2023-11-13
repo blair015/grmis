@@ -154,10 +154,9 @@ if ($result !== null) {
                 // Fetch all rows for the selected school_id and school_year
                 $data = array();
                 while ($row = $result->fetch_assoc()) {
-                    $quarter1 = $row['quarter'];  // Get the quarter value
-                    $data[$quarter1]['ratio_teacher'] = $row['ratio_teacher'];
-                    $data[$quarter1]['ratio_classroom'] = $row['ratio_classroom'];
-                    $data[$quarter1]['ict_package1'] = $row['ict_package1'];
+                    $data[$row['quarter1']]['ratio_teacher'] = $row['ratio_teacher'];
+                    $data[$row['quarter1']]['ratio_classroom'] = $row['ratio_classroom'];
+                    $data[$row['quarter1']]['ict_package1'] = $row['ict_package1'];
                 }
 
                 // Display data for each quarter
