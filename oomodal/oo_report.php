@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $schoolId = $school_id;
 
     // Your SQL query should include a condition based on the user's selection
-    $sql = "SELECT rs.research_completed, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
+    $sql = "SELECT rs.research_completed1, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
                     rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
                     lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained
             FROM oo_research AS rs
@@ -101,8 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Fetch the result
             $row = $result->fetch_assoc();
 
-            $research = $row['research_completed'];
-            echo $research;
+           
             ?>
             <table>
                 <tr>
@@ -125,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <?php
                     // Dynamically display data based on the number of quarters
                     for ($i = 1; $i <= 4; $i++) {
-                        echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                        echo "<td>{$row['research_completed1']}</td>"; // Replace 'research_completed' with the actual column name
                     }
                     ?>
                 </tr>
