@@ -16,11 +16,10 @@ $school_id = $_SESSION['school_id'];
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the selected quarter and school year from the form
-    $quarter = $_POST["quarter"];
+    //$quarter = $_POST["quarter"];
     $schoolYear = $_POST["schoolYear"];
     $schoolId = $school_id;
 
-    // Your SQL query should include a condition based on the user's selection
     // Your SQL query should include a condition based on the user's selection
 $sql = "SELECT rs.research_completed, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
 rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
@@ -31,12 +30,12 @@ INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
 INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
 INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
 INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
-WHERE rs.school_id = ? AND rs.school_year = ? AND rs.quarter = ?"; // Include quarter in the condition
+WHERE rs.school_id = ? AND rs.school_year = ?"; // Include quarter in the condition
 
 
     // Use a prepared statement to prevent SQL injection
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iss", $schoolId, $schoolYear, $quarter); // Add $quarter to the binding parameters
+    $stmt->bind_param("iss", $schoolId, $schoolYear); // Add $quarter to the binding parameters
 
     // Execute the query
     if (!$stmt->execute()) {
