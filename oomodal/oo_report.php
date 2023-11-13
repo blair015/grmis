@@ -119,7 +119,6 @@ if ($result !== null) {
                 ?>
             </tr>
             <tr>
-            <tr>
     <td>1. Number of education researches completed</td>
     <?php
     // Fetch all rows for the selected school_id and school_year
@@ -144,6 +143,10 @@ if ($result !== null) {
 </tr>
 <tr>
     <td style="font-family: Arial, sans-serif; font-style: italic; ">Outcome Indicators</td>
+</tr>
+<tr>
+    <td style="font-family: Arial, sans-serif; font-style: italic; ">Standard ratio for Teachers</td>
+
     <?php
     // Reset the result pointer
     $result->data_seek(0);
