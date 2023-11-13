@@ -67,183 +67,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         tr:first-child {
             background-color: bisque; /* Change the background color as needed */
         }
-        tr:nth-child(2) {
+
+        tr:nth-child(2), tr:nth-child(3), tr:nth-child(5), tr:nth-child(6), tr:nth-child(7), tr:nth-child(10), tr:nth-child(13), tr:nth-child(16) {
             font-weight: bold;
-            background-color: green; /* Change the background color as needed */
-            }
-        tr:nth-child(3) {
-                    font-weight: bold;
-            background-color: greenyellow; /* Change the background color as needed */
-            }
-            tr:nth-child(5) {
-            font-weight: bold;
-            background-color: green; /* Change the background color as needed */
-            }
-            tr:nth-child(6) {
-            font-weight: bold;
+        }
+
+        tr:nth-child(6) {
             font-style: italic;
-            background-color: greenyellow;
-                      }
-            tr:nth-child(7) {
-            font-weight: bold;
-            }
-            
-            tr:nth-child(10) {
-            font-weight: bold;
-                     }
-            tr:nth-child(13) {
-            font-weight: bold;
-         
-            }
-            tr:nth-child(16) {
-                font-weight: bold;
+        }
+
+        tr:nth-child(16) {
             background-color: grey; /* Change the background color as needed */
-            }
+        }
     </style>
 </head>
 <body>
-<form method="post" action="">
-                <label for="schoolYear">Select School Year:</label>
+    <form method="post" action="">
+        <label for="schoolYear">Select School Year:</label>
         <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
-
         <button type="submit">Submit</button>
     </form>
 
     <?php
-        // Check if there are rows in the result set
-        if ($result->num_rows > 0) {
-            // Loop through the rows and display data in the table
-            while ($row = $result->fetch_assoc()) {
-                ?>
-<table>
-    <tr>
-    <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
-        
-    </tr>
-    <tr>
-        <th colspan="5" >EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>   
-     
-    </tr>
-    <tr>
-        <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
-        <td style="text-align: center;">1st Quarter</td>
-        <td style="text-align: center;">2nd Quarter</td>
-        <td style="text-align: center;">3rd Quarter</td>
-        <td style="text-align: center;">4th Quarter</td>
-    </tr>
-    <tr>
-        <td>1.Number of education researches completed</td>
-        <td>Data 2-2</td>
-        <td>Data 2-3</td>
-        <td>Data 2-4</td>
-        <td>Data 2-5</td>
-    </tr>
-    <tr>
-        <td colspan="5" >BASIC EDUCATION INPUTS PROGRAM-(PPRD)</td>
-        
-    </tr>
-    <tr>
-        <td>Outcome Indicators</td>
-        <td style="text-align: center;">1st Quarter</td>
-        <td style="text-align: center;">2nd Quarter</td>
-        <td style="text-align: center;">3rd Quarter</td>
-        <td style="text-align: center;">4th Quarter</td>
-    </tr>
-    <tr>
-        <td colspan="5" >1.Percentage of schools meeting the standard ratio for teachers</td>
-       
-    </tr>
-    <tr>
-        <td>a.Elementary</td>
-        <td>Data 6-2</td>
-        <td>Data 6-3</td>
-        <td>Data 6-4</td>
-        <td>Data 6-5</td>
-    </tr>
-    <tr>
-        <td>b.Junior High School</td>
-        <td>Data 7-2</td>
-        <td>Data 7-3</td>
-        <td>Data 7-4</td>
-        <td>Data 7-5</td>
-    </tr>
-    <tr>
-        <td colspan="5">2.Percentage of public schools meetig the standard ratio for classrooms</td>
-       
-    </tr>
-    <tr>
-        <td>a.Grade 1 - Grade 10</td>
-        <td>Data 9-2</td>
-        <td>Data 9-3</td>
-        <td>Data 9-4</td>
-        <td>Data 9-5</td>
-    </tr>
-    <tr>
-        <td>b.Senior High School</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <tr>
-        <td colspan="5">3.Percentage of public schools provided with ICT package (schools with electricty) - ICTU</td>
-       
-    </tr>
-    <tr>
-        <td>a.Elementary-(Kinder-Grade 10)</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <tr>
-        <td>b.Junior High School</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <tr>
-        <td>Output Indicators-ESSD, CLMD, ICTU, & PPRD</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <tr>
-        <td>1.Number of</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <tr>
-        <td>a.New classrooms constracted</td>
-        <td>Data 10-2</td>
-        <td>Data 10-3</td>
-        <td>Data 10-4</td>
-        <td>Data 10-5</td>
-    </tr>
-    <?php
-}
-        } else {
-            echo "<tr><td colspan='5'>No results found.</td></tr>";
-        }
+    // Check if there are rows in the result set
+    if ($result->num_rows > 0) {
+        // Initialize an array to store the data
+        $data = $result->fetch_assoc();
         ?>
-    </table>
-</body>
-</html>
-<?php
-// Fetch the result
-$result = $stmt->get_result();
-
-// Check if there are rows in the result set
-if ($result->num_rows > 0) {
-    // Loop through the rows and display data in the table
-    while ($row = $result->fetch_assoc()) {
-        // Display data in the table cells
+        <table>
+            <tr>
+                <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
+            </tr>
+            <tr>
+                <th colspan="5">EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>
+            </tr>
+            <tr>
+                <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
+                <?php
+                // Dynamically create table headers based on the number of quarters
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td style='text-align: center;'>{$i}st Quarter</td>";
+                }
+                ?>
+            </tr>
+            <tr>
+                <td>1.Number of education researches completed</td>
+                <?php
+                // Dynamically display data based on the number of quarters
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>{$data['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                }
+                ?>
+            </tr>
+            <!-- Add more rows based on your data -->
+        </table>
+    <?php
+    } else {
+        echo "<p>No results found.</p>";
     }
-} else {
-    echo "No results found.";
-}
-?>
+    ?>
