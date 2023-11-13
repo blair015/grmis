@@ -45,12 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if there are any errors
         if ($stmt->error) {
             echo "Error: " . $stmt->error;
-        } else {
-            // Output fetched data for verification
-            $row = $result->fetch_assoc();
-            echo "<pre>";
-            print_r($row);
-            echo "</pre>";
         }
     }
 }
@@ -104,6 +98,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if there are rows in the result set
     if ($result !== null) {
         if ($result->num_rows > 0) {
+            // Fetch the result
+            $row = $result->fetch_assoc();
+
+            $research = $row['research_completed'];
+            echo $research;
             ?>
             <table>
                 <tr>
