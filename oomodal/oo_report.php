@@ -148,25 +148,57 @@ if ($result !== null) {
     <td style="font-family: Arial, sans-serif; font-style: italic; ">Standard ratio for Teachers</td>
 
     <?php
-    // Reset the result pointer
-    $result->data_seek(0);
+                // Reset the result pointer
+                $result->data_seek(0);
 
-    // Fetch all rows for the selected school_id and school_year
-    $data = array();
-    while ($row = $result->fetch_assoc()) {
-        $data[$row['quarter']]['ratio_teacher'] = $row['ratio_teacher'];
-    }
+                // Fetch all rows for the selected school_id and school_year
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[$row['quarter']]['ratio_teacher'] = $row['ratio_teacher'];
+                    $data[$row['quarter']]['ratio_classroom'] = $row['ratio_classroom'];
+                    $data[$row['quarter']]['ict_package1'] = $row['ict_package1'];
+                }
 
-    // Display data for each quarter
-    for ($i = 1; $i <= 4; $i++) {
-        echo "<td>";
-        if (isset($data[$i]['ratio_teacher'])) {
-            echo $data[$i]['ratio_teacher'];
-        }
-        echo "</td>";
-    }
-    ?>
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['ratio_teacher'])) {
+                        echo $data[$i]['ratio_teacher'];
+                    }
+                    echo "</td>";
+                }
+                ?>
 </tr>
+<tr>
+    <td style="font-family: Arial, sans-serif; font-style: italic; ">Standard ratio for Classroom</td>
+
+    <?php
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['ratio_classroom'])) {
+                        echo $data[$i]['ratio_classroom'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+</tr>
+<tr>
+    <td style="font-family: Arial, sans-serif; font-style: italic; ">ICT Package Recieved</td>
+
+    <?php
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['ict_package1'])) {
+                        echo $data[$i]['ict_package1'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+</tr>
+
+
             <!-- Add more rows based on your data -->
         </table>
         <?php
