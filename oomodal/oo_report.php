@@ -1,7 +1,7 @@
 
 <?php
 
-include '../admin/config/dbcon.php';
+include 'admin/config/dbcon.php';
 
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];

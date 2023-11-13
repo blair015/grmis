@@ -664,6 +664,7 @@ include ('oomodal/outcome_ratio.php');
 include ('oomodal/output_ratio.php');
 include ('oomodal/inclusive.php');
 include ('oomodal/hrm.php');
+include ('oomodal/oo_report.php');
 
 ?>
 <div class="dropdown">
