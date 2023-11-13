@@ -44,6 +44,7 @@ if (isset($_POST['save_changes'])) {
     $contact_number = $_POST['contact_number'];
     $category = $_POST['category'];
     $school_email = $_POST['school_email'];
+    $sbm = $_POST['sbm_level'];
 
     // Check if files were uploaded successfully
     if (isset($_FILES['school_logo']['tmp_name']) && isset($_FILES['school_header']['tmp_name'])) {
@@ -70,6 +71,7 @@ if (isset($_POST['save_changes'])) {
                     school_header = ?,
                     contact_number =?,
                     District = ?,
+                    sbm_level = ?,
                     category = ?
                     WHERE school_id = ?";
 
@@ -77,7 +79,7 @@ if (isset($_POST['save_changes'])) {
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param(
                     $stmt,
-                    "sssssssss",
+                    "ssssssssss",
                     $school_name,
                     $school_address,
                     $school_email,
@@ -85,6 +87,7 @@ if (isset($_POST['save_changes'])) {
                     $school_header_path,
                     $contact_number,
                     $District,
+                    $sbm,
                     $category,
                     $school_id
                     );

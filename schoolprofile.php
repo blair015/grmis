@@ -960,6 +960,14 @@ echo 'Error in preparing the SQL statement.';
                                 <label class="fw-bold text-muted"><h5>Contact Number:</h5></label>
                                 <input class="form-control form-control-solid" type="text" name="contact_number" id="contact_number" value="<?php echo $contact_number; ?>">
                             </div>
+                            <div class="col-md-6">
+                                <label class="fw-bold text-muted"><h5>SBM Level</h5></label>
+                                <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Select Category" name="category">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row mb-4">
