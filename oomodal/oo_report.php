@@ -123,16 +123,42 @@ if ($result !== null) {
     <td>1. Number of education researches completed</td>
     <?php
     // Fetch all rows for the selected school_id and school_year
-    $quartersData = array();
+    $data = array();
     while ($row = $result->fetch_assoc()) {
-        $quartersData[$row['quarter']] = $row['research_completed'];
+        $data[$row['quarter']]['research_completed'] = $row['research_completed'];
+        $data[$row['quarter']]['ratio_teacher'] = $row['ratio_teacher'];
     }
 
     // Display data for each quarter
     for ($i = 1; $i <= 4; $i++) {
         echo "<td>";
-        if (isset($quartersData[$i])) {
-            echo $quartersData[$i];
+        if (isset($data[$i]['research_completed'])) {
+            echo $data[$i]['research_completed'];
+        }
+        echo "</td>";
+    }
+    ?>
+</tr>
+<tr>
+    <th colspan="5">BASIC EDUCATION INPUTS PROGRAM-(PPRD)</th>
+</tr>
+<tr>
+    <td style="font-family: Arial, sans-serif; font-style: italic; ">Outcome Indicators</td>
+    <?php
+    // Reset the result pointer
+    $result->data_seek(0);
+
+    // Fetch all rows for the selected school_id and school_year
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        $data[$row['quarter']]['ratio_teacher'] = $row['ratio_teacher'];
+    }
+
+    // Display data for each quarter
+    for ($i = 1; $i <= 4; $i++) {
+        echo "<td>";
+        if (isset($data[$i]['ratio_teacher'])) {
+            echo $data[$i]['ratio_teacher'];
         }
         echo "</td>";
     }
