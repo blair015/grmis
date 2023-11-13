@@ -9,7 +9,6 @@ include '../admin/config/dbcon.php';
                         echo "School identifier is missing.";
                         exit;
                     }
-                    include ('admin/config/dbcon.php');
                     $school_id = $_SESSION['school_id'];
                     //echo $school_id;
        // Check if the form is submitted
