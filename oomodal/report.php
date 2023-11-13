@@ -15,7 +15,7 @@ $school_id = $_SESSION['school_id'];
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the selected quarter and school year from the form
-    $schoolYear = $_POST["schoolYear"];
+//    $schoolYear = $_POST["schoolYear"];
     $schoolId = $school_id;
 
     // Your SQL query should include a condition based on the user's selection
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
             INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
             INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
-            WHERE rs.school_id = ? AND rs.school_year = ?";
+            WHERE rs.school_id = ?";
 
     // Prepare the SQL statement
 $stmt = $conn->prepare($sql);
