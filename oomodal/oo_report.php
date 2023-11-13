@@ -8,7 +8,6 @@ if (isset($_GET['school_id'])) {
     echo "School identifier is missing.";
     exit;
 }
-
 $school_id = $_SESSION['school_id'];
 
 // Check if the form is submitted
@@ -37,91 +36,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$stmt->execute()) {
         echo "Error executing query: " . $stmt->error;
     } else {
-        // Bind the result variables
-        $stmt->bind_result($research_completed, $retention_rate, $completion_rate, $nat_proportion, $feeding_program, $esc, $voucher, $joint_delivery, $ratio_teacher, $ratio_classroom, $ict_package1, $new_constructed, $on_going, $lm_procured, $scimath_package, $ict_package2, $tvl_package, $new_position, $sped, $sped_data, $iped, $iped_data, $alive, $alive_data, $als, $als_data, $lac, $teacher_trained, $related_trained);
+        // Fetch only one row since we expect one row for the given school ID and year
+        $result = $stmt->get_result();
 
-        // Fetch the result
-        if ($stmt->fetch()) {
-            // Display your HTML table here using the fetched variables
-            ?>
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>PHP Table Example</title>
-                <style>
-                    /* Define a CSS style for the table and its elements */
-                    table {
-                        border-collapse: collapse; /* Merge cell borders */
-                        width: 100%;
-                        font-family: Arial, sans-serif;
-                    }
-
-                    th, td {
-                        border: 1px solid black; /* Change the border style as needed */
-                        padding: 5px;
-                        text-align: left;
-                    }
-
-                    tr:first-child {
-                        background-color: bisque; /* Change the background color as needed */
-                    }
-
-                    tr:nth-child(2), tr:nth-child(3), tr:nth-child(5), tr:nth-child(6), tr:nth-child(7), tr:nth-child(10), tr:nth-child(13), tr:nth-child(16) {
-                        font-weight: bold;
-                    }
-
-                    tr:nth-child(6) {
-                        font-style: italic;
-                    }
-
-                    tr:nth-child(16) {
-                        background-color: grey; /* Change the background color as needed */
-                    }
-                </style>
-            </head>
-            <body>
-            <form method="post" action="">
-                <label for="schoolYear">Select School Year:</label>
-                <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
-                <button type="submit">Submit</button>
-            </form>
-
-
-                <table>
-                    <tr>
-                        <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
-                    </tr>
-                    <tr>
-                        <th colspan="5">EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>
-                    </tr>
-                    <tr>
-                        <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
-                        <?php
-                        // Dynamically create table headers based on the number of quarters
-                        for ($i = 1; $i <= 4; $i++) {
-                            echo "<td style='text-align: center;'>{$i}st Quarter</td>";
-                        }
-                        ?>
-                    </tr>
-                    <tr>
-                        <td>1.Number of education researches completed</td>
-                        <?php
-                        // Dynamically display data based on the number of quarters
-                        for ($i = 1; $i <= 4; $i++) {
-                            echo "<td>{$research_completed}</td>"; // Replace 'research_completed' with the actual column name
-                        }
-                        ?>
-                    </tr>
-                    <!-- Add more rows based on your data -->
-                </table>
-            </body>
-            </html>
-            <?php
-        } else {
-            echo "<p>No results found.</p>";
+        // Check if there are any errors
+        if ($stmt->error) {
+            echo "Error: " . $stmt->error;
         }
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Table Example</title>
+    <style>
+        /* Define a CSS style for the table and its elements */
+        table {
+            border-collapse: collapse; /* Merge cell borders */
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid black; /* Change the border style as needed */
+            padding: 5px;
+            text-align: left;
+        }
+
+        tr:first-child {
+            background-color: bisque; /* Change the background color as needed */
+        }
+
+        tr:nth-child(2), tr:nth-child(3), tr:nth-child(5), tr:nth-child(6), tr:nth-child(7), tr:nth-child(10), tr:nth-child(13), tr:nth-child(16) {
+            font-weight: bold;
+        }
+
+        tr:nth-child(6) {
+            font-style: italic;
+        }
+
+        tr:nth-child(16) {
+            background-color: grey; /* Change the background color as needed */
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="">
+        <label for="schoolYear">Select School Year:</label>
+        <input type="text" name="schoolYear" id="schoolYear" placeholder="Enter School Year">
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php
+    // Check if there are rows in the result set
+    if ($result && $result->num_rows > 0) {
+        ?>
+        <table>
+            <tr>
+                <th colspan="5" style="text-align: center; height: 100px;">PAPS</th>
+            </tr>
+            <tr>
+                <th colspan="5">EDUCATION POLICY DEVELOPMENT PROGRAM-(PPRD)</th>
+            </tr>
+            <tr>
+                <td style="font-family: Arial, sans-serif; font-style: italic; ">Output Indicators</td>
+                <?php
+                // Dynamically create table headers based on the number of quarters
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td style='text-align: center;'>{$i}st Quarter</td>";
+                }
+                ?>
+            </tr>
+            <?php
+            // Loop through the rows and display data in the table
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td>1.Number of education researches completed</td>
+                    <?php
+                    // Dynamically display data based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
+                        echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                    }
+                    ?>
+                </tr>
+                <!-- Add more rows based on your data -->
+                <?php
+            }
+            ?>
+        </table>
+    <?php
+    } else {
+        echo "<p>No results found.</p>";
+    }
+    ?>
+</body>
+</html>
