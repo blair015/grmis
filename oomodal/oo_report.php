@@ -97,6 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     // Check if there are rows in the result set
     if ($result !== null) {
+        // Fetch the result
+        $row = $result->fetch_assoc();
+
         if ($result->num_rows > 0) {
             ?>
             <table>
@@ -115,23 +118,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                     ?>
                 </tr>
-                <?php
-                // Loop through the rows and display data in the table
-                while ($row = $result->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td>1.Number of education researches completed</td>
-                        <?php
-                        // Dynamically display data based on the number of quarters
-                        for ($i = 1; $i <= 4; $i++) {
-                            echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
-                        }
-                        ?>
-                    </tr>
-                    <!-- Add more rows based on your data -->
+                <tr>
+                    <td>1. Number of education researches completed</td>
                     <?php
-                }
-                ?>
+                    // Dynamically display data based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
+                        echo "<td>{$row['research_completed']}</td>"; // Replace 'research_completed' with the actual column name
+                    }
+                    ?>
+                </tr>
+                <!-- Add more rows based on your data -->
             </table>
         <?php
         } else {
