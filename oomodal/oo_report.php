@@ -1,20 +1,18 @@
-
 <?php
 session_start();
 include '../admin/config/dbcon.php';
 
-                    if (isset($_GET['school_id'])) {
-                        $_SESSION['school_id'] = $_GET['school_id'];
-                    } else {
-                        echo "School identifier is missing.";
-                        exit;
-                    }
-                    $school_id = $_SESSION['school_id'];
-                    //echo $school_id;
-       // Check if the form is submitted
+if (isset($_GET['school_id'])) {
+    $_SESSION['school_id'] = $_GET['school_id'];
+} else {
+    echo "School identifier is missing.";
+    exit;
+}
+$school_id = $_SESSION['school_id'];
+
+// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the selected quarter and school year from the form
-    $quarter = $_POST["quarter"];
     $schoolYear = $_POST["schoolYear"];
     $schoolId = $school_id;
 
@@ -28,13 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             INNER JOIN oo_lm AS lm ON rt.school_id = lm.school_id
             INNER JOIN oo_inclusive AS ic ON lm.school_id = ic.school_id
             INNER JOIN oo_hrm AS hm ON ic.school_id = hm.school_id
-            WHERE rs.school_id = ? AND rs.quarter = ? AND rs.school_year = ?";
-    
+            WHERE rs.school_id = ? AND rs.school_year = ?";
+
     // Use a prepared statement to prevent SQL injection
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
-
-    // Replace $schoolId with the actual value of the school ID
+    $stmt->bind_param("is", $schoolId, $schoolYear);
 
     // Execute the query
     $stmt->execute();
@@ -90,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
     // Check if there are rows in the result set
-    if ($result->num_rows > 0) {
+    if (isset($result) && $result->num_rows > 0) {
         // Initialize an array to store the data
         $data = $result->fetch_assoc();
         ?>
@@ -126,3 +122,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p>No results found.</p>";
     }
     ?>
+</body>
+</html>
