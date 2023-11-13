@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // You should perform some validation and sanitization of input data here to prevent SQL injection
 
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter1 = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear, $user_school_id) {
     // Check if data already exists for the given school year and quarter
-    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter = ? AND school_year = ?";
+    $checkQuery = "SELECT * FROM oo_ratio WHERE school_id = ? AND quarter1 = ? AND school_year = ?";
     $checkStmt = $conn->prepare($checkQuery);
     $checkStmt->bind_param("iss", $schoolId, $quarter, $schoolYear);
     $checkStmt->execute();
@@ -63,7 +63,7 @@ function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $received
 
     if ($result->num_rows > 0) {
         // Data already exists, update the existing record
-        $updateQuery = "UPDATE oo_ratio SET ratio_teacher = ?, ratio_classroom = ?, ict_package1 = ? WHERE school_id = ? AND quarter = ? AND school_year = ?";
+        $updateQuery = "UPDATE oo_ratio SET ratio_teacher = ?, ratio_classroom = ?, ict_package1 = ? WHERE school_id = ? AND quarter1 = ? AND school_year = ?";
         $updateStmt = $conn->prepare($updateQuery);
         $updateStmt->bind_param("ssssis", $standardRatio, $classroomRatio, $receivedPackages, $schoolId, $quarter, $schoolYear);
 
@@ -79,7 +79,7 @@ function insertData($conn, $schoolId, $standardRatio, $classroomRatio, $received
         $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
-        $insertQuery = "INSERT INTO oo_ratio (school_id, ratio_teacher, ratio_classroom, ict_package1, quarter, school_year) VALUES (?, ?, ?, ?, ?, ?)";
+        $insertQuery = "INSERT INTO oo_ratio (school_id, ratio_teacher, ratio_classroom, ict_package1, quarter1, school_year) VALUES (?, ?, ?, ?, ?, ?)";
         $insertStmt = $conn->prepare($insertQuery);
         $insertStmt->bind_param("ssssis", $schoolId, $standardRatio, $classroomRatio, $receivedPackages, $quarter, $schoolYear);
 
