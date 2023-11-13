@@ -121,12 +121,12 @@ if ($result !== null) {
             <tr>
                 <td>1. Number of education researches completed</td>
                 <?php
-                // Dynamically display data based on the quarter value
+                // Fetch and display data for each quarter separately
                 for ($i = 1; $i <= 4; $i++) {
+                    $row = $result->fetch_assoc();
                     echo "<td>";
                     if ($row['quarter'] == $i) {
                         echo $row['research_completed'];
-                        $row = $result->fetch_assoc(); // Move to the next row
                     }
                     echo "</td>";
                 }
