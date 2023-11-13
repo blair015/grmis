@@ -97,13 +97,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php
     // Check if there are rows in the result set
     if ($result !== null) {
-        // Fetch the result
-        $row = $result->fetch_assoc();
-
-$research = $row['research_completed'];
-echo $research;
-
         if ($result->num_rows > 0) {
+            // Fetch the result
+            $row = $result->fetch_assoc();
             ?>
             <table>
                 <tr>
