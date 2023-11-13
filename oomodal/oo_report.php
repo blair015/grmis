@@ -142,6 +142,30 @@ WHERE rs.school_id = ? AND rs.school_year = ? AND rs.quarter = ?"; // Include qu
                     }
                     ?>
                 </tr>
+                <tr>
+                    <th colspan="5">BASIC EDUCATION INPUTS PROGRAM-(PPRD)</th>
+                </tr>
+                <tr>
+                    <td style="font-family: Arial, sans-serif; font-style: italic; ">Outcome Indicatorss</td>
+                    <?php
+                    // Dynamically create table headers based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
+                        echo "<td style='text-align: center;'>{$i}st Quarter</td>";
+                    }
+                    ?>
+                </tr>
+                <tr>
+                    <td>Percentage of schools meeting the standard ratio for teachers</td>
+                    <?php
+                    // Dynamically display data based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
+                        echo "<td>{$row['ratio_teacher']}</td>"; // Replace 'research_completed' with the actual column name
+                        echo "<td>{$row['ration_classroom']}</td>";
+                        echo "<td>{$row['ict_package1']}</td>";
+                    }
+                    ?>
+                </tr>
+                
                 <!-- Add more rows based on your data -->
             </table>
         <?php
