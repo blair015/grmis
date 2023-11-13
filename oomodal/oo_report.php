@@ -138,17 +138,6 @@ if ($result !== null) {
     }
     ?>
 </tr>
-
-// ...
-In this updated version, all rows are fetched into an associative array ($quartersData) where the keys are quarters and values are corresponding research_completed values. Then, the loop is used to iterate through quarters and display the corresponding data.
-
-This modification ensures that you capture all rows with the same school_id and school_year and properly organize the data for display in the table.
-
-
-
-
-
-
             <!-- Add more rows based on your data -->
         </table>
         <?php
