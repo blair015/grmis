@@ -136,10 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </tr>
     <tr>
     <td>1.Number of education researches completed</td>
-    <td><?= $result['research_completed1']; ?></td>
-    <td><?= $result['research_completed2']; ?></td>
-    <td><?= $result['research_completed3']; ?></td>
-    <td><?= $result['research_completed4']; ?></td>
+    <td><?= isset($result['research_completed1']) ? $result['research_completed1'] : ''; ?></td>
+    <td><?= isset($result['research_completed2']) ? $result['research_completed2'] : ''; ?></td>
+    <td><?= isset($result['research_completed3']) ? $result['research_completed3'] : ''; ?></td>
+    <td><?= isset($result['research_completed4']) ? $result['research_completed4'] : ''; ?></td>
 </tr>
     <tr>
         <td colspan="5" >BASIC EDUCATION INPUTS PROGRAM-(PPRD)</td>
