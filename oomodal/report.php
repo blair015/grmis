@@ -48,18 +48,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     } else {
         // Fetch the result
-        $result = $stmt->get_result();
+$result = $stmt->get_result();
 
-        // Check if there are any errors
-        if ($stmt->error) {
-            echo "Error: " . $stmt->error;
-            exit;
-        }
+// Check if there are any errors
+if ($stmt->error) {
+    echo "Error: " . $stmt->error;
+    exit;
+}
+
+// Fetch the data as an associative array
+$row = $result->fetch_assoc();
+
+// Check if any rows are returned
+if ($row) {
+    // Assign values to variables
+    $research1 = $row['research_completed1'];
+    $research2 = $row['research_completed2'];
+    $research3 = $row['research_completed3'];
+    $research4 = $row['research_completed4'];
+} else {
+    // Handle the case where no rows are returned
+    echo "No data found for the specified school and year.";
+    exit;
+}
     }
 }
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -230,4 +246,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </table>
 
 </body>
-</html>
+</html> -->
