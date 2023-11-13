@@ -160,7 +160,24 @@ WHERE rs.school_id = ? AND rs.school_year = ? AND rs.quarter = ?"; // Include qu
                     // Dynamically display data based on the number of quarters
                     for ($i = 1; $i <= 4; $i++) {
                         echo "<td>{$row['ratio_teacher']}</td>"; // Replace 'research_completed' with the actual column name
+                                            }
+                    ?>
+                </tr>
+                <tr>
+                    <td>Percentage of schools meeting the standard ratio for teachers</td>
+                    <?php
+                    // Dynamically display data based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
                         echo "<td>{$row['ration_classroom']}</td>";
+                    }
+                    ?>
+                </tr>
+                <tr>
+                    <td>Percentage of schools meeting the standard ratio for teachers</td>
+                    <?php
+                    // Dynamically display data based on the number of quarters
+                    for ($i = 1; $i <= 4; $i++) {
+                        
                         echo "<td>{$row['ict_package1']}</td>";
                     }
                     ?>
