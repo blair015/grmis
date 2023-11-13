@@ -119,21 +119,36 @@ if ($result !== null) {
                 ?>
             </tr>
             <tr>
-                <td>1. Number of education researches completed</td>
-                <?php
-                // Dynamically display data for each quarter separately
-                for ($i = 1; $i <= 4; $i++) {
-                    // Fetch the result inside the loop
-                    $row = $result->fetch_assoc();
+            <tr>
+    <td>1. Number of education researches completed</td>
+    <?php
+    // Fetch all rows for the selected school_id and school_year
+    $quartersData = array();
+    while ($row = $result->fetch_assoc()) {
+        $quartersData[$row['quarter']] = $row['research_completed'];
+    }
 
-                    echo "<td>";
-                    if ($row && $row['quarter'] == $i) {
-                        echo $row['research_completed'];
-                    }
-                    echo "</td>";
-                }
-                ?>
-            </tr>
+    // Display data for each quarter
+    for ($i = 1; $i <= 4; $i++) {
+        echo "<td>";
+        if (isset($quartersData[$i])) {
+            echo $quartersData[$i];
+        }
+        echo "</td>";
+    }
+    ?>
+</tr>
+
+// ...
+In this updated version, all rows are fetched into an associative array ($quartersData) where the keys are quarters and values are corresponding research_completed values. Then, the loop is used to iterate through quarters and display the corresponding data.
+
+This modification ensures that you capture all rows with the same school_id and school_year and properly organize the data for display in the table.
+
+
+
+
+
+
             <!-- Add more rows based on your data -->
         </table>
         <?php
