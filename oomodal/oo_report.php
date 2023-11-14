@@ -197,6 +197,36 @@ if ($result !== null) {
                 }
                 ?>
 </tr>
+<tr>
+        <td>Output Indicators-ESSD, CLMD, ICTU, & PPRD</td>
+        
+    </tr>
+    <tr>
+        <td>1.Number of</td>
+    </tr>
+    <tr>
+        <td>a.New classrooms constracted</td>
+    </tr>
+    <tr>
+        <td>b.New classrooms on-going construction</td>
+    </tr>
+    <tr>
+        <td>c.Technical and Vocational package/items</td>
+    </tr>
+    <tr>
+        <td>3.Number of newly-created teaching positions filled up</td>
+    </tr>
+    <tr>
+        <td colspan="5">INCLUSIVE EDUCATION PROGRAM (CLMD)</td>      
+    </tr>
+    <tr>
+        <td colspan="5">Outcome Indicators</td>        
+    </tr>
+    
+    <tr>
+        <td colspan="5">1.Percentage of learners enrolled in </td>       
+    </tr>
+
 
 
             <!-- Add more rows based on your data -->
