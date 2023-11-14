@@ -481,6 +481,74 @@ if ($result !== null) {
                 ?>
 
             </tr>
+            <tr>
+        <td colspan="5">EDUCATION HUMAN RESOURCE DEVELOPMENT PROGRAM-HRDD</td>       
+    </tr>
+    <tr>
+        <td colspan="5">Outcome Indicators</td>       
+    </tr>
+    <tr>
+        <td>1.Increase in percentage of schools conducting schools learning action cell session</td>
+        <?php
+                // Reset the result pointer
+                $result->data_seek(0);
+
+                // Fetch all rows for the selected school_id and school_year
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[$row['quarter5']]['lac'] = $row['lac'];
+                    $data[$row['quarter5']]['teacher_trained'] = $row['teacher_trained'];
+                    $data[$row['quarter5']]['related_trained'] = $row['related_trained'];
+                                    }
+
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['lac'])) {
+                        echo $data[$i]['lac'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+               
+    </tr>
+    <tr>
+        <td colspan="5">Output Indicators</td>       
+    </tr>
+    <tr>
+        <td>1.Number of teachers and teaching-related staff trained</td>
+            
+    </tr>
+    <tr>
+        <td>a.Teachers</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['teacher_trained'])) {
+                        echo $data[$i]['teacher_trained'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+               
+    </tr>
+    <tr>
+        <td>b.Teaching-related staff</td>
+
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['related_trained'])) {
+                        echo $data[$i]['related_trained'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+               
+    </tr>
+
 
 
 
