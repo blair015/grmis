@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT rs.research_completed, sp.retention_rate, sp.completion_rate, sp.nat_proportion, sp.feeding_program, sp.esc, sp.voucher, sp.joint_delivery,
                 rt.ratio_teacher, rt.ratio_classroom, rt.ict_package1, lm.new_constructed, lm.on_going, lm.lm_procured, lm.scimath_package, lm.ict_package2, lm.tvl_package,
                 lm.new_position, ic.sped, ic.sped_data, ic.iped, ic.iped_data, ic.alive, ic.alive_data, ic.als, ic.als_data, hm.lac, hm.teacher_trained, hm.related_trained,
-                rs.quarter, rt.quarter1, lm.quarter2
+                rs.quarter, rt.quarter1, lm.quarter2, ic.quarter3
         FROM oo_research AS rs
         INNER JOIN oo_support AS sp ON rs.school_id = sp.school_id
         INNER JOIN oo_ratio AS rt ON sp.school_id = rt.school_id
@@ -325,6 +325,161 @@ if ($result !== null) {
     <tr>
         <td colspan="5">1.Percentage of learners enrolled in </td>       
     </tr>
+    <tr>
+        <td>a.SPED(public)</td>
+        <?php
+                // Reset the result pointer
+                $result->data_seek(0);
+
+                // Fetch all rows for the selected school_id and school_year
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[$row['quarter3']]['sped'] = $row['sped'];
+                    $data[$row['quarter3']]['sped_data'] = $row['sped_data'];
+                    $data[$row['quarter3']]['iped'] = $row['iped_data'];
+                    $data[$row['quarter3']]['alive'] = $row['alive_data'];
+                    $data[$row['quarter3']]['als'] = $row['als_data'];
+                    $data[$row['quarter3']]['lms'] = $row['lms'];
+                    $data[$row['quarter3']]['learner_lms'] = $row['leaner_lms'];
+                }
+
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['sped_data'])) {
+                        echo $data[$i]['sped_data'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+    </tr>
+
+    
+    <tr>
+        <td>b.ALIVE (both public and private)</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['alive_data'])) {
+                        echo $data[$i]['alive_data'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+    </tr>
+
+    <tr>
+        <td>c.IPED (public)</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['iped_data'])) {
+                        echo $data[$i]['iped_data'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+                
+    </tr>
+    <tr>
+        <td>d.ALS</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['als_data'])) {
+                        echo $data[$i]['als_data'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+                
+    </tr>
+
+    <tr>
+        <td>2.Number of public schools provided with learning resources</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['learner_lms'])) {
+                        echo $data[$i]['learner_lms'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+        
+    </tr>
+
+    <tr>
+        <td colspan="5">Output Indicators </td>       
+    </tr>
+    <tr>
+        <td colspan="5">1.Number of schools offering the following programs </td>       
+    </tr>
+    <tr>
+        <td>a.ALIVE</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['alive'])) {
+                        echo $data[$i]['alive'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+    </tr>
+    <tr>
+        <td>b.IPED</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['iped'])) {
+                        echo $data[$i]['iped'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+    </tr>
+    <tr>
+        <td>c.SPED</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['sped'])) {
+                        echo $data[$i]['sped'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
+    </tr>
+    <tr>
+        <td>2.Number of public schools provided with learning resources</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['lms'])) {
+                        echo $data[$i]['lms'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+
+            </tr>
 
 
 
