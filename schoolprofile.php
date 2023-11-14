@@ -252,33 +252,32 @@ $(document).ready(function () {
                             }
                         ?>
 
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <b>School ID:</b> <a class="float-right"><?php echo $school_id; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>School Head:</b> <a class="float-right"><?php echo $school_head_name; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Email Address:</b> <a class="float-right"><?php echo $school_email_address; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Contact Number:</b> <a class="float-right"><?php echo $contact_number;  ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>District:</b> <a class="float-right"><?php echo $district; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Category:</b> <a class="float-right"><?php echo $category; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>SBM Level:</b> <a class="float-right"><?php echo $sbm; ?></a>
-                                    </li>
-                                    <li class="list-group-item">
-                                    <b>District Supervisor:</b> <a class="float-right"><?php echo $district_supervisor_name; ?></a>
-                                    </li>
-                                </ul>
-
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>School ID:</b> <a class="float-right" style="color: blue;"><?php echo $school_id; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>School Head:</b> <a class="float-right" style="color: blue;"><?php echo $school_head_name; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Email Address:</b> <a class="float-right" style="color: blue;"><?php echo $school_email_address; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Contact Number:</b> <a class="float-right" style="color: blue;"><?php echo $contact_number; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>District:</b> <a class="float-right" style="color: blue;"><?php echo $district; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Category:</b> <a class="float-right" style="color: blue;"><?php echo $category; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>SBM Level:</b> <a class="float-right" style="color: blue;"><?php echo $sbm; ?></a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>District Supervisor:</b> <a class="float-right" style="color: blue;"><?php echo $district_supervisor_name; ?></a>
+                                </li>
+                            </ul>
 
               <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
             </div>
