@@ -338,7 +338,8 @@ if ($result !== null) {
                     $data[$row['quarter3']]['sped_data'] = $row['sped_data'];
                     $data[$row['quarter3']]['iped'] = $row['iped_data'];
                     $data[$row['quarter3']]['alive'] = $row['alive_data'];
-                    $data[$row['quarter3']]['als'] = $row['als_data'];
+                    $data[$row['quarter3']]['als'] = $row['als'];
+                    $data[$row['quarter3']]['als_data'] = $row['als_data'];
                     $data[$row['quarter3']]['lms'] = $row['lms'];
                     $data[$row['quarter3']]['learner_lms'] = $row['learner_lms'];
                 }
