@@ -206,6 +206,32 @@ if ($result !== null) {
     </tr>
     <tr>
         <td>a.New classrooms constracted</td>
+        <?php
+                // Reset the result pointer
+                $result->data_seek(0);
+
+                // Fetch all rows for the selected school_id and school_year
+                $data = array();
+                while ($row = $result->fetch_assoc()) {
+                    $data[$row['quarter2']]['new_constructed'] = $row['new_constructed'];
+                    $data[$row['quarter2']]['on_going'] = $row['on_going'];
+                    $data[$row['quarter2']]['lm_procured'] = $row['lm_procured'];
+                    $data[$row['quarter2']]['scimath_package'] = $row['scimath_package'];
+                    $data[$row['quarter2']]['ict_package2'] = $row['ict_package2'];
+                    $data[$row['quarter2']]['tvl_package'] = $row['tvl_package'];
+                    $data[$row['quarter2']]['new_position'] = $row['new_position'];
+                }
+
+                // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['new_constructed'])) {
+                        echo $data[$i]['new_constructed'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+        
     </tr>
     <tr>
         <td>b.New classrooms on-going construction</td>
