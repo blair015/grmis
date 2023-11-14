@@ -340,7 +340,7 @@ if ($result !== null) {
                     $data[$row['quarter3']]['alive'] = $row['alive_data'];
                     $data[$row['quarter3']]['als'] = $row['als_data'];
                     $data[$row['quarter3']]['lms'] = $row['lms'];
-                    $data[$row['quarter3']]['learner_lms'] = $row['leaner_lms'];
+                    $data[$row['quarter3']]['learner_lms'] = $row['learner_lms'];
                 }
 
                 // Display data for each quarter
