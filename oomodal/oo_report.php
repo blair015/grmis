@@ -235,12 +235,85 @@ if ($result !== null) {
     </tr>
     <tr>
         <td>b.New classrooms on-going construction</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['on_going'])) {
+                        echo $data[$i]['on_going'];
+                    }
+                    echo "</td>";
+                }
+                ?>
     </tr>
     <tr>
+        <td>c.Textbooks and Instructional/Learning Materials procured for printing and delivery</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['lm_procured'])) {
+                        echo $data[$i]['lm_procured'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+    </tr>
+    <tr>
+        <td>2.Number of equipment procured and distributed</td>
+    </tr>
+    <tr>
+        <td>a.Science and Math Package/Items</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['scimath_package'])) {
+                        echo $data[$i]['scimath_package'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+    </tr>
+    <tr>
+        <td>b.Information and Communication Technology (ICT) Package</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['ict_package2'])) {
+                        echo $data[$i]['ict_package2'];
+                    }
+                    echo "</td>";
+                }
+                ?>
+    </tr>
+    
+    <tr>
         <td>c.Technical and Vocational package/items</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['tvl_package'])) {
+                        echo $data[$i]['tvl_package'];
+                    }
+                    echo "</td>";
+                }
+                ?>
     </tr>
     <tr>
         <td>3.Number of newly-created teaching positions filled up</td>
+        <?php
+        // Display data for each quarter
+                for ($i = 1; $i <= 4; $i++) {
+                    echo "<td>";
+                    if (isset($data[$i]['new_position'])) {
+                        echo $data[$i]['new_position'];
+                    }
+                    echo "</td>";
+                }
+                ?>
     </tr>
     <tr>
         <td colspan="5">INCLUSIVE EDUCATION PROGRAM (CLMD)</td>      
