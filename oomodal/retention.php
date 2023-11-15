@@ -1,5 +1,37 @@
+<script>
+        // jQuery script to show/hide input fields based on radio button selection
+        $(document).ready(function () {
+            // Function to show/hide input fields based on radio button selection
+            function showHideFields() {
+                var selectedOption = $('input[name="elementaryOption"]:checked').val();
+
+                // Hide all input fields initially
+                $('.grade-input').hide();
+
+                // Show input fields based on the selected radio button
+                if (selectedOption === 'Elementary') {
+                    $('#spedInput').show();
+                } else if (selectedOption === 'Secondary') {
+                    // Add logic for Secondary
+                } else if (selectedOption === 'SecondaryandSHS') {
+                    // Add logic for Secondary & SHS
+                } else if (selectedOption === 'SHS') {
+                    // Add logic for SHS
+                }
+            }
+
+            // Trigger the function on page load
+            showHideFields();
+
+            // Bind the function to the change event of radio buttons
+            $('input[name="elementaryOption"]').on('change', showHideFields);
+        });
+    </script>
+
+
+
 <!-- Modal for "Inclusive Education" -->
-<div class="modal fade" id="inclusiveEducationModal" tabindex="-1" role="dialog" aria-labelledby="inclusiveEducationModal" aria-hidden="true">
+<div class="modal fade" id="retentionEducationModal" tabindex="-1" role="dialog" aria-labelledby="retentionEducationModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header" style="background-color: orange; color: white;">
@@ -11,7 +43,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            <form id="inclusiveForm" method="post" action="oomodal/save_inclusive.php">
+            <form id="retentionForm" method="post" action="oomodal/save_retention.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -25,79 +57,52 @@
                     ?>
                     <input type="hidden" id="schoolId" name="schoolId" value="<?php echo $school_id; ?>">
                     <div class="form-group">
-                            <label>Do you offer SPED Program?</label>
+                            <label>Are You offering?</label>
                             <div class="row">
                                 <div class="col">
-                                    <label for="spedyes">Yes</label>
-                                    <input type="radio" id="spedyes" name="spedOption" value="Yes">
+                                    <label for="elementary">Elementary</label>
+                                    <input type="radio" id="elementary" name="elementaryOption" value="Elementary">
                                 </div>
                                 <div class="col">
-                                    <label for="spedno">No</label>
-                                    <input type="radio" id="spedno" name="spedOption" value="No">
+                                    <label for="secondary">Secondary</label>
+                                    <input type="radio" id="secondary" name="secondaryOption" value="Secondary">
+                                </div>
+                                <div class="col">
+                                    <label for="secondaryandshs">Secondary & SHS</label>
+                                    <input type="radio" id="secondaryandshs" name="secondarandshsyOption" value="SecondaryandSHS">
+                                </div>
+                                <div class="col">
+                                    <label for="shs">SHS Only</label>
+                                    <input type="radio" id="shs" name="shsOption" value="SHS">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group" id="spedInput" style="display: none;">
-                            <label for="spedText">Number of Enrolled Learners:</label>
-                            <input type="text" id="spedText" name="spedText">
+                        <div class="form-group" id="grade1Input" style="display: none;">
+                            <label for="grade1Text">Grade 1:</label>
+                            <input type="text" id="grade1Text" name="grade1Text">
                         </div>
-                        <div class="form-group">
-                            <label>Do you offer ALIVE Program?</label>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="aliveyes">Yes</label>
-                                    <input type="radio" id="aliveyes" name="aliveOption" value="Yes">
-                                </div>
-                                <div class="col">
-                                    <label for="aliveno">No</label>
-                                    <input type="radio" id="aliveno" name="aliveOption" value="No">
-                                </div>
-                            </div>
+                        <div class="form-group" id="grade2Input" style="display: none;">
+                            <label for="grade2Text">Grade 2:</label>
+                            <input type="text" id="grade2Text" name="grade2Text">
                         </div>
-
-                        <div class="form-group" id="aliveInput" style="display: none;">
-                            <label for="spedText">Number of Enrolled Learners:</label>
-                            <input type="text" id="aliveText" name="aliveText">
+                        <div class="form-group" id="grade3Input" style="display: none;">
+                            <label for="grade3Text">Grade 3:</label>
+                            <input type="text" id="grade3Text" name="grade3Text">
                         </div>
-                        <div class="form-group">
-                            <label>Do you offer IPED Program?</label>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="ipedeyes">Yes</label>
-                                    <input type="radio" id="ipedyes" name="ipedOption" value="Yes">
-                                </div>
-                                <div class="col">
-                                    <label for="ipedno">No</label>
-                                    <input type="radio" id="ipedno" name="ipedOption" value="No">
-                                </div>
-                            </div>
+                        <div class="form-group" id="grade4Input" style="display: none;">
+                            <label for="grade4Text">Grade 1:</label>
+                            <input type="text" id="grade4Text" name="grade4Text">
                         </div>
-
-                        <div class="form-group" id="ipedInput" style="display: none;">
-                            <label for="ipedText">Number of Enrolled Learners:</label>
-                            <input type="text" id="ipedText" name="ipedText">
+                        <div class="form-group" id="grade5Input" style="display: none;">
+                            <label for="grade5Text">Grade 5:</label>
+                            <input type="text" id="grade5Text" name="grade5Text">
                         </div>
-                        <div class="form-group">
-                            <label>Do you offer ALS Program?</label>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="alsyes">Yes</label>
-                                    <input type="radio" id="alsyes" name="alsOption" value="Yes">
-                                </div>
-                                <div class="col">
-                                    <label for="alsno">No</label>
-                                    <input type="radio" id="alsno" name="alsOption" value="No">
-                                </div>
-                            </div>
+                        <div class="form-group" id="grade6Input" style="display: none;">
+                            <label for="grade6Text">Grade 1:</label>
+                            <input type="text" id="grade6Text" name="grade6Text">
                         </div>
-
-                        <div class="form-group" id="alsInput" style="display: none;">
-                            <label for="alsText">Number of Enrolled Learners:</label>
-                            <input type="text" id="alsText" name="alsText">
-                        </div>
-                    
-                   
+                                           
                     <div class="form-group">
                         <label>Quarters</label>
                         <div class="row">
