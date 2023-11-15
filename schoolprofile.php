@@ -712,7 +712,7 @@ include ('oomodal/hrm.php');
             </a>
             <ul class="dropdown-menu dropdown-submenu">
                 <li>
-                    <a class="dropdown-item" href="#">Outcome Indicators</a>
+                    <a class="dropdown-item" href="retentionEducationModal">Retention Rate</a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="#">Output Indicators</a>
