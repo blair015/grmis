@@ -166,33 +166,34 @@
 <script>
     // jQuery script to show/hide input fields based on radio button selection
     $(document).ready(function () {
-        // Function to show/hide input fields based on radio button selection
-        function showHideFields() {
-            // Hide all grade input fields initially
+        // Function to hide all grade input fields
+        function hideAllGradeFields() {
             $('[id^="gradeInput"]').hide();
+        }
+
+        // Function to show grade input fields based on the selected radio button
+        function showGradeFields(selectedOption) {
+            hideAllGradeFields(); // Hide all fields first
 
             // Show grade input fields based on the selected radio button
-            if ($('#elementary').is(':checked')) {
+            if (selectedOption === 'Elementary') {
                 $('#grade1Input, #grade2Input, #grade3Input, #grade4Input, #grade5Input, #grade6Input').show();
-            } else if ($('#secondary').is(':checked')) {
+            } else if (selectedOption === 'Secondary') {
                 $('#grade7Input, #grade8Input, #grade9Input, #grade10Input').show();
-            } else if ($('#secondaryandshs').is(':checked')) {
+            } else if (selectedOption === 'SecondaryandSHS') {
                 $('#grade7shsInput, #grade8shsInput, #grade9shsInput, #grade10shsInput, #grade11shsInput, #grade12shsInput').show();
-            } else if ($('#shs').is(':checked')) {
+            } else if (selectedOption === 'SHS') {
                 $('#grade11Input, #grade12Input').show();
-            } else {
-                // Handle other options if needed
             }
         }
 
         // Trigger the function on page load
-        showHideFields();
+        hideAllGradeFields();
 
         // Bind the function to the change event of radio buttons
-        $('input[name="educationOption"]').on('change', function() {
-            // Hide all grade input fields before showing based on the selected radio button
-            $('[id^="gradeInput"]').hide();
-            showHideFields();
+        $('input[name="educationOption"]').on('change', function () {
+            var selectedOption = $('input[name="educationOption"]:checked').val();
+            showGradeFields(selectedOption);
         });
     });
 
