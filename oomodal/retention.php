@@ -190,9 +190,10 @@
         showHideFields();
 
         // Bind the function to the change event of radio buttons
-        $('input[name^="Option"]').on('change', showHideFields);
+        $('input[name$="Option"]').on('change', showHideFields);
     });
 </script>
+
 
 
 
