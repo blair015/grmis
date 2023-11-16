@@ -1,16 +1,14 @@
-<!-- Modal for "Inclusive Education" -->
-<div class="modal fade" id="retentionEducationModal" tabindex="-1" role="dialog" aria-labelledby="retentionEducationModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header" style="background-color: orange; color: white;">
-                <!-- Add your icon here, for example, a checkmark icon (you can replace it with your desired icon) -->
-                <i class="fas fa-check-circle fa-2x"></i>
-                <h5 class="modal-title" id="inclusiveEducationModal">Inclusive Education Program</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<!-- Modal structure -->
+<div class="modal" id="retentionEducationModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Retention Rate Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
             <form id="retentionForm" method="post" action="oomodal/save_retention.php">
                     <?php
                     if (isset($_GET['school_id'])) {
