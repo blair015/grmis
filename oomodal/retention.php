@@ -189,7 +189,11 @@
         showHideFields();
 
         // Bind the function to the change event of radio buttons
-        $('input[name="educationOption"]').on('change', showHideFields);
+        $('input[name="educationOption"]').on('change', function() {
+            // Hide all grade input fields before showing based on the selected radio button
+            $('[id^="gradeInput"]').hide();
+            showHideFields();
+        });
     });
 
     // Handle save button click
