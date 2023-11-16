@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="secondaryandshs">Secondary & SHS</label>
-                                    <input type="radio" id="secondaryandshs" name="secondarandshsyOption" value="SecondaryandSHS">
+                                    <input type="radio" id="secondaryandshs" name="secondarandshsOption" value="SecondaryandSHS">
                                 </div>
                                 <div class="col">
                                     <label for="shs">SHS Only</label>
@@ -173,13 +173,13 @@
             $('[id^="gradeInput"]').hide();
 
             // Show grade input fields based on the selected radio button
-            if ($('#elementary').is(':checked')) {
+            if ($('#elementaryOption').is(':checked')) {
                 $('#grade1Input, #grade2Input, #grade3Input, #grade4Input, #grade5Input, #grade6Input').show();
-            } else if ($('#secondary').is(':checked')) {
+            } else if ($('#secondaryOption').is(':checked')) {
                 $('#grade7Input, #grade8Input, #grade9Input, #grade10Input').show();
-            } else if ($('#secondaryandshs').is(':checked')) {
+            } else if ($('#secondarandshsOption').is(':checked')) {
                 $('#grade7shsInput, #grade8shsInput, #grade9shsInput, #grade10shsInput, #grade11shsInput, #grade12shsInput').show();
-            } else if ($('#shs').is(':checked')) {
+            } else if ($('#shsOption').is(':checked')) {
                 $('#grade11Input, #grade12Input').show();
             } else {
                 // Handle other options if needed
@@ -193,6 +193,7 @@
         $('input[name$="Option"]').on('change', showHideFields);
     });
 </script>
+
 
 
 
