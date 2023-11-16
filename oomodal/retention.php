@@ -44,6 +44,7 @@
                                 <input type="radio" id="shs" name="educationOption" value="SHS">
                             </div>
                         </div>
+                    </div>
                     
                         <!-- //Elementary Input Field -->
                         <div class="form-group" id="grade1Input" style="display: none;">
