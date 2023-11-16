@@ -1,15 +1,15 @@
 <!-- Modal structure -->
 <div class="modal" id="retentionEducationModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Retention Rate Modal</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <form id="retentionForm" method="post" action="oomodal/save_retention.php">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Retention Rate Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="retentionForm" method="post" action="oomodal/save_retention.php">
                     <?php
                     if (isset($_GET['school_id'])) {
                         $_SESSION['school_id'] = $_GET['school_id'];
@@ -17,32 +17,32 @@
                         echo "School identifier is missing.";
                         exit;
                     }
-                    include ('admin/config/dbcon.php');
+                    include('admin/config/dbcon.php');
                     $school_id = $_SESSION['school_id'];
                     echo $school_id;
                     ?>
                     <input type="hidden" id="schoolId" name="schoolId" value="<?php echo $school_id; ?>">
                     <div class="form-group">
-                            <label>Are You offering?</label>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="elementary">Elementary</label>
-                                    <input type="radio" id="elementary" name="elementaryOption" value="Elementary">
-                                </div>
-                                <div class="col">
-                                    <label for="secondary">Secondary</label>
-                                    <input type="radio" id="secondary" name="secondaryOption" value="Secondary">
-                                </div>
-                                <div class="col">
-                                    <label for="secondaryandshs">Secondary & SHS</label>
-                                    <input type="radio" id="secondaryandshs" name="secondarandshsOption" value="SecondaryandSHS">
-                                </div>
-                                <div class="col">
-                                    <label for="shs">SHS Only</label>
-                                    <input type="radio" id="shs" name="shsOption" value="SHS">
-                                </div>
+                        <label>Are You offering?</label>
+                        <div class="row">
+                            <div class="col">
+                                <label for="elementary">Elementary</label>
+                                <input type="radio" id="elementary" name="educationOption" value="Elementary">
+                            </div>
+                            <div class="col">
+                                <label for="secondary">Secondary</label>
+                                <input type="radio" id="secondary" name="educationOption" value="Secondary">
+                            </div>
+                            <div class="col">
+                                <label for="secondaryandshs">Secondary & SHS</label>
+                                <input type="radio" id="secondaryandshs" name="educationOption" value="SecondaryandSHS">
+                            </div>
+                            <div class="col">
+                                <label for="shs">SHS Only</label>
+                                <input type="radio" id="shs" name="educationOption" value="SHS">
                             </div>
                         </div>
+                    </div>
                         <!-- //Elementary Input Field -->
                         <div class="form-group" id="grade1Input" style="display: none;">
                             <label for="grade1Text">Grade 1:</label>
@@ -120,7 +120,7 @@
                             <input type="text" id="grade12Text" name="grade12Text">
                          </div>
                                            
-                    <div class="form-group">
+                         <div class="form-group">
                         <label>Quarters</label>
                         <div class="row">
                             <div class="col">
@@ -132,7 +132,7 @@
                                 <input type="radio" id="quarter2" name="quarter" value="2">
                             </div>
                             <div class="col">
-                                <label for ="quarter3">Q3</label>
+                                <label for="quarter3">Q3</label>
                                 <input type="radio" id="quarter3" name="quarter" value="3">
                             </div>
                             <div class="col">
@@ -155,10 +155,9 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" id="saveInclusive" class="btn btn-primary">Save</button>
-                        </div>
-
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" id="saveRetention" class="btn btn-primary">Save</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -173,13 +172,13 @@
             $('[id^="gradeInput"]').hide();
 
             // Show grade input fields based on the selected radio button
-            if ($('#elementaryOption').is(':checked')) {
+            if ($('#elementary').is(':checked')) {
                 $('#grade1Input, #grade2Input, #grade3Input, #grade4Input, #grade5Input, #grade6Input').show();
-            } else if ($('#secondaryOption').is(':checked')) {
+            } else if ($('#secondary').is(':checked')) {
                 $('#grade7Input, #grade8Input, #grade9Input, #grade10Input').show();
-            } else if ($('#secondarandshsOption').is(':checked')) {
+            } else if ($('#secondaryandshs').is(':checked')) {
                 $('#grade7shsInput, #grade8shsInput, #grade9shsInput, #grade10shsInput, #grade11shsInput, #grade12shsInput').show();
-            } else if ($('#shsOption').is(':checked')) {
+            } else if ($('#shs').is(':checked')) {
                 $('#grade11Input, #grade12Input').show();
             } else {
                 // Handle other options if needed
@@ -190,7 +189,13 @@
         showHideFields();
 
         // Bind the function to the change event of radio buttons
-        $('input[name$="Option"]').on('change', showHideFields);
+        $('input[name="educationOption"]').on('change', showHideFields);
+    });
+
+    // Handle save button click
+    $("#saveRetention").on("click", function () {
+        // Your save logic here
+        // e.g., $("#retentionForm").submit();
     });
 </script>
 
@@ -202,85 +207,85 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-$(document).ready(function () {
-    // When the form is submitted, show the confirmation modal
-    $("#inclusiveForm").on("submit", function (event) {
-        event.preventDefault(); // Prevent the default form submission
-        $("#inclusiveEducationModal").modal("show"); // Corrected modal ID
-    });
+// <script>
+// $(document).ready(function () {
+//     // When the form is submitted, show the confirmation modal
+//     $("#inclusiveForm").on("submit", function (event) {
+//         event.preventDefault(); // Prevent the default form submission
+//         $("#inclusiveEducationModal").modal("show"); // Corrected modal ID
+//     });
 
-    // When the "Save" button in the modal is clicked, submit the form
-    $("#saveInclusive").on("click", function() {
-        $("#inclusiveForm").off("submit"); // Remove the previous event handler
-        $("#inclusiveForm").submit(); // Submit the form
-    });
+//     // When the "Save" button in the modal is clicked, submit the form
+//     $("#saveInclusive").on("click", function() {
+//         $("#inclusiveForm").off("submit"); // Remove the previous event handler
+//         $("#inclusiveForm").submit(); // Submit the form
+//     });
 
-    $("#confirm_overwrite").on("click", function() {
-        // Submit the form when "Yes" is clicked
-        $("#inclusiveForm").submit();
-    });
-});
-</script>
+//     $("#confirm_overwrite").on("click", function() {
+//         // Submit the form when "Yes" is clicked
+//         $("#inclusiveForm").submit();
+//     });
+// });
+// </script>
 
 
-<script>
-    // Add an event listener to the radio buttons
-    const spedyes = document.getElementById("spedyes");
-    const spedno = document.getElementById("spedno");
-    const spedInput = document.getElementById("spedInput");
-    const aliveyes = document.getElementById("aliveyes");
-    const aliveno = document.getElementById("aliveno");
-    const aliveInput = document.getElementById("aliveInput");
-    const ipedyes = document.getElementById("ipedyes");
-    const ipedno = document.getElementById("ipedno");
-    const ipedInput = document.getElementById("ipedInput");
-    const alsyes = document.getElementById("alsyes");
-    const alsno = document.getElementById("alsno");
-    const alsInput = document.getElementById("alsInput");
+// <script>
+//     // Add an event listener to the radio buttons
+//     const spedyes = document.getElementById("spedyes");
+//     const spedno = document.getElementById("spedno");
+//     const spedInput = document.getElementById("spedInput");
+//     const aliveyes = document.getElementById("aliveyes");
+//     const aliveno = document.getElementById("aliveno");
+//     const aliveInput = document.getElementById("aliveInput");
+//     const ipedyes = document.getElementById("ipedyes");
+//     const ipedno = document.getElementById("ipedno");
+//     const ipedInput = document.getElementById("ipedInput");
+//     const alsyes = document.getElementById("alsyes");
+//     const alsno = document.getElementById("alsno");
+//     const alsInput = document.getElementById("alsInput");
 
-    spedyes.addEventListener("change", function () {
-        if (spedyes.checked) {
-            spedInput.style.display = "block";
-        }
-    });
+//     spedyes.addEventListener("change", function () {
+//         if (spedyes.checked) {
+//             spedInput.style.display = "block";
+//         }
+//     });
 
-    spedno.addEventListener("change", function () {
-        if (spedno.checked) {
-            spedInput.style.display = "none";
-        }
-    });
-    aliveyes.addEventListener("change", function () {
-        if (aliveyes.checked) {
-            aliveInput.style.display = "block";
-        }
-    });
+//     spedno.addEventListener("change", function () {
+//         if (spedno.checked) {
+//             spedInput.style.display = "none";
+//         }
+//     });
+//     aliveyes.addEventListener("change", function () {
+//         if (aliveyes.checked) {
+//             aliveInput.style.display = "block";
+//         }
+//     });
 
-    aliveno.addEventListener("change", function () {
-        if (aliveno.checked) {
-            aliveInput.style.display = "none";
-        }
-    });
-    ipedyes.addEventListener("change", function () {
-        if (ipedyes.checked) {
-            ipedInput.style.display = "block";
-        }
-    });
+//     aliveno.addEventListener("change", function () {
+//         if (aliveno.checked) {
+//             aliveInput.style.display = "none";
+//         }
+//     });
+//     ipedyes.addEventListener("change", function () {
+//         if (ipedyes.checked) {
+//             ipedInput.style.display = "block";
+//         }
+//     });
 
-    ipedno.addEventListener("change", function () {
-        if (ipedno.checked) {
-            ipedInput.style.display = "none";
-        }
-    });
-    alsyes.addEventListener("change", function () {
-        if (alsyes.checked) {
-            alsInput.style.display = "block";
-        }
-    });
+//     ipedno.addEventListener("change", function () {
+//         if (ipedno.checked) {
+//             ipedInput.style.display = "none";
+//         }
+//     });
+//     alsyes.addEventListener("change", function () {
+//         if (alsyes.checked) {
+//             alsInput.style.display = "block";
+//         }
+//     });
 
-    alsno.addEventListener("change", function () {
-        if (alsno.checked) {
-            alsInput.style.display = "none";
-        }
-    });
-</script>
+//     alsno.addEventListener("change", function () {
+//         if (alsno.checked) {
+//             alsInput.style.display = "none";
+//         }
+//     });
+// </script>
