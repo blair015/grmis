@@ -33,8 +33,6 @@
                                 <label for="secondary">Secondary</label>
                                 <input type="radio" id="secondary" name="educationOption" value="Secondary">
                             </div>
-                            </div>
-                            <div class="row">
                             <div class="col">
                                 <label for="secondaryandshs">Secondary & SHS</label>
                                 <input type="radio" id="secondaryandshs" name="educationOption" value="SecondaryandSHS">
@@ -45,7 +43,6 @@
                             </div>
                         </div>
                     </div>
-                    
                         <!-- //Elementary Input Field -->
                         <div class="form-group" id="grade1Input" style="display: none;">
                             <label for="grade1Text">Grade 1:</label>
