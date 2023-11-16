@@ -196,9 +196,12 @@
             showGradeFields(selectedOption);
         });
 
-        // Handle radio button deselection
+        // Bind the function to handle deselection of radio buttons
         $('input[name="educationOption"]').on('click', function () {
-            if (!$(this).prop("checked")) {
+            var selectedOption = $('input[name="educationOption"]:checked').val();
+
+            // If no radio button is selected, hide all grade input fields
+            if (!selectedOption) {
                 hideAllGradeFields();
             }
         });
@@ -210,6 +213,7 @@
         // e.g., $("#retentionForm").submit();
     });
 </script>
+
 
 
 
