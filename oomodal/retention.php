@@ -1,35 +1,3 @@
-<script>
-        // jQuery script to show/hide input fields based on radio button selection
-        $(document).ready(function () {
-            // Function to show/hide input fields based on radio button selection
-            function showHideFields() {
-                var selectedOption = $('input[name="elementaryOption"]:checked').val();
-
-                // Hide all input fields initially
-                $('.grade-input').hide();
-
-                // Show input fields based on the selected radio button
-                if (selectedOption === 'Elementary') {
-                    $('#spedInput').show();
-                } else if (selectedOption === 'Secondary') {
-                    // Add logic for Secondary
-                } else if (selectedOption === 'SecondaryandSHS') {
-                    // Add logic for Secondary & SHS
-                } else if (selectedOption === 'SHS') {
-                    // Add logic for SHS
-                }
-            }
-
-            // Trigger the function on page load
-            showHideFields();
-
-            // Bind the function to the change event of radio buttons
-            $('input[name="elementaryOption"]').on('change', showHideFields);
-        });
-    </script>
-
-
-
 <!-- Modal for "Inclusive Education" -->
 <div class="modal fade" id="retentionEducationModal" tabindex="-1" role="dialog" aria-labelledby="retentionEducationModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -147,6 +115,39 @@
         </div>
     </div>
 </div>
+<script>
+        // jQuery script to show/hide input fields based on radio button selection
+        $(document).ready(function () {
+            // Function to show/hide input fields based on radio button selection
+            function showHideFields() {
+                var selectedOption = $('input[name="elementaryOption"]:checked').val();
+
+                // Hide all input fields initially
+                $('.grade-input').hide();
+
+                // Show input fields based on the selected radio button
+                if (selectedOption === 'Elementary') {
+                    $('#spedInput').show();
+                } else if (selectedOption === 'Secondary') {
+                    // Add logic for Secondary
+                } else if (selectedOption === 'SecondaryandSHS') {
+                    // Add logic for Secondary & SHS
+                } else if (selectedOption === 'SHS') {
+                    // Add logic for SHS
+                }
+            }
+
+            // Trigger the function on page load
+            showHideFields();
+
+            // Bind the function to the change event of radio buttons
+            $('input[name="elementaryOption"]').on('change', showHideFields);
+        });
+    </script>
+
+
+
+
 <!-- Include jQuery and Bootstrap scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
