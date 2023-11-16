@@ -195,6 +195,13 @@
             var selectedOption = $('input[name="educationOption"]:checked').val();
             showGradeFields(selectedOption);
         });
+
+        // Handle radio button deselection
+        $('input[name="educationOption"]').on('click', function () {
+            if (!$(this).prop("checked")) {
+                hideAllGradeFields();
+            }
+        });
     });
 
     // Handle save button click
@@ -203,6 +210,7 @@
         // e.g., $("#retentionForm").submit();
     });
 </script>
+
 
 
 
