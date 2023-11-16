@@ -114,35 +114,30 @@
     </div>
 </div>
 <script>
-        // jQuery script to show/hide input fields based on radio button selection
-        $(document).ready(function () {
-            // Function to show/hide input fields based on radio button selection
-            function showHideFields() {
-                var selectedOption = $('input[name="elementaryOption"]:checked').val();
+    // jQuery script to show/hide input fields based on radio button selection
+    $(document).ready(function () {
+        // Function to show/hide input fields based on radio button selection
+        function showHideFields() {
+            var selectedOption = $('input[name="elementaryOption"]:checked').val();
 
-                // Hide all input fields initially
-                $('.grade-input').hide();
+            // Hide all grade input fields initially
+            $('[id^="gradeInput"]').hide();
 
-                // Show input fields based on the selected radio button
-                if (selectedOption === 'Elementary') {
-                    $('#spedInput').show();
-                } else if (selectedOption === 'Secondary') {
-                    // Add logic for Secondary
-                } else if (selectedOption === 'SecondaryandSHS') {
-                    // Add logic for Secondary & SHS
-                } else if (selectedOption === 'SHS') {
-                    // Add logic for SHS
-                }
+            // Show grade input fields based on the selected radio button
+            if (selectedOption === 'Elementary') {
+                $('#grade1Input, #grade2Input, #grade3Input, #grade4Input, #grade5Input, #grade6Input').show();
+            } else {
+                // Add logic for other options if needed
             }
+        }
 
-            // Trigger the function on page load
-            showHideFields();
+        // Trigger the function on page load
+        showHideFields();
 
-            // Bind the function to the change event of radio buttons
-            $('input[name="elementaryOption"]').on('change', showHideFields);
-        });
-    </script>
-
+        // Bind the function to the change event of radio buttons
+        $('input[name="elementaryOption"]').on('change', showHideFields);
+    });
+</script>
 
 
 
