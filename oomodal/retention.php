@@ -224,85 +224,24 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-// <script>
-// $(document).ready(function () {
-//     // When the form is submitted, show the confirmation modal
-//     $("#inclusiveForm").on("submit", function (event) {
-//         event.preventDefault(); // Prevent the default form submission
-//         $("#inclusiveEducationModal").modal("show"); // Corrected modal ID
-//     });
+<script>
+$(document).ready(function () {
+    // When the form is submitted, show the confirmation modal
+    $("#retentionForm").on("submit", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        $("#retentionEducationModal").modal("show");
+    });
 
-//     // When the "Save" button in the modal is clicked, submit the form
-//     $("#saveInclusive").on("click", function() {
-//         $("#inclusiveForm").off("submit"); // Remove the previous event handler
-//         $("#inclusiveForm").submit(); // Submit the form
-//     });
+    // When the "Save" button in the modal is clicked, submit the form
+    $("#saveRetention").on("click", function() {
+        $("#retentionForm").off("submit"); // Remove the previous event handler
+        $("#retentionForm").submit(); // Submit the form
+    });
 
-//     $("#confirm_overwrite").on("click", function() {
-//         // Submit the form when "Yes" is clicked
-//         $("#inclusiveForm").submit();
-//     });
-// });
-// </script>
+    $("#confirm_overwrite").on("click", function() {
+        // Submit the form when "Yes" is clicked
+        $("#retentionForm").submit();
+    });
+});
+</script>
 
-
-// <script>
-//     // Add an event listener to the radio buttons
-//     const spedyes = document.getElementById("spedyes");
-//     const spedno = document.getElementById("spedno");
-//     const spedInput = document.getElementById("spedInput");
-//     const aliveyes = document.getElementById("aliveyes");
-//     const aliveno = document.getElementById("aliveno");
-//     const aliveInput = document.getElementById("aliveInput");
-//     const ipedyes = document.getElementById("ipedyes");
-//     const ipedno = document.getElementById("ipedno");
-//     const ipedInput = document.getElementById("ipedInput");
-//     const alsyes = document.getElementById("alsyes");
-//     const alsno = document.getElementById("alsno");
-//     const alsInput = document.getElementById("alsInput");
-
-//     spedyes.addEventListener("change", function () {
-//         if (spedyes.checked) {
-//             spedInput.style.display = "block";
-//         }
-//     });
-
-//     spedno.addEventListener("change", function () {
-//         if (spedno.checked) {
-//             spedInput.style.display = "none";
-//         }
-//     });
-//     aliveyes.addEventListener("change", function () {
-//         if (aliveyes.checked) {
-//             aliveInput.style.display = "block";
-//         }
-//     });
-
-//     aliveno.addEventListener("change", function () {
-//         if (aliveno.checked) {
-//             aliveInput.style.display = "none";
-//         }
-//     });
-//     ipedyes.addEventListener("change", function () {
-//         if (ipedyes.checked) {
-//             ipedInput.style.display = "block";
-//         }
-//     });
-
-//     ipedno.addEventListener("change", function () {
-//         if (ipedno.checked) {
-//             ipedInput.style.display = "none";
-//         }
-//     });
-//     alsyes.addEventListener("change", function () {
-//         if (alsyes.checked) {
-//             alsInput.style.display = "block";
-//         }
-//     });
-
-//     alsno.addEventListener("change", function () {
-//         if (alsno.checked) {
-//             alsInput.style.display = "none";
-//         }
-//     });
-// </script>
