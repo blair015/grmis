@@ -58,23 +58,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Handle other cases if needed
                 break;
         }
-
+    
         $updateStmt = $conn->prepare($updateQuery);
-
+    
+        // Assign values to variables
+        $grade1 = $gradeData[0] ?? null;
+        $grade2 = $gradeData[1] ?? null;
+        $grade3 = $gradeData[2] ?? null;
+        $grade4 = $gradeData[3] ?? null;
+        $grade5 = $gradeData[4] ?? null;
+        $grade6 = $gradeData[5] ?? null;
+    
+        $schoolYearParam = $schoolYear;
+        $quarterParam = $quarter;
+    
         // Bind parameters
-        $types = str_repeat('s', count($gradeData) + 3);  // Assuming all values are strings
-        $updateStmt->bind_param($types, ...$gradeData, $schoolId, $schoolYear, $quarter);
-
+        $updateStmt->bind_param("ssssssiss", $grade1, $grade2, $grade3, $grade4, $grade5, $grade6, $schoolId, $schoolYearParam, $quarterParam);
+    
         // Execute the statement
         $updateResult = $updateStmt->execute();
-
+    
         // Check if the query was successful
         if ($updateResult) {
             echo "Data updated successfully!";
         } else {
             echo "Error updating data: " . $updateStmt->error;
         }
-
+    
         // Close the statement
         $updateStmt->close();
     } else {
