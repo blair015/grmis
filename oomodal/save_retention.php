@@ -81,48 +81,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
+        // Save data to the corresponding table based on the education option
         switch ($educationOption) {
             case 'Elementary':
                 // Save data to oo_elementary table
-                // Adjust the query and table name as needed
                 $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 break;
             case 'Secondary':
                 // Save data to oo_secondary table
-                // Adjust the query and table name as needed
                 $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
                 break;
             case 'SHS':
                 // Save data to oo_shs table
-                // Adjust the query and table name as needed
                 $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
                 break;
             default:
                 // Handle other cases if needed
                 break;
         }
-
+    
         $statement = $conn->prepare($query);
-
+    
         // Bind parameters
         $types = str_repeat('s', count($gradeData) + 3);  // Assuming all values are strings
         $statement->bind_param($types, $schoolId, $schoolYear, $quarter, ...$gradeData);
-
+    
         // Execute the statement
         $result = $statement->execute();
-
+    
         // Check if the query was successful
         if ($result) {
             echo "Data saved successfully!";
         } else {
             echo "Error saving data: " . $statement->error;
         }
-
+    
         // Close the statement
         $statement->close();
     }
-
+    
     // Close the connection
     $conn->close();
-}
-?>
+    ?>
