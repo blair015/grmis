@@ -57,16 +57,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
     }
 
-    // Prepare and execute the SQL query
-    $statement = $pdo->prepare($query);
-    $params = array_merge(['school_id' => $schoolId, 'school_year' => $schoolYear, 'quarter' => $quarter], $gradeData);
-    $result = $statement->execute($params);
+    $statement = $conn->prepare($query);
+
+    // Bind parameters
+    $types = str_repeat('s', count($gradeData) + 3);  // Assuming all values are strings
+    $statement->bind_param($types, $schoolId, $schoolYear, $quarter, ...array_values($gradeData));
+
+    // Execute the statement
+    $result = $statement->execute();
 
     // Check if the query was successful
     if ($result) {
         echo "Data saved successfully!";
     } else {
-        echo "Error saving data.";
+        echo "Error saving data: " . $statement->error;
     }
+
+    // Close the statement
+    $statement->close();
 }
+
+// Close the connection
+$conn->close();
 ?>
