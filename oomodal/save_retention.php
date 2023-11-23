@@ -40,17 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'Elementary':
             // Save data to oo_elementary table
             // Adjust the query and table name as needed
-            $query = "INSERT INTO oo_elementary (school_id, school_year, quarter, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             break;
         case 'Secondary':
             // Save data to oo_secondary table
             // Adjust the query and table name as needed
-            $query = "INSERT INTO oo_secondary (school_id, school_year, quarter, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
             break;
         case 'SHS':
             // Save data to oo_shs table
             // Adjust the query and table name as needed
-            $query = "INSERT INTO oo_shs (school_id, school_year, quarter, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
             break;
         default:
             // Handle other cases if needed
