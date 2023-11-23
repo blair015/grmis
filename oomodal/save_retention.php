@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $updateStmt = $conn->prepare($updateQuery);
     
         // Bind parameters
-        $updateStmt->bind_param($placeholders, ...$gradeData, $schoolId, $schoolYear, $quarter);
+        $updateStmt->bind_param($placeholders, ...array_merge($gradeData, [$schoolId, $schoolYear, $quarter]));
     
         // Execute the statement
         $updateResult = $updateStmt->execute();
