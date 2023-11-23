@@ -47,12 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         switch ($educationOption) {
             case 'Elementary':
                 $updateQuery = "UPDATE oo_elementary SET grade1=?, grade2=?, grade3=?, grade4=?, grade5=?, grade6=? WHERE school_id=? AND school_year=? AND quarter7=?";
+                $placeholders = 'ssssssiss';
                 break;
             case 'Secondary':
                 $updateQuery = "UPDATE oo_secondary SET grade7=?, grade8=?, grade9=?, grade10=? WHERE school_id=? AND school_year=? AND quarter8=?";
+                $placeholders = 'ssssiss';
                 break;
             case 'SHS':
                 $updateQuery = "UPDATE oo_shs SET grade11=?, grade12=? WHERE school_id=? AND school_year=? AND quarter9=?";
+                $placeholders = 'sssiss';
                 break;
             default:
                 // Handle other cases if needed
@@ -61,19 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         $updateStmt = $conn->prepare($updateQuery);
     
-        // Assign values to variables
-        $grade1 = $gradeData[0] ?? null;
-        $grade2 = $gradeData[1] ?? null;
-        $grade3 = $gradeData[2] ?? null;
-        $grade4 = $gradeData[3] ?? null;
-        $grade5 = $gradeData[4] ?? null;
-        $grade6 = $gradeData[5] ?? null;
-    
-        $schoolYearParam = $schoolYear;
-        $quarterParam = $quarter;
-    
         // Bind parameters
-        $updateStmt->bind_param("ssssssiss", $grade1, $grade2, $grade3, $grade4, $grade5, $grade6, $schoolId, $schoolYearParam, $quarterParam);
+        $updateStmt->bind_param($placeholders, ...$gradeData, $schoolId, $schoolYear, $quarter);
     
         // Execute the statement
         $updateResult = $updateStmt->execute();
