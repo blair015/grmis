@@ -2,7 +2,8 @@
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Include database connection and other necessary files
-    include('admin/config/dbcon.php');
+    include('../admin/config/dbcon.php');
+    include('../admin/includes/script.php');
 
     // Get form data
     $schoolId = $_POST['schoolId'];
