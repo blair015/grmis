@@ -80,48 +80,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Close the statement
         $updateStmt->close();
     } else {
-        $placeholders = '';  // Initialize an empty string for placeholders
-        $bindParams = array();  // Initialize an array to store bind parameters
         
-        // Construct placeholders and bind parameters based on the education option
-        switch ($educationOption) {
-            case 'Elementary':
-                $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                $placeholders = 'ssssssiss';
-                $bindParams = array_merge(array($placeholders), array(&$schoolId, &$schoolYear, &$quarter), $gradeData);
-                break;
-            case 'Secondary':
-                $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
-                $placeholders = 'ssssiss';
-                $bindParams = array_merge(array($placeholders), array(&$schoolId, &$schoolYear, &$quarter), $gradeData);
-                break;
-            case 'SHS':
-                $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
-                $placeholders = 'sssiss';
-                $bindParams = array_merge(array($placeholders), array(&$schoolId, &$schoolYear, &$quarter), $gradeData);
-                break;
-            default:
-                // Handle other cases if needed
-                break;
-        }
-        
-        $statement = $conn->prepare($query);
-        
-        // Bind parameters dynamically
-        call_user_func_array(array($statement, 'bind_param'), $bindParams);
-        
-        // Execute the statement
-        $result = $statement->execute();
-        
-        // Check if the query was successful
-        if ($result) {
-            echo "Data saved successfully!";
-        } else {
-            echo "Error saving data: " . $statement->error;
-        }
-        
-        // Close the statement
-        $statement->close();
+$placeholders = '';  // Initialize an empty string for placeholders
+$bindParams = array();  // Initialize an array to store bind parameters
+
+// Construct placeholders and bind parameters based on the education option
+switch ($educationOption) {
+    case 'Elementary':
+        $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $placeholders = 'ssssssiss';
+        $bindParams = array(&$schoolId, &$schoolYear, &$quarter, ...$gradeData);
+        break;
+    case 'Secondary':
+        $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $placeholders = 'ssssiss';
+        $bindParams = array(&$schoolId, &$schoolYear, &$quarter, ...$gradeData);
+        break;
+    case 'SHS':
+        $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
+        $placeholders = 'sssiss';
+        $bindParams = array(&$schoolId, &$schoolYear, &$quarter, ...$gradeData);
+        break;
+    default:
+        // Handle other cases if needed
+        break;
+}
+
+$statement = $conn->prepare($query);
+
+// Bind parameters dynamically
+$statement->bind_param($placeholders, ...$bindParams);
+
+// Execute the statement
+$result = $statement->execute();
+
+// Check if the query was successful
+if ($result) {
+    echo "Data saved successfully!";
+} else {
+    echo "Error saving data: " . $statement->error;
+}
+
+// Close the statement
+$statement->close();
 
     }
     
