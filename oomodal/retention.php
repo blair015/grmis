@@ -44,78 +44,78 @@
                         </div>
                     </div>
                         <!-- //Elementary Input Field -->
-                        <div class="form-group" id="grade1Input" style="display: none;">
+                        <<div class="form-group gradeInput" id="grade1Input" style="display: none;">
                             <label for="grade1Text">Grade 1:</label>
                             <input type="text" id="grade1Text" name="grade1Text">
                         </div>
-                        <div class="form-group" id="grade2Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade2Input" style="display: none;">
                             <label for="grade2Text">Grade 2:</label>
                             <input type="text" id="grade2Text" name="grade2Text">
                         </div>
-                        <div class="form-group" id="grade3Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade3Input" style="display: none;">
                             <label for="grade3Text">Grade 3:</label>
                             <input type="text" id="grade3Text" name="grade3Text">
                         </div>
-                        <div class="form-group" id="grade4Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade4Input" style="display: none;">
                             <label for="grade4Text">Grade 4:</label>
                             <input type="text" id="grade4Text" name="grade4Text">
                         </div>
-                        <div class="form-group" id="grade5Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade5Input" style="display: none;">
                             <label for="grade5Text">Grade 5:</label>
                             <input type="text" id="grade5Text" name="grade5Text">
                         </div>
-                        <div class="form-group" id="grade6Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade6Input" style="display: none;">
                             <label for="grade6Text">Grade 6:</label>
                             <input type="text" id="grade6Text" name="grade6Text">
                         </div>
                           <!-- //Secondary Input Field -->
-                          <div class="form-group" id="grade7Input" style="display: none;">
+                          <div class="form-group gradeInput" id="grade7Input" style="display: none;">
                             <label for="grade7Text">Grade 7:</label>
                             <input type="text" id="grade7Text" name="grade7Text">
                         </div>
-                        <div class="form-group" id="grade8Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade8Input" style="display: none;">
                             <label for="grade8Text">Grade 8:</label>
                             <input type="text" id="grade8Text" name="grade8Text">
                         </div>
-                        <div class="form-group" id="grade9Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade9Input" style="display: none;">
                             <label for="grade9Text">Grade 9:</label>
                             <input type="text" id="grade9Text" name="grade9Text">
                         </div>
-                        <div class="form-group" id="grade10Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade10Input" style="display: none;">
                             <label for="grade10Text">Grade 10:</label>
                             <input type="text" id="grade10Text" name="grade10Text">
                         </div>
                           <!-- //Secondary & SHS Input Field -->
-                          <div class="form-group" id="grade7shsInput" style="display: none;">
+                          <div class="form-group gradeInput" id="grade7shsInput" style="display: none;">
                             <label for="grade7shsText">Grade 7:</label>
                             <input type="text" id="grade7shsText" name="grade7shsText">
                         </div>
-                        <div class="form-group" id="grade8shsInput" style="display: none;">
+                        <div class="form-group gradeInput" id="grade8shsInput" style="display: none;">
                             <label for="grade8shsText">Grade 8:</label>
                             <input type="text" id="grade8shsText" name="grade8shsText">
                         </div>
-                        <div class="form-group" id="grade9shsInput" style="display: none;">
+                        <div class="form-group gradeInput" id="grade9shsInput" style="display: none;">
                             <label for="grade9shsText">Grade 9:</label>
                             <input type="text" id="grade9shsText" name="grade9shsText">
                         </div>
-                        <div class="form-group" id="grade10shsInput" style="display: none;">
+                        <div class="form-group gradeInput" id="grade10shsInput" style="display: none;">
                             <label for="grade10shsText">Grade 10:</label>
                             <input type="text" id="grade10shsText" name="grade10shsText">
                         </div>
-                        <div class="form-group" id="grade11shsInput" style="display: none;">
+                        <div class="form-group gradeInput" id="grade11shsInput" style="display: none;">
                             <label for="grade11shsText">Grade 11:</label>
                             <input type="text" id="grade11shsText" name="grade11shsText">
                         </div>
-                        <div class="form-group" id="grade12shsInput" style="display: none;">
+                        <div class="form-group gradeInput" id="grade12shsInput" style="display: none;">
                             <label for="grade12shsText">Grade 12:</label>
                             <input type="text" id="grade12shsText" name="grade12shsText">
                          </div>
                         <!-- //Secondary & SHS Input Field -->
-                        <div class="form-group" id="grade11Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade11Input" style="display: none;">
                             <label for="grade11Text">Grade 11:</label>
                             <input type="text" id="grade11Text" name="grade11Text">
                         </div>
-                        <div class="form-group" id="grade12Input" style="display: none;">
+                        <div class="form-group gradeInput" id="grade12Input" style="display: none;">
                             <label for="grade12Text">Grade 12:</label>
                             <input type="text" id="grade12Text" name="grade12Text">
                          </div>
@@ -168,7 +168,7 @@
     $(document).ready(function () {
         // Function to hide all grade input fields
         function hideAllGradeFields() {
-            $('[id^="gradeInput"]').hide();
+            $('.gradeInput').hide();
         }
 
         // Function to show grade input fields based on the selected radio button
@@ -213,7 +213,6 @@
         // e.g., $("#retentionForm").submit();
     });
 </script>
-
 
 
 
