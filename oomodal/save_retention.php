@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
         // Data already exists, prompt the user for confirmation using JavaScript
         echo '<script>
-            var confirmOverwrite = confirm("Data for the selected school year, quarter, and education option already exists. Do you want to overwrite it?");
+            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
             if (confirmOverwrite) {
                 // Proceed with submission
                 document.getElementById("confirm_overwrite").value = "1";
