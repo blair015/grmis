@@ -105,8 +105,6 @@ function proceedWithUpdate() {
     $updateStmt->close();
 }
 
-}
-
 function proceedWithInsertion() {
     global $conn, $schoolId, $educationOption, $quarter, $schoolYear, $gradeData;
 
