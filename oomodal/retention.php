@@ -85,32 +85,7 @@
                             <label for="grade10Text">Grade 10:</label>
                             <input type="text" id="grade10Text" name="grade10Text">
                         </div>
-                          <!-- //Secondary & SHS Input Field -->
-                          <div class="form-group gradeInput" id="grade7shsInput" style="display: none;">
-                            <label for="grade7shsText">Grade 7:</label>
-                            <input type="text" id="grade7shsText" name="grade7shsText">
-                        </div>
-                        <div class="form-group gradeInput" id="grade8shsInput" style="display: none;">
-                            <label for="grade8shsText">Grade 8:</label>
-                            <input type="text" id="grade8shsText" name="grade8shsText">
-                        </div>
-                        <div class="form-group gradeInput" id="grade9shsInput" style="display: none;">
-                            <label for="grade9shsText">Grade 9:</label>
-                            <input type="text" id="grade9shsText" name="grade9shsText">
-                        </div>
-                        <div class="form-group gradeInput" id="grade10shsInput" style="display: none;">
-                            <label for="grade10shsText">Grade 10:</label>
-                            <input type="text" id="grade10shsText" name="grade10shsText">
-                        </div>
-                        <div class="form-group gradeInput" id="grade11shsInput" style="display: none;">
-                            <label for="grade11shsText">Grade 11:</label>
-                            <input type="text" id="grade11shsText" name="grade11shsText">
-                        </div>
-                        <div class="form-group gradeInput" id="grade12shsInput" style="display: none;">
-                            <label for="grade12shsText">Grade 12:</label>
-                            <input type="text" id="grade12shsText" name="grade12shsText">
-                         </div>
-                        <!-- //Secondary & SHS Input Field -->
+                        <!-- SHS Input Field -->
                         <div class="form-group gradeInput" id="grade11Input" style="display: none;">
                             <label for="grade11Text">Grade 11:</label>
                             <input type="text" id="grade11Text" name="grade11Text">
@@ -180,8 +155,6 @@
                 $('#grade1Input, #grade2Input, #grade3Input, #grade4Input, #grade5Input, #grade6Input').show();
             } else if (selectedOption === 'Secondary') {
                 $('#grade7Input, #grade8Input, #grade9Input, #grade10Input').show();
-            } else if (selectedOption === 'SecondaryandSHS') {
-                $('#grade7shsInput, #grade8shsInput, #grade9shsInput, #grade10shsInput, #grade11shsInput, #grade12shsInput').show();
             } else if (selectedOption === 'SHS') {
                 $('#grade11Input, #grade12Input').show();
             }
