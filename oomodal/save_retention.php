@@ -43,20 +43,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $checkStmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Data already exists, prompt the user for confirmation using JavaScript
-        echo '<script>
-            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
-            if (confirmOverwrite) {
-                // Proceed with submission
-                document.getElementById("confirm_overwrite").value = "1";
-                document.getElementById("retentionForm").submit();
-            } else {
-                // Do nothing or handle as needed
-            }
-        </script>';
+        // Data already exists, update the existing record
+        switch ($educationOption) {
+            case 'Elementary':
+                $updateQuery = "UPDATE oo_elementary SET grade1=?, grade2=?, grade3=?, grade4=?, grade5=?, grade6=? WHERE school_id=? AND school_year=? AND quarter7=?";
+                break;
+            case 'Secondary':
+                $updateQuery = "UPDATE oo_secondary SET grade7=?, grade8=?, grade9=?, grade10=? WHERE school_id=? AND school_year=? AND quarter8=?";
+                break;
+            case 'SHS':
+                $updateQuery = "UPDATE oo_shs SET grade11=?, grade12=? WHERE school_id=? AND school_year=? AND quarter9=?";
+                break;
+            default:
+                // Handle other cases if needed
+                break;
+        }
+
+        $updateStmt = $conn->prepare($updateQuery);
+
+        // Bind parameters
+        $types = str_repeat('s', count($gradeData) + 3);  // Assuming all values are strings
+        $updateStmt->bind_param($types, ...$gradeData, $schoolId, $schoolYear, $quarter);
+
+        // Execute the statement
+        $updateResult = $updateStmt->execute();
+
+        // Check if the query was successful
+        if ($updateResult) {
+            echo "Data updated successfully!";
+        } else {
+            echo "Error updating data: " . $updateStmt->error;
+        }
+
+        // Close the statement
+        $updateStmt->close();
     } else {
         // Data does not exist, proceed with insertion
-        // Save data to the corresponding table based on the education option
         switch ($educationOption) {
             case 'Elementary':
                 // Save data to oo_elementary table
