@@ -85,8 +85,11 @@ function proceedWithUpdate() {
 
     $updateStmt = $conn->prepare($updateQuery);
 
-    // Bind parameters
-    $updateStmt->bind_param($placeholders, ...array_merge($gradeData, [$schoolId, $schoolYear, $quarter]));
+    // Combine grade data and parameters for binding
+    $bindParams = array_merge([$placeholders], $gradeData, [$schoolId, $schoolYear, $quarter]);
+
+    // Bind parameters dynamically
+    call_user_func_array([$updateStmt, 'bind_param'], $bindParams);
 
     // Execute the statement
     $updateResult = $updateStmt->execute();
@@ -100,6 +103,8 @@ function proceedWithUpdate() {
 
     // Close the statement
     $updateStmt->close();
+}
+
 }
 
 function proceedWithInsertion() {
