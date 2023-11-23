@@ -101,6 +101,11 @@ function proceedWithUpdate() {
         echo "Error updating data: " . $updateStmt->error;
     }
 
+    // Additional debugging output
+    echo '<pre>';
+    var_dump($updateResult, $updateStmt);
+    echo '</pre>';
+
     // Close the statement
     $updateStmt->close();
 }
