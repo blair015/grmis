@@ -43,87 +43,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $checkStmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Data already exists, update the existing record
-        switch ($educationOption) {
-            case 'Elementary':
-                $updateQuery = "UPDATE oo_elementary SET grade1=?, grade2=?, grade3=?, grade4=?, grade5=?, grade6=? WHERE school_id=? AND school_year=? AND quarter7=?";
-                $placeholders = 'ssssssiss';
-                break;
-            case 'Secondary':
-                $updateQuery = "UPDATE oo_secondary SET grade7=?, grade8=?, grade9=?, grade10=? WHERE school_id=? AND school_year=? AND quarter8=?";
-                $placeholders = 'ssssiss';
-                break;
-            case 'SHS':
-                $updateQuery = "UPDATE oo_shs SET grade11=?, grade12=? WHERE school_id=? AND school_year=? AND quarter9=?";
-                $placeholders = 'sssiss';
-                break;
-            default:
-                // Handle other cases if needed
-                break;
-        }
-    
-        $updateStmt = $conn->prepare($updateQuery);
-    
-        // Bind parameters
-        $updateStmt->bind_param($placeholders, ...array_merge($gradeData, [$schoolId, $schoolYear, $quarter]));
-    
-        // Execute the statement
-        $updateResult = $updateStmt->execute();
-    
-        // Check if the query was successful
-        if ($updateResult) {
-            echo "Data updated successfully!";
-        } else {
-            echo "Error updating data: " . $updateStmt->error;
-        }
-    
-        // Close the statement
-        $updateStmt->close();
+        // Data already exists, prompt the user for confirmation using JavaScript
+        echo '<script>
+            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
+            if (confirmOverwrite) {
+                proceedWithUpdate();
+            } else {
+                // Do nothing or handle as needed
+            }
+        </script>';
     } else {
-        
-// Construct placeholders and bind parameters based on the education option
-switch ($educationOption) {
-    case 'Elementary':
-        $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $placeholders = 'ssssssiss';
-        $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
-        break;
-    case 'Secondary':
-        $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $placeholders = 'ssssiss';
-        $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
-        break;
-    case 'SHS':
-        $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
-        $placeholders = 'sssiss';
-        $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
-        break;
-    default:
-        // Handle other cases if needed
-        break;
-}
-
-$statement = $conn->prepare($query);
-
-// Bind parameters dynamically
-call_user_func_array([$statement, 'bind_param'], $bindParams);
-
-// Execute the statement
-$result = $statement->execute();
-
-// Check if the query was successful
-if ($result) {
-    echo "Data saved successfully!";
-} else {
-    echo "Error saving data: " . $statement->error;
-}
-
-// Close the statement
-$statement->close();
+        // Data does not exist, proceed with insertion
+        proceedWithInsertion();
     }
     
     // Close the connection
     $conn->close();
 }
-    ?>
-    
+
+function proceedWithUpdate() {
+    global $conn, $schoolId, $educationOption, $quarter, $schoolYear, $gradeData;
+
+    // Continue with the update logic
+    switch ($educationOption) {
+        case 'Elementary':
+            $updateQuery = "UPDATE oo_elementary SET grade1=?, grade2=?, grade3=?, grade4=?, grade5=?, grade6=? WHERE school_id=? AND school_year=? AND quarter7=?";
+            $placeholders = 'ssssssiss';
+            break;
+        case 'Secondary':
+            $updateQuery = "UPDATE oo_secondary SET grade7=?, grade8=?, grade9=?, grade10=? WHERE school_id=? AND school_year=? AND quarter8=?";
+            $placeholders = 'ssssiss';
+            break;
+        case 'SHS':
+            $updateQuery = "UPDATE oo_shs SET grade11=?, grade12=? WHERE school_id=? AND school_year=? AND quarter9=?";
+            $placeholders = 'sssiss';
+            break;
+        default:
+            // Handle other cases if needed
+            break;
+    }
+
+    $updateStmt = $conn->prepare($updateQuery);
+
+    // Bind parameters
+    $updateStmt->bind_param($placeholders, ...array_merge($gradeData, [$schoolId, $schoolYear, $quarter]));
+
+    // Execute the statement
+    $updateResult = $updateStmt->execute();
+
+    // Check if the query was successful
+    if ($updateResult) {
+        echo "Data updated successfully!";
+    } else {
+        echo "Error updating data: " . $updateStmt->error;
+    }
+
+    // Close the statement
+    $updateStmt->close();
+}
+
+function proceedWithInsertion() {
+    global $conn, $schoolId, $educationOption, $quarter, $schoolYear, $gradeData;
+
+    // Construct placeholders and bind parameters based on the education option
+    switch ($educationOption) {
+        case 'Elementary':
+            $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $placeholders = 'ssssssiss';
+            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
+            break;
+        case 'Secondary':
+            $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $placeholders = 'ssssiss';
+            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
+            break;
+        case 'SHS':
+            $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
+            $placeholders = 'sssiss';
+            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
+            break;
+        default:
+            // Handle other cases if needed
+            break;
+    }
+
+    $statement = $conn->prepare($query);
+
+    // Bind parameters dynamically
+    call_user_func_array([$statement, 'bind_param'], $bindParams);
+
+    // Execute the statement
+    $result = $statement->execute();
+
+    // Check if the query was successful
+    if ($result) {
+        echo "Data saved successfully!";
+    } else {
+        echo "Error saving data: " . $statement->error;
+    }
+
+    // Close the statement
+    $statement->close();
+}
+?>
