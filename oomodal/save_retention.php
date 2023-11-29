@@ -118,17 +118,14 @@ function proceedWithInsertion() {
         case 'Elementary':
             $query = "INSERT INTO oo_elementary (school_id, school_year, quarter7, grade1, grade2, grade3, grade4, grade5, grade6) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $placeholders = 'ssssssiss';
-            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
             break;
         case 'Secondary':
             $query = "INSERT INTO oo_secondary (school_id, school_year, quarter8, grade7, grade8, grade9, grade10) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $placeholders = 'ssssiss';
-            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
             break;
         case 'SHS':
             $query = "INSERT INTO oo_shs (school_id, school_year, quarter9, grade11, grade12) VALUES (?, ?, ?, ?, ?)";
             $placeholders = 'sssiss';
-            $bindParams = array_merge([$placeholders], [&$schoolId, &$schoolYear, &$quarter], $gradeData);
             break;
         default:
             // Handle other cases if needed
@@ -136,6 +133,9 @@ function proceedWithInsertion() {
     }
 
     $statement = $conn->prepare($query);
+
+    // Combine placeholders and parameters for binding
+    $bindParams = array_merge([$placeholders], [$schoolId, $schoolYear, $quarter], $gradeData);
 
     // Bind parameters dynamically
     call_user_func_array([$statement, 'bind_param'], $bindParams);
@@ -150,7 +150,13 @@ function proceedWithInsertion() {
         echo "Error saving data: " . $statement->error;
     }
 
+    // Additional debugging output
+    echo '<pre>';
+    var_dump($result, $statement);
+    echo '</pre>';
+
     // Close the statement
     $statement->close();
 }
+
 ?>
