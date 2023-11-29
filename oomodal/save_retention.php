@@ -35,12 +35,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
     }
 
-    // Check if data already exists for the given school year, quarter, and education option
-    $checkQuery = "SELECT * FROM oo_elementary WHERE school_id = ? AND school_year = ? AND quarter7 = ?";
-    $checkStmt = $conn->prepare($checkQuery);
-    $checkStmt->bind_param("iss", $schoolId, $schoolYear, $quarter);
-    $checkStmt->execute();
-    $result = $checkStmt->get_result();
+   // Check if data already exists for the given school year, quarter, and education option
+$checkQuery = "";
+switch ($educationOption) {
+    case 'Elementary':
+        $checkQuery = "SELECT * FROM oo_elementary WHERE school_id = ? AND school_year = ? AND quarter7 = ?";
+        break;
+    case 'Secondary':
+        $checkQuery = "SELECT * FROM oo_secondary WHERE school_id = ? AND school_year = ? AND quarter8 = ?";
+        break;
+    case 'SHS':
+        $checkQuery = "SELECT * FROM oo_shs WHERE school_id = ? AND school_year = ? AND quarter9 = ?";
+        break;
+    default:
+        // Handle other cases if needed
+        break;
+}
+
+$checkStmt = $conn->prepare($checkQuery);
+$checkStmt->bind_param("iss", $schoolId, $schoolYear, $quarter);
+$checkStmt->execute();
+$result = $checkStmt->get_result();
 
     if ($result->num_rows > 0) {
         // Data already exists, prompt the user for confirmation using JavaScript
