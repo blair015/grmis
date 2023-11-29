@@ -85,11 +85,15 @@ function proceedWithUpdate() {
 
     $updateStmt = $conn->prepare($updateQuery);
 
-    // Combine grade data and parameters for binding
-    $bindParams = array_merge([$placeholders], $gradeData, [&$schoolId, &$schoolYear, &$quarter]);
+    // Create an array of references for parameters
+    $params = array_merge([$placeholders], $gradeData, [&$schoolId, &$schoolYear, &$quarter]);
+    $refParams = [];
+    foreach ($params as $key => $value) {
+        $refParams[$key] = &$params[$key];
+    }
 
     // Bind parameters dynamically
-    call_user_func_array([$updateStmt, 'bind_param'], $bindParams);
+    call_user_func_array([$updateStmt, 'bind_param'], $refParams);
 
     // Execute the statement
     $updateResult = $updateStmt->execute();
