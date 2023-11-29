@@ -83,15 +83,15 @@ function proceedWithUpdate() {
     switch ($educationOption) {
         case 'Elementary':
             $updateQuery = "UPDATE oo_elementary SET grade1=?, grade2=?, grade3=?, grade4=?, grade5=?, grade6=? WHERE school_id=? AND school_year=? AND quarter7=?";
-            $placeholders = 'ssssssiss';
+            $placeholders = 'ssssssississ';
             break;
         case 'Secondary':
             $updateQuery = "UPDATE oo_secondary SET grade7=?, grade8=?, grade9=?, grade10=? WHERE school_id=? AND school_year=? AND quarter8=?";
-            $placeholders = 'ssssiss';
+            $placeholders = 'ssssississ';
             break;
         case 'SHS':
             $updateQuery = "UPDATE oo_shs SET grade11=?, grade12=? WHERE school_id=? AND school_year=? AND quarter9=?";
-            $placeholders = 'sssiss';
+            $placeholders = 'sssississ';
             break;
         default:
             // Handle other cases if needed
@@ -128,6 +128,7 @@ function proceedWithUpdate() {
     // Close the statement
     $updateStmt->close();
 }
+
 
 function proceedWithInsertion() {
     global $conn, $schoolId, $educationOption, $quarter, $schoolYear, $gradeData;
