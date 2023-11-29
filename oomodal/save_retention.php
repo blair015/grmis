@@ -57,23 +57,26 @@ $checkStmt->bind_param("iss", $schoolId, $schoolYear, $quarter);
 $checkStmt->execute();
 $result = $checkStmt->get_result();
 
-    if ($result->num_rows > 0) {
-        // Data already exists, prompt the user for confirmation using JavaScript
-        echo '<script>
-            var confirmOverwrite = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
-            if (confirmOverwrite) {
-                proceedWithUpdate();
-            } else {
-                // Do nothing or handle as needed
-            }
-        </script>';
-    } else {
-        // Data does not exist, proceed with insertion
-        proceedWithInsertion();
-    }
-    
-    // Close the connection
-    $conn->close();
+if ($result->num_rows > 0) {
+    // Data already exists, show the confirmation form
+    echo '<form method="post">
+            <input type="hidden" name="confirmUpdate" value="1">
+            <button type="submit">Update</button>
+            <button type="button" onclick="cancelUpdate()">Cancel</button>
+          </form>';
+
+} else {
+    // Data does not exist, proceed with insertion
+    proceedWithInsertion();
+}
+
+// Close the connection
+$conn->close();
+}
+
+// Handle the confirmation and proceed with the update
+if (isset($_POST['confirmUpdate'])) {
+proceedWithUpdate();
 }
 
 function proceedWithUpdate() {
