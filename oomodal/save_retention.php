@@ -134,11 +134,17 @@ function proceedWithInsertion() {
 
     $statement = $conn->prepare($query);
 
-    // Combine placeholders and parameters for binding
-    $bindParams = array_merge([$placeholders], [$schoolId, $schoolYear, $quarter], $gradeData);
+    // Dynamically bind parameters by reference
+    $types = str_repeat('s', count($gradeData) + 3);  // Assuming all values are strings
+    $params = array_merge([$types], [$schoolId, $schoolYear, $quarter], $gradeData);
+
+    $refParams = [];
+    foreach ($params as $key => $value) {
+        $refParams[$key] = &$params[$key];
+    }
 
     // Bind parameters dynamically
-    call_user_func_array([$statement, 'bind_param'], $bindParams);
+    call_user_func_array([$statement, 'bind_param'], $refParams);
 
     // Execute the statement
     $result = $statement->execute();
@@ -150,13 +156,7 @@ function proceedWithInsertion() {
         echo "Error saving data: " . $statement->error;
     }
 
-    // Additional debugging output
-    echo '<pre>';
-    var_dump($result, $statement);
-    echo '</pre>';
-
     // Close the statement
     $statement->close();
 }
-
 ?>
