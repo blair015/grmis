@@ -35,48 +35,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
     }
 
-   // Check if data already exists for the given school year, quarter, and education option
-$checkQuery = "";
-switch ($educationOption) {
-    case 'Elementary':
-        $checkQuery = "SELECT * FROM oo_elementary WHERE school_id = ? AND school_year = ? AND quarter7 = ?";
-        break;
-    case 'Secondary':
-        $checkQuery = "SELECT * FROM oo_secondary WHERE school_id = ? AND school_year = ? AND quarter8 = ?";
-        break;
-    case 'SHS':
-        $checkQuery = "SELECT * FROM oo_shs WHERE school_id = ? AND school_year = ? AND quarter9 = ?";
-        break;
-    default:
-        // Handle other cases if needed
-        break;
-}
+    // Check if data already exists for the given school year, quarter, and education option
+    $checkQuery = "";
+    switch ($educationOption) {
+        case 'Elementary':
+            $checkQuery = "SELECT * FROM oo_elementary WHERE school_id = ? AND school_year = ? AND quarter7 = ?";
+            break;
+        case 'Secondary':
+            $checkQuery = "SELECT * FROM oo_secondary WHERE school_id = ? AND school_year = ? AND quarter8 = ?";
+            break;
+        case 'SHS':
+            $checkQuery = "SELECT * FROM oo_shs WHERE school_id = ? AND school_year = ? AND quarter9 = ?";
+            break;
+        default:
+            // Handle other cases if needed
+            break;
+    }
 
-$checkStmt = $conn->prepare($checkQuery);
-$checkStmt->bind_param("iss", $schoolId, $schoolYear, $quarter);
-$checkStmt->execute();
-$result = $checkStmt->get_result();
+    $checkStmt = $conn->prepare($checkQuery);
+    $checkStmt->bind_param("iss", $schoolId, $schoolYear, $quarter);
+    $checkStmt->execute();
+    $result = $checkStmt->get_result();
 
-if ($result->num_rows > 0) {
-    // Data already exists, show the confirmation form
-    echo '<form method="post">
-            <input type="hidden" name="confirmUpdate" value="1">
-            <button type="submit">Update</button>
-            <button type="button" onclick="cancelUpdate()">Cancel</button>
-          </form>';
+    if ($result->num_rows > 0) {
+        // Data already exists, show the confirmation dialog
+        echo '<script>
+                var confirmUpdate = confirm("Data for the selected school year and quarter already exists. Do you want to overwrite it?");
+                if (confirmUpdate) {
+                    proceedWithUpdate();
+                } else {
+                    cancelUpdate();
+                }
+              </script>';
 
-} else {
-    // Data does not exist, proceed with insertion
-    proceedWithInsertion();
-}
+    } else {
+        // Data does not exist, proceed with insertion
+        proceedWithInsertion();
+    }
 
-// Close the connection
-$conn->close();
-}
-
-// Handle the confirmation and proceed with the update
-if (isset($_POST['confirmUpdate'])) {
-proceedWithUpdate();
+    // Close the connection
+    $conn->close();
 }
 
 function proceedWithUpdate() {
@@ -181,5 +179,9 @@ function proceedWithInsertion() {
 
     // Close the statement
     $statement->close();
+}
+function cancelUpdate() {
+    // You can add any additional logic here when the update is canceled
+    echo "Update canceled!";
 }
 ?>
