@@ -48,8 +48,7 @@
                     <div class="form-group gradeInput" id="grade1Input" style="display: none;">
                         <label for="grade1Text">Grade 1:</label>
                         <input type="text" id="grade1Text" name="grade1Text">
-                        <label for="grade1Subjects">Subjects:</label>
-                        <div class="row">
+                          <div class="row">
                             <div class="col">
                                 <label for="mt">Mother Tongue:</label>
                                 <input type="text" id="mt" name="mt">
@@ -73,22 +72,117 @@
                         <div class="form-group gradeInput" id="grade2Input" style="display: none;">
                             <label for="grade2Text">Grade 2:</label>
                             <input type="text" id="grade2Text" name="grade2Text">
+                            <div class="row">
+                            <div class="col">
+                                <label for="mt">Mother Tongue:</label>
+                                <input type="text" id="mt" name="mt">
+                            </div>
+                            <div class="col">
+                                <label for="filipino">Filipino:</label>
+                                <input type="text" id="filipino" name="filipino">
+                            </div>
+                            <div class="col">
+                                <label for="english">English:</label>
+                                <input type="text" id="english" name="english">
+                            </div>
+                            <div class="col">
+                                <label for="math">Mathematics:</label>
+                                <input type="text" id="math" name="math">
+                            </div>
+                            <!-- Add more subjects as needed -->
+                        </div>
                         </div>
                         <div class="form-group gradeInput" id="grade3Input" style="display: none;">
                             <label for="grade3Text">Grade 3:</label>
                             <input type="text" id="grade3Text" name="grade3Text">
+                            <div class="row">
+                            <div class="col">
+                                <label for="mt">Mother Tongue:</label>
+                                <input type="text" id="mt" name="mt">
+                            </div>
+                            <div class="col">
+                                <label for="filipino">Filipino:</label>
+                                <input type="text" id="filipino" name="filipino">
+                            </div>
+                            <div class="col">
+                                <label for="english">English:</label>
+                                <input type="text" id="english" name="english">
+                            </div>
+                            <div class="col">
+                                <label for="math">Mathematics:</label>
+                                <input type="text" id="math" name="math">
+                            </div>
+                            <!-- Add more subjects as needed -->
+                        </div>
                         </div>
                         <div class="form-group gradeInput" id="grade4Input" style="display: none;">
                             <label for="grade4Text">Grade 4:</label>
                             <input type="text" id="grade4Text" name="grade4Text">
+                            <div class="row">
+                            <div class="col">
+                                <label for="mt">Mother Tongue:</label>
+                                <input type="text" id="mt" name="mt">
+                            </div>
+                            <div class="col">
+                                <label for="filipino">Filipino:</label>
+                                <input type="text" id="filipino" name="filipino">
+                            </div>
+                            <div class="col">
+                                <label for="english">English:</label>
+                                <input type="text" id="english" name="english">
+                            </div>
+                            <div class="col">
+                                <label for="math">Mathematics:</label>
+                                <input type="text" id="math" name="math">
+                            </div>
+                            <!-- Add more subjects as needed -->
+                        </div>
                         </div>
                         <div class="form-group gradeInput" id="grade5Input" style="display: none;">
                             <label for="grade5Text">Grade 5:</label>
                             <input type="text" id="grade5Text" name="grade5Text">
+                            <div class="row">
+                            <div class="col">
+                                <label for="mt">Mother Tongue:</label>
+                                <input type="text" id="mt" name="mt">
+                            </div>
+                            <div class="col">
+                                <label for="filipino">Filipino:</label>
+                                <input type="text" id="filipino" name="filipino">
+                            </div>
+                            <div class="col">
+                                <label for="english">English:</label>
+                                <input type="text" id="english" name="english">
+                            </div>
+                            <div class="col">
+                                <label for="math">Mathematics:</label>
+                                <input type="text" id="math" name="math">
+                            </div>
+                            <!-- Add more subjects as needed -->
+                        </div>
                         </div>
                         <div class="form-group gradeInput" id="grade6Input" style="display: none;">
                             <label for="grade6Text">Grade 6:</label>
                             <input type="text" id="grade6Text" name="grade6Text">
+                            <div class="row">
+                            <div class="col">
+                                <label for="mt">Mother Tongue:</label>
+                                <input type="text" id="mt" name="mt">
+                            </div>
+                            <div class="col">
+                                <label for="filipino">Filipino:</label>
+                                <input type="text" id="filipino" name="filipino">
+                            </div>
+                            <div class="col">
+                                <label for="english">English:</label>
+                                <input type="text" id="english" name="english">
+                            </div>
+                            <div class="col">
+                                <label for="math">Mathematics:</label>
+                                <input type="text" id="math" name="math">
+                            </div>
+                            <!-- Add more subjects as needed -->
+                        </div>
                         </div>
                           <!-- //Secondary Input Field -->
                           <div class="form-group gradeInput" id="grade7Input" style="display: none;">
