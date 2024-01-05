@@ -49,18 +49,16 @@
                                 <label for="grade1Text">Grade 1:</label>
                                 <input type="text" id="grade1Text" name="grade1Text">
                                 <label for="grade1Subjects">Subjects:</label>
-                                <div><label for="grade1Subjects">Subjects:</label>
-                                <input type="text" id="grade1Text" name="grade1Text">
-                                <select id="grade1Subjects" name="grade1Subjects[]" multiple>
-                                    <option value="MotherTongue">Mother Tongue</option>
-                                    <option value="Filipino">Filipino</option>
-                                    <option value="English">English</option>
-                                    <option value="Mathematics">Mathematics</option>
-                                    <option value="Science">Science</option>
-                                    <option value="AralingPanlipunan">Araling Panlipunan</option>
-                                    <option value="EPP_TLE">EPP / TLE</option>
-                                    <option value="MAPEH">MAPEH</option>
-                                </select>
+                                <div>
+                                    <label for="mt">Mother Tongue:</label>
+                                    <input type="text" id="mt" name="mt">
+                                    <label for="filipino">Filipino:</label>
+                                    <input type="text" id="filipino" name="filipino">
+                                    <label for="english">English:</label>
+                                    <input type="text" id="english" name="english">
+                                    <label for="math">Mathematics:</label>
+                                    <input type="text" id="math" name="math">
+                                    
                             </div>
                 </div>
 
