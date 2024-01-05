@@ -72,9 +72,9 @@ include ("admin/includes/sidebar.php");
                                                     echo "<td>" . $row['district'] . "</td>";
                                                     echo "<td>" . $row['category'] . "</td>";
                                                     echo "<td>
-                                                    <a href='javascript:void(0);' class='approval-link' data-school-id='" . $row['school_id'] . "' data-school-name='" . $row['school_name'] . "' data-school-address='" . $row['school_address'] . "' data-district='" . $row['district'] . "' data-category='" . $row['category'] . "'>
-                                                        <i class=\"fas fa-check-circle fa-2x\" style=\"color: green;\"></i>
-                                                    </a>
+                                                    <a href='school_approval.php?school_id=" . $row['school_id'] . "&school_name=" . $row['school_name'] . "&school_address=" . $row['school_address'] . "&district=" . $row['district'] . "&category=" . $row['category'] . "'>
+                                                    <i class=\"fas fa-check-circle fa-2x\" style=\"color: green;\"></i>
+                                                </a>
                                                         <a href='delete_school.php?school_id=" . $row['school_id'] . "'>
                                                             <i class=\"fas fa-trash fa-2x\" style=\"color: red;\"></i>
                                                         </a>
@@ -119,24 +119,15 @@ include('admin/includes/script.php');
 include('admin/includes/footer.php');
 ?>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.approval-link').forEach(function (link) {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-
-                var confirmApproval = confirm('Do you want to approve this school?');
-                if (confirmApproval) {
-                    var schoolId = this.getAttribute('data-school-id');
-                    var schoolName = this.getAttribute('data-school-name');
-                    var schoolAddress = this.getAttribute('data-school-address');
-                    var district = this.getAttribute('data-district');
-                    var category = this.getAttribute('data-category');
-                    window.location.href = 'approve_school.php?school_id=' + schoolId + '&school_name=' + schoolName + '&school_address=' + schoolAddress + '&district=' + district + '&category=' + category;
-                } else {
-                    // Redirect back to the previous page on cancel
-                    window.location.href = 'approval.php';
-                }
-            });
-        });
-    });
-</script>
+        var confirmApproval = confirm('Do you want to approve this school?');
+        if (confirmApproval) {
+            var schoolId = "<?php echo $_GET['school_id']; ?>";
+            var schoolName = "<?php echo $_GET['school_name']; ?>";
+            var schoolAddress = "<?php echo $_GET['school_address']; ?>";
+            var district = "<?php echo $_GET['district']; ?>";
+            var category = "<?php echo $_GET['category']; ?>";
+            window.location.href = 'approve_school.php?school_id=' + schoolId + '&school_name=' + schoolName + '&school_address=' + schoolAddress + '&district=' + district + '&category=' + category;
+        } else {
+            window.location.href = 'approval.php'; // Redirect back to the previous page on cancel
+        }
+    </script>
