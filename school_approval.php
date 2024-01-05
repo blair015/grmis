@@ -130,7 +130,7 @@ include('admin/includes/footer.php');
             var category = "<?php echo $_GET['category']; ?>";
 
             $.ajax({
-                type: "POST",
+                type: "POST",  // Change this to POST
                 url: "approve_school.php",
                 data: {
                     school_id: schoolId,
