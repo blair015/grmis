@@ -28,6 +28,7 @@
                             <div class="col">
                                 <label for="elementary">Elementary</label>
                                 <input type="radio" id="elementary" name="educationOption" value="Elementary">
+
                             </div>
                             <div class="col">
                                 <label for="secondary">Secondary</label>
@@ -43,11 +44,23 @@
                             </div>
                         </div>
                     </div>
-                        <!-- //Elementary Input Field -->
-                        <<div class="form-group gradeInput" id="grade1Input" style="display: none;">
-                            <label for="grade1Text">Grade 1:</label>
-                            <input type="text" id="grade1Text" name="grade1Text">
-                        </div>
+                        <!-- Elementary Input Field -->
+                            <div class="form-group gradeInput" id="grade1Input" style="display: none;">
+                                <label for="grade1Text">Grade 1:</label>
+                                <input type="text" id="grade1Text" name="grade1Text">
+                                <label for="grade1Subjects">Subjects:</label>
+                                <select id="grade1Subjects" name="grade1Subjects[]" multiple>
+                                    <option value="MotherTongue">Mother Tongue</option>
+                                    <option value="Filipino">Filipino</option>
+                                    <option value="English">English</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Science">Science</option>
+                                    <option value="AralingPanlipunan">Araling Panlipunan</option>
+                                    <option value="EPP_TLE">EPP / TLE</option>
+                                    <option value="MAPEH">MAPEH</option>
+                                </select>
+                            </div>
+
                         <div class="form-group gradeInput" id="grade2Input" style="display: none;">
                             <label for="grade2Text">Grade 2:</label>
                             <input type="text" id="grade2Text" name="grade2Text">
