@@ -8,30 +8,24 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
     $user_role = $_SESSION['user_role'];
     $user_security = $_SESSION['security_key'];
 
-        // Your logic for handling the session data here
+    // Your logic for handling the session data here
 } else {
     // Session data is missing, redirect to index.php
     header("Location: http://202.137.126.58/");
     exit(0);
 }
-?>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<?php
 include("admin/config/dbcon.php");
 
 // Define a variable to store the error message
 $errorMsg = "";
 
-if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_GET['district'], $_GET['category'])) {
-    $school_id = $_GET['school_id'];
-    $school_name = $_GET['school_name'];
-    $school_address = $_GET['school_address'];
-    $district = $_GET['district'];
-    $category = $_GET['category'];
+if (isset($_POST['school_id'], $_POST['school_name'], $_POST['school_address'], $_POST['district'], $_POST['category'])) {
+    $school_id = $_POST['school_id'];
+    $school_name = $_POST['school_name'];
+    $school_address = $_POST['school_address'];
+    $district = $_POST['district'];
+    $category = $_POST['category'];
 
     // Check if the school_id already exists in the school_profile table
     $checkQuery = "SELECT school_id FROM school_profile WHERE school_id = '$school_id'";
@@ -47,14 +41,14 @@ if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_G
     } else {
         // School ID does not exist, perform the INSERT operation into the school_profile table
         $insertQuery = "INSERT INTO school_profile (school_id, school_name, school_address, district, category) VALUES ('$school_id', '$school_name', '$school_address', '$district', '$category')";
-        
+
         if ($conn->query($insertQuery) === TRUE) {
             // If the insert was successful, proceed to delete the corresponding row from the approval table
             $deleteQuery = "DELETE FROM approval WHERE school_id = '$school_id'";
-            
+
             if ($conn->query($deleteQuery) === TRUE) {
-                // Approval successful, now redirect to approval.php
-                echo '<script>window.location.href = "school_approval.php";</script>';
+                // Approval successful, send success message
+                echo "success";
                 exit;
             } else {
                 $errorMsg = "Error deleting record from approval: " . $conn->error;
@@ -67,19 +61,7 @@ if (isset($_GET['school_id'], $_GET['school_name'], $_GET['school_address'], $_G
     $errorMsg = "Invalid parameters.";
 }
 
-// Remove the page redirection for testing purposes
-// header("Location: approval.php");
-// exit;
+// Send the error message as the response
+echo $errorMsg;
+exit;
 ?>
-
-<script>
-        $(document).ready(function(){
-            // Check if the error message is not empty, then display the toast
-            <?php if (!empty($errorMsg)) { ?>
-                $("#errorToast").toast({ autohide: false });
-                $("#errorToast").toast("show");
-            <?php } ?>
-        });
-    </script>
-
-    
