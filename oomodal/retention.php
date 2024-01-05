@@ -279,7 +279,7 @@
                                 <label for="filipino">Applied Subject:</label>
                                 <input type="text" id="filipino" name="filipino">
                             </div>
-                            <div class="col">
+                            <div class="row">
                                 <label for="english">Specialized Subject:</label>
                                 <input type="text" id="english" name="english">
                             </div>
@@ -320,7 +320,7 @@
                                 <label for="quarter3">Q3</label>
                                 <input type="radio" id="quarter3" name="quarter" value="3">
                             </div>
-                            <div class="row">
+                            <div class="col">
                                 <label for="quarter4">Q4</label>
                                 <input type="radio" id="quarter4" name="quarter" value="4">
                             </div>
