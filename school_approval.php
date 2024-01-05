@@ -130,7 +130,7 @@ include('admin/includes/footer.php');
             var category = "<?php echo $_GET['category']; ?>";
 
             $.ajax({
-                type: "POST",  // Change this to POST
+                type: "POST",
                 url: "approve_school.php",
                 data: {
                     school_id: schoolId,
@@ -141,8 +141,16 @@ include('admin/includes/footer.php');
                 },
                 success: function (response) {
                     if (response.trim() === "success") {
-                        // Redirect only if the server-side operation is successful
-                        window.location.href = 'school_approval.php';
+                        // Show success SweetAlert and redirect
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'School Approved!',
+                            text: 'The school has been successfully approved.',
+                            showConfirmButton: false,
+                            timer: 2000 // 2 seconds
+                        }).then(function () {
+                            window.location.href = 'school_approval.php';
+                        });
                     } else {
                         // Handle the case when the server-side operation fails
                         Swal.fire({
