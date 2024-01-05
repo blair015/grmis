@@ -140,7 +140,7 @@ include('admin/includes/footer.php');
                     category: category
                 },
                 success: function (response) {
-                    if (response === "success") {
+                    if (response.trim() === "success") {
                         // Redirect only if the server-side operation is successful
                         window.location.href = 'school_approval.php';
                     } else {
@@ -148,16 +148,16 @@ include('admin/includes/footer.php');
                         Swal.fire({
                             icon: 'error',
                             title: 'Error',
-                            text: 'Failed to approve the school. Please try again later.',
+                            text: 'Failed to approve the school. Server response: ' + response,
                         });
                     }
                 },
-                error: function () {
+                error: function (jqXHR, textStatus, errorThrown) {
                     // Handle AJAX errors
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
-                        text: 'Failed to communicate with the server. Please try again later.',
+                        text: 'Failed to communicate with the server. Error details: ' + errorThrown,
                     });
                 }
             });
