@@ -358,8 +358,8 @@ if (isset($_GET['school_id'])) {
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#additional-tab1">Additional Tab 1</a>
-            <a class="dropdown-item" href="#additional-tab2">Additional Tab 2</a>
+            <a class="dropdown-item" href="#additional-tab1" data-toggle="tab">Additional Tab 1</a>
+            <a class="dropdown-item" href="#additional-tab2" data-toggle="tab">Additional Tab 2</a>
             <!-- Add more dropdown items as needed -->
           </div>
         </li>
@@ -916,8 +916,61 @@ echo 'Error in preparing the SQL statement.';
       <!-- /.row -->
     </div>
   </section>
- 
+          <div class="tab-pane" id="kpi">
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-6 fv-row">
+                            <div class="card card-orange">
+                          <div class="card-header">
+                              <h3 class="card-title">Enrollment Per Year By Sex</h3>
+                              <div class="card-tools">
+                                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                      <i class="fas fa-minus"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                      <i class="fas fa-times"></i>
+                                  </button>
+                                 </div>
+                                 </div>
+                                <div class="card-body">
+                              <div class="chart">
+                                  <canvas id="enrolleeBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                              </div>
+                          </div>
+                      </div>
+                  </div>  
 
+                  <div class="col-md-6 fv-row">
+                    <div class="card card-orange">
+                        <div class="card-header">
+                            <h3 class="card-title">Students Enrollment by Year</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <!-- Use $teacherData to populate your chart -->
+                    <canvas id="enrolleeBarChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    </div>
+</div>
+ <!-- Add tab panes for additional tabs as needed -->
+ <div class="tab-pane" id="additional-tab1">
+        <!-- Content for Additional Tab 1 -->
+      </div>
+      <div class="tab-pane" id="additional-tab2">
+        <!-- Content for Additional Tab 2 -->
+      </div>
   
 <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
