@@ -285,23 +285,25 @@
                             </div>
                         </div>
                         </div>
-                        <div class="form-group gradeInput" id="grade12Input" style="display: none;">
-                            <label for="grade12Text">Grade 12:</label>
-                            <div class="row">
+                                        <!-- Grade 12 Input Field -->
+                    <div class="form-group gradeInput" id="grade12Input" style="display: none;">
+                        <label for="grade12Text">Grade 12:</label>
+                        <div class="row">
                             <div class="col">
-                                <label for="mt">Core Subject:</label>
-                                <input type="text" id="mt" name="mt">
+                                <label for="coreSubject">Core Subject:</label>
+                                <input type="text" id="coreSubject" name="coreSubject">
                             </div>
                             <div class="col">
-                                <label for="filipino">Applied Subject:</label>
-                                <input type="text" id="filipino" name="filipino">
+                                <label for="appliedSubject">Applied Subject:</label>
+                                <input type="text" id="appliedSubject" name="appliedSubject">
                             </div>
                             <div class="col">
-                                <label for="english">Specialized Subject:</label>
-                                <input type="text" id="english" name="english">
+                                <label for="specializedSubject">Specialized Subject:</label>
+                                <input type="text" id="specializedSubject" name="specializedSubject">
                             </div>
                         </div>
-                         </div>
+                    </div>
+
                                            
                          <div class="form-group">
                         <label>Quarters</label>
