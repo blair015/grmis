@@ -346,15 +346,33 @@ if (isset($_GET['school_id'])) {
 
         </div>
         <div class="col-md-9">
-          <div class="card">
-            <div class="card-header p-2">
-              <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
-                <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
-              </ul>
-            </div><!-- /.card-header -->
+  <div class="card">
+    <div class="card-header p-2">
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link active" href="#About" data-toggle="tab">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Teaching" data-toggle="tab">Teaching & Non Teaching</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kpi" data-toggle="tab">Key Performance Indicator</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pf" data-toggle="tab">Physical Facilities</a></li>
+        
+        <!-- Dropdown Tab -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#additional-tab1">Additional Tab 1</a>
+            <a class="dropdown-item" href="#additional-tab2">Additional Tab 2</a>
+            <!-- Add more dropdown items as needed -->
+          </div>
+        </li>
+        <!-- End Dropdown Tab -->
+        
+      </ul>
+    </div><!-- /.card-header -->
+    
+    <!-- Add tab content for additional tabs as needed -->
+    
+  </div>
+</div>
+
             <div class="card-body">
               <div class="tab-content">
 
