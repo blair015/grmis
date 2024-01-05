@@ -50,14 +50,23 @@
                                 <input type="text" id="grade1Text" name="grade1Text">
                                 <label for="grade1Subjects">Subjects:</label>
                                 <div>
+                                    <col>
+                                    <row>
                                     <label for="mt">Mother Tongue:</label>
                                     <input type="text" id="mt" name="mt">
+                                   </row>
+                                   <row>
                                     <label for="filipino">Filipino:</label>
                                     <input type="text" id="filipino" name="filipino">
+                                     </row>
+                                     <row>
                                     <label for="english">English:</label>
                                     <input type="text" id="english" name="english">
+                </row>
+                <row>
                                     <label for="math">Mathematics:</label>
                                     <input type="text" id="math" name="math">
+                </row>
                                     
                             </div>
                 </div>
