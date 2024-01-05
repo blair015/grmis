@@ -49,6 +49,8 @@
                                 <label for="grade1Text">Grade 1:</label>
                                 <input type="text" id="grade1Text" name="grade1Text">
                                 <label for="grade1Subjects">Subjects:</label>
+                                <div><label for="grade1Subjects">Subjects:</label>
+                                <input type="text" id="grade1Text" name="grade1Text">
                                 <select id="grade1Subjects" name="grade1Subjects[]" multiple>
                                     <option value="MotherTongue">Mother Tongue</option>
                                     <option value="Filipino">Filipino</option>
@@ -60,6 +62,7 @@
                                     <option value="MAPEH">MAPEH</option>
                                 </select>
                             </div>
+                </div>
 
                         <div class="form-group gradeInput" id="grade2Input" style="display: none;">
                             <label for="grade2Text">Grade 2:</label>
