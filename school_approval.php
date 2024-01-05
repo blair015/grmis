@@ -119,15 +119,51 @@ include('admin/includes/script.php');
 include('admin/includes/footer.php');
 ?>
 <script>
+    $(document).ready(function () {
         var confirmApproval = confirm('Do you want to approve this school?');
+
         if (confirmApproval) {
             var schoolId = "<?php echo $_GET['school_id']; ?>";
             var schoolName = "<?php echo $_GET['school_name']; ?>";
             var schoolAddress = "<?php echo $_GET['school_address']; ?>";
             var district = "<?php echo $_GET['district']; ?>";
             var category = "<?php echo $_GET['category']; ?>";
-            window.location.href = 'approve_school.php?school_id=' + schoolId + '&school_name=' + schoolName + '&school_address=' + schoolAddress + '&district=' + district + '&category=' + category;
+
+            $.ajax({
+                type: "POST",
+                url: "approve_school.php",
+                data: {
+                    school_id: schoolId,
+                    school_name: schoolName,
+                    school_address: schoolAddress,
+                    district: district,
+                    category: category
+                },
+                success: function (response) {
+                    if (response === "success") {
+                        // Redirect only if the server-side operation is successful
+                        window.location.href = 'school_approval.php';
+                    } else {
+                        // Handle the case when the server-side operation fails
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Failed to approve the school. Please try again later.',
+                        });
+                    }
+                },
+                error: function () {
+                    // Handle AJAX errors
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Failed to communicate with the server. Please try again later.',
+                    });
+                }
+            });
         } else {
-            window.location.href = 'approval.php'; // Redirect back to the previous page on cancel
+            // Redirect back to the previous page on cancel
+            window.location.href = 'approval.php';
         }
-    </script>
+    });
+</script>
