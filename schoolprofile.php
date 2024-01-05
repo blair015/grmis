@@ -371,7 +371,6 @@ if (isset($_GET['school_id'])) {
     <!-- Add tab content for additional tabs as needed -->
     
   </div>
-</div>
 
             <div class="card-body">
               <div class="tab-content">
