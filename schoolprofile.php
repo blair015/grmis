@@ -959,15 +959,16 @@ echo 'Error in preparing the SQL statement.';
                 </div>
                 
             </div>
-            <!-- Add tab panes for additional tabs as needed -->
+            
+            <!-- /.card-body -->
+        </div>
+        <!-- Add tab panes for additional tabs as needed -->
  <div class="tab-pane" id="additional-tab1">
         <!-- Content for Additional Tab 1 -->
       </div>
       <div class="tab-pane" id="additional-tab2">
         <!-- Content for Additional Tab 2 -->
       </div>
-            <!-- /.card-body -->
-        </div>
         <!-- /.card -->
     </div>
     </div>
