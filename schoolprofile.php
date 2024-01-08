@@ -918,12 +918,12 @@ echo 'Error in preparing the SQL statement.';
   </section>
                  <!-- ADDITIONAL TAB 1 -->
         <div class="tab-pane" id="additional-tab1">
-          <!-- Content for Additional Tab 1 -->
+          BLANK
         </div>
 
         <!-- ADDITIONAL TAB 2 -->
         <div class="tab-pane" id="additional-tab2">
-          <!-- Content for Additional Tab 2 -->
+          BLANK
         </div>
             </div>
             
