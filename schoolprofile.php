@@ -1408,3 +1408,9 @@ var barChart = new Chart(ctx, {
         });
     });
 </script>
+<script>
+    function showMemoTab() {
+        // Programmatically switch to the Memo tab when "Additional Tab 1" is clicked
+        $('.nav-pills a[href="#additional-tab1"]').tab('show');
+    }
+</script>
