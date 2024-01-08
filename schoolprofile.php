@@ -965,6 +965,7 @@ echo 'Error in preparing the SQL statement.';
     </div>
 </div>
 </div>
+</div>
  
   
 <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
