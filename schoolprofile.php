@@ -957,14 +957,13 @@ echo 'Error in preparing the SQL statement.';
                     <!-- Use $teacherData to populate your chart -->
                     <canvas id="enrolleeBarChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
-                
             
             <!-- /.card-body -->
         </div>
-        
         <!-- /.card -->
     </div>
     </div>
+</div>
  
   
 <div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
