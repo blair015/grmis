@@ -41,6 +41,7 @@
                                     echo '<nav class="sb-sidenav-menu-nested nav">';
                                     echo '<a class="nav-link" href="school_approval.php">Schools for Approval</a>';
                                     echo '<a class="nav-link" href="#">Years in Service</a>';
+                                    echo '<a class="nav-link" href="#">Report Submission</a>';
                                     echo '</nav>';
                                     echo '</div>';
                                 } else  {
