@@ -918,12 +918,12 @@ echo 'Error in preparing the SQL statement.';
   </section>
                  <!-- ADDITIONAL TAB 1 -->
         <div class="tab-pane" id="additional-tab1">
-          BLANK
+          <!-- Content for Additional Tab 1 -->
         </div>
 
         <!-- ADDITIONAL TAB 2 -->
         <div class="tab-pane" id="additional-tab2">
-          BLANK
+          <!-- Content for Additional Tab 2 -->
         </div>
             </div>
             
@@ -1407,10 +1407,4 @@ var barChart = new Chart(ctx, {
             });
         });
     });
-</script>
-<script>
-    function showMemoTab() {
-        // Programmatically switch to the Memo tab when "Additional Tab 1" is clicked
-        $('.nav-pills a[href="#additional-tab1"]').tab('show');
-    }
 </script>
