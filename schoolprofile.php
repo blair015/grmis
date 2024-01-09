@@ -919,15 +919,17 @@ echo 'Error in preparing the SQL statement.';
                 <!-- ADDITIONAL TAB 1 -->
 <div class="tab-pane" id="additional-tab1">
     <!-- Content for Additional Tab 1 -->
-    <h4>Additional Tab 1 Content Goes Here</h4>
-    <!-- Add your content for additional tab 1 here -->
+    <div id="additional-tab1-content">
+        <!-- Content for Additional Tab 1 will be loaded dynamically here -->
+    </div>
 </div>
 
-        <!-- ADDITIONAL TAB 2 -->
+       <!-- ADDITIONAL TAB 2 -->
 <div class="tab-pane" id="additional-tab2">
     <!-- Content for Additional Tab 2 -->
-    <h4>Additional Tab 2 Content Goes Here</h4>
-    <!-- Add your content for additional tab 2 here -->
+    <div id="additional-tab2-content">
+        <!-- Content for Additional Tab 2 will be loaded dynamically here -->
+    </div>
 </div>
             </div>
             
@@ -1411,4 +1413,24 @@ var barChart = new Chart(ctx, {
             });
         });
     });
+</script>
+<script>
+// Assuming you have jQuery included in your project
+$(document).ready(function() {
+    // Handle the click event for Additional Tab 1
+    $('a[href="#additional-tab1"]').on('click', function (e) {
+        e.preventDefault();
+        // Load content dynamically for Additional Tab 1
+        $('#additional-tab1-content').load('path/to/additional-tab1-content.php');
+        $(this).tab('show');
+    });
+
+    // Handle the click event for Additional Tab 2
+    $('a[href="#additional-tab2"]').on('click', function (e) {
+        e.preventDefault();
+        // Load content dynamically for Additional Tab 2
+        $('#additional-tab2-content').load('path/to/additional-tab2-content.php');
+        $(this).tab('show');
+    });
+});
 </script>
