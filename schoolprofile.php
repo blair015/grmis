@@ -1422,7 +1422,7 @@ $(document).ready(function() {
         e.preventDefault();
         // Load content dynamically for Additional Tab 1 using AJAX
         $.ajax({
-            url: 'path/to/content1.php', // Update with the actual path
+            url: 'memotab.php', // Update with the actual path
             type: 'GET',
             success: function(response) {
                 $('#additional-tab1-content').html(response);
