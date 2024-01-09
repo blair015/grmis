@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username']) && isset($_SESSI
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <?php
 include("admin/includes/header.php");
@@ -1415,13 +1415,12 @@ var barChart = new Chart(ctx, {
     });
 </script>
 <script>
-// Assuming you have jQuery included in your project
 $(document).ready(function() {
     // Handle the click event for Additional Tab 1
     $('a[href="#additional-tab1"]').on('click', function (e) {
         e.preventDefault();
         // Load content dynamically for Additional Tab 1
-        $('#additional-tab1-content').load('path/to/additional-tab1-content.php');
+        $('#additional-tab1-content').html('<p>Additional Tab 1 Content Goes Here</p>');
         $(this).tab('show');
     });
 
@@ -1429,7 +1428,7 @@ $(document).ready(function() {
     $('a[href="#additional-tab2"]').on('click', function (e) {
         e.preventDefault();
         // Load content dynamically for Additional Tab 2
-        $('#additional-tab2-content').load('path/to/additional-tab2-content.php');
+        $('#additional-tab2-content').html('<p>Additional Tab 2 Content Goes Here</p>');
         $(this).tab('show');
     });
 });
