@@ -916,15 +916,19 @@ echo 'Error in preparing the SQL statement.';
       <!-- /.row -->
     </div>
   </section>
-                 <!-- ADDITIONAL TAB 1 -->
-        <div class="tab-pane" id="additional-tab1">
-          <!-- Content for Additional Tab 1 -->
-        </div>
+                <!-- ADDITIONAL TAB 1 -->
+<div class="tab-pane" id="additional-tab1">
+    <!-- Content for Additional Tab 1 -->
+    <h4>Additional Tab 1 Content Goes Here</h4>
+    <!-- Add your content for additional tab 1 here -->
+</div>
 
         <!-- ADDITIONAL TAB 2 -->
-        <div class="tab-pane" id="additional-tab2">
-          <!-- Content for Additional Tab 2 -->
-        </div>
+<div class="tab-pane" id="additional-tab2">
+    <!-- Content for Additional Tab 2 -->
+    <h4>Additional Tab 2 Content Goes Here</h4>
+    <!-- Add your content for additional tab 2 here -->
+</div>
             </div>
             
             <!-- /.card-body -->
