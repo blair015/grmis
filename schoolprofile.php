@@ -901,6 +901,22 @@ echo 'Error in preparing the SQL statement.';
 
 ?>
 <!-- Closing </div> for <div class="tab-content"> -->
+                   <!-- ADDITIONAL TAB 1 -->
+<div class="tab-pane" id="additional-tab1">
+    <!-- Content for Additional Tab 1 -->
+    <div id="additional-tab1-content">
+        <!-- Content for Additional Tab 1 will be loaded dynamically here -->
+    </div>
+</div>
+
+       <!-- ADDITIONAL TAB 2 -->
+<div class="tab-pane" id="additional-tab2">
+    <!-- Content for Additional Tab 2 -->
+    <div id="additional-tab2-content">
+        <!-- Content for Additional Tab 2 will be loaded dynamically here -->
+    </div>
+</div>
+        
 </div>
                 
               <!-- /.tab-pane -->
@@ -916,22 +932,7 @@ echo 'Error in preparing the SQL statement.';
       <!-- /.row -->
     </div>
   </section>
-                <!-- ADDITIONAL TAB 1 -->
-<div class="tab-pane" id="additional-tab1">
-    <!-- Content for Additional Tab 1 -->
-    <div id="additional-tab1-content">
-        <!-- Content for Additional Tab 1 will be loaded dynamically here -->
-    </div>
-</div>
-
-       <!-- ADDITIONAL TAB 2 -->
-<div class="tab-pane" id="additional-tab2">
-    <!-- Content for Additional Tab 2 -->
-    <div id="additional-tab2-content">
-        <!-- Content for Additional Tab 2 will be loaded dynamically here -->
-    </div>
-</div>
-            </div>
+     </div>
             
             <!-- /.card-body -->
         </div>
