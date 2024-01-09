@@ -1420,17 +1420,36 @@ $(document).ready(function() {
     // Handle the click event for Additional Tab 1
     $('a[href="#additional-tab1"]').on('click', function (e) {
         e.preventDefault();
-        // Load content dynamically for Additional Tab 1
-        $('#additional-tab1-content').html('<p>Additional Tab 1 Content Goes Here</p>');
-        $(this).tab('show');
+        // Load content dynamically for Additional Tab 1 using AJAX
+        $.ajax({
+            url: 'path/to/content1.php', // Update with the actual path
+            type: 'GET',
+            success: function(response) {
+                $('#additional-tab1-content').html(response);
+                $('a[href="#additional-tab1"]').tab('show');
+            },
+            error: function(error) {
+                console.error('Error loading content for Additional Tab 1:', error);
+            }
+        });
     });
 
     // Handle the click event for Additional Tab 2
     $('a[href="#additional-tab2"]').on('click', function (e) {
         e.preventDefault();
-        // Load content dynamically for Additional Tab 2
-        $('#additional-tab2-content').html('<p>Additional Tab 2 Content Goes Here</p>');
-        $(this).tab('show');
+        // Load content dynamically for Additional Tab 2 using AJAX
+        $.ajax({
+            url: 'path/to/content2.php', // Update with the actual path
+            type: 'GET',
+            success: function(response) {
+                $('#additional-tab2-content').html(response);
+                $('a[href="#additional-tab2"]').tab('show');
+            },
+            error: function(error) {
+                console.error('Error loading content for Additional Tab 2:', error);
+            }
+        });
     });
 });
+
 </script>
