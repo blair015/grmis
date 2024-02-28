@@ -150,7 +150,6 @@ if ($stmt2) {
         echo "Error in preparing the SQL statement.";
     }
     ?>
-                    ?>
                                         
                                     
                                     </tbody>
