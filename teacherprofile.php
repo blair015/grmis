@@ -31,6 +31,57 @@ include ("admin/includes/sidebar.php");
 <div>
             
     <main>
+    <?php
+
+include("admin/config/dbcon2.php");
+
+// Assuming you have already set $user_name from the session
+
+// Prepare the SQL statement
+$sql = "SELECT emp_no FROM users WHERE email = ?";
+$stmt = $conn->prepare($sql);
+
+if ($stmt) {
+    $stmt->bind_param("s", $user_name);
+    $stmt->execute();
+    $stmt->bind_result($emp_no);
+    $stmt->fetch();
+    $stmt->close();
+    if ($emp_no) {
+        echo "";
+    } else {
+        echo "No result found for the provided email.";
+    }
+} else {
+    
+    echo "Error preparing the statement.";
+}
+
+$sql2 = "SELECT school_id FROM employment_record WHERE emp_no = ?";
+$stmt2 = $conn->prepare($sql2);
+
+if ($stmt2) {
+    $stmt2->bind_param("s", $emp_no);
+    $stmt2->execute();
+    $stmt2->bind_result($school_id);
+    $stmt2->fetch();
+    $stmt2->close();
+    if ($school_id) {
+        echo "";
+    } else {
+        echo "No employment record found for the provided emp_no.";
+    }
+} else {
+    echo "Error preparing the statement.";
+}
+
+?>
+<?php
+                                
+                                $user_school_id = $school_id; 
+
+                                echo "School ID:"." ".$school_id;
+                                ?>
         <div class="container-fluid px-4">
         				<div class="card mb-4">
                                <div class="card-body">
@@ -56,35 +107,8 @@ include ("admin/includes/sidebar.php");
                                         </tr>
                                     </tfoot>
                                     <tbody>
-									<!-- <?php
-                                            include("admin/config/dbcon.php");
-
-                                            $query = "SELECT * FROM approval";
-                                            $result = $conn->query($query);
-
-                                            // Loop through the fetched data and populate the table rows
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                    echo "<tr>";
-                                                    echo "<td>" . $row['school_id'] . "</td>";
-                                                    echo "<td>" . $row['school_name'] . "</td>";
-                                                    echo "<td>" . $row['school_address'] . "</td>";
-                                                    echo "<td>" . $row['district'] . "</td>";
-                                                    echo "<td>" . $row['category'] . "</td>";
-                                                    echo "<td>
-                                                    <a href='school_approval.php?school_id=" . $row['school_id'] . "&school_name=" . $row['school_name'] . "&school_address=" . $row['school_address'] . "&district=" . $row['district'] . "&category=" . $row['category'] . "'>
-                                                    <i class=\"fas fa-check-circle fa-2x\" style=\"color: green;\"></i>
-                                                </a>
-                                                        <a href='delete_school.php?school_id=" . $row['school_id'] . "'>
-                                                            <i class=\"fas fa-trash fa-2x\" style=\"color: red;\"></i>
-                                                        </a>
-                                                    </td>";
-                                                    echo "</tr>";
-                                                }
-                                            } else {
-                                                echo "<tr><td colspan='6'>No data available</td></tr>";
-                                            }
-                                            ?>       -->
+                                        
+                                    
                                     </tbody>
                                 </table>
                             </div>
