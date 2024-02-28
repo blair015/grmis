@@ -110,7 +110,7 @@ if ($stmt2) {
                                     <?php
             include 'admin/config/dbcon2.php';
 
-            $selectedSchoolId = $_GET['school_id'];
+            $selectedSchoolId = $school_id;
             
             $sql = "SELECT e.yrs_in_serv, e.position_type, e.item_no, pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image, pi.dob, pi.pob, pi.sex, pi.civilstatus, pi.mobile, pi.email
                     FROM employment_record AS e
