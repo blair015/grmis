@@ -112,10 +112,12 @@ if ($stmt2) {
 
             $selectedSchoolId = $school_id;
             
-            $sql = "SELECT e.yrs_in_serv, e.position_type, e.item_no, pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image, pi.dob, pi.pob, pi.sex, pi.civilstatus, pi.mobile, pi.email
+            $sql = "SELECT e.yrs_in_serv, e.position_type, e.item_no, pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image, pi.dob, pi.pob, 
+                    pi.sex, pi.civilstatus, pi.mobile, pi.email, ss.r_brgy, ss.r_city_mun, ss.r_prov
                     FROM employment_record AS e
                     INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
                     INNER JOIN profile_pic AS pp ON pi.emp_no = pp.emp_no
+                    INNER JOIN address AS ss ON pi.emp_no = ss.emp_no
                     WHERE e.school_id = ?
                     ORDER BY pi.lastname ASC";
 
@@ -127,11 +129,11 @@ if ($stmt2) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['school_id'] . "</td>";
-                        echo "<td>" . $row['school_name'] . "</td>";
-                        echo "<td>" . $row['school_address'] . "</td>";
-                        echo "<td>" . $row['District'] . "</td>";
-                        echo "<td>" . $row['category'] . "</td>";
+                        echo "<td>" . $row['lastname'] . " " . $row['firstname'] . " " . $row['middlename'] . "</td>";
+                        echo "<td>" . $row['position_rank'] . "</td>";
+                        echo "<td>" . $row['r_brgy'] . " " . $row['r_city_mun'] . " " . $row['r_prov'] . "</td>";
+                        echo "<td>" . $row['sex'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
                         echo "<td>
                         <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
                              </td>";
