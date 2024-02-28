@@ -129,9 +129,9 @@ if ($stmt2) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row['lastname'] . " " . $row['firstname'] . " " . $row['middlename'] . "</td>";
+                        echo "<td>" . $row['lastname'] . "," . $row['firstname'] . " " . $row['middlename'] . "</td>";
                         echo "<td>" . $row['position_rank'] . "</td>";
-                        echo "<td>" . $row['r_brgy'] . " " . $row['r_city_mun'] . " " . $row['r_prov'] . "</td>";
+                        echo "<td>" . $row['r_brgy'] . "," . $row['r_city_mun'] . "," . $row['r_prov'] . "</td>";
                         echo "<td>" . $row['sex'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>
