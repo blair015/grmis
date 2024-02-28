@@ -107,6 +107,48 @@ if ($stmt2) {
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <?php
+            include 'admin/config/dbcon2.php';
+
+            $selectedSchoolId = $_GET['school_id'];
+            
+            $sql = "SELECT e.yrs_in_serv, e.position_type, e.item_no, pi.emp_no, pi.lastname, pi.firstname, pi.middlename, e.position_rank, pp.image, pi.dob, pi.pob, pi.sex, pi.civilstatus, pi.mobile, pi.email
+                    FROM employment_record AS e
+                    INNER JOIN personal_info AS pi ON e.emp_no = pi.emp_no
+                    INNER JOIN profile_pic AS pp ON pi.emp_no = pp.emp_no
+                    WHERE e.school_id = ?
+                    ORDER BY pi.lastname ASC";
+
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("i", $selectedSchoolId);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>";
+                        echo "<td>" . $row['school_id'] . "</td>";
+                        echo "<td>" . $row['school_name'] . "</td>";
+                        echo "<td>" . $row['school_address'] . "</td>";
+                        echo "<td>" . $row['District'] . "</td>";
+                        echo "<td>" . $row['category'] . "</td>";
+                        echo "<td>
+                        <a href='schoolprofile.php?school_id=" . $row['school_id'] . "&user_school_id=" . $user_school_id . "'><i class='fas fa-eye fa-2x'></i></a>
+                             </td>";
+                    
+
+                        echo "</tr>";
+                    }
+        } else {
+            echo "No teachers found for the selected school.";
+        }
+    
+        $stmt->close();
+    } else {
+        echo "Error in preparing the SQL statement.";
+    }
+    ?>
+                    ?>
                                         
                                     
                                     </tbody>
