@@ -358,7 +358,7 @@ if (isset($_GET['school_id'])) {
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">More</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="teacherprofile.php" data-toggle="tab">Additional Tab 1</a>
+            <a class="dropdown-item" href="#additional-tab1" data-toggle="tab">Additional Tab 1</a>
             <a class="dropdown-item" href="#additional-tab2" data-toggle="tab">Additional Tab 2</a>
             <!-- Add more dropdown items as needed -->
           </div>
