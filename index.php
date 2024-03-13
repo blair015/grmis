@@ -89,7 +89,7 @@ if ($result) {
     $totalRows1 = 0;
 }
 ?>
-            <div class="small-box bg-success">
+            <!-- <div class="small-box bg-success">
               <div class="inner">
               <h3><?php echo $totalRows1 ?></h3>
 
@@ -100,7 +100,7 @@ if ($result) {
               </div>
               <a href="#" class="small-box-footer">  <i ></i></a>
             </div>
-          </div>
+          </div> -->
           <!-- ./col -->
 
           <?php
