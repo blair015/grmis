@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 $servername = "202.137.126.61";
 $username = "root";
 $password = "@vert2023";
@@ -13,4 +13,4 @@ if ($conn->connect_error) {
 echo "";
 // Close the connection
 
-?>
+?> -->
