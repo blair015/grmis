@@ -73,22 +73,7 @@ if ($result) {
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <!-- <?php
-include 'admin/config/dbcon3.php'; // Include your database connection file
-
-// SQL query to count the number of rows in the "school_profile" table
-$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
-
-$result = $conn->query($sql);
-
-if ($result) {
-    $row = $result->fetch_assoc();
-    $totalRows1 = $row['total_rows'];
-} else {
-    // Handle the query error if needed
-    $totalRows1 = 0;
-}
-?> -->
+            
             <div class="small-box bg-success">
               <div class="inner">
               <h3></h3>
