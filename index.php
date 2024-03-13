@@ -35,6 +35,75 @@ include ("admin/includes/sidebar.php");
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <?php
+include 'admin/config/dbcon.php'; // Include your database connection file
+
+// SQL query to count the number of rows in the "school_profile" table
+$sql = "SELECT COUNT(*) as total_rows FROM school_profile";
+
+$result = $conn->query($sql);
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $totalRows = $row['total_rows'];
+} else {
+    // Handle the query error if needed
+    $totalRows = 0;
+}
+
+// // Output the total number of rows
+// echo "Total rows in school_profile table: " . $totalRows;
+
+// // Close the database connection if necessary
+// $conn->close();
+?>
+
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3><?php echo $totalRows; ?></h3>
+
+                <p>School</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <!-- <a href="#" class="small-box-footer">  <i class="fas fa-arrow-circle-right"></i></a> -->
+              <a href="#" class="small-box-footer">  <i ></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <!-- <?php
+include 'admin/config/dbcon3.php'; // Include your database connection file
+
+// SQL query to count the number of rows in the "school_profile" table
+$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
+
+$result = $conn->query($sql);
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $totalRows1 = $row['total_rows'];
+} else {
+    // Handle the query error if needed
+    $totalRows1 = 0;
+}
+?> -->
+            <div class="small-box bg-success">
+              <div class="inner">
+              <h3></h3>
+
+                <p>Student</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="#" class="small-box-footer">  <i ></i></a>
+            </div>
+          </div>
+          <!-- ./col
+
+          <?php
 
 include 'admin/config/dbcon2.php';
 // Include your database connection code here
@@ -89,76 +158,6 @@ if ($stmt) {
               <a href="#" class="small-box-footer">  <i ></i></a>
             </div>
           </div>
-            <?php
-include 'admin/config/dbcon.php'; // Include your database connection file
-
-// SQL query to count the number of rows in the "school_profile" table
-$sql = "SELECT COUNT(*) as total_rows FROM school_profile";
-
-$result = $conn->query($sql);
-
-if ($result) {
-    $row = $result->fetch_assoc();
-    $totalRows = $row['total_rows'];
-} else {
-    // Handle the query error if needed
-    $totalRows = 0;
-}
-
-// // Output the total number of rows
-// echo "Total rows in school_profile table: " . $totalRows;
-
-// // Close the database connection if necessary
-// $conn->close();
-?>
-
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?php echo $totalRows; ?></h3>
-
-                <p>School</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <!-- <a href="#" class="small-box-footer">  <i class="fas fa-arrow-circle-right"></i></a> -->
-              <a href="#" class="small-box-footer">  <i ></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <?php
-include 'admin/config/dbcon3.php'; // Include your database connection file
-
-// SQL query to count the number of rows in the "school_profile" table
-$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
-
-$result = $conn->query($sql);
-
-if ($result) {
-    $row = $result->fetch_assoc();
-    $totalRows1 = $row['total_rows'];
-} else {
-    // Handle the query error if needed
-    $totalRows1 = 0;
-}
-?>
-            <!-- <div class="small-box bg-success">
-              <div class="inner">
-              <h3><?php echo $totalRows1 ?></h3>
-
-                <p>Student</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer">  <i ></i></a>
-            </div>
-          </div> -->
-          <!-- ./col -->
-
-          
           <!-- ./col -->
 
           <?php
