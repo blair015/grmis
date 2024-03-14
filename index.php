@@ -86,7 +86,7 @@ if ($result) {
               <a href="#" class="small-box-footer">  <i ></i></a>
             </div>
           </div>
-          <!-- ./col
+          
 
           <?php
 
