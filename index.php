@@ -74,7 +74,7 @@ if ($result) {
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <!-- <?php
+            <?php
 include 'admin/config/dbcon3.php'; // Include your database connection file
 
 // SQL query to count the number of rows in the "school_profile" table
@@ -89,7 +89,7 @@ if ($result) {
     // Handle the query error if needed
     $totalRows1 = 0;
 }
-?> -->
+?> 
 
 <?php
                             include('admin/config/dbcon3.php');
