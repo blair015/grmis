@@ -57,6 +57,7 @@ if ($result) {
 // $conn->close();
 ?>
 
+
             <div class="small-box bg-info">
               <div class="inner">
                 <h3><?php echo $totalRows; ?></h3>
@@ -73,10 +74,48 @@ if ($result) {
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            
+            <!-- <?php
+include 'admin/config/dbcon3.php'; // Include your database connection file
+
+// SQL query to count the number of rows in the "school_profile" table
+$sql = "SELECT COUNT(*) as total_rows FROM tblstudentenrollment";
+
+$result = $conn->query($sql);
+
+if ($result) {
+    $row = $result->fetch_assoc();
+    $totalRows1 = $row['total_rows'];
+} else {
+    // Handle the query error if needed
+    $totalRows1 = 0;
+}
+?> -->
+
+<?php
+                            include('admin/config/dbcon3.php');
+
+                            $sql = "SELECT 
+                                        SUM(CASE WHEN d.gender = 'Male' THEN 1 ELSE 0 END) AS male_students,
+                                        SUM(CASE WHEN d.gender = 'Female' THEN 1 ELSE 0 END) AS female_students
+                                    FROM tblstudentenrollment e
+                                    INNER JOIN tblstudents d ON d.id = e.studentID
+                                    WHERE e.status = 'Enrolled'";
+
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $maleStudentsCount = $row['male_students'];
+                                $femaleStudentsCount = $row['female_students'];
+                            } else {
+                                // No data found, initialize counts to zero or handle the error
+                                $maleStudentsCount = 0;
+                                $femaleStudentsCount = 0;
+                            }
+                            ?>
             <div class="small-box bg-success">
               <div class="inner">
-              <h3></h3>
+              h3><?php echo $totalRows1; ?></h3>
 
                 <p>Student</p>
               </div>
@@ -89,6 +128,7 @@ if ($result) {
           
 
           <?php
+          
 
 include 'admin/config/dbcon2.php';
 // Include your database connection code here
