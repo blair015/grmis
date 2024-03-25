@@ -115,7 +115,7 @@ if ($result) {
                             ?>
             <div class="small-box bg-success">
               <div class="inner">
-              h3><?php echo $totalRows1; ?></h3>
+              <h3><?php echo $totalRows1; ?></h3>
 
                 <p>Student</p>
               </div>
